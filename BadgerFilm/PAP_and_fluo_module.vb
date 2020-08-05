@@ -1,56 +1,106 @@
 ﻿Module PAP_and_fluo_module
+    'Function to hadle the case of the Ka, La, and Ma X-ray lines which are considered as the sum of two lines: Ka= Ka1+Ka2, La=La1+La2 and Ma=Ma1+Ma2
+    'The function returns the total emitted X-ray intensity of the considered X-ray line (in photon/sr/electron).
+    'In the case of an element present in more than one layer (or substrate), the returned intensity is the sum of all the contributions from the different layers (or substrate).
     Public Function pre_auto(ByVal layer_handler() As layer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer, ByVal elt_exp_all() As Elt_exp,
                              ByVal E0 As Double, ByVal toa As Double, ByVal Ec_data() As String, ByVal options As options,
                               ByVal print_res As Boolean, ByRef save_results As String, ByVal fit_MAC As fit_MAC,
                              Optional ByVal mode As String = "PAP", Optional ByVal brem_fit() As Double = Nothing) As Double
 
+        'Calculate the takeoff angle in radian
         Dim sin_toa_in_rad As Double = Math.Sin(toa * Math.PI / 180)
         pre_auto = 0
 
-        Dim indice_layer() As Integer = Nothing
+        'Loop over all the layers (and substrate)
         For i As Integer = 0 To UBound(layer_handler)
+            'Loop over all the elements present in the current layer (or substrate)
             For j As Integer = 0 To UBound(layer_handler(i).element)
+                'If the current element corresponds to the studied element, calculate the X-ray intensity.
                 If layer_handler(i).element(j).elt_name = studied_element.elt_name Then
+                    'Handle the case of the Ka X-ray line
                     If studied_element.line(line_indice).xray_name Like "[Kk][Aa]" Then
-                        'layer_handler(i).element(j).xray_name = "Ka1"
                         init_element_Xray_line_only("Ka1", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        Dim result As Double = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "Ka"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         init_element_Xray_line_only("Ka2", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        result = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                     options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "Ka"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         studied_element.line(line_indice).xray_name = "Ka"
 
+                        'Handle the case of the La X-ray line
                     ElseIf studied_element.line(line_indice).xray_name Like "[Ll][Aa]" Then
                         init_element_Xray_line_only("La1", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        Dim result As Double = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "La"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         init_element_Xray_line_only("La2", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        result = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "La"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         studied_element.line(line_indice).xray_name = "La"
 
+                        'Handle the case of the La X-ray line
                     ElseIf studied_element.line(line_indice).xray_name Like "[Mm][Aa]" Then
-                        'layer_handler(i).element(j).xray_name = "Ka1"
                         init_element_Xray_line_only("Ma1", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        Dim result As Double = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "Ma"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         'layer_handler(i).element(j).xray_name = "Ka2"
                         init_element_Xray_line_only("Ma2", Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        result = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            studied_element.line(line_indice).xray_name = "Ma"
+                            Return -1
+                        End If
+                        pre_auto = pre_auto + result
 
                         studied_element.line(line_indice).xray_name = "Ma"
 
+                        'Handle the case of a single X-ray line (not the sum of two X-ray lines)
                     Else
                         init_element_Xray_line_only(studied_element.line(line_indice).xray_name, Ec_data, studied_element, line_indice)
-                        pre_auto = pre_auto + auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
+                        Dim result As Double = auto(layer_handler, layer_handler(i).element(j).mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad,
                                                    options, print_res, save_results, fit_MAC, mode, brem_fit)
+                        pre_auto = pre_auto + result
+
+                        'In case of an error returned by the function auto.
+                        If result = -1 Then
+                            Return -1
+                        End If
                     End If
                 End If
             Next
@@ -58,17 +108,18 @@
 
     End Function
 
-    'Function calculating the total emitted X-ray intensity 
+    'Function calculating the total emitted X-ray intensity (in photon/sr/electron) 
     Public Function auto(ByVal layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                          ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByVal sin_toa_in_rad As Double, ByVal options As options,
                          ByVal print_res As Boolean, ByRef save_results As String, ByVal fit_MAC As fit_MAC,
                          Optional ByVal mode As String = "PAP", Optional ByVal brem_fit() As Double = Nothing) As Double
 
+        'Verify that the eam energy is correct
         If E0 <= 0 Then
-            Stop
-            Exit Function
+            Return -1
         End If
 
+        'If the ionisation threshold of the studied X-ray line is greater than the beam energy E0, return 0.
         If studied_element.line(line_indice).Ec > E0 Then
             Debug.Print("E0 < El !!!")
             If print_res = True Then
@@ -78,8 +129,9 @@
             Return 0
         End If
 
-        Dim watch_tot As Stopwatch = Stopwatch.StartNew()
+        'Dim watch_tot As Stopwatch = Stopwatch.StartNew()
 
+        'Verify that the studied element has a real concentration (>0). Otherwise, the function returns 0.
         Dim flag_conc_zero As Boolean = True
         For i As Integer = 0 To UBound(layer_handler)
             For j As Integer = 0 To UBound(layer_handler(i).element)
@@ -95,8 +147,7 @@
         If flag_conc_zero = True Then Return 0
 
 
-
-
+        'Store the concentration of the studied element (in weight fraction).
         Dim concentration As Double = 0
         For j As Integer = 0 To UBound(layer_handler(mother_layer_id).element)
             If layer_handler(mother_layer_id).element(j).elt_name = studied_element.elt_name Then
@@ -104,12 +155,14 @@
             End If
         Next
 
-        'If studied_element.concentration = 0 Then Return 0
+        'Calculate the total emitted X-ray intensity (sum of the primary X-ray intensity, secondary fluorescence produced by the other characteristic X-rays
+        'and secondary fluorescence produced by the Bremsstrahlung). The total emitted X-ray intensity is stored in res_final.
         Dim res_final As Double = 0
         Dim phi_rz As Double
 
-
+        'Handles the different phi-rho-z models
         If options.phi_rz_mode = "PAP" Or options.phi_rz_mode = Nothing Then
+            'Calculate the phi-rho-z distribution using the PAP model.
             Dim F As Double
             Dim phi0 As Double
             Dim R_bar As Double
@@ -119,13 +172,14 @@
             Dim A_f As Double
             Dim Z_bar As Double
 
+            'Parameters returned by the my_PAP function that describe the phi-rho-z function.
             Dim PAP_Rx As Double
             Dim PAP_Rm As Double
             Dim PAP_Rc As Double
             Dim PAP_A1 As Double
             Dim PAP_A2 As Double
             Dim PAP_B1 As Double
-            'studied_element.line(0).xray_energy = 1.254
+
             my_pap(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, a_, b_, A_f, Z_bar, fit_MAC, options, PAP_Rx, PAP_Rm, PAP_Rc, PAP_A1, PAP_A2, PAP_B1)
 
             'If studied_element.z = 14 And layer_handler(0).element.Count > 1 Then ' mother_layer_id <> 0 And
@@ -142,19 +196,21 @@
             'My.Computer.Clipboard.SetText(results)
 
         ElseIf options.phi_rz_mode = "PROZA96" Then
-                'Dim phi_rz As Double
-                Dim F As Double
-                Dim phi0 As Double
-                Dim rzm As Double
-                Dim alpha As Double
-                Dim beta As Double
-                Dim Rx As Double
+            'Tentative to implement the PROZA96 model. Do not seem to work for thin films!!!
+            'Dim phi_rz As Double
+            Dim F As Double
+            Dim phi0 As Double
+            Dim rzm As Double
+            Dim alpha As Double
+            Dim beta As Double
+            Dim Rx As Double
 
-                PROZA96(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
+            PROZA96(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
 
 
-            ElseIf options.phi_rz_mode = "XPHI" Then
-                Dim rzm As Double
+        ElseIf options.phi_rz_mode = "XPHI" Then
+            'Tentative to implement the XPHI model. Need to be tested!!!
+            Dim rzm As Double
             Dim rzx1 As Double
             Dim phi_rzm As Double
             Dim phi0 As Double
@@ -169,37 +225,39 @@
         End If
         '******************************************************
         'Primary intensity constants.
+
         Dim shell1 As Integer
         Dim shell2 As Integer
+        'From an X-ray transition name, recover the electron shells involved in the transition.
         Siegbahn_to_transition_num(studied_element.line(line_indice).xray_name, shell1, shell2)
 
+        'For test:
         'Dim fc7 As Double = 0
         'Dim tmp() As Double = interpol_log_log(studied_element.el_ion_xs, E0) 'XX AM 02-10-17
         'fc7 = tmp(shell1 - 1)
         'fc7 = fc7 * 6.022 * 10 ^ 23 / (4 * Math.PI)
 
         Dim fc6 As Double
-        'fc6 = Xray_production_xs_el_impact(studied_element, shell1, E0)
-        'fc6 = fc6 * 6.022 * 10 ^ 23 / (4 * Math.PI)
-
-        '*******************************
         Dim norm_xs As Double = 1
-
+        'Calculate the X-ray production cross section from the ionisation cross section of Bote and Salvat.
         If options.ionizationXS_mode = "Bote" Then
             fc6 = Xray_production_xs_el_impact(studied_element, shell1, E0)
             fc6 = fc6 * 6.022 * 10 ^ 23 / (4 * Math.PI)
 
+            'Calculate the X-ray production cross section from the ionisation cross section used by Pouchou and Pichoir when developping their model (green book).
         Else
-            'the electron impact ionization cross sections are normalized to the value of Bote et al. at 15 kV
+            'the electron impact ionization cross sections are normalized to the value of Bote and Salvat at 15 kV to return an absolute X-ray intensity in photon/sr/electron.
             norm_xs = Xray_production_xs_el_impact(studied_element, shell1, 15) * 6.022 * 10 ^ 23 / (4 * Math.PI) /
                         qe0(studied_element.line(line_indice).Ec, 15, studied_element.line(line_indice).xray_name, studied_element.z)
             fc6 = qe0(studied_element.line(line_indice).Ec, E0, studied_element.line(line_indice).xray_name, studied_element.z)
         End If
-        Debug.Print(E0 & vbTab & fc6 * norm_xs / (6.022 * 10 ^ 23) * (4 * Math.PI))
+
+        'Debug.Print(E0 & vbTab & fc6 * norm_xs / (6.022 * 10 ^ 23) * (4 * Math.PI))
+
+        'Calculate all the constants usued to calculate the total emitted X-ray intensity (except the concentration of the studied element).
         Dim const2 As Double = constante_simple(studied_element, shell1, shell2) * fc6 * norm_xs
 
-        'MsgBox(const2 * studied_element.a / norm_xs * (4 * Math.PI) / 6.022E+23 * 10 ^ 24)
-
+        'Calculate the total emitted PRIMARY X-ray intensity
         Dim pap_res As Double = const2 * concentration * phi_rz
 
         '******************************************************
@@ -207,23 +265,18 @@
         Dim res_fluo_caract_PAP As Double = 0
         Dim res_fluo_Brem_PAP As Double = 0
 
-        Dim watch As Stopwatch = New Stopwatch
-
+        'Calculate the secondary fluorescence produced by characterisitic X-rays.
         If options.char_fluo_flag = True Then
-            watch.Start()
             res_fluo_caract_PAP = test_fluo_charact(layer_handler, mother_layer_id, studied_element, line_indice, concentration, elt_exp_all, E0, sin_toa_in_rad, fit_MAC, options)
-            watch.Stop()
             'Debug.Print("Fluo char: " & watch.Elapsed.TotalSeconds)
         End If
 
-        watch.Reset()
-
+        'Calculate the secondary fluorescence produced by the Bremsstrahlung.
         If options.brem_fluo_flag = True Then
-            watch.Start()
             res_fluo_Brem_PAP = test_fluo_brem_v3(layer_handler, mother_layer_id, concentration, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, fit_MAC, options, brem_fit)
-            watch.Stop()
             'Debug.Print("Fluo brem: " & watch.Elapsed.TotalSeconds)
         End If
+
 
 
         If print_res = True Then
@@ -231,18 +284,22 @@
             'res_fluo_Brem_PAP & vbTab & Format(res_fluo_caract_PAP / pap_res * 100, "0.000") & vbTab & Format(res_fluo_Brem_PAP / pap_res * 100, "0.000"))
         End If
 
+        'Check if the SF values are realistic. Otherwise, set them to 0.
         If res_fluo_caract_PAP < 0 Then res_fluo_caract_PAP = 0
         If res_fluo_Brem_PAP < 0 Then res_fluo_Brem_PAP = 0
 
+        'Save the values. Needed to export the data.
         If print_res = True Then
             save_results = save_results & E0 & vbTab & studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & pap_res & vbTab & res_fluo_caract_PAP & vbTab &
                             res_fluo_Brem_PAP & vbTab & Format(res_fluo_caract_PAP / pap_res * 100, "0.000") & vbTab & Format(res_fluo_Brem_PAP / pap_res * 100, "0.000") & vbCrLf
         End If
 
+        'This should never happen.
         If pap_res < 0 Or res_fluo_caract_PAP < 0 Or res_fluo_Brem_PAP < 0 Then
-            Stop
+            Return -1
         End If
 
+        'Calculate the totam emitted X-ray intensity, sum of the emitted primary characteristic X-ray intensity and SF contributions.
         res_final = pap_res + res_fluo_caract_PAP + res_fluo_Brem_PAP
 
 
@@ -258,15 +315,13 @@
         'res_final = integrate_phirz(phirz(indice), rz, mac, toa) ' / (4 * Math.PI) * 0.838994
 
 
-
+        'Transfert the content of res_final to the variable returned by the function.
         auto = res_final
 
+        'Check that the value returned is not NaN or Infinity.
         If Double.IsNaN(auto) Or Double.IsInfinity(auto) Then
             auto = 0
         End If
-
-        watch_tot.Stop()
-        'Debug.Print("Auto total: " & watch_tot.Elapsed.TotalSeconds & vbCrLf)
 
         Return auto
 
@@ -280,7 +335,7 @@
                       Optional ByRef PAP_A1 As Double = 0, Optional ByRef PAP_A2 As Double = 0, Optional ByRef PAP_B1 As Double = 0)
 
         Dim El As Double = studied_element.line(line_indice).Ec
-        'If El > E0 Then Exit Sub
+
         Dim U0 As Double = E0 / El
 
         '************************
@@ -353,8 +408,8 @@
 
 
             '************************
-            'Calculate Pi (p)
-            'Calculate Di (ad)
+            'Calculate Pi
+            'Calculate Di
             '************************
             Pi(0) = 0.78
             Pi(1) = 0.1
@@ -365,7 +420,7 @@
             '************************
 
             '************************
-            'Calculate R0 (dr0) from p.61
+            'Calculate R0 from p.61 (green book)
             '************************
             Dim R0 As Double = 0
             For k As Integer = 0 To 2
@@ -375,12 +430,12 @@
             '************************
 
             '************************
-            'Calculate Q0 (q0)
-            'Calculate b (bet)
-            'Calculate Q (q)
-            'Calculate h (adelt)
-            'Calculate D (aad)
-            'Calculate Rx (drx and rx)
+            'Calculate Q0
+            'Calculate b
+            'Calculate Q
+            'Calculate h
+            'Calculate D
+            'Calculate Rx
             '************************
             Dim Q0 As Double
             Dim b As Double
@@ -399,7 +454,6 @@
             'Iterate to calculate fictitious concentrations
             'in order to determine Rx (only in case of multilayer specimen?).
             '************************
-            'If (mode = "B") Then GoTo 200
             'If (Math.Abs(Rx * 1000000.0 - rt * 1000000.0) > 0.02) Then 'not the same condition as described by Pouchou and Pichoir p.54
             'Stop
             If layer_handler.Count > 1 Then 'AM XX 06-09-2018 (Septembre)
@@ -419,7 +473,7 @@
 
         '************************
         'Calculate other fictitious concentrations
-        'in order to determine Zb bar (zp) (only in case of multilayer specimen?).
+        'in order to determine Zb bar (only in case of multilayer specimen).
         '************************
         If layer_handler.Count > 1 Then 'AM XX 06-09-2018 (Septembre)
             'Call pap_weight(layer_handler, 0.5 * Rx, -0.1 * (0.5 * Rx)) '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -430,7 +484,6 @@
 200:
         For i As Integer = 0 To UBound(layer_handler)
             For k As Integer = 0 To UBound(layer_handler(i).element)
-                ' Zb_bar = Zb_bar + layer_handler(i).element(k).z ^ 0.5 * layer_handler(i).element(k).fictitious_concentration
                 Zb_bar = Zb_bar + layer_handler(i).element(k).z ^ 0.5 * layer_handler(i).element(k).fictitious_concentration
             Next
         Next
@@ -439,14 +492,14 @@
 
         '************************
         'Calculate parameters
-        'Eta bar (eta)
-        'W bar (wavg)
-        'q (alph)
-        'J(U0) (ju)
-        'G(U0) (gu)
-        'R (rb)
-        'r (gamm)
-        'phi(0) (dphi0)
+        'Eta bar
+        'W bar
+        'q
+        'J(U0)
+        'G(U0)
+        'R
+        'r
+        'phi(0)
         '************************
         Dim eta_bar As Double
         Dim W_bar As Double
@@ -470,22 +523,19 @@
 
         '************************
         'Calculate fictitious concentrations
-        'in order to determine fictitious Z bar (z) (only in case of multilayer specimen?).
+        'in order to determine fictitious Z bar (only in case of multilayer specimen?).
         '************************
-        'If (mode = "F") Then
         If layer_handler.Count > 1 Then 'AM XX 06-09-2018 (Septembre)
             'Call pap_weight(layer_handler, 0.65 * Rx, -0.6 * (0.65 * Rx)) '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!0.7
             Call pap_weight(layer_handler, 0.7 * Rx, -0.6 * (0.7 * Rx)) '!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!0.7
         End If
-        'End If
         '************************
 
         '************************
         'With the fictitious concentrations
-        'Calculate M (mavg)
-        '''''''''''Calculate Zn bar (zn) 'No
-        'Calculate Z bar (z)
-        'Calculate J (javg)
+        'Calculate M
+        'Calculate Z bar
+        'Calculate J
         '************************
         Z_bar = 0
         J = 0
@@ -503,7 +553,7 @@
         '************************
 
         '************************
-        'Calculate m_ (mparam) -> originialy with aprox. exp(-36) = 0. This condition has been removed.
+        'Calculate m_
         '************************
         Dim m_ As Double
         If (studied_element.line(line_indice).xray_name(0) = "L") Then
@@ -513,23 +563,23 @@
         ElseIf (studied_element.line(line_indice).xray_name(0) = "K") Then
             m_ = 0.86 + 0.12 * Math.Exp(-(studied_element.z / 5) ^ 2)
         Else
-            Stop
-            'ReDim Preserve zx(16) AMXX add
-            'If i < 16 Then ' corr AMXX
-            '    If (zx(i) > 30) Then
-            '        m_ = 0.86
-            '    Else
-            '        m_ = 0.86 + 0.12 * Math.Exp(-1.0 * (zx(i) / 5.0) ^ 2.0)
-            '    End If
-            'End If ' corr AMXX
+            'Do not handle other X-ray lines.
+            phi_rz = 0
+            PAP_Rx = 0
+            PAP_Rm = 0
+            PAP_Rc = 0
+            PAP_A1 = 0
+            PAP_A2 = 0
+            PAP_B1 = 0
+            Exit Sub
         End If
         '************************
 
         '************************
-        'Because now J (javg) can be different
-        'Recalculate P3 (p(3))
-        'Recalculate D2 (ad(2))
-        'Recalculate D3 (ad(3))
+        'Because now J can be different
+        'Recalculate P3
+        'Recalculate D2
+        'Recalculate D3
         '************************
         Pi(2) = -(0.5 - 0.25 * J)
         Di(1) = 1.12 * 10 ^ -5 * (1.35 - 0.45 * J ^ 2)
@@ -537,10 +587,10 @@
         '************************
 
         '************************
-        'Calculate V0 (v0)
-        'Calculate QA_l (qe)
-        'Calculate 1/S (inv_S)
-        'Calculate F = R/S * 1/QA_l (df)
+        'Calculate V0 
+        'Calculate QA_l
+        'Calculate 1/S
+        'Calculate F = R/S * 1/QA_l
         '************************
         Dim V0 As Double
         Dim QA_l As Double
@@ -548,6 +598,8 @@
         'Dim F As Double
         V0 = E0 / J
 
+        '**************************************************
+        'Test: tried to replace the ionization cross section used by Pouchou and Pichoir by the model developped by Bote and Salvat.
         'Dim indice As Integer = 0
         'For i As Integer = 0 To UBound(elt_exp_all)
         '    If elt_exp_all(i).z = studied_element.z Then
@@ -572,6 +624,7 @@
         'End If
 
         'QA_l = fc6 * norm_xs
+        '**************************************************
 
         QA_l = Math.Log(U0) / El ^ 2 / U0 ^ m_
 
@@ -581,8 +634,7 @@
         Next
         inv_S = inv_S * U0 / (V0 * M)
 
-        F = R * inv_S / QA_l 'Is it * QA_l or / QA_l? From equation 13 p.37 it is "*" but from equations 2 and 3 it seems that it is "/"
-        'F = R * inv_S / fc6
+        F = R * inv_S / QA_l 'Is it * QA_l or / QA_l? From equation 13 p.37 it is "*" but from equations 2 and 3 it seems that it is "/".
         '************************
 
         '************************
@@ -595,10 +647,10 @@
         '************************
 
         '************************
-        'Calculate G1 (g1z)
-        'Calculate G2 (g2z)
-        'Calculate G3 (g3z)
-        'Calculate Rm (dRm)
+        'Calculate G1
+        'Calculate G2
+        'Calculate G3
+        'Calculate Rm
         '************************
         Dim G1 As Double
         Dim G2 As Double
@@ -612,34 +664,15 @@
         '************************
 
         '************************
-        'Calculate d (delt)
+        'Calculate d
         'Check the consistency of d
         '************************
         Dim d_ As Double
-        'dt1 = dphi0 * drx / 3.0
         d_ = (Rx - Rm) * (F - (phi0 * Rx / 3)) * ((Rx - Rm) * F - phi0 * Rx * (Rm + Rx / 3))
         If (d_ < 0.0) Then
             Dim Rm_temp As Double = Rm
             Rm = Rx * (F - phi0 * Rx / 3) / (F + phi0 * Rx)
             d_ = 0
-            'If (caller = "E") Then callerb = "pure element standard     "
-            'If (caller = "F") Then callerb = "fluorescence, film        "
-            'If (caller = "C") Then callerb = "compound standard         "
-            'If (caller = "B") Then callerb = "fluorescence, bulk (std.?)"
-            'If (caller = "I") Then callerb = "main iteration procedure  "
-            'If (caller = "X") Then callerb = "continuum fluorescence    "
-            'c  Warning statements suppressed when calling
-            'c  routine Is either bulk Or film fluorescence
-
-            'If ((caller = "E") Or (caller = "C") Or (caller = "I")) Then
-            'Print() 979,symbol(1:4),rmt*1.e6,rm*1.e6,callerb
-            '979     format(" !!!Warning!!! overvoltage ratio is too low for ",a4
-            '&,/," Rm lowered from",f7.2," to",f7.2," to calculate parameters;"
-            '&,/," Calling routine : ",a26)
-            'MsgBox(" !!!Warning!!! overvoltage ratio is too low for " & studied_element.xray_name & vbCrLf &
-            '" Rm lowered from" & Rm_temp * 1000000.0 & " to" & Rm * 1000000.0 & " to calculate parameters;" & vbCrLf)
-
-            'End If
         End If
         '************************
 
@@ -650,12 +683,12 @@
         Dim mac As Double
         Dim chi As Double
         mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
-        Debug.Print(mac)
-        chi = mac / sin_toa_in_rad 'Math.Sin(toa * Math.PI / 180)
+        'Debug.Print(mac)
+        chi = mac / sin_toa_in_rad
         '************************
 
         '************************
-        'Calculation of phi_rz (F(chi))
+        'Calculation of phi_rz
         'Handle patologic cases
         '************************
         Dim Rc As Double
@@ -674,10 +707,10 @@
             End If
         Else
             '************************
-            'Calculate Rc (drc)
-            'Calculate A1 (da1)
-            'Calculate A2 (da2)
-            'Calculate B1 (db1)
+            'Calculate Rc
+            'Calculate A1
+            'Calculate A2
+            'Calculate B1
             '************************
             Rc = 1.5 * ((F - phi0 * Rx / 3) / phi0 - Math.Sqrt(d_) / (phi0 * (Rx - Rm)))
             If Rc < 0 Then
@@ -694,7 +727,7 @@
 
             '************************
             'Integrate the phi(rz) function
-            'Calculate the cumulative mass depth (ad) for each layer
+            'Calculate the cumulative mass depth for each layer
             '************************
             Dim cumulative_mass_depth() As Double = Nothing
             Dim temp As Double = 0
@@ -748,53 +781,10 @@
             End If
             phi_rz = H1_plus_H2_test
 
-
-
-
-
-            'If lim_min >= lim_max Then
-            '    H1 = 0
-            '    H2 = 0
-            'Else
-            '    If lim_max <= Rc Then
-            '        H1 = Hk(lim_max, A1, B1, chi, Rm) - Hk(lim_min, A1, B1, chi, Rm)
-            '        'H1 = full_Hk(lim_max, lim_min, A1, B1, chi, Rm)
-            '        H2 = 0
-            '    ElseIf lim_min >= Rc Then
-            '        H1 = 0
-            '        H2 = Hk(Math.Min(lim_max, Rx), A2, 0, chi, Rx) - Hk(lim_min, A2, 0, chi, Rx)
-            '        'H2 = full_Hk(Math.Min(lim_max, Rx), lim_min, A2, 0, chi, Rx)
-            '    Else
-            '        H1 = Hk(Rc, A1, B1, chi, Rm) - Hk(lim_min, A1, B1, chi, Rm)
-            '        H2 = Hk(Math.Min(lim_max, Rx), A2, 0, chi, Rx) - Hk(Rc, A2, 0, chi, Rx)
-
-            '    End If
-            'End If
-
-            'If H1 < 0 Then
-            '    H1 = 0
-            '    'Stop
-            'End If
-            'If H2 < 0 Then
-            '    H2 = 0
-            '    'Stop
-            'End If
-
-            'Dim H1_plus_H2 As Double = H1 + H2
-            'If H1_plus_H2 > F Then
-            '    H1_plus_H2 = F
-            'End If
-
-            'If H1_plus_H2 = 0 Then
-            '    'phi_rz = 0.00000000001
-            'Else
-            '    'phi_rz = H1_plus_H2 * abs_outer_layers(layer_handler, studied_element, mac, toa, fit_param)
-            'End If
         End If
 
         Dim abs As Double = abs_outer_layers(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, mac, sin_toa_in_rad, fit_MAC, options)
         phi_rz = phi_rz * abs
-        'phi_rz = 1 / FP!
         '************************
 
         PAP_Rx = Rx
@@ -808,7 +798,7 @@
 
 
         ''************************
-        ''Extra calculation for fluorescence
+        ''Calculation for the xpp model
         ''Calculate R_bar
         ''Calculate g
         ''Calculate h_xpp
@@ -886,14 +876,14 @@
     Public Sub pap_weight(ByRef layer_handler() As layer, ByVal R As Single, ByVal L As Single)
 
         '************************
-        'Calculate N in eq. (39) p. 54 (xnorm)
+        'Calculate N in eq. (39) p. 54
         '************************
         Dim N As Double
         N = 1.0 / (primitive_pap_weight(R, R, L) - primitive_pap_weight(0.0, R, L))
         '************************
 
         '************************
-        'Calculate the cumulative mass depth (ad) for each layer
+        'Calculate the cumulative mass depth for each layer
         '************************
         Dim cumulative_mass_depth() As Double = Nothing
         Dim temp As Double = 0
@@ -910,12 +900,11 @@
 
         '************************
         'Calculate the weighting factors for each element (each layer and the substrate)
-        'and then weight the concentrations cnc()
+        'and then weight the concentrations
         '************************
         Dim min As Double
         Dim max As Double
         For i As Integer = 0 To UBound(layer_handler)
-            'For k As Integer = 0 To UBound(layer_handler(i).element)
             If i = 0 Then 'First layer
                 min = 0
                 max = Math.Min(layer_handler(i).mass_thickness, R)
@@ -933,7 +922,7 @@
         Next
 
         '************************
-        'Normalize the fictitious concentrations (c1())
+        'Normalize the fictitious concentrations
         '************************
         Dim tempsum As Double = 0
         For i As Integer = 0 To UBound(layer_handler)
@@ -971,25 +960,9 @@
             'fact = fact + (mac_tmp) * layer_handler(i).mass_thickness 'AMXXX
         Next
 
-        abs_outer_layers = Math.Exp(-fact / sin_toa_in_rad) 'Math.Sin(toa * Math.PI / 180))
+        abs_outer_layers = Math.Exp(-fact / sin_toa_in_rad)
 
     End Function
-
-    '*************************************
-    ' USE WITH CAUTION!!!!!!!!!!!!!
-    ' Produces inaccurate results due to multiplication of very loage number with very small numbers (lots of decimals).
-    ' Integral of the product phi(rz)*exp(-chi*rz) as desribed p.50
-    '*************************************
-    'Public Function Hk(ByVal rz As Double, ByVal A As Double, ByVal B As Double, ByVal chi As Double, ByVal Rk As Double) As Double
-    '    Hk = 0
-    '    If chi = 0 Then
-    '        ' H1 = A / 3 * (rz ^ 3 - 3 * rz ^ 2 * Rk + 3 * Rk ^ 2 * rz - Rk ^ 3) + B * rz
-    '        Hk = A / 3 * (rz - Rk) ^ 3 + B * rz
-    '    Else
-    '        Hk = -(A / chi) * Math.Exp(-chi * rz) * ((rz - Rk) ^ 2 + 2 * (rz - Rk) / chi + 2 / chi ^ 2 + B / A)
-    '    End If
-
-    'End Function
 
     Public Function ppint2(ByVal a As Double, ByVal b As Double, ByVal r As Double, ByVal c As Single, ByVal x As Single) As Double
 
