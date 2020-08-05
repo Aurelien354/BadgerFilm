@@ -130,8 +130,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PAP_and_fluo_module.vb" />
-    <Compile Include="test_fluo_brem_v3_module.vb" />
-    <Compile Include="test_fluo_charact_module.vb" />
+    <Compile Include="fluo_brem_v3_module.vb" />
+    <Compile Include="fluo_charact_module.vb" />
     <Compile Include="updater_module.vb" />
     <Compile Include="Worker_class.vb">
       <SubType>Form</SubType>

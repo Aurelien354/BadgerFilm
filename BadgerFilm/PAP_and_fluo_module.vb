@@ -58,6 +58,7 @@
 
     End Function
 
+    'Function calculating the total emitted X-ray intensity 
     Public Function auto(ByVal layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                          ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByVal sin_toa_in_rad As Double, ByVal options As options,
                          ByVal print_res As Boolean, ByRef save_results As String, ByVal fit_MAC As fit_MAC,

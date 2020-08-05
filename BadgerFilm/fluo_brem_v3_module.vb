@@ -1,4 +1,4 @@
-﻿Module test_fluo_brem_v3_module
+﻿Module fluo_brem_v3_module
 
     Public Function test_fluo_brem_v3(ByVal layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_elt_conc As Double, ByVal studied_elt As Elt_exp,
                                       ByVal line_indice As Integer, ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByVal sin_toa_in_rad As Double,
