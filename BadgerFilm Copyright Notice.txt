@@ -1,0 +1,24 @@
+BADGERFILM TERMS OF USE
+
+The following terms of use apply to the BadgerFilm software and its associated documentation ("Badgerfilm").
+If you do not agree to these terms of use, do not use Badgerfilm.
+Badgerfilm is copyrighted by the Board of Regents of the University of Wisconsin System ("UW"), 
+and may be downloaded, modified, and distributed for research and educational purposes; 
+it may not be included in any product offered for sale. Should you modify and distribute Badgerfilm, 
+you must not remove any copyright notices, you must cause any modified files to carry prominent notices 
+that you changed the files, and you must ensure that any other recipients of Badgerfilm or any modified 
+version of Badgerfilm receive a copy of this license. Use of Badgerfilm may require additional licenses 
+to third party owned intellectual property contained within Badgerfilm, and obtaining any such license 
+and complying with its terms is your responsibility. Badgerfilm is provided as a resource in connection 
+with UW’s outreach mission, and is provided on an "as is" basis.
+
+UW MAKES NO REPRESENTATIONS OR WARRANTIES CONCERNING BADGERFILM OR ANY OUTCOME THAT MAY BE OBTAINED 
+BY USING OR MODIFYING BADGERFILM, AND EXPRESSLY DISCLAIMS ALL SUCH WARRANTIES, INCLUDING WITHOUT 
+LIMITATION ANY EXPRESS OR IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND 
+NON-INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS. UW MAKES NO WARRANTY OR REPRESENTATION THAT BADGERFILM 
+WILL OPERATE ERROR FREE OR UNINTERRUPTED.
+TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE LIABLE TO YOU 
+(OR ANY PERSON, INSTITUTION, OR BUSINESS WITH WHICH YOU ARE AFFILIATED) FOR ANY LOST PROFITS OR ANY DIRECT, 
+INDIRECT, EXEMPLARY, PUNITIVE, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM BADGERFILM OR ITS 
+USE OR MODIFICATION. NEITHER UW NOR THE AUTHORS HAVE ANY LIABILITY FOR ANY DECISION, ACT OR OMISSION MADE 
+BY YOU AS A RESULT OF USE OF BADGERFILM.
