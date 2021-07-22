@@ -10,6 +10,7 @@ Public Structure layer
     Dim mass_thickness As Double 'in g/cm²
     Dim element() As Elt_layer
     Public wt_fraction As Boolean
+    Dim stoichiometry As stoichiometry
     Public isfix As Boolean
 End Structure
 
@@ -43,9 +44,27 @@ Public Structure options
     Dim ionizationXS_mode As String
     Dim char_fluo_flag As Boolean
     Dim brem_fluo_flag As Boolean
+    Dim sum_conc_equals_one As Boolean
+    Dim experimental_MAC As experimental_MAC
     Dim BgWorker As BackgroundWorker
 End Structure
 
+Public Structure experimental_MAC
+    Dim experimental_MAC_enabled As Boolean
+    Dim emitter() As String
+    Dim xray_line() As String
+    Dim absorber() As String
+    Dim exp_MAC() As Double
+End Structure
+
+Public Structure stoichiometry
+    Dim O_by_stoichio As Boolean
+    Dim O_wt_conc As Double
+    Dim Elt_by_stoichio_to_O As Boolean
+    Dim Elt_by_stoichio_to_O_name As String
+    Dim Elt_by_stoichio_to_O_ratio As Double
+    Dim Elt_wt_conc As Double
+End Structure
 
 Public Structure Elt_exp
     Public z As Integer
@@ -95,13 +114,16 @@ Public Structure fit_MAC
     Public scaling_factor As Double
     Public absorber_elt As String
     Public activated As Boolean
+    Public norm_kV As Double
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.11"
+    Public VERSION As String = "v.1.2.14"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
+    Dim ffast_path As String = Application.StartupPath() & "\FFAST" '"D:\Travail\Penelope"
+    Dim experimental_MAC_path As String = Application.StartupPath & "\Experimental_MACs.txt"
     '
     Public color_table() As String = {"Red", "Blue", "Green", "Orange", "Purple", "Pink", "Black", "Gray"}
 
@@ -126,6 +148,7 @@ Public Class Form1
     Public ph_ion_xs()() As String
     Public MAC_data_PEN14()() As String
     Public MAC_data_PEN18()() As String
+    Public MAC_data_FFAST()() As String
     Public MAC_data()() As String
 
     Public Ec_data() As String = Nothing
@@ -166,18 +189,19 @@ Public Class Form1
 
                 Dim flag_file_exists As Boolean = My.Computer.FileSystem.FileExists(elt_exp_handler(i).line(j).std_filename) 'AMXXXXXXXXXXXXXXXXXX
                 If fit_MAC.activated = True Then
+                    Dim norm As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, fit_MAC.norm_kV, toa, Ec_data, options, print_res, save_results, fit_MAC)
                     For ll As Integer = 0 To istep - 1
                         _x = xmin + (xmax - xmin) / (istep - 1) * ll
-                        'If _x = 12 Then
-                        'Stop
+                        'If _x = 10 Then
+                        '    Stop
                         'End If
                         '_x = 19
                         data_to_plot.energy(ll) = _x
 
                         Dim Ix_unk As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, _x, toa, Ec_data, options, print_res, save_results, fit_MAC)
 
-                        data_to_plot.k_ratio(cnt, ll) = fit_MAC.scaling_factor * Ix_unk
-
+                        'data_to_plot.k_ratio(cnt, ll) = Ix_unk / norm
+                        data_to_plot.k_ratio(cnt, ll) = Ix_unk * fit_MAC.scaling_factor '* Ix_unk
                     Next
 
                 ElseIf IsNothing(elt_exp_handler(i).line(j).std_filename) = True Or flag_file_exists = False Then
@@ -186,9 +210,9 @@ Public Class Form1
                     End If
                     For ll As Integer = 0 To istep - 1
                         _x = xmin + (xmax - xmin) / (istep - 1) * ll
-                        'If _x = 12 Then
-                        'Stop
-                        'End If
+                        If _x = 9.75 Then
+                            Stop
+                        End If
                         '_x = 19
                         data_to_plot.energy(ll) = _x
                         Dim Ix_std As Double = init_pure_std(elt_exp_handler(i), j, _x, toa, Ec_data)
@@ -296,9 +320,17 @@ Public Class Form1
         For i As Integer = 0 To number_layers - old_number_layers - 1
             If IsNumeric(TextBox4.Text) = True Then
                 layer_handler(i).density = TextBox4.Text
+            Else
+                layer_handler(i).density = 2.2
             End If
             layer_handler(i).wt_fraction = True
             layer_handler(i).thickness = DEFAULT_THICKNESS
+            layer_handler(i).stoichiometry.Elt_by_stoichio_to_O = False
+            layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_name = ""
+            layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_ratio = 0
+            layer_handler(i).stoichiometry.Elt_wt_conc = 0
+            layer_handler(i).stoichiometry.O_by_stoichio = False
+            layer_handler(i).stoichiometry.O_wt_conc = 0
         Next
 
         ListBox1.SelectedIndex = 0
@@ -337,10 +369,12 @@ Public Class Form1
         Me.MinimizeBox = False
 
         options.phi_rz_mode = "PAP"
-        options.MAC_mode = "PENELOPE"
+        options.MAC_mode = "PENELOPE2018"
         options.ionizationXS_mode = "Bote" '"OriPAP"
         options.brem_fluo_flag = True
         options.char_fluo_flag = True
+        options.sum_conc_equals_one = True
+        options.experimental_MAC.experimental_MAC_enabled = True
         options.BgWorker = BackgroundWorker1
 
         Me.ListBox1.Items.Clear()
@@ -356,6 +390,7 @@ Public Class Form1
 
         Dim files_EADL As String = "EADL"
         Dim fit_dll_file As String = "MPFitLib.dll"
+        Dim experimental_MAC_file As String = "Experimental_MACs.txt"
         'Dim list_files_PEN() As String = {"pdatconf.p14", "pdesi", "phmaxs", "phpixs"}
         Dim flag_file_exists As Boolean = True
 
@@ -380,6 +415,10 @@ Public Class Form1
             MsgBox("Fitting DLL missing!" & vbCrLf & "Please reinstall BadgerFilm.")
         End If
 
+        If My.Computer.FileSystem.FileExists(Application.StartupPath & "\" & experimental_MAC_file) = False Then
+            MsgBox("The file Experimental_MACs.txt is missing!" & vbCrLf & "Please reinstall BadgerFilm or create the file manually in BadgerFilm's folder.")
+        End If
+
 
         chart1_height = Chart1.Height
         chart1_width = Chart1.Width
@@ -402,7 +441,7 @@ Public Class Form1
             Label1.Text = "Status:  New version available (" & version_check & ")" '. Please click the Update button to download the latest version."
         End If
 
-        init_atomic_parameters(pen_path, eadl_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, options)
+        init_atomic_parameters(pen_path, eadl_path, ffast_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, options)
 
         init_Ec(Ec_data, pen_path)
     End Sub
@@ -448,9 +487,13 @@ Public Class Form1
     End Sub
 
     Public Sub display_grid_layer()
+        If check_valid_layer_selected() = False Then Exit Sub
+
         DataGridView2.Rows.Clear()
         TextBox4.Text = layer_handler(ListBox1.SelectedIndex).density
         CheckBox18.Checked = layer_handler(ListBox1.SelectedIndex).isfix
+        CheckBox20.Checked = layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio
+        CheckBox21.Checked = layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O
 
         If layer_handler(ListBox1.SelectedIndex).isfix = True Then
             TextBox5.BackColor = Color.LightBlue
@@ -535,6 +578,7 @@ Public Class Form1
             b.BackColor = Color.White
         Next
 
+        If check_valid_layer_selected() = False Then Exit Sub
         If layer_handler(ListBox1.SelectedIndex).element Is Nothing Then Exit Sub
 
         For i As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
@@ -555,10 +599,7 @@ Public Class Form1
     End Sub
 
     Private Sub ButtonTableau_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) ' Handles Element1.Click
-        If ListBox1.SelectedIndex = -1 Then
-            MsgBox("Select a layer.")
-            Exit Sub
-        End If
+        If check_valid_layer_selected() = False Then Exit Sub
 
         Dim tmp() As String
 
@@ -694,7 +735,7 @@ Public Class Form1
     'End Sub
 
     Private Sub DataGridView1_CellClicked(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView1.CellClick
-        If elt_exp_handler Is Nothing Or e.ColumnIndex < 0 Or e.RowIndex < 0 Or ListBox1.SelectedIndex = -1 Then
+        If elt_exp_handler Is Nothing Or e.ColumnIndex < 0 Or e.RowIndex < 0 Or ListBox1.SelectedIndex < 0 Then
             Exit Sub
         End If
 
@@ -748,7 +789,8 @@ Public Class Form1
     End Sub
 
     Private Sub DataGridView2_CellValueChanged(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellValueChanged
-        If layer_handler Is Nothing Or e.ColumnIndex < 0 Or e.RowIndex < 0 Or ListBox1.SelectedIndex = -1 Then
+        If layer_handler Is Nothing Or e.ColumnIndex <= 0 Or e.RowIndex < 0 Or ListBox1.SelectedIndex < 0 Then
+            'no valid layer selected
             Exit Sub
         End If
 
@@ -762,6 +804,7 @@ Public Class Form1
                 zaro(symbol_to_Z(layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).elt_name))(0) / tot_at
         Else
             layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_wt = DataGridView2.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
+            convert_wt_to_at(layer_handler, ListBox1.SelectedIndex)
         End If
 
         DataGridView2.CurrentCell = DataGridView2.Rows(e.RowIndex).Cells(e.ColumnIndex)
@@ -989,9 +1032,8 @@ Public Class Form1
 
 
     Private Sub TextBox4_TextChanged(sender As Object, e As EventArgs) Handles TextBox4.TextChanged
-        If ListBox1.SelectedIndex < 0 Then
-            Exit Sub
-        End If
+        If check_valid_layer_selected() = False Then Exit Sub
+
         If IsNumeric(TextBox4.Text) = True Then
             layer_handler(ListBox1.SelectedIndex).density = TextBox4.Text
             layer_handler(ListBox1.SelectedIndex).mass_thickness = layer_handler(ListBox1.SelectedIndex).density * layer_handler(ListBox1.SelectedIndex).thickness * 10 ^ -8
@@ -1000,7 +1042,7 @@ Public Class Form1
 
     Private Sub CheckBox18_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox18.CheckedChanged
         If layer_handler Is Nothing Then Exit Sub
-        If ListBox1.SelectedIndex < 0 Then Exit Sub
+        If check_valid_layer_selected() = False Then Exit Sub
         'If ListBox1.Items.Count - 1 = ListBox1.SelectedIndex Then
         '    analysis_cond_handler(ListBox1.SelectedIndex).isfix = True
         '    CheckBox18.Checked = True
@@ -1018,8 +1060,8 @@ Public Class Form1
         If loaded = False Then Exit Sub
         If CheckBox15.Checked = True Then
             CheckBox16.Checked = False
-            Label4.Text = "Angstrom"
-            If ListBox1.SelectedIndex < 0 Then Exit Sub
+            Label4.Text = "Å"
+            If check_valid_layer_selected() = False Then Exit Sub
             If ListBox1.SelectedItem = "Substrate" Then
                 TextBox5.Text = "Inf"
                 layer_handler(ListBox1.SelectedIndex).thickness = 1000000000.0
@@ -1038,8 +1080,8 @@ Public Class Form1
         If loaded = False Then Exit Sub
         If CheckBox16.Checked = True Then
             CheckBox15.Checked = False
-            Label4.Text = "µg/cm^2"
-            If ListBox1.SelectedIndex < 0 Then Exit Sub
+            Label4.Text = "µg/cm²"
+            If check_valid_layer_selected() = False Then Exit Sub
             If ListBox1.SelectedItem = "Substrate" Then
                 TextBox5.Text = "Inf"
                 layer_handler(ListBox1.SelectedIndex).thickness = 1000000000.0
@@ -1055,7 +1097,7 @@ Public Class Form1
     End Sub
 
     Private Sub TextBox5_TextChanged(sender As Object, e As EventArgs) Handles TextBox5.TextChanged
-        If ListBox1.SelectedIndex < 0 Then Exit Sub
+        If check_valid_layer_selected() = False Then Exit Sub
         If IsNumeric(TextBox5.Text) Then
             If CheckBox15.Checked = True Then
                 layer_handler(ListBox1.SelectedIndex).thickness = TextBox5.Text
@@ -1263,6 +1305,7 @@ Public Class Form1
                 ConcFixedValue = True
             End If
 
+            If check_valid_layer_selected() = False Then Exit Sub
             Dim indice As Integer = 0
             For j As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
                 If e.RowIndex = indice Then
@@ -1501,17 +1544,19 @@ Public Class Form1
                         load_data(elt_exp_handler(i).line(j).std_filename, layer_handler_std, elt_exp_handler_std, toa_std)
                         Dim elt_exp_all_std() As Elt_exp = Nothing
                         init_elt_exp_all(elt_exp_all_std, layer_handler_std, Ec_data, pen_path)
-                        For ll As Integer = 0 To UBound(layer_handler_std)
-                            Dim sum_conc_wt As Double = 0
-                            For jj As Integer = 0 To UBound(layer_handler_std(ll).element)
-                                sum_conc_wt = sum_conc_wt + layer_handler_std(ll).element(jj).conc_wt
-                            Next
-                            For jj As Integer = 0 To UBound(layer_handler_std(ll).element)
-                                layer_handler_std(ll).element(jj).conc_wt = layer_handler_std(ll).element(jj).conc_wt / sum_conc_wt
-                            Next
-                        Next
+                        'For ll As Integer = 0 To UBound(layer_handler_std)
+                        '    Dim sum_conc_wt As Double = 0
+                        '    For jj As Integer = 0 To UBound(layer_handler_std(ll).element)
+                        '        sum_conc_wt = sum_conc_wt + layer_handler_std(ll).element(jj).conc_wt
+                        '    Next
+                        '    For jj As Integer = 0 To UBound(layer_handler_std(ll).element)
+                        '        layer_handler_std(ll).element(jj).conc_wt = layer_handler_std(ll).element(jj).conc_wt / sum_conc_wt
+                        '    Next
+                        'Next
                         For kk As Integer = 0 To UBound(elt_exp_handler(i).line(j).k_ratio)
                             elt_exp_handler(i).line(j).k_ratio(kk).std_intensity = pre_auto(layer_handler_std, elt_exp_handler(i), j, elt_exp_all_std, elt_exp_handler(i).line(j).k_ratio(kk).kv, toa_std, Ec_data, options, False, save_results, Nothing)
+                            Debug.Print(options.phi_rz_mode & vbTab & "Std: " & vbTab & elt_exp_handler(i).elt_name & vbTab & elt_exp_handler(i).line(j).xray_name & vbTab & elt_exp_handler(i).line(j).k_ratio(kk).std_intensity)
+
                         Next
                     End If
                 End If
@@ -1529,8 +1574,10 @@ Public Class Form1
     Public Sub calculate(ByVal calculate_MAC_flag As Boolean)
         If options.MAC_mode = "PENELOPE2014" Then
             MAC_data = MAC_data_PEN14
-        Else
+        ElseIf options.MAC_mode = "PENELOPE2018" Then
             MAC_data = MAC_data_PEN18
+        ElseIf options.MAC_mode = "FFAST" Then
+            MAC_data = MAC_data_FFAST
         End If
 
         'Check if a callculation is already running.
@@ -1543,6 +1590,11 @@ Public Class Form1
 
 
         'Load the current path. A folder with the atomic data extracted from PENELOPE should be present.
+        'Load the experimental MACs if the otion is enabled
+        If options.experimental_MAC.experimental_MAC_enabled = True Then
+            load_experimental_MAC(experimental_MAC_path, options.experimental_MAC)
+        End If
+
 
         '*******************************************
         'Check the definition of the system
@@ -1567,8 +1619,26 @@ Public Class Form1
         '*******************************************
 
         '*******************************************
+        'Calculate the number of elements definied by stoichiometry
+        'Dim num_of_elt_def_by_stoichio As Integer = 0
+        'For i As Integer = 0 To UBound(layer_handler)
+        '    If layer_handler(i).O_by_stochio = True Then
+        '        num_of_elt_def_by_stoichio = num_of_elt_def_by_stoichio + 1
+        '    End If
+        'Next
+        '*******************************************
+
+        '*******************************************
         'Arbitrary x values: 1 2 3 4 5 6 7... used for the fitting
-        Dim x(total_kratios - 1 + layer_handler.Count) As Double  'x
+        Dim x() As Double
+        If CheckBox14.Checked = True Then
+            options.sum_conc_equals_one = False
+            ReDim x(total_kratios - 1)   'x
+        Else
+            options.sum_conc_equals_one = True
+            ReDim x(total_kratios + layer_handler.Count - 1)  'x
+        End If
+
         For i As Integer = 0 To UBound(x)
             x(i) = i + 1
         Next
@@ -1577,13 +1647,14 @@ Public Class Form1
         '*******************************************
         'Array k_ratio_measured
         'Used as y for fitting
-        Dim k_ratio_measured(total_kratios - 1) As Double
+        Dim k_ratio_measured(UBound(x)) As Double
         Dim tmp As Integer = 0
         For i As Integer = 0 To UBound(elt_exp_handler)
             'total_elts = total_elts + 1
             For j As Integer = 0 To UBound(elt_exp_handler(i).line)
                 For k As Integer = 0 To UBound(elt_exp_handler(i).line(j).k_ratio)
                     If elt_exp_handler(i).line(j).k_ratio(k).experimental_value = 0 Then
+                        'Stop
                         Continue For
                     End If
                     k_ratio_measured(tmp) = elt_exp_handler(i).line(j).k_ratio(k).experimental_value
@@ -1594,10 +1665,23 @@ Public Class Form1
 
         'k_ratio_measured also contains sum(ci)=1 for each layer
         'for each layer the total concentration should be as close as possible to 1
-        ReDim Preserve k_ratio_measured(UBound(k_ratio_measured) + layer_handler.Count)
-        For i As Integer = tmp To UBound(k_ratio_measured)
-            k_ratio_measured(i) = 1
-        Next
+        'If CheckBox14.Checked = False Then
+        'ReDim Preserve k_ratio_measured(UBound(k_ratio_measured) + layer_handler.Count)
+        If CheckBox14.Checked = False Then
+            For i As Integer = 0 To layer_handler.Count - 1
+                k_ratio_measured(tmp) = 1
+                tmp = tmp + 1
+            Next
+        End If
+
+        'If num_of_elt_def_by_stoichio <> 0 Then
+        '    For i As Integer = 0 To num_of_elt_def_by_stoichio - 1
+        '        k_ratio_measured(tmp) = 0
+        '        tmp = tmp + 1
+        '    Next
+        'End If
+
+        'End If
         '*******************************************
 
         '*******************************************
@@ -1623,9 +1707,20 @@ Public Class Form1
         Next
 
         'Uncertainty on the total concentration of each layer
-        For i As Integer = tmp To UBound(k_ratio_measured)
-            ey(i) = 0.005 * k_ratio_measured(i)
-        Next
+        If CheckBox14.Checked = False Then
+            For i As Integer = 0 To layer_handler.Count - 1
+                ey(tmp) = 0.05 * k_ratio_measured(tmp)
+                tmp = tmp + 1
+            Next
+        End If
+
+        'If num_of_elt_def_by_stoichio <> 0 Then
+        '    For i As Integer = 0 To num_of_elt_def_by_stoichio - 1
+        '        ey(tmp) = 0.005
+        '        tmp = tmp + 1
+        '    Next
+        'End If
+
         '*******************************************
 
         '*******************************************
@@ -1694,7 +1789,7 @@ Public Class Form1
 
         If calculate_MAC_flag Then
             ReDim Preserve p(UBound(p) + 2)
-            p(UBound(p) - 1) = 100000 'scaling factor
+            p(UBound(p) - 1) = 1 'scaling factor
             p(UBound(p)) = TextBox15.Text 'Initial MAC value to be fitted
         End If
 
@@ -1733,11 +1828,13 @@ Public Class Form1
             pars(UBound(pars) - 1) = New MPFitLib.mp_par
             pars(UBound(pars) - 1).limited = {1, 0}
             pars(UBound(pars) - 1).limits(0) = 0
+            pars(UBound(pars) - 1).isFixed = 0
 
             pars(UBound(pars)) = New MPFitLib.mp_par
             pars(UBound(pars)).limited = {1, 0}
-            pars(UBound(pars)).limits(0) = 1
+            pars(UBound(pars)).limits(0) = 0
             pars(UBound(pars)).isFixed = 0
+            pars(UBound(pars)).relstep = 0.01
             For i As Integer = 0 To UBound(pars) - 2
                 pars(i).isFixed = 1 'Fix everything except pars(ubound(pars)) that corresponds to the MAC
             Next
@@ -1750,12 +1847,19 @@ Public Class Form1
             fit_MAC.X_ray = TextBox14.Text
             fit_MAC.MAC = TextBox15.Text
             fit_MAC.absorber_elt = TextBox16.Text
+            fit_MAC.norm_kV = 25
             Dim shell1, shell2 As Integer
             Siegbahn_to_transition_num(fit_MAC.X_ray, shell1, shell2, fit_MAC.absorbed_elt)
             Dim z As Integer = symbol_to_Z(fit_MAC.absorbed_elt)
             Dim Ec_shell2 As Double = find_Ec(z, shell2, Ec_data)
             fit_MAC.X_ray_energy = find_Ec(z, shell1, Ec_data) - Ec_shell2 'in keV 
             fit_MAC.activated = True
+
+
+            'Dim max As Double = k_ratio_measured.Max
+            'For i As Integer = 0 To UBound(k_ratio_measured)
+            '    k_ratio_measured(i) = k_ratio_measured(i) / max
+            'Next
         End If
         '*******************************************
 
@@ -1846,6 +1950,9 @@ Public Class Form1
     End Function
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        '*******************************************************
+        ' Save the data.
+        '*******************************************************
         SaveFileDialog1.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*"
         SaveFileDialog1.FilterIndex = 1
         SaveFileDialog1.RestoreDirectory = True
@@ -1853,9 +1960,12 @@ Public Class Form1
         SaveFileDialog1.AddExtension = True
         SaveFileDialog1.DefaultExt = ".txt"
 
-
+        'Display a dialogbox for the user to chose the location and name of the saved file.
         If SaveFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            'Call the export function that will save the data.
             Call export(SaveFileDialog1.FileName, layer_handler, elt_exp_handler, toa, VERSION)
+
+            'Change the text at the top of the windiws with the new name
             Me.Text = "BadgerFilm " & VERSION & "  " & SaveFileDialog1.FileName
             Label1.Text = "Status: Saved"
         End If
@@ -1864,6 +1974,9 @@ Public Class Form1
 
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        '*******************************************************
+        ' Load the data
+        '*******************************************************
         Dim OpenFileDialog1 As New OpenFileDialog()
         Dim data_file As String = Nothing
 
@@ -1874,20 +1987,26 @@ Public Class Form1
         OpenFileDialog1.AddExtension = True
         OpenFileDialog1.DefaultExt = ".txt"
 
+        'Open a dialog box for the user.
         If OpenFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            'If the user has selected a file, copy its name in data_file
             data_file = OpenFileDialog1.FileName
         Else
+            'Else abord loding data
             Label1.Text = "Status: Loading canceled"
             Exit Sub
         End If
 
+        'Change the text at the top of the window.
         Me.Text = "BadgerFilm " & VERSION & "  " & data_file
-        'Dim analysis_cond_handler() As analysis_conditions = Nothing
 
+        'Clear the graphs
         Chart1.Series.Clear()
 
+        'Call the function to load the data
         load_data(data_file, layer_handler, elt_exp_handler, toa)
 
+        'Update the fields
         update_form_fields()
         TextBox12.Text = ""
 
@@ -1897,6 +2016,8 @@ Public Class Form1
 
     Public Sub update_form_fields()
         If layer_handler Is Nothing Then Exit Sub
+        If check_valid_layer_selected() = False Then Exit Sub
+
         Dim retrieve_selected_layer As Integer = ListBox1.SelectedIndex
         'TextBox3.Text = ""
         TextBox3.Text = layer_handler.Count
@@ -2225,64 +2346,84 @@ Public Class Form1
         If CheckBox12.Checked = True Then
             CheckBox17.Checked = False
             DataGridView2.Columns(1).HeaderText = "conc (wt.)"
-            If ListBox1.SelectedIndex < 0 Then Exit Sub
+            If check_valid_layer_selected() = False Then Exit Sub
             layer_handler(ListBox1.SelectedIndex).wt_fraction = True
         ElseIf CheckBox17.Checked = True Then
             CheckBox12.Checked = False
             DataGridView2.Columns(1).HeaderText = "conc (at.)"
-            If ListBox1.SelectedIndex < 0 Then Exit Sub
+            If check_valid_layer_selected() = False Then Exit Sub
             layer_handler(ListBox1.SelectedIndex).wt_fraction = False
         End If
         display_grid_layer()
     End Sub
 
-    Private Sub CheckBox_Click_MAC_Model(sender As Object, e As EventArgs) Handles CheckBox4.Click, CheckBox5.Click, CheckBox3.Click
+    Private Sub CheckBox_Click_MAC_Model(sender As Object, e As EventArgs) Handles CheckBox4.Click, CheckBox5.Click, CheckBox3.Click, CheckBox19.Click
         If loaded = False Then Exit Sub
         Dim senderCheck As CheckBox = DirectCast(sender, CheckBox)
         If senderCheck Is CheckBox4 Then
             CheckBox5.Checked = False 'Not CheckBox5.Checked
             CheckBox3.Checked = False
+            CheckBox19.Checked = False
             CheckBox4.Checked = True
         ElseIf senderCheck Is CheckBox5 Then
             CheckBox4.Checked = False 'Not CheckBox4.Checked
             CheckBox3.Checked = False
+            CheckBox19.Checked = False
             CheckBox5.Checked = True
         ElseIf senderCheck Is CheckBox3 Then
             CheckBox4.Checked = False 'Not CheckBox4.Checked
             CheckBox5.Checked = False
+            CheckBox19.Checked = False
             CheckBox3.Checked = True
+        ElseIf senderCheck Is CheckBox19 Then
+            CheckBox4.Checked = False 'Not CheckBox4.Checked
+            CheckBox5.Checked = False
+            CheckBox4.Checked = False
+            CheckBox3.Checked = False
+            CheckBox19.Checked = True
         End If
 
         'CheckBox12.Checked = Not CheckBox12.Checked
         'CheckBox17.Checked = Not CheckBox17.Checked
         If CheckBox4.Checked = True Then
             'CheckBox5.Checked = False
-            options.MAC_mode = "PENELOPE"
+            options.MAC_mode = "PENELOPE2018"
         ElseIf CheckBox5.Checked = True Then
             'CheckBox4.Checked = False
             options.MAC_mode = "MAC30"
         ElseIf CheckBox3.Checked = True Then
             'CheckBox4.Checked = False
             options.MAC_mode = "PENELOPE2014"
+        ElseIf CheckBox19.Checked = True Then
+            'CheckBox4.Checked = False
+            options.MAC_mode = "FFAST"
 
         End If
     End Sub
 
-    Private Sub CheckBox_Click_phi_rho_z_model(sender As Object, e As EventArgs) Handles CheckBox9.Click, CheckBox10.Click, CheckBox11.Click
+    Private Sub CheckBox_Click_phi_rho_z_model(sender As Object, e As EventArgs) Handles CheckBox9.Click, CheckBox10.Click, CheckBox11.Click, CheckBox22.Click
         If loaded = False Then Exit Sub
         Dim senderCheck As CheckBox = DirectCast(sender, CheckBox)
         If senderCheck Is CheckBox10 Then
             CheckBox9.Checked = False
-            CheckBox11.Checked = False
             CheckBox10.Checked = True
+            CheckBox11.Checked = False
+            CheckBox22.Checked = False
         ElseIf senderCheck Is CheckBox11 Then
             CheckBox9.Checked = False
             CheckBox10.Checked = False
             CheckBox11.Checked = True
+            CheckBox22.Checked = False
         ElseIf senderCheck Is CheckBox9 Then
             CheckBox9.Checked = True
             CheckBox10.Checked = False
             CheckBox11.Checked = False
+            CheckBox22.Checked = False
+        ElseIf senderCheck Is CheckBox22 Then
+            CheckBox9.Checked = False
+            CheckBox10.Checked = False
+            CheckBox11.Checked = False
+            CheckBox22.Checked = True
         End If
 
         'CheckBox12.Checked = Not CheckBox12.Checked
@@ -2295,6 +2436,8 @@ Public Class Form1
             options.phi_rz_mode = "PROZA96"
         ElseIf CheckBox9.Checked = True Then
             options.phi_rz_mode = "XPHI"
+        ElseIf CheckBox22.Checked = True Then
+            options.phi_rz_mode = "XPP"
         End If
     End Sub
 
@@ -2472,7 +2615,7 @@ Public Class Form1
 
         '*******************************************
         'Plot_kratio the measured k-ratios
-        BackgroundWorker1.ReportProgress(70, "Plot experimental k-ratios")
+        BackgroundWorker1.ReportProgress(70, e.Argument(7)) '"Plot experimental k-ratios")
 
         If TypeOf e.Argument(7) Is fit_MAC Then
             Dim fit_MAC As fit_MAC = CType(e.Argument(7), fit_MAC)
@@ -2551,6 +2694,18 @@ Public Class Form1
             update_form_fields()
 
         ElseIf e.ProgressPercentage = 70 Then
+            'Dim fit_MAC As fit_MAC
+            'If TypeOf e.UserState Is fit_MAC Then
+            '    fit_MAC = CType(e.UserState, fit_MAC)
+            'End If
+            'Dim max As Double = 0
+            'For i As Integer = 0 To UBound(elt_exp_handler)
+            '    For j As Integer = 0 To UBound(elt_exp_handler(i).line)
+            '        For k As Integer = 0 To UBound(elt_exp_handler(i).line(j).k_ratio)
+            '            If elt_exp_handler(i).line(j).k_ratio(k).experimental_value > max Then max = elt_exp_handler(i).line(j).k_ratio(k).experimental_value
+            '        Next
+            '    Next
+            'Next
             Dim tmp As Integer = 0
             For j As Integer = 0 To UBound(elt_exp_handler)
                 For k As Integer = 0 To UBound(elt_exp_handler(j).line)
@@ -2567,6 +2722,12 @@ Public Class Form1
                         kratio_meas(UBound(kratio_meas)) = elt_exp_handler(j).line(k).k_ratio(l).experimental_value
                         Acc_Volt(UBound(Acc_Volt)) = elt_exp_handler(j).line(k).k_ratio(l).kv
                     Next
+
+                    'If fit_MAC.activated = True Then
+                    '    For i As Integer = 0 To UBound(kratio_meas)
+                    '        kratio_meas(i) = kratio_meas(i) / max
+                    '    Next
+                    'End If
                     Dim style As DataVisualization.Charting.SeriesChartType = DataVisualization.Charting.SeriesChartType.Point
                     graph_data_simple(Acc_Volt, kratio_meas, Chart1, "0.0", "0.00", graph_limits, False, color_table(tmp Mod color_table.Count), "Acc. V. (kV)", "k-ratio",
                         False, elt_exp_handler(j).elt_name & " " & elt_exp_handler(j).line(k).xray_name, style)
@@ -3781,4 +3942,157 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
     End Sub
 
 
+    Private Sub CheckBox20_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox20.CheckedChanged
+
+
+
+    End Sub
+
+    Private Sub DataGridView2_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGridView2.CellContentClick
+
+    End Sub
+
+    Private Sub CheckBox14_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox14.CheckedChanged
+
+    End Sub
+
+    Private Sub CheckBox20_CheckStateChanged(sender As Object, e As EventArgs) Handles CheckBox20.CheckStateChanged
+
+    End Sub
+
+    Private Sub CheckBox20_Click(sender As Object, e As EventArgs) Handles CheckBox20.Click
+        If layer_handler Is Nothing Then Exit Sub
+        If check_valid_layer_selected() = False Then Exit Sub
+
+        If CheckBox20.Checked = False Then
+            'Add O by stoichiometry to the system.
+            'Check if O is already an element of the current layer.
+            Dim index As Integer = -1
+            If layer_handler(ListBox1.SelectedIndex).element IsNot Nothing Then
+                For i As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
+                    If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = "O" Then
+                        index = i
+                        Exit For
+                    End If
+                Next
+            End If
+
+            'If no O is present, add it to the system.
+            If index = -1 Then
+                If layer_handler(ListBox1.SelectedIndex).element Is Nothing Then
+                    ReDim layer_handler(ListBox1.SelectedIndex).element(0)
+                Else
+                    ReDim Preserve layer_handler(ListBox1.SelectedIndex).element(UBound(layer_handler(ListBox1.SelectedIndex).element) + 1)
+                End If
+
+                Dim current_indice As Integer = UBound(layer_handler(ListBox1.SelectedIndex).element)
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).elt_name = "O"
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).conc_wt = 1
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).conc_at = 1
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).isConcFixed = True
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).z = 8
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).a = zaro(8)(0)
+                layer_handler(ListBox1.SelectedIndex).element(current_indice).mother_layer_id = ListBox1.SelectedIndex
+
+                'If O is already present, fix its concentration.
+            Else
+                layer_handler(ListBox1.SelectedIndex).element(index).isConcFixed = True
+            End If
+
+            'Remove O from the list of experimental k-ratios if present (an element cannot be quantified by k-ratio and by stoichiometry at the same time).
+            If elt_exp_handler IsNot Nothing Then
+                For i As Integer = 0 To UBound(elt_exp_handler)
+                    If elt_exp_handler(i).elt_name = "O" Then
+                        For j As Integer = i To UBound(elt_exp_handler) - 1
+                            elt_exp_handler(j) = elt_exp_handler(j + 1)
+                        Next
+                        ReDim Preserve elt_exp_handler(UBound(elt_exp_handler) - 1)
+                        Exit For
+                    End If
+                Next
+            End If
+            'Mark the button corresponding to O in the periodic table as clicked.
+            Element8.BackColor = Color.Gray
+            'Check the checkbox.
+            CheckBox20.Checked = True
+            CheckBox21.Enabled = True
+
+        Else
+            'Remove O by stoichiometry from the system.
+            For i As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
+                If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = "O" Then
+                    For j As Integer = i To UBound(layer_handler(ListBox1.SelectedIndex).element) - 1
+                        layer_handler(ListBox1.SelectedIndex).element(j) = layer_handler(ListBox1.SelectedIndex).element(j + 1)
+                    Next
+                    ReDim Preserve layer_handler(ListBox1.SelectedIndex).element(UBound(layer_handler(ListBox1.SelectedIndex).element) - 1)
+                    Exit For
+                End If
+            Next
+            'Mark the button corresponding to O in the periodic table as not clicked.
+            Element8.BackColor = Color.White
+            'Uncheck the checkbox and unvlaidate Stoichiometry to O checkbox.
+            CheckBox20.Checked = False
+            CheckBox21.Checked = False
+            CheckBox21.Enabled = False
+            TextBox18.Enabled = False
+            TextBox19.Enabled = False
+        End If
+
+        'Tells whether the selected layer is defining O by stoichiometry.
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio = CheckBox20.Checked
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O = CheckBox21.Checked
+        display_grid()
+        display_grid_layer()
+    End Sub
+
+    Private Sub CheckBox21_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox21.CheckedChanged
+
+    End Sub
+
+    Private Sub CheckBox21_Click(sender As Object, e As EventArgs) Handles CheckBox21.Click
+        If check_valid_layer_selected() = False Then Exit Sub
+        CheckBox21.Checked = Not (CheckBox21.Checked)
+        If CheckBox21.Checked = True Then
+            TextBox18.Enabled = True
+            TextBox19.Enabled = True
+        Else
+            TextBox18.Enabled = False
+            TextBox19.Enabled = False
+        End If
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O = CheckBox21.Checked
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O_name = correct_symbol(TextBox19.Text)
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O_ratio = TextBox18.Text
+
+    End Sub
+
+    Private Sub TextBox18_TextChanged(sender As Object, e As EventArgs) Handles TextBox18.TextChanged
+        If check_valid_layer_selected() = False Then Exit Sub
+        If layer_handler Is Nothing Then Exit Sub
+        If IsNumeric(TextBox18.Text) Then
+            layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O_ratio = TextBox18.Text
+        End If
+    End Sub
+
+    Private Sub TextBox19_TextChanged(sender As Object, e As EventArgs) Handles TextBox19.TextChanged
+        If check_valid_layer_selected() = False Then Exit Sub
+        If layer_handler Is Nothing Then Exit Sub
+        If TextBox19.Text = "" Then Exit Sub
+        layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O_name = correct_symbol(TextBox19.Text)
+    End Sub
+
+    Private Sub CheckBox11_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox11.CheckedChanged
+
+    End Sub
+
+    Private Sub CheckBox17_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox17.CheckedChanged
+
+    End Sub
+
+    Public Function check_valid_layer_selected() As Boolean
+        If ListBox1.SelectedIndex < 0 Then
+            Return False
+        Else
+            Return True
+        End If
+    End Function
 End Class

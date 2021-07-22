@@ -22,20 +22,28 @@ Partial Class Form1
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Me.components = New System.ComponentModel.Container()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox22 = New System.Windows.Forms.CheckBox()
         Me.CheckBox11 = New System.Windows.Forms.CheckBox()
         Me.CheckBox10 = New System.Windows.Forms.CheckBox()
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TextBox19 = New System.Windows.Forms.TextBox()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.TextBox18 = New System.Windows.Forms.TextBox()
+        Me.CheckBox21 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox20 = New System.Windows.Forms.CheckBox()
+        Me.Label17 = New System.Windows.Forms.Label()
         Me.Button12 = New System.Windows.Forms.Button()
         Me.DataGridView2 = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -93,6 +101,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox19 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
         Me.CheckBox5 = New System.Windows.Forms.CheckBox()
@@ -220,8 +229,10 @@ Partial Class Form1
         Me.TextBox14 = New System.Windows.Forms.TextBox()
         Me.TextBox17 = New System.Windows.Forms.TextBox()
         Me.CheckBox13 = New System.Windows.Forms.CheckBox()
+        Me.CheckBox14 = New System.Windows.Forms.CheckBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.GroupBox1.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.DataGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -241,7 +252,7 @@ Partial Class Form1
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.GroupBox1.Location = New System.Drawing.Point(4, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(229, 73)
+        Me.GroupBox1.Size = New System.Drawing.Size(229, 63)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Secondary fluorescence"
@@ -272,21 +283,10 @@ Partial Class Form1
         Me.CheckBox1.Text = "Characteristic fluorescence"
         Me.CheckBox1.UseVisualStyleBackColor = True
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.TextBox1)
-        Me.GroupBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox2.Location = New System.Drawing.Point(4, 81)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(229, 48)
-        Me.GroupBox2.TabIndex = 2
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Take-off angle (in degrees)"
-        '
         'TextBox1
         '
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Location = New System.Drawing.Point(6, 19)
+        Me.TextBox1.Location = New System.Drawing.Point(123, 71)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(67, 20)
         Me.TextBox1.TabIndex = 3
@@ -294,24 +294,36 @@ Partial Class Form1
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.CheckBox22)
         Me.GroupBox3.Controls.Add(Me.CheckBox11)
         Me.GroupBox3.Controls.Add(Me.CheckBox10)
         Me.GroupBox3.Controls.Add(Me.CheckBox9)
         Me.GroupBox3.Controls.Add(Me.CheckBox8)
         Me.GroupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox3.Location = New System.Drawing.Point(4, 135)
+        Me.GroupBox3.Location = New System.Drawing.Point(4, 97)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(229, 108)
+        Me.GroupBox3.Size = New System.Drawing.Size(229, 95)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "φ(ρz) model"
+        '
+        'CheckBox22
+        '
+        Me.CheckBox22.AutoSize = True
+        Me.CheckBox22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox22.Location = New System.Drawing.Point(6, 75)
+        Me.CheckBox22.Name = "CheckBox22"
+        Me.CheckBox22.Size = New System.Drawing.Size(110, 17)
+        Me.CheckBox22.TabIndex = 9
+        Me.CheckBox22.Text = "XPP (only for bulk)"
+        Me.CheckBox22.UseVisualStyleBackColor = True
         '
         'CheckBox11
         '
         Me.CheckBox11.AutoSize = True
         Me.CheckBox11.Enabled = False
         Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox11.Location = New System.Drawing.Point(6, 88)
+        Me.CheckBox11.Location = New System.Drawing.Point(6, 61)
         Me.CheckBox11.Name = "CheckBox11"
         Me.CheckBox11.Size = New System.Drawing.Size(136, 17)
         Me.CheckBox11.TabIndex = 8
@@ -324,7 +336,7 @@ Partial Class Form1
         Me.CheckBox10.Checked = True
         Me.CheckBox10.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox10.Location = New System.Drawing.Point(6, 65)
+        Me.CheckBox10.Location = New System.Drawing.Point(6, 47)
         Me.CheckBox10.Name = "CheckBox10"
         Me.CheckBox10.Size = New System.Drawing.Size(221, 17)
         Me.CheckBox10.TabIndex = 7
@@ -336,7 +348,7 @@ Partial Class Form1
         Me.CheckBox9.AutoSize = True
         Me.CheckBox9.Enabled = False
         Me.CheckBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox9.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox9.Location = New System.Drawing.Point(6, 33)
         Me.CheckBox9.Name = "CheckBox9"
         Me.CheckBox9.Size = New System.Drawing.Size(85, 17)
         Me.CheckBox9.TabIndex = 6
@@ -357,6 +369,13 @@ Partial Class Form1
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.Label19)
+        Me.GroupBox5.Controls.Add(Me.TextBox19)
+        Me.GroupBox5.Controls.Add(Me.Label18)
+        Me.GroupBox5.Controls.Add(Me.TextBox18)
+        Me.GroupBox5.Controls.Add(Me.CheckBox21)
+        Me.GroupBox5.Controls.Add(Me.CheckBox20)
+        Me.GroupBox5.Controls.Add(Me.Label17)
         Me.GroupBox5.Controls.Add(Me.Button12)
         Me.GroupBox5.Controls.Add(Me.DataGridView2)
         Me.GroupBox5.Controls.Add(Me.Button3)
@@ -382,11 +401,83 @@ Partial Class Form1
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Layers definition"
         '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(538, 371)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(27, 13)
+        Me.Label19.TabIndex = 168
+        Me.Label19.Text = "to O"
+        '
+        'TextBox19
+        '
+        Me.TextBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox19.Enabled = False
+        Me.TextBox19.Location = New System.Drawing.Point(512, 367)
+        Me.TextBox19.Name = "TextBox19"
+        Me.TextBox19.Size = New System.Drawing.Size(24, 20)
+        Me.TextBox19.TabIndex = 167
+        Me.TextBox19.Text = "C"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(464, 371)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(47, 13)
+        Me.Label18.TabIndex = 166
+        Me.Label18.Text = "atoms of"
+        '
+        'TextBox18
+        '
+        Me.TextBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TextBox18.Enabled = False
+        Me.TextBox18.Location = New System.Drawing.Point(429, 367)
+        Me.TextBox18.Name = "TextBox18"
+        Me.TextBox18.Size = New System.Drawing.Size(35, 20)
+        Me.TextBox18.TabIndex = 165
+        Me.TextBox18.Text = "0.333"
+        '
+        'CheckBox21
+        '
+        Me.CheckBox21.AutoCheck = False
+        Me.CheckBox21.AutoSize = True
+        Me.CheckBox21.Enabled = False
+        Me.CheckBox21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox21.Location = New System.Drawing.Point(429, 351)
+        Me.CheckBox21.Name = "CheckBox21"
+        Me.CheckBox21.Size = New System.Drawing.Size(112, 17)
+        Me.CheckBox21.TabIndex = 164
+        Me.CheckBox21.Text = "Stoichiometry to O:"
+        Me.CheckBox21.UseVisualStyleBackColor = True
+        '
+        'CheckBox20
+        '
+        Me.CheckBox20.AutoCheck = False
+        Me.CheckBox20.AutoSize = True
+        Me.CheckBox20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox20.Location = New System.Drawing.Point(419, 331)
+        Me.CheckBox20.Name = "CheckBox20"
+        Me.CheckBox20.Size = New System.Drawing.Size(109, 17)
+        Me.CheckBox20.TabIndex = 163
+        Me.CheckBox20.Text = "O by stoichiometry"
+        Me.CheckBox20.UseVisualStyleBackColor = True
+        '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(42, 351)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(35, 13)
+        Me.Label17.TabIndex = 22
+        Me.Label17.Text = "g/cm³"
+        '
         'Button12
         '
         Me.Button12.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button12.Location = New System.Drawing.Point(165, 29)
+        Me.Button12.Location = New System.Drawing.Point(165, 11)
         Me.Button12.Name = "Button12"
         Me.Button12.Size = New System.Drawing.Size(154, 25)
         Me.Button12.TabIndex = 21
@@ -401,7 +492,7 @@ Partial Class Form1
         Me.DataGridView2.Location = New System.Drawing.Point(6, 152)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.Size = New System.Drawing.Size(128, 193)
+        Me.DataGridView2.Size = New System.Drawing.Size(128, 177)
         Me.DataGridView2.TabIndex = 20
         '
         'DataGridViewTextBoxColumn1
@@ -420,7 +511,7 @@ Partial Class Form1
         '
         Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(454, 29)
+        Me.Button3.Location = New System.Drawing.Point(454, 11)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(81, 25)
         Me.Button3.TabIndex = 19
@@ -431,7 +522,7 @@ Partial Class Form1
         '
         Me.CheckBox18.AutoSize = True
         Me.CheckBox18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox18.Location = New System.Drawing.Point(139, 370)
+        Me.CheckBox18.Location = New System.Drawing.Point(102, 372)
         Me.CheckBox18.Name = "CheckBox18"
         Me.CheckBox18.Size = New System.Drawing.Size(96, 17)
         Me.CheckBox18.TabIndex = 18
@@ -442,7 +533,7 @@ Partial Class Form1
         '
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(325, 29)
+        Me.Button2.Location = New System.Drawing.Point(325, 11)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(123, 25)
         Me.Button2.TabIndex = 16
@@ -452,7 +543,7 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(326, 352)
+        Me.Label9.Location = New System.Drawing.Point(213, 333)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(131, 13)
         Me.Label9.TabIndex = 17
@@ -461,16 +552,16 @@ Partial Class Form1
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(252, 352)
+        Me.Label4.Location = New System.Drawing.Point(156, 351)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(51, 13)
+        Me.Label4.Size = New System.Drawing.Size(14, 13)
         Me.Label4.TabIndex = 16
-        Me.Label4.Text = "Angstrom"
+        Me.Label4.Text = "Å"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(136, 352)
+        Me.Label8.Location = New System.Drawing.Point(99, 333)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(59, 13)
         Me.Label8.TabIndex = 15
@@ -480,39 +571,39 @@ Partial Class Form1
         '
         Me.CheckBox17.AutoSize = True
         Me.CheckBox17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox17.Location = New System.Drawing.Point(427, 367)
+        Me.CheckBox17.Location = New System.Drawing.Point(299, 348)
         Me.CheckBox17.Name = "CheckBox17"
-        Me.CheckBox17.Size = New System.Drawing.Size(91, 17)
+        Me.CheckBox17.Size = New System.Drawing.Size(81, 17)
         Me.CheckBox17.TabIndex = 13
-        Me.CheckBox17.Text = "atomic formula"
+        Me.CheckBox17.Text = "atomic fract."
         Me.CheckBox17.UseVisualStyleBackColor = True
         '
         'TextBox5
         '
         Me.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox5.Location = New System.Drawing.Point(195, 350)
+        Me.TextBox5.Location = New System.Drawing.Point(102, 349)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(56, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(51, 20)
         Me.TextBox5.TabIndex = 12
         Me.TextBox5.Text = "20"
         '
         'TextBox4
         '
         Me.TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox4.Location = New System.Drawing.Point(6, 368)
+        Me.TextBox4.Location = New System.Drawing.Point(6, 349)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(74, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(36, 20)
         Me.TextBox4.TabIndex = 10
         Me.TextBox4.Text = "2.2"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(3, 352)
+        Me.Label7.Location = New System.Drawing.Point(3, 333)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(106, 13)
+        Me.Label7.Size = New System.Drawing.Size(72, 13)
         Me.Label7.TabIndex = 9
-        Me.Label7.Text = "Layer density (g/cm³)" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10)
+        Me.Label7.Text = "Layer density:"
         '
         'CheckBox12
         '
@@ -520,11 +611,11 @@ Partial Class Form1
         Me.CheckBox12.Checked = True
         Me.CheckBox12.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox12.Location = New System.Drawing.Point(329, 367)
+        Me.CheckBox12.Location = New System.Drawing.Point(216, 348)
         Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(92, 17)
+        Me.CheckBox12.Size = New System.Drawing.Size(81, 17)
         Me.CheckBox12.TabIndex = 8
-        Me.CheckBox12.Text = "weight fraction"
+        Me.CheckBox12.Text = "weight fract."
         Me.CheckBox12.UseVisualStyleBackColor = True
         '
         'DataGridView1
@@ -532,7 +623,7 @@ Partial Class Form1
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Elt, Me.Line, Me.kratio, Me.k_ratio_measured, Me.Err_kratio, Me.E, Me.Std})
-        Me.DataGridView1.Location = New System.Drawing.Point(136, 57)
+        Me.DataGridView1.Location = New System.Drawing.Point(136, 41)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
         Me.DataGridView1.Size = New System.Drawing.Size(441, 288)
@@ -626,9 +717,9 @@ Partial Class Form1
         Me.CheckBox16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.CheckBox16.Location = New System.Drawing.Point(79, 32)
         Me.CheckBox16.Name = "CheckBox16"
-        Me.CheckBox16.Size = New System.Drawing.Size(66, 17)
+        Me.CheckBox16.Size = New System.Drawing.Size(57, 17)
         Me.CheckBox16.TabIndex = 14
-        Me.CheckBox16.Text = "µg/cm^2"
+        Me.CheckBox16.Text = "µg/cm²"
         Me.CheckBox16.UseVisualStyleBackColor = True
         '
         'GroupBox6
@@ -655,13 +746,13 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
         Me.Chart1.Location = New System.Drawing.Point(826, 364)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(459, 259)
         Me.Chart1.TabIndex = 16
         Me.Chart1.Text = "Chart1"
@@ -916,16 +1007,30 @@ Partial Class Form1
         '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.CheckBox19)
         Me.GroupBox7.Controls.Add(Me.CheckBox3)
         Me.GroupBox7.Controls.Add(Me.CheckBox4)
         Me.GroupBox7.Controls.Add(Me.CheckBox5)
         Me.GroupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox7.Location = New System.Drawing.Point(4, 249)
+        Me.GroupBox7.Location = New System.Drawing.Point(5, 224)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(229, 90)
+        Me.GroupBox7.Size = New System.Drawing.Size(229, 107)
         Me.GroupBox7.TabIndex = 15
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "MAC model"
+        '
+        'CheckBox19
+        '
+        Me.CheckBox19.AutoSize = True
+        Me.CheckBox19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox19.Location = New System.Drawing.Point(6, 87)
+        Me.CheckBox19.Name = "CheckBox19"
+        Me.CheckBox19.Size = New System.Drawing.Size(197, 17)
+        Me.CheckBox19.TabIndex = 17
+        Me.CheckBox19.Text = "Chantler 2005 (FFAST) [only up to U]"
+        Me.ToolTip1.SetToolTip(Me.CheckBox19, "FFAST MACs are available from H to U. For heavier elements, PENELOPE14 MACs are u" &
+        "sed.")
+        Me.CheckBox19.UseVisualStyleBackColor = True
         '
         'CheckBox3
         '
@@ -2149,7 +2254,7 @@ Partial Class Form1
         '
         Me.Button18.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button18.Location = New System.Drawing.Point(29, 624)
+        Me.Button18.Location = New System.Drawing.Point(29, 643)
         Me.Button18.Name = "Button18"
         Me.Button18.Size = New System.Drawing.Size(100, 42)
         Me.Button18.TabIndex = 152
@@ -2171,7 +2276,7 @@ Partial Class Form1
         '
         Me.Button20.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button20.Location = New System.Drawing.Point(29, 672)
+        Me.Button20.Location = New System.Drawing.Point(29, 685)
         Me.Button20.Name = "Button20"
         Me.Button20.Size = New System.Drawing.Size(100, 42)
         Me.Button20.TabIndex = 154
@@ -2182,7 +2287,7 @@ Partial Class Form1
         '
         Me.Button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button21.Location = New System.Drawing.Point(29, 720)
+        Me.Button21.Location = New System.Drawing.Point(29, 726)
         Me.Button21.Name = "Button21"
         Me.Button21.Size = New System.Drawing.Size(100, 42)
         Me.Button21.TabIndex = 155
@@ -2313,11 +2418,33 @@ Partial Class Form1
         Me.CheckBox13.Text = "MAC Fitting"
         Me.CheckBox13.UseVisualStyleBackColor = True
         '
+        'CheckBox14
+        '
+        Me.CheckBox14.AutoSize = True
+        Me.CheckBox14.Location = New System.Drawing.Point(140, 826)
+        Me.CheckBox14.Name = "CheckBox14"
+        Me.CheckBox14.Size = New System.Drawing.Size(76, 17)
+        Me.CheckBox14.TabIndex = 161
+        Me.CheckBox14.Text = "No Sum=1"
+        Me.CheckBox14.UseVisualStyleBackColor = True
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(2, 73)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(115, 13)
+        Me.Label5.TabIndex = 162
+        Me.Label5.Text = "Takeoff angle (degree)"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1288, 624)
+        Me.Controls.Add(Me.Label5)
+        Me.Controls.Add(Me.TextBox1)
+        Me.Controls.Add(Me.CheckBox14)
         Me.Controls.Add(Me.CheckBox13)
         Me.Controls.Add(Me.GroupBox9)
         Me.Controls.Add(Me.Button24)
@@ -2458,7 +2585,6 @@ Partial Class Form1
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.GroupBox5)
         Me.Controls.Add(Me.GroupBox3)
-        Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.TextBox11)
         Me.Controls.Add(Me.TextBox12)
@@ -2467,8 +2593,6 @@ Partial Class Form1
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.GroupBox5.ResumeLayout(False)
@@ -2490,7 +2614,6 @@ Partial Class Form1
 
     End Sub
     Friend WithEvents GroupBox1 As GroupBox
-    Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents CheckBox8 As CheckBox
@@ -2685,4 +2808,16 @@ Partial Class Form1
     Friend WithEvents TextBox14 As TextBox
     Friend WithEvents TextBox17 As TextBox
     Friend WithEvents CheckBox13 As CheckBox
+    Friend WithEvents CheckBox14 As CheckBox
+    Friend WithEvents CheckBox19 As CheckBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents ToolTip1 As ToolTip
+    Friend WithEvents CheckBox20 As CheckBox
+    Friend WithEvents Label17 As Label
+    Friend WithEvents CheckBox21 As CheckBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TextBox19 As TextBox
+    Friend WithEvents Label18 As Label
+    Friend WithEvents TextBox18 As TextBox
+    Friend WithEvents CheckBox22 As CheckBox
 End Class

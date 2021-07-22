@@ -11,7 +11,7 @@
         Dim TT As Double = 0
         If mother_layer_id <> 0 Then
             For i As Integer = 0 To mother_layer_id - 1
-                TT = TT + MAC_calculation(studied_elt.line(line_indice).xray_energy, i, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad * layer_handler(i).mass_thickness
+                TT = TT + MAC_calculation(studied_elt, line_indice, i, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad * layer_handler(i).mass_thickness
             Next
             TT = Math.Exp(-TT)
         Else
@@ -32,7 +32,7 @@
         'my_pap(layer_handler, studied_elt, E0, phi_rz, Fa, phi0, R_bar, P, a1_, b_, A1, Z_bar, fit_param)
         '******************************************
 
-        Dim chi_a As Double = MAC_calculation(studied_elt.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad 'Math.Sin(toa_in_rad)
+        Dim chi_a As Double = MAC_calculation(studied_elt, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad 'Math.Sin(toa_in_rad)
 
         Dim fluo_char As Double = 0
 
@@ -95,7 +95,7 @@
                     If options.phi_rz_mode = "PAP" Or options.phi_rz_mode = Nothing Then
                         my_pap(layer_handler, i, tmp_element, 0, elt_exp_all, E0, sin_toa_in_rad, B_phi_rz, Fb, B_phi0, B_R_bar, B_P, B_a1_, XPP_B_b_, XPP_B_A1, B_Z_bar, fit_MAC, options,
                            B_Rx, B_Rm, B_Rc, B_A1, B_A2, B_B1)
-                        papfluor(layer_handler, elt_exp_all, tmp_element.line(0).xray_energy, chi_a, mother_layer_id, layer_handler(i).element(j).mother_layer_id,
+                        papfluor(layer_handler, elt_exp_all, tmp_element, chi_a, mother_layer_id, layer_handler(i).element(j).mother_layer_id,
                                                  ffact, B_A1, B_A2, B_B1, B_Rc, B_Rm, B_Rx, fit_MAC, options)
 
                     ElseIf options.phi_rz_mode = "PROZA96" Then
@@ -109,7 +109,7 @@
 
                         PROZA96(layer_handler, i, tmp_element, 0, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
 
-                        Bastin_fluor(layer_handler, elt_exp_all, tmp_element.line(0).xray_energy, chi_a, mother_layer_id, layer_handler(i).element(j).mother_layer_id,
+                        Bastin_fluor(layer_handler, elt_exp_all, tmp_element, chi_a, mother_layer_id, layer_handler(i).element(j).mother_layer_id,
                                      ffact, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
 
                     End If

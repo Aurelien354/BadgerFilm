@@ -13,8 +13,8 @@ Module init_module
             End If
         End Try
     End Function
-    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByRef at_data() As String, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
-                                      ByRef MAC_data_PEN14()() As String, ByRef MAC_data_PEN18()() As String, ByVal options As options)
+    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByVal ffast_path As String, ByRef at_data() As String, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
+                                      ByRef MAC_data_PEN14()() As String, ByRef MAC_data_PEN18()() As String, ByRef MAC_data_FFAST()() As String, ByVal options As options)
 
         Dim data_file As String = eadl_path & "\pdrelax.p11"
         Dim sr As New StreamReader(data_file)
@@ -28,7 +28,6 @@ Module init_module
                 sr.Close()
             End If
         End Try
-
 
         Dim path As String = pen_path & "\PENELOPE2018"
         Dim filename As String
@@ -98,6 +97,26 @@ Module init_module
             'Separate each lines
             MAC_data_PEN14(z - 1) = Split(temp, vbCrLf)
         Next
+
+        path = ffast_path
+        ReDim MAC_data_FFAST(98)
+        For z As Integer = 1 To 92 'FFAST goes only up to 92 (U)!!!!!!!!!!!
+            If z < 10 Then
+                filename = "FFAST_0" & z & ".txt"
+            Else
+                filename = "FFAST_" & z & ".txt"
+            End If
+            Dim temp As String = read_data(path & "\" & filename) 'decrypt(path, filename)
+
+            'Separate each lines
+            MAC_data_FFAST(z - 1) = Split(temp, vbCrLf)
+        Next
+
+        For z As Integer = 93 To 99
+            MAC_data_FFAST(z - 1) = MAC_data_PEN14(z - 1)
+        Next
+
+
     End Sub
 
     '***********************************************
@@ -237,8 +256,8 @@ Module init_module
             Siegbahn_to_transition_num(xray_name, shell1, shell2, element.elt_name)
             element.line(line_indice).Ec = find_Ec(element.z, shell1, Ec_data) '0.288 'in keV  'function find_Ec.
             Dim Ec_shell2 As Double = find_Ec(element.z, shell2, Ec_data)
-            element.line(line_indice).xray_energy = element.line(line_indice).Ec - Ec_shell2  'in keV  'need a function !! Can be done with find_Ec.
-            'Debug.Print(element.line(line_indice).xray_energy)
+            element.line(line_indice).xray_energy = element.line(line_indice).Ec - Ec_shell2  'in keV  'Gives the X-ray line energy based on the energy of the electron shells (fair approximation).
+            'Debug.Print(element.elt_name & " " & element.line(line_indice).xray_name & " " & element.line(line_indice).xray_energy)
         End If
 
     End Sub
@@ -591,6 +610,7 @@ Module init_module
     End Function
 
     Public Function init_mac(ByVal Z As Integer, ByVal MAC_data()() As String, ByVal options As options) As data_xs
+        If options.MAC_mode = "MAC30" Then Exit Function
         init_mac.Z = Z
         'Dim file_name As String
         'If Z < 10 Then
@@ -628,13 +648,21 @@ Module init_module
         'End If
         'Dim temp As String = decrypt(path, filename)
 
+
         'Separate each lines
         Dim lines() As String = MAC_data(Z - 1) 'Split(temp, vbCrLf)
 
         Dim FIRST_LINE As Integer = 0 'skip the first lines
-        While Trim(lines(FIRST_LINE))(0) = "#"
-            FIRST_LINE = FIRST_LINE + 1
-        End While
+        Dim energy_conversion_factor As Integer = 1
+
+        If options.MAC_mode = "PENELOPE2014" Or options.MAC_mode = "PENELOPE2018" Or (options.MAC_mode = "FFAST" And Z > 92) Then
+            While Trim(lines(FIRST_LINE))(0) = "#"
+                FIRST_LINE = FIRST_LINE + 1
+            End While
+            energy_conversion_factor = 1000
+        ElseIf options.MAC_mode = "FFAST" Then
+            FIRST_LINE = 3
+        End If
 
         For i As Integer = FIRST_LINE To UBound(lines)
             lines(i) = lines(i).Replace("  ", " ")
@@ -647,11 +675,12 @@ Module init_module
         For i As Integer = FIRST_LINE To UBound(lines) 'skip the first lines
             If Trim(lines(i)) = "" Then Continue For
             Dim tmp() As String = Split(Trim(lines(i)), " ")
-            init_mac.energy(i - FIRST_LINE) = tmp(0) / 1000 'convert eV to keV
+            init_mac.energy(i - FIRST_LINE) = tmp(0) / energy_conversion_factor 'convert eV to keV for PENELOPE data
             For j As Integer = 1 To UBound(tmp)
                 init_mac.cross_section(i - FIRST_LINE, j - 1) = tmp(j)
             Next
         Next
+
 
     End Function
 

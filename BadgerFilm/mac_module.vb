@@ -2,7 +2,7 @@
 
 Module mac_module
 
-    Public Function MAC_calculation(ByVal Exray_absorbed As Double, ByVal layer_id As Integer, ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp,
+    Public Function MAC_calculation(ByVal studied_element As Elt_exp, ByVal line_indice As Integer, ByVal layer_id As Integer, ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp,
                                     ByVal fit_MAC As fit_MAC, ByVal options As options) As Double
         'Sould the concentration be normalized to 1 ????????????????????????????????
 
@@ -28,16 +28,20 @@ Module mac_module
         For i As Integer = 0 To UBound(layer_handler(layer_id).element)
             For j As Integer = 0 To UBound(elt_exp_all)
                 If elt_exp_all(j).elt_name = layer_handler(layer_id).element(i).elt_name Then
-                    MAC_calculation = MAC_calculation + layer_handler(layer_id).element(i).conc_wt * find_mac(elt_exp_all(j), Exray_absorbed, fit_MAC, options)
+                    Dim MAC As Double = find_mac(elt_exp_all(j), studied_element.elt_name, studied_element.line(line_indice).xray_name, studied_element.line(line_indice).xray_energy, fit_MAC, options)
+                    'Debug.Print(studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & elt_exp_all(j).elt_name & vbTab & MAC)
+                    MAC_calculation = MAC_calculation + layer_handler(layer_id).element(i).conc_wt * MAC
+
                     Exit For
                 End If
             Next
         Next
         '***************************************************************************
-
+        'MAC_calculation = 0
     End Function
 
-    Public Function find_mac(ByVal absorber_element As Elt_exp, ByVal E_photon As Double, ByVal fit_MAC As fit_MAC, ByVal options As options) As Double
+    Public Function find_mac(ByVal absorber_element As Elt_exp, ByVal studied_element_name As String, ByVal studied_element_xray_name As String, ByVal E_photon As Double,
+                             ByVal fit_MAC As fit_MAC, ByVal options As options) As Double
         'studied_element is the absorber
         'E_photon is the radiation being absorbed
 
@@ -56,15 +60,47 @@ Module mac_module
         '        Return find_mac
         '    End If
         'End If
+        'If absorber_element.elt_name = "Ti" Then
+        '    Dim shell1, shell2 As Integer
+        '    Siegbahn_to_transition_num("Ka", shell1, shell2, "Al")
+        '    Dim z As Integer = symbol_to_Z("Al")
+        '    Dim Ec_shell2 As Double = find_Ec(z, shell2, absorber_element.Ec_data)
+        '    Dim energy As Double = find_Ec(z, shell1, absorber_element.Ec_data) - Ec_shell2 'in keV 
+
+        '    If Math.Floor(E_photon) > 1480 And Math.Floor(E_photon) < 1490 Then
+        '        find_mac = 2201
+        '        Return find_mac
+        '    End If
+        'End If
+        If E_photon = 0 Then Return 0
+
+
+        If options.experimental_MAC.experimental_MAC_enabled = True Then
+            For i As Integer = 0 To UBound(options.experimental_MAC.emitter)
+                If options.experimental_MAC.emitter(i) = studied_element_name Then
+                    If options.experimental_MAC.xray_line(i) = studied_element_xray_name Then
+                        If options.experimental_MAC.absorber(i) = absorber_element.elt_name Then
+                            Return options.experimental_MAC.exp_MAC(i)
+                        End If
+                    End If
+                End If
+            Next
+        End If
+
 
         If fit_MAC.activated = True Then
             If absorber_element.elt_name = fit_MAC.absorber_elt Then
-
-                If Math.Floor(E_photon) = Math.Floor(fit_MAC.X_ray_energy * 1000) Then
+                If Math.Abs((E_photon - (fit_MAC.X_ray_energy * 1000)) / E_photon) < 0.001 Then
                     find_mac = fit_MAC.MAC
                     'find_mac = MacFeLaVsConc(studied_element.concentration, E_photon / 1000)
                     Return find_mac
                 End If
+
+                'If Math.Floor(E_photon) = Math.Floor(fit_MAC.X_ray_energy * 1000) Then
+                '        find_mac = fit_MAC.MAC
+                '        'find_mac = MacFeLaVsConc(studied_element.concentration, E_photon / 1000)
+                '        Return find_mac
+                'End If
             End If
         End If
         'If fit_param <> 0 Then
@@ -81,7 +117,10 @@ Module mac_module
         'End If
 
 
-        If E_photon = 0 Then Return 0
+
+
+
+
 
         'If E_photon >= 275 And E_photon <= 285 And studied_element.z = 14 Then
 
@@ -90,7 +129,7 @@ Module mac_module
 
 
         Dim MAC_model As String = options.MAC_mode
-        If MAC_model = "PENELOPE" Or MAC_model = "PENELOPE2014" Then
+        If MAC_model = "PENELOPE2018" Or MAC_model = "PENELOPE2014" Then
             '*************************************************
             'PENELOPE MAC extraction
             '*************************************************
@@ -99,7 +138,7 @@ Module mac_module
             If mac_xs.Length < 4 Then
                 find_mac = 0
             Else
-                find_mac = mac_xs(4)
+                find_mac = mac_xs(UBound(mac_xs))
             End If
             '*************************************************
 
@@ -109,6 +148,20 @@ Module mac_module
             '*************************************************
             find_mac = Heinrich_MAC30(absorber_element.z, E_photon, absorber_element.a, absorber_element.Ec_data)
             '*************************************************
+
+        ElseIf MAC_model = "FFAST" Then
+            '*************************************************
+            'Chantler MAC extraction
+            '*************************************************
+            Dim mac_xs() As Double = interpol_log_log(absorber_element.mac_data, E_photon / 1000)
+
+            If mac_xs.Length < 1 Then
+                find_mac = 0
+            Else
+                find_mac = mac_xs(UBound(mac_xs))
+            End If
+            '*************************************************
+
         Else
             Debug.WriteLine("Error: MAC model unknown!!!")
         End If
@@ -116,6 +169,52 @@ Module mac_module
         Return find_mac
 
     End Function
+
+    Public Sub load_experimental_MAC(ByVal path As String, ByRef experimental_MAC As experimental_MAC)
+        Dim sr As New StreamReader(path)
+        Dim num_line As Integer = 0
+        Try
+            Dim temp As String = sr.ReadToEnd
+            Dim lines() As String = Split(temp, vbCrLf)
+            For i As Integer = 0 To UBound(lines)
+                If Trim(lines(i)) = "" Then Continue For
+                num_line = num_line + 1
+            Next
+
+            ReDim experimental_MAC.absorber(num_line - 2)
+            ReDim experimental_MAC.emitter(num_line - 2)
+            ReDim experimental_MAC.exp_MAC(num_line - 2)
+            ReDim experimental_MAC.xray_line(num_line - 2)
+
+            Dim index As Integer = 0
+            For i As Integer = 1 To UBound(lines)
+                If Trim(lines(i)) = "" Then Continue For
+                Dim data() As String = Split(lines(i), vbTab)
+                If data.Count <> 4 Then
+                    experimental_MAC.emitter = Nothing
+                    experimental_MAC.xray_line = Nothing
+                    experimental_MAC.absorber = Nothing
+                    experimental_MAC.exp_MAC = Nothing
+                    experimental_MAC.experimental_MAC_enabled = False
+                    MsgBox("Error in Experimental_MACs.txt, line " & i)
+                    Exit For
+                End If
+                experimental_MAC.emitter(index) = data(0)
+                experimental_MAC.xray_line(index) = data(1)
+                experimental_MAC.absorber(index) = data(2)
+                experimental_MAC.exp_MAC(index) = data(3)
+                index = index + 1
+            Next
+
+
+        Catch Ex As Exception
+            MessageBox.Show("Cannot read Experimental_MACs.txt from disk. Original error: " & Ex.Message)
+        Finally
+            If (sr IsNot Nothing) Then
+                sr.Close()
+            End If
+        End Try
+    End Sub
 
     'Heinrich KFJ. in Proc. 11th Int. Congr. X-ray Optics & Microanalysis, Brown JD, Packwood RH (eds). Univ. Western Ontario: London, 1986; 67
     Public Function Heinrich_MAC30(ByVal z As Integer, ByVal energy As Double, ByVal At_weight As Double, ByVal Ec_data() As String) As Double

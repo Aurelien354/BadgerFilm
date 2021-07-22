@@ -44,7 +44,7 @@
         Dim TT As Double = 0
         If mother_layer_id <> 0 Then
             For i As Integer = 0 To mother_layer_id - 1
-                TT = TT + MAC_calculation(studied_elt.line(line_indice).xray_energy, i, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad * layer_handler(i).mass_thickness
+                TT = TT + MAC_calculation(studied_elt, line_indice, i, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad * layer_handler(i).mass_thickness
             Next
             TT = Math.Exp(-TT)
         Else
@@ -52,7 +52,7 @@
         End If
         '******************************************
 
-        Dim chi_a As Double = MAC_calculation(studied_elt.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad 'Math.Sin(toa_in_rad)
+        Dim chi_a As Double = MAC_calculation(studied_elt, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options) / sin_toa_in_rad 'Math.Sin(toa_in_rad)
 
 
         Dim shell1 As Integer
@@ -134,7 +134,7 @@
                     tmp_element.line(0).xray_energy = E_actual
 
                     Dim ffact As Double = 0
-                    papfluor(layer_handler, elt_exp_all, tmp_element.line(0).xray_energy, chi_a, mother_layer_id, l, ffact, B_A1, B_A2, B_B1, B_Rc, B_Rm, B_Rx, fit_MAC, options)
+                    papfluor(layer_handler, elt_exp_all, tmp_element, chi_a, mother_layer_id, l, ffact, B_A1, B_A2, B_B1, B_Rc, B_Rm, B_Rx, fit_MAC, options)
 
                     If ffact < 0 Then
                         ffact = 0
@@ -381,7 +381,7 @@
     End Function
 
 
-    Public Sub papfluor(ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp, ByVal E1 As Double, ByVal chi As Double, ByVal ma As Integer, ByVal mb As Integer,
+    Public Sub papfluor(ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp, ByVal tmp_element As Elt_exp, ByVal chi As Double, ByVal ma As Integer, ByVal mb As Integer,
                         ByRef ffact As Double, ByVal pa1 As Double, ByVal pa2 As Double, ByVal pb1 As Double, ByVal rc As Double, ByVal rm As Double, ByVal rx As Double,
                         ByVal fit_MAC As fit_MAC, ByVal options As options)
 
@@ -396,7 +396,7 @@
 
         Dim mu(UBound(layer_handler)) As Double
         For i As Integer = 0 To UBound(layer_handler)
-            mu(i) = MAC_calculation(E1, i, layer_handler, elt_exp_all, fit_MAC, options)
+            mu(i) = MAC_calculation(tmp_element, 0, i, layer_handler, elt_exp_all, fit_MAC, options)
         Next
 
 

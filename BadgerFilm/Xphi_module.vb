@@ -450,7 +450,7 @@
         '************************
         Dim mac As Double
         Dim chi As Double
-        mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+        mac = MAC_calculation(studied_element, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
 
         chi = mac / sin_toa_in_rad 'Math.Sin(toa * Math.PI / 180)
         '************************

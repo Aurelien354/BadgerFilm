@@ -119,7 +119,7 @@
         '************************
         Dim mac As Double
         Dim chi As Double
-        mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+        mac = MAC_calculation(studied_element, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
 
         chi = mac / sin_toa_in_rad 'Math.Sin(toa * Math.PI / 180)
         '************************
@@ -517,7 +517,7 @@
         Return erf_Bastin
     End Function
 
-    Public Sub Bastin_fluor(ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp, ByVal E1 As Double, ByVal chi_a As Double, ByVal ma As Integer, ByVal mb As Integer,
+    Public Sub Bastin_fluor(ByVal layer_handler() As layer, ByVal elt_exp_all() As Elt_exp, ByVal tmp_element As Elt_exp, ByVal chi_a As Double, ByVal ma As Integer, ByVal mb As Integer,
                     ByRef ffact As Double, ByVal F As Double, ByVal phi0 As Double, ByVal rzm As Double, ByVal alpha As Double, ByVal beta As Double, ByVal Rx As Double,
                             ByVal options As options, ByRef fit_MAC As fit_MAC)
 
@@ -535,7 +535,7 @@
 
         Dim mu(UBound(layer_handler)) As Double
         For i As Integer = 0 To UBound(layer_handler)
-            mu(i) = MAC_calculation(E1, i, layer_handler, elt_exp_all, fit_MAC, options)
+            mu(i) = MAC_calculation(tmp_element, 0, i, layer_handler, elt_exp_all, fit_MAC, options)
         Next
 
         Dim a1 As Double

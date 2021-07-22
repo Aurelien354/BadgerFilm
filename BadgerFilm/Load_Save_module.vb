@@ -6,9 +6,12 @@ Module Load_Save_module
         '******************
         ' Load an entire system (samples, materials and X-ray lines)
         ' data_file: path and name of the saved file
-        ' analysis_cond_handler: structure to store the retrived data
+        ' layer_handler: structure to store the retrived data corresponding to the sample's geometry
+        ' elt_exp_handler: structure to store the retrived data corresponding to the expremiental data (analyzed elements, X-ray lines k-ratios, kV, ...)
+        ' toa is the takeoff angle in degree
         '******************
 
+        'Try to open the file and store its content into the temp varaible
         Dim temp As String = Nothing
         Dim mystream As New StreamReader(data_file)
         Try
@@ -29,155 +32,164 @@ Module Load_Save_module
         Try
             Dim version As String = ""
             Dim indice As Integer = 0
-            Dim num_analysis_cond_handler As Integer
+            Dim num_layers As Integer
+
             Dim line() As String = Split(temp, vbCrLf)
 
+            'Retrieve the BadgerFilm version number used to save the data.
             If line(0) Like "[#]v*" Then
                 version = Split(line(0), "#")(1)
                 indice = indice + 1
-
             End If
 
-
+            'Retrieve the takeoff angle in deg
             Dim toa_line() As String = Split(line(indice), vbTab)
-
-            'If toa_line(0) = "toa" Then
-            '    num_analysis_cond_handler = Split(line(1), vbTab).Last
-            '    indice = 4
-            '    toa = toa_line(1)
-            '    'TextBox1.Text = toa(1)
-            'Else
-            '    num_analysis_cond_handler = Split(line(0), vbTab).Last
-            '    indice = 3
-            '    toa = 40
-            '    'TextBox1.Text = 40
-            'End If
-
             toa = Split(line(indice), vbTab).Last
             indice = indice + 1
-            num_analysis_cond_handler = Split(line(indice), vbTab).Last
-            ReDim layer_handler(num_analysis_cond_handler - 1)
 
+            'Retrieve the number of layers and redim layer_handler accordingly
+            num_layers = Split(line(indice), vbTab).Last
+            ReDim layer_handler(num_layers - 1)
             indice = indice + 1
-            'Nope
 
-
-
-            For i As Integer = 0 To num_analysis_cond_handler - 1
+            'For each layer:
+            For i As Integer = 0 To num_layers - 1
+                'Skip unused line in the file
                 indice = indice + 1
-                'Nope
                 indice = indice + 1
+                'Retrieve the density for the current layer (in g/cm3)
                 layer_handler(i).density = Split(line(indice), vbTab).Last
                 indice = indice + 1
+                'Retrieve the fal indicating if the thickness of the layer is fixed
                 layer_handler(i).isfix = Split(line(indice), vbTab).Last
                 indice = indice + 1
+                'Retrieve the thickness of the current layer (in Angstrom)
                 layer_handler(i).thickness = Split(line(indice), vbTab).Last
                 indice = indice + 1
+                'Retrieve the flag indicating if the layer composition is defined by weight fraction or by atomic fraction
                 layer_handler(i).wt_fraction = Split(line(indice), vbTab).Last
 
+                'Set the id (number) of the current layer (the top layer always has id=0)
                 layer_handler(i).id = i
-
                 indice = indice + 1
+
+                'Retrieve the number of element in the current layer and redim element accordingly
                 Dim num_elt As Integer = Split(line(indice), vbTab).Last
                 ReDim layer_handler(i).element(num_elt - 1)
-
                 indice = indice + 1
-                'Nope
 
-                'Dim tot As Double = 0
                 For j As Integer = 0 To num_elt - 1
+                    'Skip unused lines
                     indice = indice + 1
-                    'Nope
                     indice = indice + 1
+                    'Retrieve the element's name
                     layer_handler(i).element(j).elt_name = Split(line(indice), vbTab).Last
                     indice = indice + 1
+                    'Retrieve  the flag indicating if the element's concentration is fixed
                     layer_handler(i).element(j).isConcFixed = Split(line(indice), vbTab).Last
                     indice = indice + 1
+                    'Retrieve the element's weight fraction
                     layer_handler(i).element(j).conc_wt = Split(line(indice), vbTab).Last
-                    'tot = tot + layer_handler(i).element(j).conc_wt
 
                     layer_handler(i).element(j).mother_layer_id = i
 
                 Next
-
-                'For j As Integer = 0 To num_elt - 1
-                '    layer_handler(i).element(j).conc_wt = layer_handler(i).element(j).conc_wt / tot
-                'Next
-
-
                 indice = indice + 1
-                'Nope
+
+                'Convert the weight fractions of the elements into atomic fraction
                 convert_wt_to_at(layer_handler, i)
             Next
-
             indice = indice + 1
+
+            'Retrieve the nuumber of experimental data
             Dim num_exp_elt As String = Split(line(indice), vbTab).Last
 
             If num_exp_elt = "" Then
-
+                MessageBox.Show("Error: no experimental data ond in " & data_file)
             Else
-
                 If num_exp_elt > 0 Then
                     ReDim elt_exp_handler(num_exp_elt - 1)
-
                     indice = indice + 1
-                    'Nope
 
+                    'For each experimental data block found:
                     For j As Integer = 0 To num_exp_elt - 1
                         indice = indice + 1
+                        'Retrieve the element's atomic weight
                         elt_exp_handler(j).a = Split(line(indice), vbTab).Last
                         indice = indice + 1
+                        'Retrieve the element's name
                         elt_exp_handler(j).elt_name = Split(line(indice), vbTab).Last
                         indice = indice + 1
+                        'Retrieve the element's atomic number
                         elt_exp_handler(j).z = Split(line(indice), vbTab).Last
                         indice = indice + 1
+                        'Retrieve the number of different X-ray lines used to analyze the current element (usually only 1) and redim the line array accordingly
                         Dim num_lines As Integer = Split(line(indice), vbTab).Last
                         ReDim elt_exp_handler(j).line(num_lines - 1)
 
+                        'For each X-ray lines:
                         For k As Integer = 0 To num_lines - 1
                             indice = indice + 1
+                            'Retrieve the critical ionization energy (not used)
                             elt_exp_handler(j).line(k).Ec = Split(line(indice), vbTab).Last
                             indice = indice + 1
+                            'Retrieve the X-ray energy
                             elt_exp_handler(j).line(k).xray_energy = Split(line(indice), vbTab).Last
                             indice = indice + 1
+                            'Retrieve the X-ray name
                             elt_exp_handler(j).line(k).xray_name = Split(line(indice), vbTab).Last
                             indice = indice + 1
+                            'Retrieve the standard's name used to analyzed this element and X-ray line (blank if pure element used as a standard)
                             elt_exp_handler(j).line(k).std = Split(line(indice), vbTab).Last
                             indice = indice + 1
+                            'Retrieve the path of the standard file (blank if pure element used as a standard)
                             elt_exp_handler(j).line(k).std_filename = Split(line(indice), vbTab).Last
-
                             indice = indice + 1
+
+                            'Retrieve the number of k-ratios for the current element and X-ray lines (one k-ratio per kV)
                             Dim num_kratios As Integer = Split(line(indice), vbTab).Last
                             ReDim elt_exp_handler(j).line(k).k_ratio(num_kratios - 1)
 
+                            'For each X-ray lines:
                             For l As Integer = 0 To num_kratios - 1
                                 indice = indice + 1
+                                'Retrieve the theoretical X-ray intensity
                                 elt_exp_handler(j).line(k).k_ratio(l).elt_intensity = Split(line(indice), vbTab).Last
                                 indice = indice + 1
+                                'Retrieve the accelerating voltage value in kV
                                 elt_exp_handler(j).line(k).k_ratio(l).kv = Split(line(indice), vbTab).Last
                                 indice = indice + 1
+                                'Retrieve the experimental k-ratio value
                                 elt_exp_handler(j).line(k).k_ratio(l).experimental_value = Split(line(indice), vbTab).Last
                                 indice = indice + 1
+                                'Previous versions did not have experimental errors
                                 If version <> "" Then
+                                    'Retrieve the experimental error
                                     elt_exp_handler(j).line(k).k_ratio(l).err_experimental_value = Split(line(indice), vbTab).Last
                                     indice = indice + 1
                                 Else
+                                    'If old file, set the experimental error to 0
                                     elt_exp_handler(j).line(k).k_ratio(l).err_experimental_value = 0
                                 End If
+                                'Retrieve the theoreticla standard intensity
                                 elt_exp_handler(j).line(k).k_ratio(l).std_intensity = Split(line(indice), vbTab).Last
                                 indice = indice + 1
+                                'Retrieve the theoretical k-ratio
                                 elt_exp_handler(j).line(k).k_ratio(l).theo_value = Split(line(indice), vbTab).Last
                             Next
                         Next
                     Next
                 End If
             End If
+
+            'Initialize the elements (retrive the electron shell energies, ionization cross sections, atomic parameters, MAC, ...)
             For i As Integer = 0 To UBound(layer_handler)
                 For j As Integer = 0 To UBound(layer_handler(i).element)
                     init_element_layer(layer_handler(i).element(j).elt_name, vbNull, layer_handler(i).element(j))
                 Next
             Next
 
+            'Calculate the mass thickness for each layer in g/cm² (based on the density and layer thickness)
             For i As Integer = 0 To UBound(layer_handler)
                 layer_handler(i).mass_thickness = layer_handler(i).density * layer_handler(i).thickness * 10 ^ -8
             Next
@@ -189,6 +201,14 @@ Module Load_Save_module
     End Sub
 
     Public Sub export(ByVal file_name As String, ByVal layer_handler() As layer, ByVal elt_exp_handler() As Elt_exp, ByVal toa As Double, ByVal version As String)
+        '*******************************************************
+        ' Function used to save the data
+        'file_name is the name of the saved file
+        'layer_handler contains the geomoetry of the sample
+        'elt_exp_handler contains the experimental data (elements, Xray lines, experimental kratios, kV, ...)
+        'toa is the takeoff angle in degree
+        'version is used for compatibility with older BadgerFilm import functions
+        '*******************************************************
         '*******************************************
         Dim tmp As String = ""
         tmp = "#" & version & vbCrLf
@@ -246,42 +266,23 @@ Module Load_Save_module
             Next
         End If
 
-        'tmp = tmp & "#energy_analysis" & vbTab & analysis_cond_handler(i).elts(j).energy_analysis.Count & vbCrLf
-        '    tmp = tmp & "*********" & vbCrLf
-        '    For k As Integer = 0 To UBound(analysis_cond_handler(i).elts(j).energy_analysis)
-        '        tmp = tmp & "energy_analysis" & vbTab & analysis_cond_handler(i).elts(j).energy_analysis(k) & vbCrLf
-        '    Next
-
-        '    tmp = tmp & "#kratio" & vbTab & analysis_cond_handler(i).elts(j).kratio.Count & vbCrLf
-        '    tmp = tmp & "*********" & vbCrLf
-        '    For k As Integer = 0 To UBound(analysis_cond_handler(i).elts(j).kratio)
-        '        tmp = tmp & "kratio" & vbTab & analysis_cond_handler(i).elts(j).kratio(k) & vbCrLf
-        '    Next
-
-        '    tmp = tmp & "#kratio_measured" & vbTab & analysis_cond_handler(i).elts(j).kratio_measured.Count & vbCrLf
-        '    tmp = tmp & "*********" & vbCrLf
-        '    For k As Integer = 0 To UBound(analysis_cond_handler(i).elts(j).kratio)
-        '        tmp = tmp & "kratio_measured" & vbTab & analysis_cond_handler(i).elts(j).kratio_measured(k) & vbCrLf
-        '    Next
-
-        '    tmp = tmp & "#std_file" & vbTab & analysis_cond_handler(i).elts(j).std_filename.Count & vbCrLf
-        '    tmp = tmp & "*********" & vbCrLf
-        '    For k As Integer = 0 To UBound(analysis_cond_handler(i).elts(j).kratio)
-        '        tmp = tmp & "std_file" & vbTab & analysis_cond_handler(i).elts(j).std_filename(k) & vbCrLf
-        '    Next
-        'Next
-        'tmp = tmp & "***************" & vbCrLf
-        'Next
-        '*******************************************
-
+        'Write the data stored in the tmp variable to the file.
         Dim sw As New StreamWriter(file_name, False)
         sw.Write(tmp)
         sw.Close()
 
-        'TextBox12.Text = tmp
     End Sub
 
     Public Sub import_Stratagem(ByVal data_file As String, ByRef layer_handler() As layer, ByRef elt_exp_handler() As Elt_exp, ByRef toa As Double)
+        '******************
+        ' Import a Stratagem file
+        ' data_file: path and name of the saved file
+        ' layer_handler: structure to store the retrived data corresponding to the sample's geometry
+        ' elt_exp_handler: structure to store the retrived data corresponding to the expremiental data (analyzed elements, X-ray lines k-ratios, kV, ...)
+        ' toa is the takeoff angle in degree
+        '******************
+
+        'Tries to open the file and copy its content into the temp variable
         Dim temp As String = Nothing
         Dim mystream As New StreamReader(data_file)
         Try
@@ -307,51 +308,66 @@ Module Load_Save_module
             layer_handler = Nothing
             toa = 40 'by default
 
+            'Format the lines.
             For i As Integer = 0 To UBound(lines)
                 lines(i) = Regex.Replace(lines(i), "#.*$", "")
             Next
 
+            'For each lines:
             For i As Integer = 0 To UBound(lines)
                 Dim line As String = Trim(lines(i))
+                'if blank line, skip to the next one
                 If line = "" Then Continue For   'OrElse line(0) = "#"
+                'if the line starts by Layer, then add a new layer (a new entry) to layer_handler
                 If line Like "$Layer*" Then
                     If layer_handler Is Nothing Then
                         ReDim layer_handler(0)
                     Else
                         ReDim Preserve layer_handler(UBound(layer_handler) + 1)
                     End If
+                    'Retrieve the layer definition
                     Dim layer_def() As String = Split(Regex.Replace(line, " {2,}", " "), " ")
                     If layer_def.Count = 4 Or layer_def.Count = 3 Then
+                        'Retrieve the layer density
                         layer_handler(UBound(layer_handler)).density = layer_def(1)
+                        'Retrieve the layer thickness
                         layer_handler(UBound(layer_handler)).thickness = layer_def(2)
                         If layer_def.Count = 4 Then
+                            'Retrieve the flag indicating if the layer thickness is fixed
                             If layer_def(3) = "k" Then
                                 layer_handler(UBound(layer_handler)).isfix = True
                             Else
                                 layer_handler(UBound(layer_handler)).isfix = False
                             End If
                         Else
+                            'By deflaut the thickness is fixed
                             layer_handler(UBound(layer_handler)).isfix = True
                         End If
                     Else
+                        'Load default values for the density, layer thickness and if the layer thickness is fixed
                         layer_handler(UBound(layer_handler)).density = 2.0
                         layer_handler(UBound(layer_handler)).thickness = 1000000000.0
                         layer_handler(UBound(layer_handler)).isfix = True
                     End If
+                    'Set the layer concentration definition by weight fraction
                     layer_handler(UBound(layer_handler)).wt_fraction = True
+                    'Set the layer id
                     layer_handler(UBound(layer_handler)).id = UBound(layer_handler)
                 End If
 
+                'If the line starts by Elt then retrieve the current element's data
                 If line Like "$Elt*" Then
                     If layer_handler(UBound(layer_handler)).element Is Nothing Then
                         ReDim layer_handler(UBound(layer_handler)).element(0)
                     Else
                         ReDim Preserve layer_handler(UBound(layer_handler)).element(UBound(layer_handler(UBound(layer_handler)).element) + 1)
                     End If
-
+                    'Format the line.
                     Dim elt_def() As String = Split(Regex.Replace(line, " {2,}", " "), " ")
                     If elt_def.Count = 4 Or elt_def.Count = 3 Then
+                        'Retrieve the atomic number
                         layer_handler(UBound(layer_handler)).element(UBound(layer_handler(UBound(layer_handler)).element)).z = elt_def(1)
+                        'Retrieve the element's weight concentration
                         layer_handler(UBound(layer_handler)).element(UBound(layer_handler(UBound(layer_handler)).element)).conc_wt = elt_def(2)
 
                         If elt_def.Count = 4 Then
@@ -367,10 +383,12 @@ Module Load_Save_module
                     End If
                 End If
 
+                'if the line starts by Geom the load the takeoff angle
                 If line Like "$Geom*" Then
                     toa = Split(Regex.Replace(line, " {2,}", " "), " ")(1)
                 End If
 
+                'if the line starts by K, load the k-ratios
                 If line Like "$K*" Then
                     Dim k_def() As String = Split(Regex.Replace(line, " {2,}", " "), " ")
                     Dim indice_elt As Integer = -1
@@ -473,7 +491,7 @@ Module Load_Save_module
                     End If
                 End If
 
-
+                'if the line starts by Std, load the standards
                 If line Like "$Std*" Then
                     Dim std_file_name As String = Split(Regex.Replace(line, " {2,}", " "), " ")(1)
                     i = i + 1
@@ -503,13 +521,17 @@ Module Load_Save_module
                 End If
             Next
 
+            'initialize the remaining variables which are not in the Stratagem file but are necessary for BadgerFilm
             For i As Integer = 0 To UBound(layer_handler)
                 Dim tot As Double = 0
                 For j As Integer = 0 To UBound(layer_handler(i).element)
+                    'Convert the atomic number of the element into its symbol
                     layer_handler(i).element(j).elt_name = Z_to_symbol(layer_handler(i).element(j).z)
+                    'initialize the current element (load the atomic parameters, MAC, ...)
                     init_element_layer(layer_handler(i).element(j).elt_name, vbNull, layer_handler(i).element(j))
                     tot = tot + layer_handler(i).element(j).conc_wt
                 Next
+                ' if the sum of all the elemental concentration in the current layer are >2.0 then normalize the concentrations
                 If tot > 2.0 Then
                     For j As Integer = 0 To UBound(layer_handler(i).element)
                         layer_handler(i).element(j).conc_wt = layer_handler(i).element(j).conc_wt / tot
@@ -517,10 +539,12 @@ Module Load_Save_module
                 End If
             Next
 
+            'Calculate the mass thickness
             For i As Integer = 0 To UBound(layer_handler)
                 layer_handler(i).mass_thickness = layer_handler(i).density * layer_handler(i).thickness * 10 ^ -8
             Next
 
+            'Calculate the atomic fractions based on the weight fractions
             For i As Integer = 0 To UBound(layer_handler)
                 convert_wt_to_at(layer_handler, i)
             Next

@@ -121,7 +121,7 @@
 
         'If the ionisation threshold of the studied X-ray line is greater than the beam energy E0, return 0.
         If studied_element.line(line_indice).Ec > E0 Then
-            Debug.Print("E0 < El !!!")
+            'Debug.Print("E0 < El !!!")
             If print_res = True Then
                 save_results = save_results & E0 & vbTab & studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & 0 & vbTab & 0 & vbTab &
                             0 & vbTab & Format(0, "0.000") & vbTab & Format(0, "0.000") & vbCrLf
@@ -152,6 +152,7 @@
         For j As Integer = 0 To UBound(layer_handler(mother_layer_id).element)
             If layer_handler(mother_layer_id).element(j).elt_name = studied_element.elt_name Then
                 concentration = layer_handler(mother_layer_id).element(j).conc_wt
+                Exit For
             End If
         Next
 
@@ -182,22 +183,22 @@
 
             my_pap(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, a_, b_, A_f, Z_bar, fit_MAC, options, PAP_Rx, PAP_Rm, PAP_Rc, PAP_A1, PAP_A2, PAP_B1)
 
-            'If studied_element.z = 14 And layer_handler(0).element.Count > 1 Then ' mother_layer_id <> 0 And
+            'If studied_element.z = 26 And layer_handler(0).element.Count > 1 Then ' mother_layer_id <> 0 And
             '    Dim tmp As String = "Rx" & vbTab & PAP_Rx & vbCrLf
             '    tmp = tmp & "Rm" & vbTab & PAP_Rm & vbCrLf
             '    tmp = tmp & "Rc" & vbTab & PAP_Rc & vbCrLf
             '    tmp = tmp & "A1" & vbTab & PAP_A1 & vbCrLf
             '    tmp = tmp & "A2" & vbTab & PAP_A2 & vbCrLf
             '    tmp = tmp & "B1" & vbTab & PAP_B1 & vbCrLf
+            '    tmp = tmp & "E0" & vbTab & E0 & vbCrLf
             '    Debug.Print(tmp)
-            'My.Computer.Clipboard.SetText(tmp)
+            '    'My.Computer.Clipboard.SetText(tmp)
             'End If
             'Dim results As String = PAP_Rx & vbCrLf & PAP_Rm & vbCrLf & PAP_Rc & vbCrLf & PAP_A1 & vbCrLf & PAP_A2 & vbCrLf & PAP_B1 & vbCrLf
             'My.Computer.Clipboard.SetText(results)
 
         ElseIf options.phi_rz_mode = "PROZA96" Then
             'Tentative to implement the PROZA96 model. Do not seem to work for thin films!!!
-            'Dim phi_rz As Double
             Dim F As Double
             Dim phi0 As Double
             Dim rzm As Double
@@ -222,43 +223,78 @@
             'Dim results As String = phi_rzm & vbCrLf & rzm & vbCrLf & rzx1 & vbCrLf & alpha_val & vbCrLf & beta_val
             'My.Computer.Clipboard.SetText(results)
 
+        ElseIf options.phi_rz_mode = "XPP" Then
+            'Tentative to implement the XPP model.
+            Dim F As Single
+            Dim phi0 As Single
+            Dim R_bar As Single
+            Dim A_XPP As Single
+            Dim B_XPP As Single
+            Dim P As Single
+
+            'If layer_handler(mother_layer_id).element.Count > 2 And E0 = 5 Then Stop
+
+            my_xpp(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, A_XPP, B_XPP, fit_MAC, options)
+
+            Dim m_ As Single
+            If (studied_element.line(line_indice).xray_name(0) = "K") Then
+                m_ = 0.86 + 0.12 * Math.Exp(-(studied_element.z / 5) ^ 2)
+            ElseIf (studied_element.line(line_indice).xray_name(0) = "L") Then
+                m_ = 0.82
+            ElseIf (studied_element.line(line_indice).xray_name(0) = "M") Then
+                m_ = 0.78
+            End If
+
+            Dim QA_l As Single
+            Dim El As Single = studied_element.line(line_indice).Ec
+            Dim U0 As Single = E0 / El
+            QA_l = Math.Log(U0) / El ^ 2 / U0 ^ m_
+
+            phi_rz = phi_rz * QA_l
+
         End If
         '******************************************************
+
         'Primary intensity constants.
+        Dim pap_res As Double
+        If options.phi_rz_mode <> "XPP" Then
 
-        Dim shell1 As Integer
-        Dim shell2 As Integer
-        'From an X-ray transition name, recover the electron shells involved in the transition.
-        Siegbahn_to_transition_num(studied_element.line(line_indice).xray_name, shell1, shell2)
+            Dim shell1 As Integer
+            Dim shell2 As Integer
+            'From an X-ray transition name, recover the electron shells involved in the transition.
+            Siegbahn_to_transition_num(studied_element.line(line_indice).xray_name, shell1, shell2)
 
-        'For test:
-        'Dim fc7 As Double = 0
-        'Dim tmp() As Double = interpol_log_log(studied_element.el_ion_xs, E0) 'XX AM 02-10-17
-        'fc7 = tmp(shell1 - 1)
-        'fc7 = fc7 * 6.022 * 10 ^ 23 / (4 * Math.PI)
+            'For test:
+            'Dim fc7 As Double = 0
+            'Dim tmp() As Double = interpol_log_log(studied_element.el_ion_xs, E0) 'XX AM 02-10-17
+            'fc7 = tmp(shell1 - 1)
+            'fc7 = fc7 * 6.022 * 10 ^ 23 / (4 * Math.PI)
 
-        Dim fc6 As Double
-        Dim norm_xs As Double = 1
-        'Calculate the X-ray production cross section from the ionisation cross section of Bote and Salvat.
-        If options.ionizationXS_mode = "Bote" Then
-            fc6 = Xray_production_xs_el_impact(studied_element, shell1, E0)
-            fc6 = fc6 * 6.022 * 10 ^ 23 / (4 * Math.PI)
+            Dim fc6 As Double
+            Dim norm_xs As Double = 1
+            'Calculate the X-ray production cross section from the ionisation cross section of Bote and Salvat.
+            If options.ionizationXS_mode = "Bote" Then
+                fc6 = Xray_production_xs_el_impact(studied_element, shell1, E0)
+                fc6 = fc6 * 6.022 * 10 ^ 23 / (4 * Math.PI)
 
-            'Calculate the X-ray production cross section from the ionisation cross section used by Pouchou and Pichoir when developping their model (green book).
+                'Calculate the X-ray production cross section from the ionisation cross section used by Pouchou and Pichoir when developping their model (green book).
+            Else
+                'the electron impact ionization cross sections are normalized to the value of Bote and Salvat at 15 kV to return an absolute X-ray intensity in photon/sr/electron.
+                norm_xs = Xray_production_xs_el_impact(studied_element, shell1, 15) * 6.022 * 10 ^ 23 / (4 * Math.PI) /
+                            qe0(studied_element.line(line_indice).Ec, 15, studied_element.line(line_indice).xray_name, studied_element.z)
+                fc6 = qe0(studied_element.line(line_indice).Ec, E0, studied_element.line(line_indice).xray_name, studied_element.z)
+            End If
+
+            'Calculate all the constants usued to calculate the total emitted X-ray intensity (except the concentration of the studied element).
+            Dim const2 As Double = constante_simple(studied_element, shell1, shell2) * fc6 * norm_xs
+
+            'Calculate the total emitted PRIMARY X-ray intensity
+            pap_res = const2 * concentration * phi_rz
+
         Else
-            'the electron impact ionization cross sections are normalized to the value of Bote and Salvat at 15 kV to return an absolute X-ray intensity in photon/sr/electron.
-            norm_xs = Xray_production_xs_el_impact(studied_element, shell1, 15) * 6.022 * 10 ^ 23 / (4 * Math.PI) /
-                        qe0(studied_element.line(line_indice).Ec, 15, studied_element.line(line_indice).xray_name, studied_element.z)
-            fc6 = qe0(studied_element.line(line_indice).Ec, E0, studied_element.line(line_indice).xray_name, studied_element.z)
+            pap_res = phi_rz
         End If
 
-        'Debug.Print(E0 & vbTab & fc6 * norm_xs / (6.022 * 10 ^ 23) * (4 * Math.PI))
-
-        'Calculate all the constants usued to calculate the total emitted X-ray intensity (except the concentration of the studied element).
-        Dim const2 As Double = constante_simple(studied_element, shell1, shell2) * fc6 * norm_xs
-
-        'Calculate the total emitted PRIMARY X-ray intensity
-        Dim pap_res As Double = const2 * concentration * phi_rz
 
         '******************************************************
         'Fluorescence calculation.
@@ -277,12 +313,10 @@
             'Debug.Print("Fluo brem: " & watch.Elapsed.TotalSeconds)
         End If
 
-
-
-        If print_res = True Then
-            'Debug.Print(E0 & vbTab & studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & pap_res & vbTab & res_fluo_caract_PAP & vbTab &
-            'res_fluo_Brem_PAP & vbTab & Format(res_fluo_caract_PAP / pap_res * 100, "0.000") & vbTab & Format(res_fluo_Brem_PAP / pap_res * 100, "0.000"))
-        End If
+        'If print_res = True Then
+        'Debug.Print(E0 & vbTab & studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & pap_res & vbTab & res_fluo_caract_PAP & vbTab &
+        'res_fluo_Brem_PAP & vbTab & Format(res_fluo_caract_PAP / pap_res * 100, "0.000") & vbTab & Format(res_fluo_Brem_PAP / pap_res * 100, "0.000"))
+        'End If
 
         'Check if the SF values are realistic. Otherwise, set them to 0.
         If res_fluo_caract_PAP < 0 Then res_fluo_caract_PAP = 0
@@ -335,7 +369,7 @@
                       Optional ByRef PAP_A1 As Double = 0, Optional ByRef PAP_A2 As Double = 0, Optional ByRef PAP_B1 As Double = 0)
 
         Dim El As Double = studied_element.line(line_indice).Ec
-
+        'El = 0.7074
         Dim U0 As Double = E0 / El
 
         '************************
@@ -516,6 +550,7 @@
         J_U0 = 1 + U0 * (Math.Log(U0) - 1)
         G_U0 = (U0 - 1 - ((1 - (1 / U0 ^ (q_ + 1))) / (1 + q_))) / ((2 + q_) * J_U0)
         R = 1 - eta_bar * W_bar * (1 - G_U0)
+        'Debug.Print(Zb_bar & " " & R & " " & eta_bar)
         r_ = 2 - 2.3 * eta_bar
 
         phi0 = 1 + 3.3 * (1 - (1 / U0 ^ r_)) * eta_bar ^ 1.2 '* ((1 - 0.6) / (1 - 100) * Zb_bar + (1 * 100 - 0.6) / (100 - 1)) 'AMXXX
@@ -633,7 +668,10 @@
             inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
         Next
         inv_S = inv_S * U0 / (V0 * M)
-
+        'Debug.Print("Elt " & studied_element.elt_name)
+        'Debug.Print("E0 " & E0)
+        'Debug.Print("J " & J)
+        'Debug.Print("inv_S " & inv_S)
         F = R * inv_S / QA_l 'Is it * QA_l or / QA_l? From equation 13 p.37 it is "*" but from equations 2 and 3 it seems that it is "/".
         '************************
 
@@ -682,7 +720,8 @@
         '************************
         Dim mac As Double
         Dim chi As Double
-        mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+        'mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+        mac = MAC_calculation(studied_element, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
         'Debug.Print(mac)
         chi = mac / sin_toa_in_rad
         '************************
@@ -955,7 +994,7 @@
 
         For i As Integer = 0 To mother_layer_id - 1
             Dim mac_tmp As Double = 0
-            mac_tmp = mac_tmp + MAC_calculation(studied_element.line(line_indice).xray_energy, i, layer_handler, elt_exp_all, fit_MAC, options)
+            mac_tmp = mac_tmp + MAC_calculation(studied_element, line_indice, i, layer_handler, elt_exp_all, fit_MAC, options)
             fact = fact + (mac_tmp - mac) * layer_handler(i).mass_thickness
             'fact = fact + (mac_tmp) * layer_handler(i).mass_thickness 'AMXXX
         Next
