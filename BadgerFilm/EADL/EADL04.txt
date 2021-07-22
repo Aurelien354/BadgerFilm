@@ -1,0 +1,77 @@
+   4-Be Evaluated Atomic Data Library (EADL) by Red Cullen        6000 0  0    0
+ 4.000000+3 8.93475853         -1          0          0          0 400 1451    1
+ 0.000000+0 0.000000+0          0          0          0          6 400 1451    2
+ 0.000000+0 0.000000+0          0          0          6          6 400 1451    3
+ 0.000000+0 0.000000+0          0          0         59          2 400 1451    4
+  4-Be-  0 LLNL       Eval-Dec90 D.E.Cullen                        400 1451    5
+UCRL-50400,Vol.30     Dist-Nov01                                   400 1451    6
+----ENDF/B-VI         MATERIAL  100                                400 1451    7
+-----ATOMIC RELAXATION DATA                                        400 1451    8
+------ENDF-6 FORMAT                                                400 1451    9
+================================================================== 400 1451   10
+The Livermore Evaluated Atomic Data Library (EADL) in the          400 1451   11
+ENDF-6 Format. Translated from the Livermore ENDL format           400 1451   12
+to the ENDF-6 Format by Bob MacFarlane (Los Alamos).               400 1451   13
+================================================================== 400 1451   14
+  Contents                                                         400 1451   15
+================================================================== 400 1451   16
+  MF/MT    Description                                             400 1451   17
+================================================================== 400 1451   18
+  28/533   Atomic Relaxation Data for Electrons and Photons        400 1451   19
+================================================================== 400 1451   20
+  Warning                                                          400 1451   21
+================================================================== 400 1451   22
+  MF/MT combinations used to define ALL electron interaction data  400 1451   23
+  are newly defined MF/MT numbers for ENDF/B-VI that did not exist 400 1451   24
+  in earlier versions of ENDF/B.                                   400 1451   25
+================================================================== 400 1451   26
+  Definition of Data                                               400 1451   27
+================================================================== 400 1451   28
+  Atomic Relaxation Data for Electrons and Photons                 400 1451   29
+================================================================== 400 1451   30
+1) An atom can be ionized by a photon or an electron interaction.  400 1451   31
+2) The atomic relaxation data included here describes how a        400 1451   32
+   singly ionized atom returns to neutrality, by emitting photons  400 1451   33
+   (x-rays) and/or electrons (Auger, Coster-Kronig).               400 1451   34
+3) Data is given to define the transition probabilities between    400 1451   35
+   subshells for radiative (x-ray emission) and non-radiative      400 1451   36
+   (Auger, Coster-Kronig) transitions.                             400 1451   37
+4) The complete spectrum of emitted photons and electrons can be   400 1451   38
+   calculated using the data included here, e.g., see ref. 2,      400 1451   39
+   below, for am example of a computer code that analytically      400 1451   40
+   calculates these spectra.                                       400 1451   41
+================================================================== 400 1451   42
+  References                                                       400 1451   43
+================================================================== 400 1451   44
+1) S.T. Perkins, D.E. Cullen, etal., "Tables and Graphs of Atomic  400 1451   45
+   Subshell and Relaxation Data Derived from the LLNL Evaluated    400 1451   46
+   Atomic Data Library (EADL), Z = 1 - 100", UCRL-50400, Vol. 30,  400 1451   47
+   Lawrence Livermore National Laboratory (1991).                  400 1451   48
+2) D.E. Cullen "Program RELAX: A Code Designed to Calculate X-Ray  400 1451   49
+   and Electron Emission Spectra as Singly Charged Atoms Relax     400 1451   50
+   Back to Neutrality", UCRL-ID-110438, Lawrence Livermore         400 1451   51
+   National Laboratory (1992).                                     400 1451   52
+                                                                   400 1451   53
+  These are the primary references to the contents of this library 400 1451   54
+  and they contain a complete list of references to the sources    400 1451   55
+  of data used in this library, methods of evaluation, accuracy    400 1451   56
+  of the data, etc.                                                400 1451   57
+================================================================== 400 1451   58
+  History                                                          400 1451   59
+================================================================== 400 1451   60
+ (1) November, 1991 - Initial release in the ENDL format.          400 1451   61
+ (2) November, 2001 - Initial release in the ENDF-6 format.        400 1451   62
+================================================================== 400 1451   63
+                                1        451         65          0 400 1451   64
+                               28        533          5          0 400 1451   65
+                                                                   400 1  0   66
+                                                                   400 0  0   67
+ 4.000000+3 8.93475853          0          0          2          0 40028533   68
+ 1.000000+0 0.000000+0          0          0          6          0 40028533   69
+ 1.183600+2 2.000000+0 0.000000+0 0.000000+0 0.000000+0 0.000000+0 40028533   70
+ 2.000000+0 0.000000+0          0          0          6          0 40028533   71
+ 8.180000+0 2.000000+0 0.000000+0 0.000000+0 0.000000+0 0.000000+0 40028533   72
+                                                                   40028  0   73
+                                                                   400 0  0   74
+                                                                     0 0  0    0
+                                                                    -1 0  0    0

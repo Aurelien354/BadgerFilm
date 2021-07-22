@@ -1,0 +1,81 @@
+   5-B  Evaluated Atomic Data Library (EADL) by Red Cullen        6000 0  0    0
+ 5.000000+3 10.7171339         -1          0          0          0 500 1451    1
+ 0.000000+0 0.000000+0          0          0          0          6 500 1451    2
+ 0.000000+0 0.000000+0          0          0          6          6 500 1451    3
+ 0.000000+0 0.000000+0          0          0         59          2 500 1451    4
+  5-B -  0 LLNL       Eval-Dec90 D.E.Cullen                        500 1451    5
+UCRL-50400,Vol.30     Dist-Nov01                                   500 1451    6
+----ENDF/B-VI         MATERIAL  100                                500 1451    7
+-----ATOMIC RELAXATION DATA                                        500 1451    8
+------ENDF-6 FORMAT                                                500 1451    9
+================================================================== 500 1451   10
+The Livermore Evaluated Atomic Data Library (EADL) in the          500 1451   11
+ENDF-6 Format. Translated from the Livermore ENDL format           500 1451   12
+to the ENDF-6 Format by Bob MacFarlane (Los Alamos).               500 1451   13
+================================================================== 500 1451   14
+  Contents                                                         500 1451   15
+================================================================== 500 1451   16
+  MF/MT    Description                                             500 1451   17
+================================================================== 500 1451   18
+  28/533   Atomic Relaxation Data for Electrons and Photons        500 1451   19
+================================================================== 500 1451   20
+  Warning                                                          500 1451   21
+================================================================== 500 1451   22
+  MF/MT combinations used to define ALL electron interaction data  500 1451   23
+  are newly defined MF/MT numbers for ENDF/B-VI that did not exist 500 1451   24
+  in earlier versions of ENDF/B.                                   500 1451   25
+================================================================== 500 1451   26
+  Definition of Data                                               500 1451   27
+================================================================== 500 1451   28
+  Atomic Relaxation Data for Electrons and Photons                 500 1451   29
+================================================================== 500 1451   30
+1) An atom can be ionized by a photon or an electron interaction.  500 1451   31
+2) The atomic relaxation data included here describes how a        500 1451   32
+   singly ionized atom returns to neutrality, by emitting photons  500 1451   33
+   (x-rays) and/or electrons (Auger, Coster-Kronig).               500 1451   34
+3) Data is given to define the transition probabilities between    500 1451   35
+   subshells for radiative (x-ray emission) and non-radiative      500 1451   36
+   (Auger, Coster-Kronig) transitions.                             500 1451   37
+4) The complete spectrum of emitted photons and electrons can be   500 1451   38
+   calculated using the data included here, e.g., see ref. 2,      500 1451   39
+   below, for am example of a computer code that analytically      500 1451   40
+   calculates these spectra.                                       500 1451   41
+================================================================== 500 1451   42
+  References                                                       500 1451   43
+================================================================== 500 1451   44
+1) S.T. Perkins, D.E. Cullen, etal., "Tables and Graphs of Atomic  500 1451   45
+   Subshell and Relaxation Data Derived from the LLNL Evaluated    500 1451   46
+   Atomic Data Library (EADL), Z = 1 - 100", UCRL-50400, Vol. 30,  500 1451   47
+   Lawrence Livermore National Laboratory (1991).                  500 1451   48
+2) D.E. Cullen "Program RELAX: A Code Designed to Calculate X-Ray  500 1451   49
+   and Electron Emission Spectra as Singly Charged Atoms Relax     500 1451   50
+   Back to Neutrality", UCRL-ID-110438, Lawrence Livermore         500 1451   51
+   National Laboratory (1992).                                     500 1451   52
+                                                                   500 1451   53
+  These are the primary references to the contents of this library 500 1451   54
+  and they contain a complete list of references to the sources    500 1451   55
+  of data used in this library, methods of evaluation, accuracy    500 1451   56
+  of the data, etc.                                                500 1451   57
+================================================================== 500 1451   58
+  History                                                          500 1451   59
+================================================================== 500 1451   60
+ (1) November, 1991 - Initial release in the ENDL format.          500 1451   61
+ (2) November, 2001 - Initial release in the ENDF-6 format.        500 1451   62
+================================================================== 500 1451   63
+                                1        451         65          0 500 1451   64
+                               28        533          9          0 500 1451   65
+                                                                   500 1  0   66
+                                                                   500 0  0   67
+ 5.000000+3 10.7171339          0          0          4          0 50028533   68
+ 1.000000+0 0.000000+0          0          0          6          0 50028533   69
+ 1.956100+2 2.000000+0 0.000000+0 0.000000+0 0.000000+0 0.000000+0 50028533   70
+ 2.000000+0 0.000000+0          0          0          6          0 50028533   71
+ 1.258000+1 2.000000+0 0.000000+0 0.000000+0 0.000000+0 0.000000+0 50028533   72
+ 3.000000+0 0.000000+0          0          0          6          0 50028533   73
+ 6.670000+0 3.300000-1 0.000000+0 0.000000+0 0.000000+0 0.000000+0 50028533   74
+ 4.000000+0 0.000000+0          0          0          6          0 50028533   75
+ 6.660000+0 6.700000-1 0.000000+0 0.000000+0 0.000000+0 0.000000+0 50028533   76
+                                                                   50028  0   77
+                                                                   500 0  0   78
+                                                                     0 0  0    0
+                                                                    -1 0  0    0
