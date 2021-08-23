@@ -1,0 +1,75 @@
+   2-He Evaluated Atomic Data Library (EADL) by Red Cullen        6000 0  0    0
+ 2.000000+3 3.96821463         -1          0          0          0 200 1451    1
+ 0.000000+0 0.000000+0          0          0          0          6 200 1451    2
+ 0.000000+0 0.000000+0          0          0          6          6 200 1451    3
+ 0.000000+0 0.000000+0          0          0         59          2 200 1451    4
+  2-He-  0 LLNL       Eval-Dec90 D.E.Cullen                        200 1451    5
+UCRL-50400,Vol.30     Dist-Nov01                                   200 1451    6
+----ENDF/B-VI         MATERIAL  100                                200 1451    7
+-----ATOMIC RELAXATION DATA                                        200 1451    8
+------ENDF-6 FORMAT                                                200 1451    9
+================================================================== 200 1451   10
+The Livermore Evaluated Atomic Data Library (EADL) in the          200 1451   11
+ENDF-6 Format. Translated from the Livermore ENDL format           200 1451   12
+to the ENDF-6 Format by Bob MacFarlane (Los Alamos).               200 1451   13
+================================================================== 200 1451   14
+  Contents                                                         200 1451   15
+================================================================== 200 1451   16
+  MF/MT    Description                                             200 1451   17
+================================================================== 200 1451   18
+  28/533   Atomic Relaxation Data for Electrons and Photons        200 1451   19
+================================================================== 200 1451   20
+  Warning                                                          200 1451   21
+================================================================== 200 1451   22
+  MF/MT combinations used to define ALL electron interaction data  200 1451   23
+  are newly defined MF/MT numbers for ENDF/B-VI that did not exist 200 1451   24
+  in earlier versions of ENDF/B.                                   200 1451   25
+================================================================== 200 1451   26
+  Definition of Data                                               200 1451   27
+================================================================== 200 1451   28
+  Atomic Relaxation Data for Electrons and Photons                 200 1451   29
+================================================================== 200 1451   30
+1) An atom can be ionized by a photon or an electron interaction.  200 1451   31
+2) The atomic relaxation data included here describes how a        200 1451   32
+   singly ionized atom returns to neutrality, by emitting photons  200 1451   33
+   (x-rays) and/or electrons (Auger, Coster-Kronig).               200 1451   34
+3) Data is given to define the transition probabilities between    200 1451   35
+   subshells for radiative (x-ray emission) and non-radiative      200 1451   36
+   (Auger, Coster-Kronig) transitions.                             200 1451   37
+4) The complete spectrum of emitted photons and electrons can be   200 1451   38
+   calculated using the data included here, e.g., see ref. 2,      200 1451   39
+   below, for am example of a computer code that analytically      200 1451   40
+   calculates these spectra.                                       200 1451   41
+================================================================== 200 1451   42
+  References                                                       200 1451   43
+================================================================== 200 1451   44
+1) S.T. Perkins, D.E. Cullen, etal., "Tables and Graphs of Atomic  200 1451   45
+   Subshell and Relaxation Data Derived from the LLNL Evaluated    200 1451   46
+   Atomic Data Library (EADL), Z = 1 - 100", UCRL-50400, Vol. 30,  200 1451   47
+   Lawrence Livermore National Laboratory (1991).                  200 1451   48
+2) D.E. Cullen "Program RELAX: A Code Designed to Calculate X-Ray  200 1451   49
+   and Electron Emission Spectra as Singly Charged Atoms Relax     200 1451   50
+   Back to Neutrality", UCRL-ID-110438, Lawrence Livermore         200 1451   51
+   National Laboratory (1992).                                     200 1451   52
+                                                                   200 1451   53
+  These are the primary references to the contents of this library 200 1451   54
+  and they contain a complete list of references to the sources    200 1451   55
+  of data used in this library, methods of evaluation, accuracy    200 1451   56
+  of the data, etc.                                                200 1451   57
+================================================================== 200 1451   58
+  History                                                          200 1451   59
+================================================================== 200 1451   60
+ (1) November, 1991 - Initial release in the ENDL format.          200 1451   61
+ (2) November, 2001 - Initial release in the ENDF-6 format.        200 1451   62
+================================================================== 200 1451   63
+                                1        451         65          0 200 1451   64
+                               28        533          3          0 200 1451   65
+                                                                   200 1  0   66
+                                                                   200 0  0   67
+ 2.000000+3 3.96821463          0          0          1          0 20028533   68
+ 1.000000+0 0.000000+0          0          0          6          0 20028533   69
+ 2.342000+1 2.000000+0 0.000000+0 0.000000+0 0.000000+0 0.000000+0 20028533   70
+                                                                   20028  0   71
+                                                                   200 0  0   72
+                                                                     0 0  0    0
+                                                                    -1 0  0    0
