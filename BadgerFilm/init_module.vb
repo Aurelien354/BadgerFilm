@@ -700,6 +700,8 @@ Module init_module
             'Dim lol2 As String = Mid(Ec_data(i), 4, 4)
             If (Trim(Mid(Ec_data(i), 4, 4)) <> shell) Then Continue For
 
+            'Dim lol As Double = Trim(Mid(Ec_data(i), 22, 11))
+            'Dim oldDecimalSeparator As String = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
             find_Ec = Trim(Mid(Ec_data(i), 22, 11)) / 1000 'convert eV to keV!!!!!!!!!!!!!!!!!!!!!!!!!!!
             Return find_Ec
         Next

@@ -118,7 +118,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.14"
+    Public VERSION As String = "v.1.2.15"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -2560,6 +2560,16 @@ Public Class Form1
 
     ' This event handler is where the actual work is done.
     Private Sub backgroundWorker1_DoWork(ByVal sender As Object, ByVal e As DoWorkEventArgs) Handles BackgroundWorker1.DoWork
+        'Changed with version 1.2.15 (August 23 2021)
+        'Added the following code to take into account the decimal separator (dot vs comma)
+        Dim oldDecimalSeparator As String = Application.CurrentCulture.NumberFormat.NumberDecimalSeparator
+        If oldDecimalSeparator = "." Then
+        Else
+            Dim forceDotCulture As CultureInfo
+            forceDotCulture = Application.CurrentCulture.Clone()
+            forceDotCulture.NumberFormat.NumberDecimalSeparator = "."
+            Application.CurrentCulture = forceDotCulture
+        End If
 
         ' Get the BackgroundWorker object that raised this event.
         'Dim worker As BackgroundWorker = CType(sender, BackgroundWorker)

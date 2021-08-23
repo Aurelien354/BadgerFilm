@@ -183,6 +183,7 @@
 
             my_pap(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, a_, b_, A_f, Z_bar, fit_MAC, options, PAP_Rx, PAP_Rm, PAP_Rc, PAP_A1, PAP_A2, PAP_B1)
 
+
             'If studied_element.z = 26 And layer_handler(0).element.Count > 1 Then ' mother_layer_id <> 0 And
             '    Dim tmp As String = "Rx" & vbTab & PAP_Rx & vbCrLf
             '    tmp = tmp & "Rm" & vbTab & PAP_Rm & vbCrLf
