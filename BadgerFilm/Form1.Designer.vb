@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
@@ -112,105 +112,6 @@ Partial Class Form1
         Me.Button15 = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.Element1 = New BadgerFilm.Class1.TestB()
-        Me.Element2 = New BadgerFilm.Class1.TestB()
-        Me.Element3 = New BadgerFilm.Class1.TestB()
-        Me.Element4 = New BadgerFilm.Class1.TestB()
-        Me.Element5 = New BadgerFilm.Class1.TestB()
-        Me.Element6 = New BadgerFilm.Class1.TestB()
-        Me.Element7 = New BadgerFilm.Class1.TestB()
-        Me.Element8 = New BadgerFilm.Class1.TestB()
-        Me.Element9 = New BadgerFilm.Class1.TestB()
-        Me.Element10 = New BadgerFilm.Class1.TestB()
-        Me.Element11 = New BadgerFilm.Class1.TestB()
-        Me.Element12 = New BadgerFilm.Class1.TestB()
-        Me.Element13 = New BadgerFilm.Class1.TestB()
-        Me.Element14 = New BadgerFilm.Class1.TestB()
-        Me.Element15 = New BadgerFilm.Class1.TestB()
-        Me.Element16 = New BadgerFilm.Class1.TestB()
-        Me.Element17 = New BadgerFilm.Class1.TestB()
-        Me.Element18 = New BadgerFilm.Class1.TestB()
-        Me.Element19 = New BadgerFilm.Class1.TestB()
-        Me.Element20 = New BadgerFilm.Class1.TestB()
-        Me.Element21 = New BadgerFilm.Class1.TestB()
-        Me.Element22 = New BadgerFilm.Class1.TestB()
-        Me.Element23 = New BadgerFilm.Class1.TestB()
-        Me.Element24 = New BadgerFilm.Class1.TestB()
-        Me.Element25 = New BadgerFilm.Class1.TestB()
-        Me.Element26 = New BadgerFilm.Class1.TestB()
-        Me.Element27 = New BadgerFilm.Class1.TestB()
-        Me.Element28 = New BadgerFilm.Class1.TestB()
-        Me.Element29 = New BadgerFilm.Class1.TestB()
-        Me.Element30 = New BadgerFilm.Class1.TestB()
-        Me.Element31 = New BadgerFilm.Class1.TestB()
-        Me.Element32 = New BadgerFilm.Class1.TestB()
-        Me.Element33 = New BadgerFilm.Class1.TestB()
-        Me.Element34 = New BadgerFilm.Class1.TestB()
-        Me.Element35 = New BadgerFilm.Class1.TestB()
-        Me.Element36 = New BadgerFilm.Class1.TestB()
-        Me.Element37 = New BadgerFilm.Class1.TestB()
-        Me.Element38 = New BadgerFilm.Class1.TestB()
-        Me.Element39 = New BadgerFilm.Class1.TestB()
-        Me.Element40 = New BadgerFilm.Class1.TestB()
-        Me.Element41 = New BadgerFilm.Class1.TestB()
-        Me.Element42 = New BadgerFilm.Class1.TestB()
-        Me.Element43 = New BadgerFilm.Class1.TestB()
-        Me.Element44 = New BadgerFilm.Class1.TestB()
-        Me.Element45 = New BadgerFilm.Class1.TestB()
-        Me.Element46 = New BadgerFilm.Class1.TestB()
-        Me.Element47 = New BadgerFilm.Class1.TestB()
-        Me.Element48 = New BadgerFilm.Class1.TestB()
-        Me.Element49 = New BadgerFilm.Class1.TestB()
-        Me.Element50 = New BadgerFilm.Class1.TestB()
-        Me.Element51 = New BadgerFilm.Class1.TestB()
-        Me.Element52 = New BadgerFilm.Class1.TestB()
-        Me.Element53 = New BadgerFilm.Class1.TestB()
-        Me.Element54 = New BadgerFilm.Class1.TestB()
-        Me.Element55 = New BadgerFilm.Class1.TestB()
-        Me.Element56 = New BadgerFilm.Class1.TestB()
-        Me.Element57 = New BadgerFilm.Class1.TestB()
-        Me.Element72 = New BadgerFilm.Class1.TestB()
-        Me.Element73 = New BadgerFilm.Class1.TestB()
-        Me.Element74 = New BadgerFilm.Class1.TestB()
-        Me.Element75 = New BadgerFilm.Class1.TestB()
-        Me.Element76 = New BadgerFilm.Class1.TestB()
-        Me.Element77 = New BadgerFilm.Class1.TestB()
-        Me.Element78 = New BadgerFilm.Class1.TestB()
-        Me.Element79 = New BadgerFilm.Class1.TestB()
-        Me.Element80 = New BadgerFilm.Class1.TestB()
-        Me.Element81 = New BadgerFilm.Class1.TestB()
-        Me.Element82 = New BadgerFilm.Class1.TestB()
-        Me.Element83 = New BadgerFilm.Class1.TestB()
-        Me.Element84 = New BadgerFilm.Class1.TestB()
-        Me.Element85 = New BadgerFilm.Class1.TestB()
-        Me.Element86 = New BadgerFilm.Class1.TestB()
-        Me.Element87 = New BadgerFilm.Class1.TestB()
-        Me.Element88 = New BadgerFilm.Class1.TestB()
-        Me.Element89 = New BadgerFilm.Class1.TestB()
-        Me.Element58 = New BadgerFilm.Class1.TestB()
-        Me.Element59 = New BadgerFilm.Class1.TestB()
-        Me.Element60 = New BadgerFilm.Class1.TestB()
-        Me.Element61 = New BadgerFilm.Class1.TestB()
-        Me.Element62 = New BadgerFilm.Class1.TestB()
-        Me.Element63 = New BadgerFilm.Class1.TestB()
-        Me.Element64 = New BadgerFilm.Class1.TestB()
-        Me.Element65 = New BadgerFilm.Class1.TestB()
-        Me.Element66 = New BadgerFilm.Class1.TestB()
-        Me.Element67 = New BadgerFilm.Class1.TestB()
-        Me.Element68 = New BadgerFilm.Class1.TestB()
-        Me.Element69 = New BadgerFilm.Class1.TestB()
-        Me.Element70 = New BadgerFilm.Class1.TestB()
-        Me.Element71 = New BadgerFilm.Class1.TestB()
-        Me.Element90 = New BadgerFilm.Class1.TestB()
-        Me.Element91 = New BadgerFilm.Class1.TestB()
-        Me.Element92 = New BadgerFilm.Class1.TestB()
-        Me.Element93 = New BadgerFilm.Class1.TestB()
-        Me.Element94 = New BadgerFilm.Class1.TestB()
-        Me.Element95 = New BadgerFilm.Class1.TestB()
-        Me.Element96 = New BadgerFilm.Class1.TestB()
-        Me.Element97 = New BadgerFilm.Class1.TestB()
-        Me.Element98 = New BadgerFilm.Class1.TestB()
-        Me.Element99 = New BadgerFilm.Class1.TestB()
         Me.Button17 = New System.Windows.Forms.Button()
         Me.TextBox13 = New System.Windows.Forms.TextBox()
         Me.Button18 = New System.Windows.Forms.Button()
@@ -232,6 +133,108 @@ Partial Class Form1
         Me.CheckBox14 = New System.Windows.Forms.CheckBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.Button25 = New System.Windows.Forms.Button()
+        Me.Button26 = New System.Windows.Forms.Button()
+        Me.Element99 = New BadgerFilm.Class1.TestB()
+        Me.Element98 = New BadgerFilm.Class1.TestB()
+        Me.Element97 = New BadgerFilm.Class1.TestB()
+        Me.Element96 = New BadgerFilm.Class1.TestB()
+        Me.Element95 = New BadgerFilm.Class1.TestB()
+        Me.Element94 = New BadgerFilm.Class1.TestB()
+        Me.Element93 = New BadgerFilm.Class1.TestB()
+        Me.Element92 = New BadgerFilm.Class1.TestB()
+        Me.Element91 = New BadgerFilm.Class1.TestB()
+        Me.Element90 = New BadgerFilm.Class1.TestB()
+        Me.Element71 = New BadgerFilm.Class1.TestB()
+        Me.Element70 = New BadgerFilm.Class1.TestB()
+        Me.Element69 = New BadgerFilm.Class1.TestB()
+        Me.Element68 = New BadgerFilm.Class1.TestB()
+        Me.Element67 = New BadgerFilm.Class1.TestB()
+        Me.Element66 = New BadgerFilm.Class1.TestB()
+        Me.Element65 = New BadgerFilm.Class1.TestB()
+        Me.Element64 = New BadgerFilm.Class1.TestB()
+        Me.Element63 = New BadgerFilm.Class1.TestB()
+        Me.Element62 = New BadgerFilm.Class1.TestB()
+        Me.Element61 = New BadgerFilm.Class1.TestB()
+        Me.Element60 = New BadgerFilm.Class1.TestB()
+        Me.Element59 = New BadgerFilm.Class1.TestB()
+        Me.Element58 = New BadgerFilm.Class1.TestB()
+        Me.Element89 = New BadgerFilm.Class1.TestB()
+        Me.Element88 = New BadgerFilm.Class1.TestB()
+        Me.Element87 = New BadgerFilm.Class1.TestB()
+        Me.Element86 = New BadgerFilm.Class1.TestB()
+        Me.Element85 = New BadgerFilm.Class1.TestB()
+        Me.Element84 = New BadgerFilm.Class1.TestB()
+        Me.Element83 = New BadgerFilm.Class1.TestB()
+        Me.Element82 = New BadgerFilm.Class1.TestB()
+        Me.Element81 = New BadgerFilm.Class1.TestB()
+        Me.Element80 = New BadgerFilm.Class1.TestB()
+        Me.Element79 = New BadgerFilm.Class1.TestB()
+        Me.Element78 = New BadgerFilm.Class1.TestB()
+        Me.Element77 = New BadgerFilm.Class1.TestB()
+        Me.Element76 = New BadgerFilm.Class1.TestB()
+        Me.Element75 = New BadgerFilm.Class1.TestB()
+        Me.Element74 = New BadgerFilm.Class1.TestB()
+        Me.Element73 = New BadgerFilm.Class1.TestB()
+        Me.Element72 = New BadgerFilm.Class1.TestB()
+        Me.Element57 = New BadgerFilm.Class1.TestB()
+        Me.Element56 = New BadgerFilm.Class1.TestB()
+        Me.Element55 = New BadgerFilm.Class1.TestB()
+        Me.Element54 = New BadgerFilm.Class1.TestB()
+        Me.Element53 = New BadgerFilm.Class1.TestB()
+        Me.Element52 = New BadgerFilm.Class1.TestB()
+        Me.Element51 = New BadgerFilm.Class1.TestB()
+        Me.Element50 = New BadgerFilm.Class1.TestB()
+        Me.Element49 = New BadgerFilm.Class1.TestB()
+        Me.Element48 = New BadgerFilm.Class1.TestB()
+        Me.Element47 = New BadgerFilm.Class1.TestB()
+        Me.Element46 = New BadgerFilm.Class1.TestB()
+        Me.Element45 = New BadgerFilm.Class1.TestB()
+        Me.Element44 = New BadgerFilm.Class1.TestB()
+        Me.Element43 = New BadgerFilm.Class1.TestB()
+        Me.Element42 = New BadgerFilm.Class1.TestB()
+        Me.Element41 = New BadgerFilm.Class1.TestB()
+        Me.Element40 = New BadgerFilm.Class1.TestB()
+        Me.Element39 = New BadgerFilm.Class1.TestB()
+        Me.Element38 = New BadgerFilm.Class1.TestB()
+        Me.Element37 = New BadgerFilm.Class1.TestB()
+        Me.Element36 = New BadgerFilm.Class1.TestB()
+        Me.Element35 = New BadgerFilm.Class1.TestB()
+        Me.Element34 = New BadgerFilm.Class1.TestB()
+        Me.Element33 = New BadgerFilm.Class1.TestB()
+        Me.Element32 = New BadgerFilm.Class1.TestB()
+        Me.Element31 = New BadgerFilm.Class1.TestB()
+        Me.Element30 = New BadgerFilm.Class1.TestB()
+        Me.Element29 = New BadgerFilm.Class1.TestB()
+        Me.Element28 = New BadgerFilm.Class1.TestB()
+        Me.Element27 = New BadgerFilm.Class1.TestB()
+        Me.Element26 = New BadgerFilm.Class1.TestB()
+        Me.Element25 = New BadgerFilm.Class1.TestB()
+        Me.Element24 = New BadgerFilm.Class1.TestB()
+        Me.Element23 = New BadgerFilm.Class1.TestB()
+        Me.Element22 = New BadgerFilm.Class1.TestB()
+        Me.Element21 = New BadgerFilm.Class1.TestB()
+        Me.Element20 = New BadgerFilm.Class1.TestB()
+        Me.Element19 = New BadgerFilm.Class1.TestB()
+        Me.Element18 = New BadgerFilm.Class1.TestB()
+        Me.Element17 = New BadgerFilm.Class1.TestB()
+        Me.Element16 = New BadgerFilm.Class1.TestB()
+        Me.Element15 = New BadgerFilm.Class1.TestB()
+        Me.Element14 = New BadgerFilm.Class1.TestB()
+        Me.Element13 = New BadgerFilm.Class1.TestB()
+        Me.Element12 = New BadgerFilm.Class1.TestB()
+        Me.Element11 = New BadgerFilm.Class1.TestB()
+        Me.Element10 = New BadgerFilm.Class1.TestB()
+        Me.Element9 = New BadgerFilm.Class1.TestB()
+        Me.Element8 = New BadgerFilm.Class1.TestB()
+        Me.Element7 = New BadgerFilm.Class1.TestB()
+        Me.Element6 = New BadgerFilm.Class1.TestB()
+        Me.Element5 = New BadgerFilm.Class1.TestB()
+        Me.Element4 = New BadgerFilm.Class1.TestB()
+        Me.Element3 = New BadgerFilm.Class1.TestB()
+        Me.Element2 = New BadgerFilm.Class1.TestB()
+        Me.Element1 = New BadgerFilm.Class1.TestB()
+        Me.Button27 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -746,13 +749,13 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
         Me.Chart1.Location = New System.Drawing.Point(826, 364)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Name = "Series1"
+        Me.Chart1.Series.Add(Series2)
         Me.Chart1.Size = New System.Drawing.Size(459, 259)
         Me.Chart1.TabIndex = 16
         Me.Chart1.Text = "Chart1"
@@ -1139,1095 +1142,6 @@ Partial Class Form1
         'BackgroundWorker1
         '
         '
-        'Element1
-        '
-        Me.Element1.BackColor = System.Drawing.Color.White
-        Me.Element1.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element1.Location = New System.Drawing.Point(836, 10)
-        Me.Element1.Name = "Element1"
-        Me.Element1.Size = New System.Drawing.Size(24, 33)
-        Me.Element1.TabIndex = 48
-        Me.Element1.UseVisualStyleBackColor = False
-        '
-        'Element2
-        '
-        Me.Element2.BackColor = System.Drawing.Color.White
-        Me.Element2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element2.Location = New System.Drawing.Point(1261, 10)
-        Me.Element2.Name = "Element2"
-        Me.Element2.Size = New System.Drawing.Size(24, 33)
-        Me.Element2.TabIndex = 52
-        Me.Element2.UseVisualStyleBackColor = False
-        '
-        'Element3
-        '
-        Me.Element3.BackColor = System.Drawing.Color.White
-        Me.Element3.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element3.Location = New System.Drawing.Point(836, 44)
-        Me.Element3.Name = "Element3"
-        Me.Element3.Size = New System.Drawing.Size(24, 33)
-        Me.Element3.TabIndex = 53
-        Me.Element3.UseVisualStyleBackColor = False
-        '
-        'Element4
-        '
-        Me.Element4.BackColor = System.Drawing.Color.White
-        Me.Element4.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element4.Location = New System.Drawing.Point(861, 44)
-        Me.Element4.Name = "Element4"
-        Me.Element4.Size = New System.Drawing.Size(24, 33)
-        Me.Element4.TabIndex = 54
-        Me.Element4.UseVisualStyleBackColor = False
-        '
-        'Element5
-        '
-        Me.Element5.BackColor = System.Drawing.Color.White
-        Me.Element5.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element5.Location = New System.Drawing.Point(1136, 44)
-        Me.Element5.Name = "Element5"
-        Me.Element5.Size = New System.Drawing.Size(24, 33)
-        Me.Element5.TabIndex = 55
-        Me.Element5.UseVisualStyleBackColor = False
-        '
-        'Element6
-        '
-        Me.Element6.BackColor = System.Drawing.Color.White
-        Me.Element6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element6.Location = New System.Drawing.Point(1161, 44)
-        Me.Element6.Name = "Element6"
-        Me.Element6.Size = New System.Drawing.Size(24, 33)
-        Me.Element6.TabIndex = 56
-        Me.Element6.UseVisualStyleBackColor = False
-        '
-        'Element7
-        '
-        Me.Element7.BackColor = System.Drawing.Color.White
-        Me.Element7.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element7.Location = New System.Drawing.Point(1186, 44)
-        Me.Element7.Name = "Element7"
-        Me.Element7.Size = New System.Drawing.Size(24, 33)
-        Me.Element7.TabIndex = 57
-        Me.Element7.UseVisualStyleBackColor = False
-        '
-        'Element8
-        '
-        Me.Element8.BackColor = System.Drawing.Color.White
-        Me.Element8.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element8.Location = New System.Drawing.Point(1211, 44)
-        Me.Element8.Name = "Element8"
-        Me.Element8.Size = New System.Drawing.Size(24, 33)
-        Me.Element8.TabIndex = 58
-        Me.Element8.UseVisualStyleBackColor = False
-        '
-        'Element9
-        '
-        Me.Element9.BackColor = System.Drawing.Color.White
-        Me.Element9.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element9.Location = New System.Drawing.Point(1236, 44)
-        Me.Element9.Name = "Element9"
-        Me.Element9.Size = New System.Drawing.Size(24, 33)
-        Me.Element9.TabIndex = 59
-        Me.Element9.UseVisualStyleBackColor = False
-        '
-        'Element10
-        '
-        Me.Element10.BackColor = System.Drawing.Color.White
-        Me.Element10.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element10.Location = New System.Drawing.Point(1261, 44)
-        Me.Element10.Name = "Element10"
-        Me.Element10.Size = New System.Drawing.Size(24, 33)
-        Me.Element10.TabIndex = 60
-        Me.Element10.UseVisualStyleBackColor = False
-        '
-        'Element11
-        '
-        Me.Element11.BackColor = System.Drawing.Color.White
-        Me.Element11.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element11.Location = New System.Drawing.Point(836, 78)
-        Me.Element11.Name = "Element11"
-        Me.Element11.Size = New System.Drawing.Size(24, 33)
-        Me.Element11.TabIndex = 61
-        Me.Element11.UseVisualStyleBackColor = False
-        '
-        'Element12
-        '
-        Me.Element12.BackColor = System.Drawing.Color.White
-        Me.Element12.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element12.Location = New System.Drawing.Point(861, 78)
-        Me.Element12.Name = "Element12"
-        Me.Element12.Size = New System.Drawing.Size(24, 33)
-        Me.Element12.TabIndex = 62
-        Me.Element12.UseVisualStyleBackColor = False
-        '
-        'Element13
-        '
-        Me.Element13.BackColor = System.Drawing.Color.White
-        Me.Element13.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element13.Location = New System.Drawing.Point(1136, 78)
-        Me.Element13.Name = "Element13"
-        Me.Element13.Size = New System.Drawing.Size(24, 33)
-        Me.Element13.TabIndex = 63
-        Me.Element13.UseVisualStyleBackColor = False
-        '
-        'Element14
-        '
-        Me.Element14.BackColor = System.Drawing.Color.White
-        Me.Element14.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element14.Location = New System.Drawing.Point(1161, 78)
-        Me.Element14.Name = "Element14"
-        Me.Element14.Size = New System.Drawing.Size(24, 33)
-        Me.Element14.TabIndex = 64
-        Me.Element14.UseVisualStyleBackColor = False
-        '
-        'Element15
-        '
-        Me.Element15.BackColor = System.Drawing.Color.White
-        Me.Element15.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element15.Location = New System.Drawing.Point(1186, 78)
-        Me.Element15.Name = "Element15"
-        Me.Element15.Size = New System.Drawing.Size(24, 33)
-        Me.Element15.TabIndex = 65
-        Me.Element15.UseVisualStyleBackColor = False
-        '
-        'Element16
-        '
-        Me.Element16.BackColor = System.Drawing.Color.White
-        Me.Element16.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element16.Location = New System.Drawing.Point(1211, 78)
-        Me.Element16.Name = "Element16"
-        Me.Element16.Size = New System.Drawing.Size(24, 33)
-        Me.Element16.TabIndex = 66
-        Me.Element16.UseVisualStyleBackColor = False
-        '
-        'Element17
-        '
-        Me.Element17.BackColor = System.Drawing.Color.White
-        Me.Element17.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element17.Location = New System.Drawing.Point(1236, 78)
-        Me.Element17.Name = "Element17"
-        Me.Element17.Size = New System.Drawing.Size(24, 33)
-        Me.Element17.TabIndex = 67
-        Me.Element17.UseVisualStyleBackColor = False
-        '
-        'Element18
-        '
-        Me.Element18.BackColor = System.Drawing.Color.White
-        Me.Element18.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element18.Location = New System.Drawing.Point(1261, 78)
-        Me.Element18.Name = "Element18"
-        Me.Element18.Size = New System.Drawing.Size(24, 33)
-        Me.Element18.TabIndex = 68
-        Me.Element18.UseVisualStyleBackColor = False
-        '
-        'Element19
-        '
-        Me.Element19.BackColor = System.Drawing.Color.White
-        Me.Element19.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element19.Location = New System.Drawing.Point(836, 112)
-        Me.Element19.Name = "Element19"
-        Me.Element19.Size = New System.Drawing.Size(24, 33)
-        Me.Element19.TabIndex = 69
-        Me.Element19.UseVisualStyleBackColor = False
-        '
-        'Element20
-        '
-        Me.Element20.BackColor = System.Drawing.Color.White
-        Me.Element20.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element20.Location = New System.Drawing.Point(861, 112)
-        Me.Element20.Name = "Element20"
-        Me.Element20.Size = New System.Drawing.Size(24, 33)
-        Me.Element20.TabIndex = 70
-        Me.Element20.UseVisualStyleBackColor = False
-        '
-        'Element21
-        '
-        Me.Element21.BackColor = System.Drawing.Color.White
-        Me.Element21.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element21.Location = New System.Drawing.Point(886, 112)
-        Me.Element21.Name = "Element21"
-        Me.Element21.Size = New System.Drawing.Size(24, 33)
-        Me.Element21.TabIndex = 71
-        Me.Element21.UseVisualStyleBackColor = False
-        '
-        'Element22
-        '
-        Me.Element22.BackColor = System.Drawing.Color.White
-        Me.Element22.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element22.Location = New System.Drawing.Point(911, 112)
-        Me.Element22.Name = "Element22"
-        Me.Element22.Size = New System.Drawing.Size(24, 33)
-        Me.Element22.TabIndex = 72
-        Me.Element22.UseVisualStyleBackColor = False
-        '
-        'Element23
-        '
-        Me.Element23.BackColor = System.Drawing.Color.White
-        Me.Element23.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element23.Location = New System.Drawing.Point(936, 112)
-        Me.Element23.Name = "Element23"
-        Me.Element23.Size = New System.Drawing.Size(24, 33)
-        Me.Element23.TabIndex = 73
-        Me.Element23.UseVisualStyleBackColor = False
-        '
-        'Element24
-        '
-        Me.Element24.BackColor = System.Drawing.Color.White
-        Me.Element24.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element24.Location = New System.Drawing.Point(961, 112)
-        Me.Element24.Name = "Element24"
-        Me.Element24.Size = New System.Drawing.Size(24, 33)
-        Me.Element24.TabIndex = 74
-        Me.Element24.UseVisualStyleBackColor = False
-        '
-        'Element25
-        '
-        Me.Element25.BackColor = System.Drawing.Color.White
-        Me.Element25.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element25.Location = New System.Drawing.Point(986, 112)
-        Me.Element25.Name = "Element25"
-        Me.Element25.Size = New System.Drawing.Size(24, 33)
-        Me.Element25.TabIndex = 75
-        Me.Element25.UseVisualStyleBackColor = False
-        '
-        'Element26
-        '
-        Me.Element26.BackColor = System.Drawing.Color.White
-        Me.Element26.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element26.Location = New System.Drawing.Point(1011, 112)
-        Me.Element26.Name = "Element26"
-        Me.Element26.Size = New System.Drawing.Size(24, 33)
-        Me.Element26.TabIndex = 76
-        Me.Element26.UseVisualStyleBackColor = False
-        '
-        'Element27
-        '
-        Me.Element27.BackColor = System.Drawing.Color.White
-        Me.Element27.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element27.Location = New System.Drawing.Point(1036, 112)
-        Me.Element27.Name = "Element27"
-        Me.Element27.Size = New System.Drawing.Size(24, 33)
-        Me.Element27.TabIndex = 77
-        Me.Element27.UseVisualStyleBackColor = False
-        '
-        'Element28
-        '
-        Me.Element28.BackColor = System.Drawing.Color.White
-        Me.Element28.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element28.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element28.Location = New System.Drawing.Point(1061, 112)
-        Me.Element28.Name = "Element28"
-        Me.Element28.Size = New System.Drawing.Size(24, 33)
-        Me.Element28.TabIndex = 78
-        Me.Element28.UseVisualStyleBackColor = False
-        '
-        'Element29
-        '
-        Me.Element29.BackColor = System.Drawing.Color.White
-        Me.Element29.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element29.Location = New System.Drawing.Point(1086, 112)
-        Me.Element29.Name = "Element29"
-        Me.Element29.Size = New System.Drawing.Size(24, 33)
-        Me.Element29.TabIndex = 79
-        Me.Element29.UseVisualStyleBackColor = False
-        '
-        'Element30
-        '
-        Me.Element30.BackColor = System.Drawing.Color.White
-        Me.Element30.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element30.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element30.Location = New System.Drawing.Point(1111, 112)
-        Me.Element30.Name = "Element30"
-        Me.Element30.Size = New System.Drawing.Size(24, 33)
-        Me.Element30.TabIndex = 80
-        Me.Element30.UseVisualStyleBackColor = False
-        '
-        'Element31
-        '
-        Me.Element31.BackColor = System.Drawing.Color.White
-        Me.Element31.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element31.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element31.Location = New System.Drawing.Point(1136, 112)
-        Me.Element31.Name = "Element31"
-        Me.Element31.Size = New System.Drawing.Size(24, 33)
-        Me.Element31.TabIndex = 81
-        Me.Element31.UseVisualStyleBackColor = False
-        '
-        'Element32
-        '
-        Me.Element32.BackColor = System.Drawing.Color.White
-        Me.Element32.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element32.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element32.Location = New System.Drawing.Point(1161, 112)
-        Me.Element32.Name = "Element32"
-        Me.Element32.Size = New System.Drawing.Size(24, 33)
-        Me.Element32.TabIndex = 82
-        Me.Element32.UseVisualStyleBackColor = False
-        '
-        'Element33
-        '
-        Me.Element33.BackColor = System.Drawing.Color.White
-        Me.Element33.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element33.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element33.Location = New System.Drawing.Point(1186, 112)
-        Me.Element33.Name = "Element33"
-        Me.Element33.Size = New System.Drawing.Size(24, 33)
-        Me.Element33.TabIndex = 83
-        Me.Element33.UseVisualStyleBackColor = False
-        '
-        'Element34
-        '
-        Me.Element34.BackColor = System.Drawing.Color.White
-        Me.Element34.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element34.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element34.Location = New System.Drawing.Point(1211, 112)
-        Me.Element34.Name = "Element34"
-        Me.Element34.Size = New System.Drawing.Size(24, 33)
-        Me.Element34.TabIndex = 84
-        Me.Element34.UseVisualStyleBackColor = False
-        '
-        'Element35
-        '
-        Me.Element35.BackColor = System.Drawing.Color.White
-        Me.Element35.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element35.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element35.Location = New System.Drawing.Point(1236, 112)
-        Me.Element35.Name = "Element35"
-        Me.Element35.Size = New System.Drawing.Size(24, 33)
-        Me.Element35.TabIndex = 85
-        Me.Element35.UseVisualStyleBackColor = False
-        '
-        'Element36
-        '
-        Me.Element36.BackColor = System.Drawing.Color.White
-        Me.Element36.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element36.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element36.Location = New System.Drawing.Point(1261, 112)
-        Me.Element36.Name = "Element36"
-        Me.Element36.Size = New System.Drawing.Size(24, 33)
-        Me.Element36.TabIndex = 86
-        Me.Element36.UseVisualStyleBackColor = False
-        '
-        'Element37
-        '
-        Me.Element37.BackColor = System.Drawing.Color.White
-        Me.Element37.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element37.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element37.Location = New System.Drawing.Point(836, 146)
-        Me.Element37.Name = "Element37"
-        Me.Element37.Size = New System.Drawing.Size(24, 33)
-        Me.Element37.TabIndex = 87
-        Me.Element37.UseVisualStyleBackColor = False
-        '
-        'Element38
-        '
-        Me.Element38.BackColor = System.Drawing.Color.White
-        Me.Element38.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element38.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element38.Location = New System.Drawing.Point(861, 146)
-        Me.Element38.Name = "Element38"
-        Me.Element38.Size = New System.Drawing.Size(24, 33)
-        Me.Element38.TabIndex = 88
-        Me.Element38.UseVisualStyleBackColor = False
-        '
-        'Element39
-        '
-        Me.Element39.BackColor = System.Drawing.Color.White
-        Me.Element39.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element39.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element39.Location = New System.Drawing.Point(886, 146)
-        Me.Element39.Name = "Element39"
-        Me.Element39.Size = New System.Drawing.Size(24, 33)
-        Me.Element39.TabIndex = 89
-        Me.Element39.UseVisualStyleBackColor = False
-        '
-        'Element40
-        '
-        Me.Element40.BackColor = System.Drawing.Color.White
-        Me.Element40.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element40.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element40.Location = New System.Drawing.Point(911, 146)
-        Me.Element40.Name = "Element40"
-        Me.Element40.Size = New System.Drawing.Size(24, 33)
-        Me.Element40.TabIndex = 90
-        Me.Element40.UseVisualStyleBackColor = False
-        '
-        'Element41
-        '
-        Me.Element41.BackColor = System.Drawing.Color.White
-        Me.Element41.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element41.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element41.Location = New System.Drawing.Point(936, 146)
-        Me.Element41.Name = "Element41"
-        Me.Element41.Size = New System.Drawing.Size(24, 33)
-        Me.Element41.TabIndex = 91
-        Me.Element41.UseVisualStyleBackColor = False
-        '
-        'Element42
-        '
-        Me.Element42.BackColor = System.Drawing.Color.White
-        Me.Element42.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element42.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element42.Location = New System.Drawing.Point(961, 146)
-        Me.Element42.Name = "Element42"
-        Me.Element42.Size = New System.Drawing.Size(24, 33)
-        Me.Element42.TabIndex = 92
-        Me.Element42.UseVisualStyleBackColor = False
-        '
-        'Element43
-        '
-        Me.Element43.BackColor = System.Drawing.Color.White
-        Me.Element43.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element43.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element43.Location = New System.Drawing.Point(986, 146)
-        Me.Element43.Name = "Element43"
-        Me.Element43.Size = New System.Drawing.Size(24, 33)
-        Me.Element43.TabIndex = 93
-        Me.Element43.UseVisualStyleBackColor = False
-        '
-        'Element44
-        '
-        Me.Element44.BackColor = System.Drawing.Color.White
-        Me.Element44.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element44.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element44.Location = New System.Drawing.Point(1011, 146)
-        Me.Element44.Name = "Element44"
-        Me.Element44.Size = New System.Drawing.Size(24, 33)
-        Me.Element44.TabIndex = 94
-        Me.Element44.UseVisualStyleBackColor = False
-        '
-        'Element45
-        '
-        Me.Element45.BackColor = System.Drawing.Color.White
-        Me.Element45.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element45.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element45.Location = New System.Drawing.Point(1036, 146)
-        Me.Element45.Name = "Element45"
-        Me.Element45.Size = New System.Drawing.Size(24, 33)
-        Me.Element45.TabIndex = 95
-        Me.Element45.UseVisualStyleBackColor = False
-        '
-        'Element46
-        '
-        Me.Element46.BackColor = System.Drawing.Color.White
-        Me.Element46.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element46.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element46.Location = New System.Drawing.Point(1061, 146)
-        Me.Element46.Name = "Element46"
-        Me.Element46.Size = New System.Drawing.Size(24, 33)
-        Me.Element46.TabIndex = 96
-        Me.Element46.UseVisualStyleBackColor = False
-        '
-        'Element47
-        '
-        Me.Element47.BackColor = System.Drawing.Color.White
-        Me.Element47.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element47.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element47.Location = New System.Drawing.Point(1086, 146)
-        Me.Element47.Name = "Element47"
-        Me.Element47.Size = New System.Drawing.Size(24, 33)
-        Me.Element47.TabIndex = 97
-        Me.Element47.UseVisualStyleBackColor = False
-        '
-        'Element48
-        '
-        Me.Element48.BackColor = System.Drawing.Color.White
-        Me.Element48.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element48.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element48.Location = New System.Drawing.Point(1111, 146)
-        Me.Element48.Name = "Element48"
-        Me.Element48.Size = New System.Drawing.Size(24, 33)
-        Me.Element48.TabIndex = 98
-        Me.Element48.UseVisualStyleBackColor = False
-        '
-        'Element49
-        '
-        Me.Element49.BackColor = System.Drawing.Color.White
-        Me.Element49.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element49.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element49.Location = New System.Drawing.Point(1136, 146)
-        Me.Element49.Name = "Element49"
-        Me.Element49.Size = New System.Drawing.Size(24, 33)
-        Me.Element49.TabIndex = 99
-        Me.Element49.UseVisualStyleBackColor = False
-        '
-        'Element50
-        '
-        Me.Element50.BackColor = System.Drawing.Color.White
-        Me.Element50.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element50.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element50.Location = New System.Drawing.Point(1161, 146)
-        Me.Element50.Name = "Element50"
-        Me.Element50.Size = New System.Drawing.Size(24, 33)
-        Me.Element50.TabIndex = 100
-        Me.Element50.UseVisualStyleBackColor = False
-        '
-        'Element51
-        '
-        Me.Element51.BackColor = System.Drawing.Color.White
-        Me.Element51.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element51.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element51.Location = New System.Drawing.Point(1186, 146)
-        Me.Element51.Name = "Element51"
-        Me.Element51.Size = New System.Drawing.Size(24, 33)
-        Me.Element51.TabIndex = 101
-        Me.Element51.UseVisualStyleBackColor = False
-        '
-        'Element52
-        '
-        Me.Element52.BackColor = System.Drawing.Color.White
-        Me.Element52.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element52.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element52.Location = New System.Drawing.Point(1211, 146)
-        Me.Element52.Name = "Element52"
-        Me.Element52.Size = New System.Drawing.Size(24, 33)
-        Me.Element52.TabIndex = 102
-        Me.Element52.UseVisualStyleBackColor = False
-        '
-        'Element53
-        '
-        Me.Element53.BackColor = System.Drawing.Color.White
-        Me.Element53.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element53.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element53.Location = New System.Drawing.Point(1236, 146)
-        Me.Element53.Name = "Element53"
-        Me.Element53.Size = New System.Drawing.Size(24, 33)
-        Me.Element53.TabIndex = 103
-        Me.Element53.UseVisualStyleBackColor = False
-        '
-        'Element54
-        '
-        Me.Element54.BackColor = System.Drawing.Color.White
-        Me.Element54.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element54.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element54.Location = New System.Drawing.Point(1261, 146)
-        Me.Element54.Name = "Element54"
-        Me.Element54.Size = New System.Drawing.Size(24, 33)
-        Me.Element54.TabIndex = 104
-        Me.Element54.UseVisualStyleBackColor = False
-        '
-        'Element55
-        '
-        Me.Element55.BackColor = System.Drawing.Color.White
-        Me.Element55.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element55.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element55.Location = New System.Drawing.Point(836, 180)
-        Me.Element55.Name = "Element55"
-        Me.Element55.Size = New System.Drawing.Size(24, 33)
-        Me.Element55.TabIndex = 105
-        Me.Element55.UseVisualStyleBackColor = False
-        '
-        'Element56
-        '
-        Me.Element56.BackColor = System.Drawing.Color.White
-        Me.Element56.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element56.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element56.Location = New System.Drawing.Point(861, 180)
-        Me.Element56.Name = "Element56"
-        Me.Element56.Size = New System.Drawing.Size(24, 33)
-        Me.Element56.TabIndex = 106
-        Me.Element56.UseVisualStyleBackColor = False
-        '
-        'Element57
-        '
-        Me.Element57.BackColor = System.Drawing.Color.White
-        Me.Element57.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element57.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element57.Location = New System.Drawing.Point(886, 180)
-        Me.Element57.Name = "Element57"
-        Me.Element57.Size = New System.Drawing.Size(24, 33)
-        Me.Element57.TabIndex = 107
-        Me.Element57.UseVisualStyleBackColor = False
-        '
-        'Element72
-        '
-        Me.Element72.BackColor = System.Drawing.Color.White
-        Me.Element72.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element72.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element72.Location = New System.Drawing.Point(911, 180)
-        Me.Element72.Name = "Element72"
-        Me.Element72.Size = New System.Drawing.Size(24, 33)
-        Me.Element72.TabIndex = 108
-        Me.Element72.UseVisualStyleBackColor = False
-        '
-        'Element73
-        '
-        Me.Element73.BackColor = System.Drawing.Color.White
-        Me.Element73.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element73.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element73.Location = New System.Drawing.Point(936, 180)
-        Me.Element73.Name = "Element73"
-        Me.Element73.Size = New System.Drawing.Size(24, 33)
-        Me.Element73.TabIndex = 109
-        Me.Element73.UseVisualStyleBackColor = False
-        '
-        'Element74
-        '
-        Me.Element74.BackColor = System.Drawing.Color.White
-        Me.Element74.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element74.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element74.Location = New System.Drawing.Point(961, 180)
-        Me.Element74.Name = "Element74"
-        Me.Element74.Size = New System.Drawing.Size(24, 33)
-        Me.Element74.TabIndex = 110
-        Me.Element74.UseVisualStyleBackColor = False
-        '
-        'Element75
-        '
-        Me.Element75.BackColor = System.Drawing.Color.White
-        Me.Element75.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element75.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element75.Location = New System.Drawing.Point(986, 180)
-        Me.Element75.Name = "Element75"
-        Me.Element75.Size = New System.Drawing.Size(24, 33)
-        Me.Element75.TabIndex = 111
-        Me.Element75.UseVisualStyleBackColor = False
-        '
-        'Element76
-        '
-        Me.Element76.BackColor = System.Drawing.Color.White
-        Me.Element76.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element76.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element76.Location = New System.Drawing.Point(1011, 180)
-        Me.Element76.Name = "Element76"
-        Me.Element76.Size = New System.Drawing.Size(24, 33)
-        Me.Element76.TabIndex = 112
-        Me.Element76.UseVisualStyleBackColor = False
-        '
-        'Element77
-        '
-        Me.Element77.BackColor = System.Drawing.Color.White
-        Me.Element77.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element77.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element77.Location = New System.Drawing.Point(1036, 180)
-        Me.Element77.Name = "Element77"
-        Me.Element77.Size = New System.Drawing.Size(24, 33)
-        Me.Element77.TabIndex = 113
-        Me.Element77.UseVisualStyleBackColor = False
-        '
-        'Element78
-        '
-        Me.Element78.BackColor = System.Drawing.Color.White
-        Me.Element78.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element78.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element78.Location = New System.Drawing.Point(1061, 180)
-        Me.Element78.Name = "Element78"
-        Me.Element78.Size = New System.Drawing.Size(24, 33)
-        Me.Element78.TabIndex = 114
-        Me.Element78.UseVisualStyleBackColor = False
-        '
-        'Element79
-        '
-        Me.Element79.BackColor = System.Drawing.Color.White
-        Me.Element79.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element79.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element79.Location = New System.Drawing.Point(1086, 180)
-        Me.Element79.Name = "Element79"
-        Me.Element79.Size = New System.Drawing.Size(24, 33)
-        Me.Element79.TabIndex = 115
-        Me.Element79.UseVisualStyleBackColor = False
-        '
-        'Element80
-        '
-        Me.Element80.BackColor = System.Drawing.Color.White
-        Me.Element80.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element80.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element80.Location = New System.Drawing.Point(1111, 180)
-        Me.Element80.Name = "Element80"
-        Me.Element80.Size = New System.Drawing.Size(24, 33)
-        Me.Element80.TabIndex = 116
-        Me.Element80.UseVisualStyleBackColor = False
-        '
-        'Element81
-        '
-        Me.Element81.BackColor = System.Drawing.Color.White
-        Me.Element81.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element81.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element81.Location = New System.Drawing.Point(1136, 180)
-        Me.Element81.Name = "Element81"
-        Me.Element81.Size = New System.Drawing.Size(24, 33)
-        Me.Element81.TabIndex = 117
-        Me.Element81.UseVisualStyleBackColor = False
-        '
-        'Element82
-        '
-        Me.Element82.BackColor = System.Drawing.Color.White
-        Me.Element82.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element82.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element82.Location = New System.Drawing.Point(1161, 180)
-        Me.Element82.Name = "Element82"
-        Me.Element82.Size = New System.Drawing.Size(24, 33)
-        Me.Element82.TabIndex = 118
-        Me.Element82.UseVisualStyleBackColor = False
-        '
-        'Element83
-        '
-        Me.Element83.BackColor = System.Drawing.Color.White
-        Me.Element83.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element83.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element83.Location = New System.Drawing.Point(1186, 180)
-        Me.Element83.Name = "Element83"
-        Me.Element83.Size = New System.Drawing.Size(24, 33)
-        Me.Element83.TabIndex = 119
-        Me.Element83.UseVisualStyleBackColor = False
-        '
-        'Element84
-        '
-        Me.Element84.BackColor = System.Drawing.Color.White
-        Me.Element84.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element84.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element84.Location = New System.Drawing.Point(1211, 180)
-        Me.Element84.Name = "Element84"
-        Me.Element84.Size = New System.Drawing.Size(24, 33)
-        Me.Element84.TabIndex = 120
-        Me.Element84.UseVisualStyleBackColor = False
-        '
-        'Element85
-        '
-        Me.Element85.BackColor = System.Drawing.Color.White
-        Me.Element85.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element85.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element85.Location = New System.Drawing.Point(1236, 180)
-        Me.Element85.Name = "Element85"
-        Me.Element85.Size = New System.Drawing.Size(24, 33)
-        Me.Element85.TabIndex = 121
-        Me.Element85.UseVisualStyleBackColor = False
-        '
-        'Element86
-        '
-        Me.Element86.BackColor = System.Drawing.Color.White
-        Me.Element86.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element86.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element86.Location = New System.Drawing.Point(1261, 180)
-        Me.Element86.Name = "Element86"
-        Me.Element86.Size = New System.Drawing.Size(24, 33)
-        Me.Element86.TabIndex = 122
-        Me.Element86.UseVisualStyleBackColor = False
-        '
-        'Element87
-        '
-        Me.Element87.BackColor = System.Drawing.Color.White
-        Me.Element87.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element87.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element87.Location = New System.Drawing.Point(836, 214)
-        Me.Element87.Name = "Element87"
-        Me.Element87.Size = New System.Drawing.Size(24, 33)
-        Me.Element87.TabIndex = 123
-        Me.Element87.UseVisualStyleBackColor = False
-        '
-        'Element88
-        '
-        Me.Element88.BackColor = System.Drawing.Color.White
-        Me.Element88.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element88.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element88.Location = New System.Drawing.Point(861, 214)
-        Me.Element88.Name = "Element88"
-        Me.Element88.Size = New System.Drawing.Size(24, 33)
-        Me.Element88.TabIndex = 124
-        Me.Element88.UseVisualStyleBackColor = False
-        '
-        'Element89
-        '
-        Me.Element89.BackColor = System.Drawing.Color.White
-        Me.Element89.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element89.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element89.Location = New System.Drawing.Point(886, 214)
-        Me.Element89.Name = "Element89"
-        Me.Element89.Size = New System.Drawing.Size(24, 33)
-        Me.Element89.TabIndex = 125
-        Me.Element89.UseVisualStyleBackColor = False
-        '
-        'Element58
-        '
-        Me.Element58.BackColor = System.Drawing.Color.White
-        Me.Element58.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element58.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element58.Location = New System.Drawing.Point(936, 231)
-        Me.Element58.Name = "Element58"
-        Me.Element58.Size = New System.Drawing.Size(24, 33)
-        Me.Element58.TabIndex = 126
-        Me.Element58.UseVisualStyleBackColor = False
-        '
-        'Element59
-        '
-        Me.Element59.BackColor = System.Drawing.Color.White
-        Me.Element59.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element59.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element59.Location = New System.Drawing.Point(961, 231)
-        Me.Element59.Name = "Element59"
-        Me.Element59.Size = New System.Drawing.Size(24, 33)
-        Me.Element59.TabIndex = 127
-        Me.Element59.UseVisualStyleBackColor = False
-        '
-        'Element60
-        '
-        Me.Element60.BackColor = System.Drawing.Color.White
-        Me.Element60.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element60.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element60.Location = New System.Drawing.Point(986, 231)
-        Me.Element60.Name = "Element60"
-        Me.Element60.Size = New System.Drawing.Size(24, 33)
-        Me.Element60.TabIndex = 128
-        Me.Element60.UseVisualStyleBackColor = False
-        '
-        'Element61
-        '
-        Me.Element61.BackColor = System.Drawing.Color.White
-        Me.Element61.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element61.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element61.Location = New System.Drawing.Point(1011, 231)
-        Me.Element61.Name = "Element61"
-        Me.Element61.Size = New System.Drawing.Size(24, 33)
-        Me.Element61.TabIndex = 129
-        Me.Element61.UseVisualStyleBackColor = False
-        '
-        'Element62
-        '
-        Me.Element62.BackColor = System.Drawing.Color.White
-        Me.Element62.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element62.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element62.Location = New System.Drawing.Point(1036, 231)
-        Me.Element62.Name = "Element62"
-        Me.Element62.Size = New System.Drawing.Size(24, 33)
-        Me.Element62.TabIndex = 130
-        Me.Element62.UseVisualStyleBackColor = False
-        '
-        'Element63
-        '
-        Me.Element63.BackColor = System.Drawing.Color.White
-        Me.Element63.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element63.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element63.Location = New System.Drawing.Point(1061, 231)
-        Me.Element63.Name = "Element63"
-        Me.Element63.Size = New System.Drawing.Size(24, 33)
-        Me.Element63.TabIndex = 131
-        Me.Element63.UseVisualStyleBackColor = False
-        '
-        'Element64
-        '
-        Me.Element64.BackColor = System.Drawing.Color.White
-        Me.Element64.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element64.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element64.Location = New System.Drawing.Point(1086, 231)
-        Me.Element64.Name = "Element64"
-        Me.Element64.Size = New System.Drawing.Size(24, 33)
-        Me.Element64.TabIndex = 132
-        Me.Element64.UseVisualStyleBackColor = False
-        '
-        'Element65
-        '
-        Me.Element65.BackColor = System.Drawing.Color.White
-        Me.Element65.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element65.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element65.Location = New System.Drawing.Point(1111, 231)
-        Me.Element65.Name = "Element65"
-        Me.Element65.Size = New System.Drawing.Size(24, 33)
-        Me.Element65.TabIndex = 133
-        Me.Element65.UseVisualStyleBackColor = False
-        '
-        'Element66
-        '
-        Me.Element66.BackColor = System.Drawing.Color.White
-        Me.Element66.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element66.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element66.Location = New System.Drawing.Point(1136, 231)
-        Me.Element66.Name = "Element66"
-        Me.Element66.Size = New System.Drawing.Size(24, 33)
-        Me.Element66.TabIndex = 134
-        Me.Element66.UseVisualStyleBackColor = False
-        '
-        'Element67
-        '
-        Me.Element67.BackColor = System.Drawing.Color.White
-        Me.Element67.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element67.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element67.Location = New System.Drawing.Point(1161, 231)
-        Me.Element67.Name = "Element67"
-        Me.Element67.Size = New System.Drawing.Size(24, 33)
-        Me.Element67.TabIndex = 135
-        Me.Element67.UseVisualStyleBackColor = False
-        '
-        'Element68
-        '
-        Me.Element68.BackColor = System.Drawing.Color.White
-        Me.Element68.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element68.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element68.Location = New System.Drawing.Point(1186, 231)
-        Me.Element68.Name = "Element68"
-        Me.Element68.Size = New System.Drawing.Size(24, 33)
-        Me.Element68.TabIndex = 136
-        Me.Element68.UseVisualStyleBackColor = False
-        '
-        'Element69
-        '
-        Me.Element69.BackColor = System.Drawing.Color.White
-        Me.Element69.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element69.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element69.Location = New System.Drawing.Point(1211, 231)
-        Me.Element69.Name = "Element69"
-        Me.Element69.Size = New System.Drawing.Size(24, 33)
-        Me.Element69.TabIndex = 137
-        Me.Element69.UseVisualStyleBackColor = False
-        '
-        'Element70
-        '
-        Me.Element70.BackColor = System.Drawing.Color.White
-        Me.Element70.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element70.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element70.Location = New System.Drawing.Point(1236, 231)
-        Me.Element70.Name = "Element70"
-        Me.Element70.Size = New System.Drawing.Size(24, 33)
-        Me.Element70.TabIndex = 138
-        Me.Element70.UseVisualStyleBackColor = False
-        '
-        'Element71
-        '
-        Me.Element71.BackColor = System.Drawing.Color.White
-        Me.Element71.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element71.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element71.Location = New System.Drawing.Point(1261, 231)
-        Me.Element71.Name = "Element71"
-        Me.Element71.Size = New System.Drawing.Size(24, 33)
-        Me.Element71.TabIndex = 139
-        Me.Element71.UseVisualStyleBackColor = False
-        '
-        'Element90
-        '
-        Me.Element90.BackColor = System.Drawing.Color.White
-        Me.Element90.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element90.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element90.Location = New System.Drawing.Point(936, 265)
-        Me.Element90.Name = "Element90"
-        Me.Element90.Size = New System.Drawing.Size(24, 33)
-        Me.Element90.TabIndex = 140
-        Me.Element90.UseVisualStyleBackColor = False
-        '
-        'Element91
-        '
-        Me.Element91.BackColor = System.Drawing.Color.White
-        Me.Element91.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element91.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element91.Location = New System.Drawing.Point(961, 265)
-        Me.Element91.Name = "Element91"
-        Me.Element91.Size = New System.Drawing.Size(24, 33)
-        Me.Element91.TabIndex = 141
-        Me.Element91.UseVisualStyleBackColor = False
-        '
-        'Element92
-        '
-        Me.Element92.BackColor = System.Drawing.Color.White
-        Me.Element92.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element92.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element92.Location = New System.Drawing.Point(986, 265)
-        Me.Element92.Name = "Element92"
-        Me.Element92.Size = New System.Drawing.Size(24, 33)
-        Me.Element92.TabIndex = 142
-        Me.Element92.UseVisualStyleBackColor = False
-        '
-        'Element93
-        '
-        Me.Element93.BackColor = System.Drawing.Color.White
-        Me.Element93.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element93.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element93.Location = New System.Drawing.Point(1011, 265)
-        Me.Element93.Name = "Element93"
-        Me.Element93.Size = New System.Drawing.Size(24, 33)
-        Me.Element93.TabIndex = 143
-        Me.Element93.UseVisualStyleBackColor = False
-        '
-        'Element94
-        '
-        Me.Element94.BackColor = System.Drawing.Color.White
-        Me.Element94.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element94.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element94.Location = New System.Drawing.Point(1036, 265)
-        Me.Element94.Name = "Element94"
-        Me.Element94.Size = New System.Drawing.Size(24, 33)
-        Me.Element94.TabIndex = 144
-        Me.Element94.UseVisualStyleBackColor = False
-        '
-        'Element95
-        '
-        Me.Element95.BackColor = System.Drawing.Color.White
-        Me.Element95.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element95.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element95.Location = New System.Drawing.Point(1061, 265)
-        Me.Element95.Name = "Element95"
-        Me.Element95.Size = New System.Drawing.Size(24, 33)
-        Me.Element95.TabIndex = 145
-        Me.Element95.UseVisualStyleBackColor = False
-        '
-        'Element96
-        '
-        Me.Element96.BackColor = System.Drawing.Color.White
-        Me.Element96.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element96.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element96.Location = New System.Drawing.Point(1086, 265)
-        Me.Element96.Name = "Element96"
-        Me.Element96.Size = New System.Drawing.Size(24, 33)
-        Me.Element96.TabIndex = 146
-        Me.Element96.UseVisualStyleBackColor = False
-        '
-        'Element97
-        '
-        Me.Element97.BackColor = System.Drawing.Color.White
-        Me.Element97.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element97.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element97.Location = New System.Drawing.Point(1111, 265)
-        Me.Element97.Name = "Element97"
-        Me.Element97.Size = New System.Drawing.Size(24, 33)
-        Me.Element97.TabIndex = 147
-        Me.Element97.UseVisualStyleBackColor = False
-        '
-        'Element98
-        '
-        Me.Element98.BackColor = System.Drawing.Color.White
-        Me.Element98.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element98.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element98.Location = New System.Drawing.Point(1136, 265)
-        Me.Element98.Name = "Element98"
-        Me.Element98.Size = New System.Drawing.Size(24, 33)
-        Me.Element98.TabIndex = 148
-        Me.Element98.UseVisualStyleBackColor = False
-        '
-        'Element99
-        '
-        Me.Element99.BackColor = System.Drawing.Color.White
-        Me.Element99.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.Element99.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element99.Location = New System.Drawing.Point(1161, 265)
-        Me.Element99.Name = "Element99"
-        Me.Element99.Size = New System.Drawing.Size(24, 33)
-        Me.Element99.TabIndex = 149
-        Me.Element99.UseVisualStyleBackColor = False
-        '
         'Button17
         '
         Me.Button17.FlatAppearance.BorderColor = System.Drawing.Color.Silver
@@ -2437,11 +1351,1136 @@ Partial Class Form1
         Me.Label5.TabIndex = 162
         Me.Label5.Text = "Takeoff angle (degree)"
         '
+        'Button25
+        '
+        Me.Button25.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button25.Location = New System.Drawing.Point(702, 764)
+        Me.Button25.Name = "Button25"
+        Me.Button25.Size = New System.Drawing.Size(100, 38)
+        Me.Button25.TabIndex = 163
+        Me.Button25.Text = "Matrix Inverse"
+        Me.Button25.UseVisualStyleBackColor = True
+        '
+        'Button26
+        '
+        Me.Button26.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button26.Location = New System.Drawing.Point(702, 808)
+        Me.Button26.Name = "Button26"
+        Me.Button26.Size = New System.Drawing.Size(100, 38)
+        Me.Button26.TabIndex = 164
+        Me.Button26.Text = "(1+TCK)"
+        Me.Button26.UseVisualStyleBackColor = True
+        '
+        'Element99
+        '
+        Me.Element99.BackColor = System.Drawing.Color.White
+        Me.Element99.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element99.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element99.Location = New System.Drawing.Point(1161, 265)
+        Me.Element99.Name = "Element99"
+        Me.Element99.Size = New System.Drawing.Size(24, 33)
+        Me.Element99.TabIndex = 149
+        Me.Element99.UseVisualStyleBackColor = False
+        '
+        'Element98
+        '
+        Me.Element98.BackColor = System.Drawing.Color.White
+        Me.Element98.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element98.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element98.Location = New System.Drawing.Point(1136, 265)
+        Me.Element98.Name = "Element98"
+        Me.Element98.Size = New System.Drawing.Size(24, 33)
+        Me.Element98.TabIndex = 148
+        Me.Element98.UseVisualStyleBackColor = False
+        '
+        'Element97
+        '
+        Me.Element97.BackColor = System.Drawing.Color.White
+        Me.Element97.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element97.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element97.Location = New System.Drawing.Point(1111, 265)
+        Me.Element97.Name = "Element97"
+        Me.Element97.Size = New System.Drawing.Size(24, 33)
+        Me.Element97.TabIndex = 147
+        Me.Element97.UseVisualStyleBackColor = False
+        '
+        'Element96
+        '
+        Me.Element96.BackColor = System.Drawing.Color.White
+        Me.Element96.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element96.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element96.Location = New System.Drawing.Point(1086, 265)
+        Me.Element96.Name = "Element96"
+        Me.Element96.Size = New System.Drawing.Size(24, 33)
+        Me.Element96.TabIndex = 146
+        Me.Element96.UseVisualStyleBackColor = False
+        '
+        'Element95
+        '
+        Me.Element95.BackColor = System.Drawing.Color.White
+        Me.Element95.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element95.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element95.Location = New System.Drawing.Point(1061, 265)
+        Me.Element95.Name = "Element95"
+        Me.Element95.Size = New System.Drawing.Size(24, 33)
+        Me.Element95.TabIndex = 145
+        Me.Element95.UseVisualStyleBackColor = False
+        '
+        'Element94
+        '
+        Me.Element94.BackColor = System.Drawing.Color.White
+        Me.Element94.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element94.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element94.Location = New System.Drawing.Point(1036, 265)
+        Me.Element94.Name = "Element94"
+        Me.Element94.Size = New System.Drawing.Size(24, 33)
+        Me.Element94.TabIndex = 144
+        Me.Element94.UseVisualStyleBackColor = False
+        '
+        'Element93
+        '
+        Me.Element93.BackColor = System.Drawing.Color.White
+        Me.Element93.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element93.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element93.Location = New System.Drawing.Point(1011, 265)
+        Me.Element93.Name = "Element93"
+        Me.Element93.Size = New System.Drawing.Size(24, 33)
+        Me.Element93.TabIndex = 143
+        Me.Element93.UseVisualStyleBackColor = False
+        '
+        'Element92
+        '
+        Me.Element92.BackColor = System.Drawing.Color.White
+        Me.Element92.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element92.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element92.Location = New System.Drawing.Point(986, 265)
+        Me.Element92.Name = "Element92"
+        Me.Element92.Size = New System.Drawing.Size(24, 33)
+        Me.Element92.TabIndex = 142
+        Me.Element92.UseVisualStyleBackColor = False
+        '
+        'Element91
+        '
+        Me.Element91.BackColor = System.Drawing.Color.White
+        Me.Element91.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element91.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element91.Location = New System.Drawing.Point(961, 265)
+        Me.Element91.Name = "Element91"
+        Me.Element91.Size = New System.Drawing.Size(24, 33)
+        Me.Element91.TabIndex = 141
+        Me.Element91.UseVisualStyleBackColor = False
+        '
+        'Element90
+        '
+        Me.Element90.BackColor = System.Drawing.Color.White
+        Me.Element90.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element90.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element90.Location = New System.Drawing.Point(936, 265)
+        Me.Element90.Name = "Element90"
+        Me.Element90.Size = New System.Drawing.Size(24, 33)
+        Me.Element90.TabIndex = 140
+        Me.Element90.UseVisualStyleBackColor = False
+        '
+        'Element71
+        '
+        Me.Element71.BackColor = System.Drawing.Color.White
+        Me.Element71.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element71.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element71.Location = New System.Drawing.Point(1261, 231)
+        Me.Element71.Name = "Element71"
+        Me.Element71.Size = New System.Drawing.Size(24, 33)
+        Me.Element71.TabIndex = 139
+        Me.Element71.UseVisualStyleBackColor = False
+        '
+        'Element70
+        '
+        Me.Element70.BackColor = System.Drawing.Color.White
+        Me.Element70.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element70.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element70.Location = New System.Drawing.Point(1236, 231)
+        Me.Element70.Name = "Element70"
+        Me.Element70.Size = New System.Drawing.Size(24, 33)
+        Me.Element70.TabIndex = 138
+        Me.Element70.UseVisualStyleBackColor = False
+        '
+        'Element69
+        '
+        Me.Element69.BackColor = System.Drawing.Color.White
+        Me.Element69.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element69.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element69.Location = New System.Drawing.Point(1211, 231)
+        Me.Element69.Name = "Element69"
+        Me.Element69.Size = New System.Drawing.Size(24, 33)
+        Me.Element69.TabIndex = 137
+        Me.Element69.UseVisualStyleBackColor = False
+        '
+        'Element68
+        '
+        Me.Element68.BackColor = System.Drawing.Color.White
+        Me.Element68.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element68.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element68.Location = New System.Drawing.Point(1186, 231)
+        Me.Element68.Name = "Element68"
+        Me.Element68.Size = New System.Drawing.Size(24, 33)
+        Me.Element68.TabIndex = 136
+        Me.Element68.UseVisualStyleBackColor = False
+        '
+        'Element67
+        '
+        Me.Element67.BackColor = System.Drawing.Color.White
+        Me.Element67.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element67.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element67.Location = New System.Drawing.Point(1161, 231)
+        Me.Element67.Name = "Element67"
+        Me.Element67.Size = New System.Drawing.Size(24, 33)
+        Me.Element67.TabIndex = 135
+        Me.Element67.UseVisualStyleBackColor = False
+        '
+        'Element66
+        '
+        Me.Element66.BackColor = System.Drawing.Color.White
+        Me.Element66.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element66.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element66.Location = New System.Drawing.Point(1136, 231)
+        Me.Element66.Name = "Element66"
+        Me.Element66.Size = New System.Drawing.Size(24, 33)
+        Me.Element66.TabIndex = 134
+        Me.Element66.UseVisualStyleBackColor = False
+        '
+        'Element65
+        '
+        Me.Element65.BackColor = System.Drawing.Color.White
+        Me.Element65.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element65.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element65.Location = New System.Drawing.Point(1111, 231)
+        Me.Element65.Name = "Element65"
+        Me.Element65.Size = New System.Drawing.Size(24, 33)
+        Me.Element65.TabIndex = 133
+        Me.Element65.UseVisualStyleBackColor = False
+        '
+        'Element64
+        '
+        Me.Element64.BackColor = System.Drawing.Color.White
+        Me.Element64.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element64.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element64.Location = New System.Drawing.Point(1086, 231)
+        Me.Element64.Name = "Element64"
+        Me.Element64.Size = New System.Drawing.Size(24, 33)
+        Me.Element64.TabIndex = 132
+        Me.Element64.UseVisualStyleBackColor = False
+        '
+        'Element63
+        '
+        Me.Element63.BackColor = System.Drawing.Color.White
+        Me.Element63.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element63.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element63.Location = New System.Drawing.Point(1061, 231)
+        Me.Element63.Name = "Element63"
+        Me.Element63.Size = New System.Drawing.Size(24, 33)
+        Me.Element63.TabIndex = 131
+        Me.Element63.UseVisualStyleBackColor = False
+        '
+        'Element62
+        '
+        Me.Element62.BackColor = System.Drawing.Color.White
+        Me.Element62.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element62.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element62.Location = New System.Drawing.Point(1036, 231)
+        Me.Element62.Name = "Element62"
+        Me.Element62.Size = New System.Drawing.Size(24, 33)
+        Me.Element62.TabIndex = 130
+        Me.Element62.UseVisualStyleBackColor = False
+        '
+        'Element61
+        '
+        Me.Element61.BackColor = System.Drawing.Color.White
+        Me.Element61.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element61.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element61.Location = New System.Drawing.Point(1011, 231)
+        Me.Element61.Name = "Element61"
+        Me.Element61.Size = New System.Drawing.Size(24, 33)
+        Me.Element61.TabIndex = 129
+        Me.Element61.UseVisualStyleBackColor = False
+        '
+        'Element60
+        '
+        Me.Element60.BackColor = System.Drawing.Color.White
+        Me.Element60.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element60.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element60.Location = New System.Drawing.Point(986, 231)
+        Me.Element60.Name = "Element60"
+        Me.Element60.Size = New System.Drawing.Size(24, 33)
+        Me.Element60.TabIndex = 128
+        Me.Element60.UseVisualStyleBackColor = False
+        '
+        'Element59
+        '
+        Me.Element59.BackColor = System.Drawing.Color.White
+        Me.Element59.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element59.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element59.Location = New System.Drawing.Point(961, 231)
+        Me.Element59.Name = "Element59"
+        Me.Element59.Size = New System.Drawing.Size(24, 33)
+        Me.Element59.TabIndex = 127
+        Me.Element59.UseVisualStyleBackColor = False
+        '
+        'Element58
+        '
+        Me.Element58.BackColor = System.Drawing.Color.White
+        Me.Element58.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element58.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element58.Location = New System.Drawing.Point(936, 231)
+        Me.Element58.Name = "Element58"
+        Me.Element58.Size = New System.Drawing.Size(24, 33)
+        Me.Element58.TabIndex = 126
+        Me.Element58.UseVisualStyleBackColor = False
+        '
+        'Element89
+        '
+        Me.Element89.BackColor = System.Drawing.Color.White
+        Me.Element89.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element89.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element89.Location = New System.Drawing.Point(886, 214)
+        Me.Element89.Name = "Element89"
+        Me.Element89.Size = New System.Drawing.Size(24, 33)
+        Me.Element89.TabIndex = 125
+        Me.Element89.UseVisualStyleBackColor = False
+        '
+        'Element88
+        '
+        Me.Element88.BackColor = System.Drawing.Color.White
+        Me.Element88.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element88.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element88.Location = New System.Drawing.Point(861, 214)
+        Me.Element88.Name = "Element88"
+        Me.Element88.Size = New System.Drawing.Size(24, 33)
+        Me.Element88.TabIndex = 124
+        Me.Element88.UseVisualStyleBackColor = False
+        '
+        'Element87
+        '
+        Me.Element87.BackColor = System.Drawing.Color.White
+        Me.Element87.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element87.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element87.Location = New System.Drawing.Point(836, 214)
+        Me.Element87.Name = "Element87"
+        Me.Element87.Size = New System.Drawing.Size(24, 33)
+        Me.Element87.TabIndex = 123
+        Me.Element87.UseVisualStyleBackColor = False
+        '
+        'Element86
+        '
+        Me.Element86.BackColor = System.Drawing.Color.White
+        Me.Element86.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element86.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element86.Location = New System.Drawing.Point(1261, 180)
+        Me.Element86.Name = "Element86"
+        Me.Element86.Size = New System.Drawing.Size(24, 33)
+        Me.Element86.TabIndex = 122
+        Me.Element86.UseVisualStyleBackColor = False
+        '
+        'Element85
+        '
+        Me.Element85.BackColor = System.Drawing.Color.White
+        Me.Element85.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element85.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element85.Location = New System.Drawing.Point(1236, 180)
+        Me.Element85.Name = "Element85"
+        Me.Element85.Size = New System.Drawing.Size(24, 33)
+        Me.Element85.TabIndex = 121
+        Me.Element85.UseVisualStyleBackColor = False
+        '
+        'Element84
+        '
+        Me.Element84.BackColor = System.Drawing.Color.White
+        Me.Element84.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element84.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element84.Location = New System.Drawing.Point(1211, 180)
+        Me.Element84.Name = "Element84"
+        Me.Element84.Size = New System.Drawing.Size(24, 33)
+        Me.Element84.TabIndex = 120
+        Me.Element84.UseVisualStyleBackColor = False
+        '
+        'Element83
+        '
+        Me.Element83.BackColor = System.Drawing.Color.White
+        Me.Element83.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element83.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element83.Location = New System.Drawing.Point(1186, 180)
+        Me.Element83.Name = "Element83"
+        Me.Element83.Size = New System.Drawing.Size(24, 33)
+        Me.Element83.TabIndex = 119
+        Me.Element83.UseVisualStyleBackColor = False
+        '
+        'Element82
+        '
+        Me.Element82.BackColor = System.Drawing.Color.White
+        Me.Element82.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element82.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element82.Location = New System.Drawing.Point(1161, 180)
+        Me.Element82.Name = "Element82"
+        Me.Element82.Size = New System.Drawing.Size(24, 33)
+        Me.Element82.TabIndex = 118
+        Me.Element82.UseVisualStyleBackColor = False
+        '
+        'Element81
+        '
+        Me.Element81.BackColor = System.Drawing.Color.White
+        Me.Element81.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element81.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element81.Location = New System.Drawing.Point(1136, 180)
+        Me.Element81.Name = "Element81"
+        Me.Element81.Size = New System.Drawing.Size(24, 33)
+        Me.Element81.TabIndex = 117
+        Me.Element81.UseVisualStyleBackColor = False
+        '
+        'Element80
+        '
+        Me.Element80.BackColor = System.Drawing.Color.White
+        Me.Element80.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element80.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element80.Location = New System.Drawing.Point(1111, 180)
+        Me.Element80.Name = "Element80"
+        Me.Element80.Size = New System.Drawing.Size(24, 33)
+        Me.Element80.TabIndex = 116
+        Me.Element80.UseVisualStyleBackColor = False
+        '
+        'Element79
+        '
+        Me.Element79.BackColor = System.Drawing.Color.White
+        Me.Element79.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element79.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element79.Location = New System.Drawing.Point(1086, 180)
+        Me.Element79.Name = "Element79"
+        Me.Element79.Size = New System.Drawing.Size(24, 33)
+        Me.Element79.TabIndex = 115
+        Me.Element79.UseVisualStyleBackColor = False
+        '
+        'Element78
+        '
+        Me.Element78.BackColor = System.Drawing.Color.White
+        Me.Element78.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element78.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element78.Location = New System.Drawing.Point(1061, 180)
+        Me.Element78.Name = "Element78"
+        Me.Element78.Size = New System.Drawing.Size(24, 33)
+        Me.Element78.TabIndex = 114
+        Me.Element78.UseVisualStyleBackColor = False
+        '
+        'Element77
+        '
+        Me.Element77.BackColor = System.Drawing.Color.White
+        Me.Element77.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element77.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element77.Location = New System.Drawing.Point(1036, 180)
+        Me.Element77.Name = "Element77"
+        Me.Element77.Size = New System.Drawing.Size(24, 33)
+        Me.Element77.TabIndex = 113
+        Me.Element77.UseVisualStyleBackColor = False
+        '
+        'Element76
+        '
+        Me.Element76.BackColor = System.Drawing.Color.White
+        Me.Element76.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element76.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element76.Location = New System.Drawing.Point(1011, 180)
+        Me.Element76.Name = "Element76"
+        Me.Element76.Size = New System.Drawing.Size(24, 33)
+        Me.Element76.TabIndex = 112
+        Me.Element76.UseVisualStyleBackColor = False
+        '
+        'Element75
+        '
+        Me.Element75.BackColor = System.Drawing.Color.White
+        Me.Element75.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element75.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element75.Location = New System.Drawing.Point(986, 180)
+        Me.Element75.Name = "Element75"
+        Me.Element75.Size = New System.Drawing.Size(24, 33)
+        Me.Element75.TabIndex = 111
+        Me.Element75.UseVisualStyleBackColor = False
+        '
+        'Element74
+        '
+        Me.Element74.BackColor = System.Drawing.Color.White
+        Me.Element74.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element74.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element74.Location = New System.Drawing.Point(961, 180)
+        Me.Element74.Name = "Element74"
+        Me.Element74.Size = New System.Drawing.Size(24, 33)
+        Me.Element74.TabIndex = 110
+        Me.Element74.UseVisualStyleBackColor = False
+        '
+        'Element73
+        '
+        Me.Element73.BackColor = System.Drawing.Color.White
+        Me.Element73.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element73.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element73.Location = New System.Drawing.Point(936, 180)
+        Me.Element73.Name = "Element73"
+        Me.Element73.Size = New System.Drawing.Size(24, 33)
+        Me.Element73.TabIndex = 109
+        Me.Element73.UseVisualStyleBackColor = False
+        '
+        'Element72
+        '
+        Me.Element72.BackColor = System.Drawing.Color.White
+        Me.Element72.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element72.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element72.Location = New System.Drawing.Point(911, 180)
+        Me.Element72.Name = "Element72"
+        Me.Element72.Size = New System.Drawing.Size(24, 33)
+        Me.Element72.TabIndex = 108
+        Me.Element72.UseVisualStyleBackColor = False
+        '
+        'Element57
+        '
+        Me.Element57.BackColor = System.Drawing.Color.White
+        Me.Element57.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element57.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element57.Location = New System.Drawing.Point(886, 180)
+        Me.Element57.Name = "Element57"
+        Me.Element57.Size = New System.Drawing.Size(24, 33)
+        Me.Element57.TabIndex = 107
+        Me.Element57.UseVisualStyleBackColor = False
+        '
+        'Element56
+        '
+        Me.Element56.BackColor = System.Drawing.Color.White
+        Me.Element56.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element56.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element56.Location = New System.Drawing.Point(861, 180)
+        Me.Element56.Name = "Element56"
+        Me.Element56.Size = New System.Drawing.Size(24, 33)
+        Me.Element56.TabIndex = 106
+        Me.Element56.UseVisualStyleBackColor = False
+        '
+        'Element55
+        '
+        Me.Element55.BackColor = System.Drawing.Color.White
+        Me.Element55.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element55.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element55.Location = New System.Drawing.Point(836, 180)
+        Me.Element55.Name = "Element55"
+        Me.Element55.Size = New System.Drawing.Size(24, 33)
+        Me.Element55.TabIndex = 105
+        Me.Element55.UseVisualStyleBackColor = False
+        '
+        'Element54
+        '
+        Me.Element54.BackColor = System.Drawing.Color.White
+        Me.Element54.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element54.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element54.Location = New System.Drawing.Point(1261, 146)
+        Me.Element54.Name = "Element54"
+        Me.Element54.Size = New System.Drawing.Size(24, 33)
+        Me.Element54.TabIndex = 104
+        Me.Element54.UseVisualStyleBackColor = False
+        '
+        'Element53
+        '
+        Me.Element53.BackColor = System.Drawing.Color.White
+        Me.Element53.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element53.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element53.Location = New System.Drawing.Point(1236, 146)
+        Me.Element53.Name = "Element53"
+        Me.Element53.Size = New System.Drawing.Size(24, 33)
+        Me.Element53.TabIndex = 103
+        Me.Element53.UseVisualStyleBackColor = False
+        '
+        'Element52
+        '
+        Me.Element52.BackColor = System.Drawing.Color.White
+        Me.Element52.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element52.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element52.Location = New System.Drawing.Point(1211, 146)
+        Me.Element52.Name = "Element52"
+        Me.Element52.Size = New System.Drawing.Size(24, 33)
+        Me.Element52.TabIndex = 102
+        Me.Element52.UseVisualStyleBackColor = False
+        '
+        'Element51
+        '
+        Me.Element51.BackColor = System.Drawing.Color.White
+        Me.Element51.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element51.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element51.Location = New System.Drawing.Point(1186, 146)
+        Me.Element51.Name = "Element51"
+        Me.Element51.Size = New System.Drawing.Size(24, 33)
+        Me.Element51.TabIndex = 101
+        Me.Element51.UseVisualStyleBackColor = False
+        '
+        'Element50
+        '
+        Me.Element50.BackColor = System.Drawing.Color.White
+        Me.Element50.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element50.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element50.Location = New System.Drawing.Point(1161, 146)
+        Me.Element50.Name = "Element50"
+        Me.Element50.Size = New System.Drawing.Size(24, 33)
+        Me.Element50.TabIndex = 100
+        Me.Element50.UseVisualStyleBackColor = False
+        '
+        'Element49
+        '
+        Me.Element49.BackColor = System.Drawing.Color.White
+        Me.Element49.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element49.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element49.Location = New System.Drawing.Point(1136, 146)
+        Me.Element49.Name = "Element49"
+        Me.Element49.Size = New System.Drawing.Size(24, 33)
+        Me.Element49.TabIndex = 99
+        Me.Element49.UseVisualStyleBackColor = False
+        '
+        'Element48
+        '
+        Me.Element48.BackColor = System.Drawing.Color.White
+        Me.Element48.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element48.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element48.Location = New System.Drawing.Point(1111, 146)
+        Me.Element48.Name = "Element48"
+        Me.Element48.Size = New System.Drawing.Size(24, 33)
+        Me.Element48.TabIndex = 98
+        Me.Element48.UseVisualStyleBackColor = False
+        '
+        'Element47
+        '
+        Me.Element47.BackColor = System.Drawing.Color.White
+        Me.Element47.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element47.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element47.Location = New System.Drawing.Point(1086, 146)
+        Me.Element47.Name = "Element47"
+        Me.Element47.Size = New System.Drawing.Size(24, 33)
+        Me.Element47.TabIndex = 97
+        Me.Element47.UseVisualStyleBackColor = False
+        '
+        'Element46
+        '
+        Me.Element46.BackColor = System.Drawing.Color.White
+        Me.Element46.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element46.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element46.Location = New System.Drawing.Point(1061, 146)
+        Me.Element46.Name = "Element46"
+        Me.Element46.Size = New System.Drawing.Size(24, 33)
+        Me.Element46.TabIndex = 96
+        Me.Element46.UseVisualStyleBackColor = False
+        '
+        'Element45
+        '
+        Me.Element45.BackColor = System.Drawing.Color.White
+        Me.Element45.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element45.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element45.Location = New System.Drawing.Point(1036, 146)
+        Me.Element45.Name = "Element45"
+        Me.Element45.Size = New System.Drawing.Size(24, 33)
+        Me.Element45.TabIndex = 95
+        Me.Element45.UseVisualStyleBackColor = False
+        '
+        'Element44
+        '
+        Me.Element44.BackColor = System.Drawing.Color.White
+        Me.Element44.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element44.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element44.Location = New System.Drawing.Point(1011, 146)
+        Me.Element44.Name = "Element44"
+        Me.Element44.Size = New System.Drawing.Size(24, 33)
+        Me.Element44.TabIndex = 94
+        Me.Element44.UseVisualStyleBackColor = False
+        '
+        'Element43
+        '
+        Me.Element43.BackColor = System.Drawing.Color.White
+        Me.Element43.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element43.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element43.Location = New System.Drawing.Point(986, 146)
+        Me.Element43.Name = "Element43"
+        Me.Element43.Size = New System.Drawing.Size(24, 33)
+        Me.Element43.TabIndex = 93
+        Me.Element43.UseVisualStyleBackColor = False
+        '
+        'Element42
+        '
+        Me.Element42.BackColor = System.Drawing.Color.White
+        Me.Element42.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element42.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element42.Location = New System.Drawing.Point(961, 146)
+        Me.Element42.Name = "Element42"
+        Me.Element42.Size = New System.Drawing.Size(24, 33)
+        Me.Element42.TabIndex = 92
+        Me.Element42.UseVisualStyleBackColor = False
+        '
+        'Element41
+        '
+        Me.Element41.BackColor = System.Drawing.Color.White
+        Me.Element41.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element41.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element41.Location = New System.Drawing.Point(936, 146)
+        Me.Element41.Name = "Element41"
+        Me.Element41.Size = New System.Drawing.Size(24, 33)
+        Me.Element41.TabIndex = 91
+        Me.Element41.UseVisualStyleBackColor = False
+        '
+        'Element40
+        '
+        Me.Element40.BackColor = System.Drawing.Color.White
+        Me.Element40.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element40.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element40.Location = New System.Drawing.Point(911, 146)
+        Me.Element40.Name = "Element40"
+        Me.Element40.Size = New System.Drawing.Size(24, 33)
+        Me.Element40.TabIndex = 90
+        Me.Element40.UseVisualStyleBackColor = False
+        '
+        'Element39
+        '
+        Me.Element39.BackColor = System.Drawing.Color.White
+        Me.Element39.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element39.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element39.Location = New System.Drawing.Point(886, 146)
+        Me.Element39.Name = "Element39"
+        Me.Element39.Size = New System.Drawing.Size(24, 33)
+        Me.Element39.TabIndex = 89
+        Me.Element39.UseVisualStyleBackColor = False
+        '
+        'Element38
+        '
+        Me.Element38.BackColor = System.Drawing.Color.White
+        Me.Element38.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element38.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element38.Location = New System.Drawing.Point(861, 146)
+        Me.Element38.Name = "Element38"
+        Me.Element38.Size = New System.Drawing.Size(24, 33)
+        Me.Element38.TabIndex = 88
+        Me.Element38.UseVisualStyleBackColor = False
+        '
+        'Element37
+        '
+        Me.Element37.BackColor = System.Drawing.Color.White
+        Me.Element37.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element37.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element37.Location = New System.Drawing.Point(836, 146)
+        Me.Element37.Name = "Element37"
+        Me.Element37.Size = New System.Drawing.Size(24, 33)
+        Me.Element37.TabIndex = 87
+        Me.Element37.UseVisualStyleBackColor = False
+        '
+        'Element36
+        '
+        Me.Element36.BackColor = System.Drawing.Color.White
+        Me.Element36.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element36.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element36.Location = New System.Drawing.Point(1261, 112)
+        Me.Element36.Name = "Element36"
+        Me.Element36.Size = New System.Drawing.Size(24, 33)
+        Me.Element36.TabIndex = 86
+        Me.Element36.UseVisualStyleBackColor = False
+        '
+        'Element35
+        '
+        Me.Element35.BackColor = System.Drawing.Color.White
+        Me.Element35.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element35.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element35.Location = New System.Drawing.Point(1236, 112)
+        Me.Element35.Name = "Element35"
+        Me.Element35.Size = New System.Drawing.Size(24, 33)
+        Me.Element35.TabIndex = 85
+        Me.Element35.UseVisualStyleBackColor = False
+        '
+        'Element34
+        '
+        Me.Element34.BackColor = System.Drawing.Color.White
+        Me.Element34.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element34.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element34.Location = New System.Drawing.Point(1211, 112)
+        Me.Element34.Name = "Element34"
+        Me.Element34.Size = New System.Drawing.Size(24, 33)
+        Me.Element34.TabIndex = 84
+        Me.Element34.UseVisualStyleBackColor = False
+        '
+        'Element33
+        '
+        Me.Element33.BackColor = System.Drawing.Color.White
+        Me.Element33.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element33.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element33.Location = New System.Drawing.Point(1186, 112)
+        Me.Element33.Name = "Element33"
+        Me.Element33.Size = New System.Drawing.Size(24, 33)
+        Me.Element33.TabIndex = 83
+        Me.Element33.UseVisualStyleBackColor = False
+        '
+        'Element32
+        '
+        Me.Element32.BackColor = System.Drawing.Color.White
+        Me.Element32.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element32.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element32.Location = New System.Drawing.Point(1161, 112)
+        Me.Element32.Name = "Element32"
+        Me.Element32.Size = New System.Drawing.Size(24, 33)
+        Me.Element32.TabIndex = 82
+        Me.Element32.UseVisualStyleBackColor = False
+        '
+        'Element31
+        '
+        Me.Element31.BackColor = System.Drawing.Color.White
+        Me.Element31.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element31.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element31.Location = New System.Drawing.Point(1136, 112)
+        Me.Element31.Name = "Element31"
+        Me.Element31.Size = New System.Drawing.Size(24, 33)
+        Me.Element31.TabIndex = 81
+        Me.Element31.UseVisualStyleBackColor = False
+        '
+        'Element30
+        '
+        Me.Element30.BackColor = System.Drawing.Color.White
+        Me.Element30.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element30.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element30.Location = New System.Drawing.Point(1111, 112)
+        Me.Element30.Name = "Element30"
+        Me.Element30.Size = New System.Drawing.Size(24, 33)
+        Me.Element30.TabIndex = 80
+        Me.Element30.UseVisualStyleBackColor = False
+        '
+        'Element29
+        '
+        Me.Element29.BackColor = System.Drawing.Color.White
+        Me.Element29.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element29.Location = New System.Drawing.Point(1086, 112)
+        Me.Element29.Name = "Element29"
+        Me.Element29.Size = New System.Drawing.Size(24, 33)
+        Me.Element29.TabIndex = 79
+        Me.Element29.UseVisualStyleBackColor = False
+        '
+        'Element28
+        '
+        Me.Element28.BackColor = System.Drawing.Color.White
+        Me.Element28.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element28.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element28.Location = New System.Drawing.Point(1061, 112)
+        Me.Element28.Name = "Element28"
+        Me.Element28.Size = New System.Drawing.Size(24, 33)
+        Me.Element28.TabIndex = 78
+        Me.Element28.UseVisualStyleBackColor = False
+        '
+        'Element27
+        '
+        Me.Element27.BackColor = System.Drawing.Color.White
+        Me.Element27.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element27.Location = New System.Drawing.Point(1036, 112)
+        Me.Element27.Name = "Element27"
+        Me.Element27.Size = New System.Drawing.Size(24, 33)
+        Me.Element27.TabIndex = 77
+        Me.Element27.UseVisualStyleBackColor = False
+        '
+        'Element26
+        '
+        Me.Element26.BackColor = System.Drawing.Color.White
+        Me.Element26.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element26.Location = New System.Drawing.Point(1011, 112)
+        Me.Element26.Name = "Element26"
+        Me.Element26.Size = New System.Drawing.Size(24, 33)
+        Me.Element26.TabIndex = 76
+        Me.Element26.UseVisualStyleBackColor = False
+        '
+        'Element25
+        '
+        Me.Element25.BackColor = System.Drawing.Color.White
+        Me.Element25.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element25.Location = New System.Drawing.Point(986, 112)
+        Me.Element25.Name = "Element25"
+        Me.Element25.Size = New System.Drawing.Size(24, 33)
+        Me.Element25.TabIndex = 75
+        Me.Element25.UseVisualStyleBackColor = False
+        '
+        'Element24
+        '
+        Me.Element24.BackColor = System.Drawing.Color.White
+        Me.Element24.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element24.Location = New System.Drawing.Point(961, 112)
+        Me.Element24.Name = "Element24"
+        Me.Element24.Size = New System.Drawing.Size(24, 33)
+        Me.Element24.TabIndex = 74
+        Me.Element24.UseVisualStyleBackColor = False
+        '
+        'Element23
+        '
+        Me.Element23.BackColor = System.Drawing.Color.White
+        Me.Element23.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element23.Location = New System.Drawing.Point(936, 112)
+        Me.Element23.Name = "Element23"
+        Me.Element23.Size = New System.Drawing.Size(24, 33)
+        Me.Element23.TabIndex = 73
+        Me.Element23.UseVisualStyleBackColor = False
+        '
+        'Element22
+        '
+        Me.Element22.BackColor = System.Drawing.Color.White
+        Me.Element22.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element22.Location = New System.Drawing.Point(911, 112)
+        Me.Element22.Name = "Element22"
+        Me.Element22.Size = New System.Drawing.Size(24, 33)
+        Me.Element22.TabIndex = 72
+        Me.Element22.UseVisualStyleBackColor = False
+        '
+        'Element21
+        '
+        Me.Element21.BackColor = System.Drawing.Color.White
+        Me.Element21.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element21.Location = New System.Drawing.Point(886, 112)
+        Me.Element21.Name = "Element21"
+        Me.Element21.Size = New System.Drawing.Size(24, 33)
+        Me.Element21.TabIndex = 71
+        Me.Element21.UseVisualStyleBackColor = False
+        '
+        'Element20
+        '
+        Me.Element20.BackColor = System.Drawing.Color.White
+        Me.Element20.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element20.Location = New System.Drawing.Point(861, 112)
+        Me.Element20.Name = "Element20"
+        Me.Element20.Size = New System.Drawing.Size(24, 33)
+        Me.Element20.TabIndex = 70
+        Me.Element20.UseVisualStyleBackColor = False
+        '
+        'Element19
+        '
+        Me.Element19.BackColor = System.Drawing.Color.White
+        Me.Element19.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element19.Location = New System.Drawing.Point(836, 112)
+        Me.Element19.Name = "Element19"
+        Me.Element19.Size = New System.Drawing.Size(24, 33)
+        Me.Element19.TabIndex = 69
+        Me.Element19.UseVisualStyleBackColor = False
+        '
+        'Element18
+        '
+        Me.Element18.BackColor = System.Drawing.Color.White
+        Me.Element18.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element18.Location = New System.Drawing.Point(1261, 78)
+        Me.Element18.Name = "Element18"
+        Me.Element18.Size = New System.Drawing.Size(24, 33)
+        Me.Element18.TabIndex = 68
+        Me.Element18.UseVisualStyleBackColor = False
+        '
+        'Element17
+        '
+        Me.Element17.BackColor = System.Drawing.Color.White
+        Me.Element17.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element17.Location = New System.Drawing.Point(1236, 78)
+        Me.Element17.Name = "Element17"
+        Me.Element17.Size = New System.Drawing.Size(24, 33)
+        Me.Element17.TabIndex = 67
+        Me.Element17.UseVisualStyleBackColor = False
+        '
+        'Element16
+        '
+        Me.Element16.BackColor = System.Drawing.Color.White
+        Me.Element16.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element16.Location = New System.Drawing.Point(1211, 78)
+        Me.Element16.Name = "Element16"
+        Me.Element16.Size = New System.Drawing.Size(24, 33)
+        Me.Element16.TabIndex = 66
+        Me.Element16.UseVisualStyleBackColor = False
+        '
+        'Element15
+        '
+        Me.Element15.BackColor = System.Drawing.Color.White
+        Me.Element15.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element15.Location = New System.Drawing.Point(1186, 78)
+        Me.Element15.Name = "Element15"
+        Me.Element15.Size = New System.Drawing.Size(24, 33)
+        Me.Element15.TabIndex = 65
+        Me.Element15.UseVisualStyleBackColor = False
+        '
+        'Element14
+        '
+        Me.Element14.BackColor = System.Drawing.Color.White
+        Me.Element14.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element14.Location = New System.Drawing.Point(1161, 78)
+        Me.Element14.Name = "Element14"
+        Me.Element14.Size = New System.Drawing.Size(24, 33)
+        Me.Element14.TabIndex = 64
+        Me.Element14.UseVisualStyleBackColor = False
+        '
+        'Element13
+        '
+        Me.Element13.BackColor = System.Drawing.Color.White
+        Me.Element13.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element13.Location = New System.Drawing.Point(1136, 78)
+        Me.Element13.Name = "Element13"
+        Me.Element13.Size = New System.Drawing.Size(24, 33)
+        Me.Element13.TabIndex = 63
+        Me.Element13.UseVisualStyleBackColor = False
+        '
+        'Element12
+        '
+        Me.Element12.BackColor = System.Drawing.Color.White
+        Me.Element12.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element12.Location = New System.Drawing.Point(861, 78)
+        Me.Element12.Name = "Element12"
+        Me.Element12.Size = New System.Drawing.Size(24, 33)
+        Me.Element12.TabIndex = 62
+        Me.Element12.UseVisualStyleBackColor = False
+        '
+        'Element11
+        '
+        Me.Element11.BackColor = System.Drawing.Color.White
+        Me.Element11.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element11.Location = New System.Drawing.Point(836, 78)
+        Me.Element11.Name = "Element11"
+        Me.Element11.Size = New System.Drawing.Size(24, 33)
+        Me.Element11.TabIndex = 61
+        Me.Element11.UseVisualStyleBackColor = False
+        '
+        'Element10
+        '
+        Me.Element10.BackColor = System.Drawing.Color.White
+        Me.Element10.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element10.Location = New System.Drawing.Point(1261, 44)
+        Me.Element10.Name = "Element10"
+        Me.Element10.Size = New System.Drawing.Size(24, 33)
+        Me.Element10.TabIndex = 60
+        Me.Element10.UseVisualStyleBackColor = False
+        '
+        'Element9
+        '
+        Me.Element9.BackColor = System.Drawing.Color.White
+        Me.Element9.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element9.Location = New System.Drawing.Point(1236, 44)
+        Me.Element9.Name = "Element9"
+        Me.Element9.Size = New System.Drawing.Size(24, 33)
+        Me.Element9.TabIndex = 59
+        Me.Element9.UseVisualStyleBackColor = False
+        '
+        'Element8
+        '
+        Me.Element8.BackColor = System.Drawing.Color.White
+        Me.Element8.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element8.Location = New System.Drawing.Point(1211, 44)
+        Me.Element8.Name = "Element8"
+        Me.Element8.Size = New System.Drawing.Size(24, 33)
+        Me.Element8.TabIndex = 58
+        Me.Element8.UseVisualStyleBackColor = False
+        '
+        'Element7
+        '
+        Me.Element7.BackColor = System.Drawing.Color.White
+        Me.Element7.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element7.Location = New System.Drawing.Point(1186, 44)
+        Me.Element7.Name = "Element7"
+        Me.Element7.Size = New System.Drawing.Size(24, 33)
+        Me.Element7.TabIndex = 57
+        Me.Element7.UseVisualStyleBackColor = False
+        '
+        'Element6
+        '
+        Me.Element6.BackColor = System.Drawing.Color.White
+        Me.Element6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element6.Location = New System.Drawing.Point(1161, 44)
+        Me.Element6.Name = "Element6"
+        Me.Element6.Size = New System.Drawing.Size(24, 33)
+        Me.Element6.TabIndex = 56
+        Me.Element6.UseVisualStyleBackColor = False
+        '
+        'Element5
+        '
+        Me.Element5.BackColor = System.Drawing.Color.White
+        Me.Element5.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element5.Location = New System.Drawing.Point(1136, 44)
+        Me.Element5.Name = "Element5"
+        Me.Element5.Size = New System.Drawing.Size(24, 33)
+        Me.Element5.TabIndex = 55
+        Me.Element5.UseVisualStyleBackColor = False
+        '
+        'Element4
+        '
+        Me.Element4.BackColor = System.Drawing.Color.White
+        Me.Element4.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element4.Location = New System.Drawing.Point(861, 44)
+        Me.Element4.Name = "Element4"
+        Me.Element4.Size = New System.Drawing.Size(24, 33)
+        Me.Element4.TabIndex = 54
+        Me.Element4.UseVisualStyleBackColor = False
+        '
+        'Element3
+        '
+        Me.Element3.BackColor = System.Drawing.Color.White
+        Me.Element3.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element3.Location = New System.Drawing.Point(836, 44)
+        Me.Element3.Name = "Element3"
+        Me.Element3.Size = New System.Drawing.Size(24, 33)
+        Me.Element3.TabIndex = 53
+        Me.Element3.UseVisualStyleBackColor = False
+        '
+        'Element2
+        '
+        Me.Element2.BackColor = System.Drawing.Color.White
+        Me.Element2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element2.Location = New System.Drawing.Point(1261, 10)
+        Me.Element2.Name = "Element2"
+        Me.Element2.Size = New System.Drawing.Size(24, 33)
+        Me.Element2.TabIndex = 52
+        Me.Element2.UseVisualStyleBackColor = False
+        '
+        'Element1
+        '
+        Me.Element1.BackColor = System.Drawing.Color.White
+        Me.Element1.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Element1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Element1.Location = New System.Drawing.Point(836, 10)
+        Me.Element1.Name = "Element1"
+        Me.Element1.Size = New System.Drawing.Size(24, 33)
+        Me.Element1.TabIndex = 48
+        Me.Element1.UseVisualStyleBackColor = False
+        '
+        'Button27
+        '
+        Me.Button27.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button27.Location = New System.Drawing.Point(239, 826)
+        Me.Button27.Name = "Button27"
+        Me.Button27.Size = New System.Drawing.Size(100, 38)
+        Me.Button27.TabIndex = 165
+        Me.Button27.Text = "MAC pure elts"
+        Me.Button27.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1288, 624)
+        Me.ClientSize = New System.Drawing.Size(1288, 870)
+        Me.Controls.Add(Me.Button27)
+        Me.Controls.Add(Me.Button26)
+        Me.Controls.Add(Me.Button25)
         Me.Controls.Add(Me.Label5)
         Me.Controls.Add(Me.TextBox1)
         Me.Controls.Add(Me.CheckBox14)
@@ -2820,4 +2859,7 @@ Partial Class Form1
     Friend WithEvents Label18 As Label
     Friend WithEvents TextBox18 As TextBox
     Friend WithEvents CheckBox22 As CheckBox
+    Friend WithEvents Button25 As Button
+    Friend WithEvents Button26 As Button
+    Friend WithEvents Button27 As Button
 End Class

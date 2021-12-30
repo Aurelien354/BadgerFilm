@@ -1,4 +1,6 @@
-﻿Module interpol_module
+﻿Imports System.IO
+
+Module interpol_module
     '***********************************************
     'Interpole the input data data_xs at the energy E_inter using log log interpolation methode
     '***********************************************
@@ -40,42 +42,59 @@
         Catch ex As Exception
             'MsgBox("Ionization cross section not found!")
             Console.WriteLine("Ionization cross section not found!")
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in interpol_log_log " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MsgBox(tmp)
+
             Return {-1}
+
         End Try
 
     End Function
 
     Public Function interpol_log_log_method(energy() As Double, xs() As Double, energy_inter As Double) As Double
-        interpol_log_log_method = 0
+        Try
+            interpol_log_log_method = 0
 
-        If energy_inter < energy(0) Then
-            Exit Function
-        End If
+            If energy_inter < energy(0) Then
+                Exit Function
+            End If
 
-        For j As Integer = 0 To UBound(energy) - 1
-            If energy_inter < energy(j + 1) And energy_inter > energy(j) Then
-                Dim y2 As Double = xs(j + 1)
-                Dim y1 As Double = xs(j)
-                Dim x2 As Double = energy(j + 1)
-                Dim x1 As Double = energy(j)
+            For j As Integer = 0 To UBound(energy) - 1
+                If energy_inter < energy(j + 1) And energy_inter > energy(j) Then
+                    Dim y2 As Double = xs(j + 1)
+                    Dim y1 As Double = xs(j)
+                    Dim x2 As Double = energy(j + 1)
+                    Dim x1 As Double = energy(j)
 
-                If y2 = 0 Or y1 = 0 Then
-                    interpol_log_log_method = 0
-                Else
-                    interpol_log_log_method = 10 ^ (Math.Log10(y1) + Math.Log10(y2 / y1) * Math.Log10(energy_inter / x1) / Math.Log10(x2 / x1))
+                    If y2 = 0 Or y1 = 0 Then
+                        interpol_log_log_method = 0
+                    Else
+                        interpol_log_log_method = 10 ^ (Math.Log10(y1) + Math.Log10(y2 / y1) * Math.Log10(energy_inter / x1) / Math.Log10(x2 / x1))
+                    End If
+                    Exit Function
                 End If
-                Exit Function
-            End If
-            If energy_inter = energy(j) Then
-                interpol_log_log_method = energy(j)
-                Exit Function
-            End If
-        Next
+                If energy_inter = energy(j) Then
+                    interpol_log_log_method = energy(j)
+                    Exit Function
+                End If
+            Next
 
-        If energy_inter = energy(UBound(energy)) Then
-            interpol_log_log_method = xs(UBound(energy))
-        End If
+            If energy_inter = energy(UBound(energy)) Then
+                interpol_log_log_method = xs(UBound(energy))
+            End If
 
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in interpol_log_log_method " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MsgBox(tmp)
+        End Try
 
     End Function
 End Module

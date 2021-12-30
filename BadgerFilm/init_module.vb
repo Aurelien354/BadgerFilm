@@ -1003,8 +1003,8 @@ Module init_module
         Dim pop As Double
 
         pile = 0
-        pop = 0
-        poupi = 0
+        'pop = 0
+        'poupi = 0
 
         If (shell1 = shell2) Then
             Return 1

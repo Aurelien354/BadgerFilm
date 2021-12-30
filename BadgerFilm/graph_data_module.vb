@@ -1,4 +1,6 @@
-﻿Module graph_data_module
+﻿Imports System.IO
+
+Module graph_data_module
     Public Sub graph_data_simple(ByVal x() As Double, ByVal y() As Double, ByRef chart1 As DataVisualization.Charting.Chart,
                                  ByVal precisionX As String, ByVal precisionY As String, ByVal graph_limits() As Double, ByVal reset As Boolean,
                                  ByVal color As String, ByVal AxisX_Title As String, ByVal AxisY_Title As String,
@@ -61,7 +63,12 @@
 
         Catch Ex As Exception
             MessageBox.Show("Error in image_extractor->graph_data: " & Ex.Message)
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine("Error in image_extractor->graph_data: " & Ex.Message)
+            End Using
         End Try
+
 
     End Sub
 End Module

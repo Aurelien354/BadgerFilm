@@ -85,7 +85,12 @@ Module XNotUsed_module
             End If
 
         Catch Ex As Exception
-            MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in find_mac_EPDL " & Ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
 
         Finally
             ' Check this again, since we need to make sure we didn't throw an exception on open. 

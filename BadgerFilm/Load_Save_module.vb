@@ -194,23 +194,29 @@ Module Load_Save_module
                 layer_handler(i).mass_thickness = layer_handler(i).density * layer_handler(i).thickness * 10 ^ -8
             Next
 
-        Catch Ex As Exception
-            MessageBox.Show("Not a valid BadgerFilm input file. Original error: " & Ex.Message)
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Not a valid BadgerFilm input file. Original error: " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
         End Try
 
     End Sub
 
     Public Sub export(ByVal file_name As String, ByVal layer_handler() As layer, ByVal elt_exp_handler() As Elt_exp, ByVal toa As Double, ByVal version As String)
-        '*******************************************************
-        ' Function used to save the data
-        'file_name is the name of the saved file
-        'layer_handler contains the geomoetry of the sample
-        'elt_exp_handler contains the experimental data (elements, Xray lines, experimental kratios, kV, ...)
-        'toa is the takeoff angle in degree
-        'version is used for compatibility with older BadgerFilm import functions
-        '*******************************************************
-        '*******************************************
-        Dim tmp As String = ""
+        Try
+            '*******************************************************
+            ' Function used to save the data
+            'file_name is the name of the saved file
+            'layer_handler contains the geomoetry of the sample
+            'elt_exp_handler contains the experimental data (elements, Xray lines, experimental kratios, kV, ...)
+            'toa is the takeoff angle in degree
+            'version is used for compatibility with older BadgerFilm import functions
+            '*******************************************************
+            '*******************************************
+            Dim tmp As String = ""
         tmp = "#" & version & vbCrLf
         tmp = tmp & "toa" & vbTab & toa & vbCrLf
         tmp = tmp & "#layer_handler" & vbTab & layer_handler.Count & vbCrLf
@@ -271,19 +277,28 @@ Module Load_Save_module
         sw.Write(tmp)
         sw.Close()
 
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in export " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MsgBox(tmp)
+        End Try
     End Sub
 
     Public Sub import_Stratagem(ByVal data_file As String, ByRef layer_handler() As layer, ByRef elt_exp_handler() As Elt_exp, ByRef toa As Double)
-        '******************
-        ' Import a Stratagem file
-        ' data_file: path and name of the saved file
-        ' layer_handler: structure to store the retrived data corresponding to the sample's geometry
-        ' elt_exp_handler: structure to store the retrived data corresponding to the expremiental data (analyzed elements, X-ray lines k-ratios, kV, ...)
-        ' toa is the takeoff angle in degree
-        '******************
+        Try
+            '******************
+            ' Import a Stratagem file
+            ' data_file: path and name of the saved file
+            ' layer_handler: structure to store the retrived data corresponding to the sample's geometry
+            ' elt_exp_handler: structure to store the retrived data corresponding to the expremiental data (analyzed elements, X-ray lines k-ratios, kV, ...)
+            ' toa is the takeoff angle in degree
+            '******************
 
-        'Tries to open the file and copy its content into the temp variable
-        Dim temp As String = Nothing
+            'Tries to open the file and copy its content into the temp variable
+            Dim temp As String = Nothing
         Dim mystream As New StreamReader(data_file)
         Try
             If (mystream IsNot Nothing) Then
@@ -300,7 +315,17 @@ Module Load_Save_module
 
         'temp = Replace(temp, vbCr, vbCrLf)
         Dim lines() As String = Split(temp, vbCrLf)
-        import_Stratagem_method(lines, layer_handler, elt_exp_handler, toa)
+            import_Stratagem_method(lines, layer_handler, elt_exp_handler, toa)
+
+
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in import_Stratagem " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MsgBox(tmp)
+        End Try
     End Sub
 
     Public Sub import_Stratagem_method(ByVal lines() As String, ByRef layer_handler() As layer, ByRef elt_exp_handler() As Elt_exp, ByRef toa As Double)
@@ -548,8 +573,13 @@ Module Load_Save_module
             For i As Integer = 0 To UBound(layer_handler)
                 convert_wt_to_at(layer_handler, i)
             Next
-        Catch Ex As Exception
-            MessageBox.Show("Not a valid STRATAgem file. Original error: " & Ex.Message)
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Not a valid STRATAgem file. Original error: " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
         End Try
     End Sub
 End Module

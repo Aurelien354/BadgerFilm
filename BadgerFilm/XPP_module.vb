@@ -1,201 +1,210 @@
-﻿Module XPP_module
+﻿Imports System.IO
+
+Module XPP_module
     Public Sub my_xpp(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                       ByVal elt_exp_all() As Elt_exp, ByVal E0 As Single, ByVal sin_toa_in_rad As Single, ByRef phi_rz As Single, ByRef F As Single, ByRef phi0 As Single,
                       ByRef R_bar As Double, ByRef P As Single, ByRef A_XPP As Single, ByRef B_XPP As Single, fit_MAC As fit_MAC,
                       ByVal options As options)
+        Try
+            If layer_handler.Count > 1 Then
+                MsgBox("XPP only works for bulk samples.")
+                Exit Sub
+            End If
 
-        If layer_handler.Count > 1 Then
-            MsgBox("XPP only works for bulk samples.")
-            Exit Sub
-        End If
-
-        Dim El As Single = studied_element.line(line_indice).Ec
-        'El = 1.84
-        Dim U0 As Single = E0 / El
+            Dim El As Single = studied_element.line(line_indice).Ec
+            'El = 1.84
+            Dim U0 As Single = E0 / El
 
 
-        '************************
-        'Calculate the 'wt.fraction averaged mass absorption coefficient'
-        'for the current layer
-        '************************
-        Dim mac As Single
-        Dim chi As Single
-        'mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
-        mac = MAC_calculation(studied_element, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
-        'Debug.Print(mac)
-        chi = mac / sin_toa_in_rad
-        '************************
+            '************************
+            'Calculate the 'wt.fraction averaged mass absorption coefficient'
+            'for the current layer
+            '************************
+            Dim mac As Single
+            Dim chi As Single
+            'mac = MAC_calculation(studied_element.line(line_indice).xray_energy, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+            mac = MAC_calculation(studied_element, line_indice, mother_layer_id, layer_handler, elt_exp_all, fit_MAC, options)
+            'Debug.Print(mac)
+            chi = mac / sin_toa_in_rad
+            '************************
 
-        Dim Zb_bar As Single = 0
-        For i As Integer = 0 To UBound(layer_handler)
-            For k As Integer = 0 To UBound(layer_handler(i).element)
-                Zb_bar = Zb_bar + layer_handler(i).element(k).z ^ 0.5 * CSng(layer_handler(i).element(k).conc_wt)
+            Dim Zb_bar As Single = 0
+            For i As Integer = 0 To UBound(layer_handler)
+                For k As Integer = 0 To UBound(layer_handler(i).element)
+                    Zb_bar = Zb_bar + layer_handler(i).element(k).z ^ 0.5 * CSng(layer_handler(i).element(k).conc_wt)
+                Next
             Next
-        Next
-        Zb_bar = Zb_bar ^ 2
-        '************************
+            Zb_bar = Zb_bar ^ 2
+            '************************
 
-        '************************
-        'Calculate the BSE factor R
-        '************************
-        Dim eta_bar As Single
-        Dim W_bar As Single
-        Dim q_ As Single
-        Dim J_U0 As Single
-        Dim G_U0 As Single
-        Dim R As Single
-        Dim r_ As Single
+            '************************
+            'Calculate the BSE factor R
+            '************************
+            Dim eta_bar As Single
+            Dim W_bar As Single
+            Dim q_ As Single
+            Dim J_U0 As Single
+            Dim G_U0 As Single
+            Dim R As Single
+            Dim r_ As Single
 
-        eta_bar = 0.00175 * Zb_bar + 0.37 * (1 - Math.Exp(-0.015 * (Zb_bar ^ 1.3)))
-        W_bar = 0.595 + eta_bar / 3.7 + eta_bar ^ 4.55
-        q_ = (2 * W_bar - 1) / (1 - W_bar)
-        J_U0 = 1 + U0 * (Math.Log(U0) - 1)
-        G_U0 = (U0 - 1 - ((1 - (1 / U0 ^ (q_ + 1))) / (1 + q_))) / ((2 + q_) * J_U0)
-        R = 1 - eta_bar * W_bar * (1 - G_U0)
-        '************************
+            eta_bar = 0.00175 * Zb_bar + 0.37 * (1 - Math.Exp(-0.015 * (Zb_bar ^ 1.3)))
+            W_bar = 0.595 + eta_bar / 3.7 + eta_bar ^ 4.55
+            q_ = (2 * W_bar - 1) / (1 - W_bar)
+            J_U0 = 1 + U0 * (Math.Log(U0) - 1)
+            G_U0 = (U0 - 1 - ((1 - (1 / U0 ^ (q_ + 1))) / (1 + q_))) / ((2 + q_) * J_U0)
+            R = 1 - eta_bar * W_bar * (1 - G_U0)
+            '************************
 
-        '************************
-        'Calculate the mean ionization potential J
-        'Calculate M
-        '************************
-        Dim J As Single
-        Dim M As Single
-        J = 0
-        M = 0
-        For i As Integer = 0 To UBound(layer_handler)
-            For k As Integer = 0 To UBound(layer_handler(i).element)
-                With layer_handler(i).element(k)
-                    M = M + .z / .a * .conc_wt
-                    J = J + .conc_wt * .z / .a * Math.Log(.z * 10 ^ -3 * (10.04 + 8.25 * Math.Exp(- .z / 11.22)))
-                End With
+            '************************
+            'Calculate the mean ionization potential J
+            'Calculate M
+            '************************
+            Dim J As Single
+            Dim M As Single
+            J = 0
+            M = 0
+            For i As Integer = 0 To UBound(layer_handler)
+                For k As Integer = 0 To UBound(layer_handler(i).element)
+                    With layer_handler(i).element(k)
+                        M = M + .z / .a * .conc_wt
+                        J = J + .conc_wt * .z / .a * Math.Log(.z * 10 ^ -3 * (10.04 + 8.25 * Math.Exp(- .z / 11.22)))
+                    End With
+                Next
             Next
-        Next
-        J = Math.Exp(J / M)
-        '************************
+            J = Math.Exp(J / M)
+            '************************
 
-        '************************
-        'Calculate m_
-        '************************
-        Dim m_ As Single
-        If (studied_element.line(line_indice).xray_name(0) = "L") Then
-            m_ = 0.82 'corr AMXX
-        ElseIf (studied_element.line(line_indice).xray_name(0) = "M") Then
-            m_ = 0.78 'corr AMXX
-        ElseIf (studied_element.line(line_indice).xray_name(0) = "K") Then
-            m_ = 0.86 + 0.12 * Math.Exp(-(studied_element.z / 5) ^ 2)
-        Else
-            'Do not handle other X-ray lines.
-            phi_rz = 0
-            Exit Sub
-        End If
-        '************************
+            '************************
+            'Calculate m_
+            '************************
+            Dim m_ As Single
+            If (studied_element.line(line_indice).xray_name(0) = "L") Then
+                m_ = 0.82 'corr AMXX
+            ElseIf (studied_element.line(line_indice).xray_name(0) = "M") Then
+                m_ = 0.78 'corr AMXX
+            ElseIf (studied_element.line(line_indice).xray_name(0) = "K") Then
+                m_ = 0.86 + 0.12 * Math.Exp(-(studied_element.z / 5) ^ 2)
+            Else
+                'Do not handle other X-ray lines.
+                phi_rz = 0
+                Exit Sub
+            End If
+            '************************
 
-        '************************
-        'Calculate 1/S (inv_S_total)
-        '************************
-        Dim Pi(2) As Single
-        Dim Di(2) As Single
-        Pi(0) = 0.78
-        Pi(1) = 0.1
-        Pi(2) = -(0.5 - 0.25 * J)
-        Di(0) = 6.6 * 10 ^ -6
-        Di(1) = 1.12 * 10 ^ -5 * (1.35 - 0.45 * J ^ 2)
-        Di(2) = 2.2 * 10 ^ -6 / J
+            '************************
+            'Calculate 1/S (inv_S_total)
+            '************************
+            Dim Pi(2) As Single
+            Dim Di(2) As Single
+            Pi(0) = 0.78
+            Pi(1) = 0.1
+            Pi(2) = -(0.5 - 0.25 * J)
+            Di(0) = 6.6 * 10 ^ -6
+            Di(1) = 1.12 * 10 ^ -5 * (1.35 - 0.45 * J ^ 2)
+            Di(2) = 2.2 * 10 ^ -6 / J
 
-        Dim inv_S As Single = 0
-        Dim inv_S_total As Single = 0
-        Dim V0 As Single = E0 / J
-        For k As Integer = 0 To 2
-            Dim Tk As Single = 1 + Pi(k) - m_
-            inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
-        Next
-        inv_S_total = inv_S * U0 / (V0 * M)
+            Dim inv_S As Single = 0
+            Dim inv_S_total As Single = 0
+            Dim V0 As Single = E0 / J
+            For k As Integer = 0 To 2
+                Dim Tk As Single = 1 + Pi(k) - m_
+                inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
+            Next
+            inv_S_total = inv_S * U0 / (V0 * M)
 
-        inv_S = 0
-        For k As Integer = 0 To 2
-            Dim Tk As Single = 1 + Pi(k) - 30
-            inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
-        Next
-        inv_S_total = inv_S_total + 1.5 * inv_S * U0 / (V0 * M)
+            inv_S = 0
+            For k As Integer = 0 To 2
+                Dim Tk As Single = 1 + Pi(k) - 30
+                inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
+            Next
+            inv_S_total = inv_S_total + 1.5 * inv_S * U0 / (V0 * M)
 
-        inv_S = 0
-        For k As Integer = 0 To 2
-            Dim Tk As Single = 1 + Pi(k) - 5
-            inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
-        Next
-        inv_S_total = inv_S_total + 0.1 * inv_S * U0 / (V0 * M)
+            inv_S = 0
+            For k As Integer = 0 To 2
+                Dim Tk As Single = 1 + Pi(k) - 5
+                inv_S = inv_S + Di(k) * (V0 / U0) ^ Pi(k) * (Tk * U0 ^ Tk * Math.Log(U0) - U0 ^ Tk + 1) / Tk ^ 2
+            Next
+            inv_S_total = inv_S_total + 0.1 * inv_S * U0 / (V0 * M)
 
-        '************************
-        Dim test1 As Single = R * inv_S_total
-        '************************
-        'Calculate ionization cross section QA_l
-        '************************
-        Dim QA_l As Single
-        QA_l = Math.Log(U0) / El ^ 2 / U0 ^ m_
+            '************************
+            Dim test1 As Single = R * inv_S_total
+            '************************
+            'Calculate ionization cross section QA_l
+            '************************
+            Dim QA_l As Single
+            QA_l = Math.Log(U0) / El ^ 2 / U0 ^ m_
 
-        '************************
-        'Calculate the area F
-        '************************
-        F = R * inv_S_total / QA_l
+            '************************
+            'Calculate the area F
+            '************************
+            F = R * inv_S_total / QA_l
 
-        '************************
-        'Calculate the surface ionization phi0
-        '************************
-        r_ = 2 - 2.3 * eta_bar
-        phi0 = 1 + 3.3 * (1 - (1 / U0 ^ r_)) * eta_bar ^ 1.2
+            '************************
+            'Calculate the surface ionization phi0
+            '************************
+            r_ = 2 - 2.3 * eta_bar
+            phi0 = 1 + 3.3 * (1 - (1 / U0 ^ r_)) * eta_bar ^ 1.2
 
-        '************************
-        'Calculate the XPP factors
-        '************************
+            '************************
+            'Calculate the XPP factors
+            '************************
 
-        Dim X As Single = 1 + 1.3 * Math.Log(Zb_bar)
-        Dim Y As Single = 0.2 + Zb_bar / 200
+            Dim X As Single = 1 + 1.3 * Math.Log(Zb_bar)
+            Dim Y As Single = 0.2 + Zb_bar / 200
 
-        Dim ak1 As Single = 1 + (X * Math.Log(1 + Y * (1 - 1 / U0 ^ 0.42))) / Math.Log(1 + Y) 'ak1=F/R_bar
-        R_bar = F / ak1 ' (1 + (X * Math.Log(1 + Y * (1 - 1 / U0 ^ 0.42))) / Math.Log(1 + Y))
-
-
-        Dim h_xpp As Single = 1 - 10 * (1 - 1 / (1 + U0 / 10)) / Zb_bar ^ 2 'cleg
-
-        If ak1 < phi0 Then
-            ak1 = phi0
-        End If
-
-        Dim g As Single = 0.22 * Math.Log(4 * Zb_bar) * (1 - 2 * Math.Exp(-Zb_bar * (U0 - 1) / 15))
-
-        Dim lim1 As Single = g * h_xpp ^ 4 'ak2
-
-        Dim a_ As Single
-        Dim b_ As Single
-        b_ = Math.Sqrt(2) * (1 + Math.Sqrt(1 - R_bar * phi0 / F)) / R_bar 'g=b_*R_bar
-        Dim g_ As Single = b_ * R_bar
-        Dim lim2 As Single = 0.9 * b_ * R_bar ^ 2 * (b_ - 2 * phi0 / F)
-
-        If lim1 > lim2 Then
-            lim1 = lim2
-        End If
-        P = lim1 * F / R_bar ^ 2
-
-        a_ = (P + b_ * (2 * phi0 - b_ * F)) / (b_ * F * (2 - b_ * R_bar) - phi0)
-
-        Dim epsilon As Single
-        Dim sign As Integer = 1
-        epsilon = (a_ - b_) / b_
-        If epsilon < 0 Then sign = -1
-        If Math.Abs(epsilon) < 0.000001 Then
-            epsilon = epsilon * sign
-            a_ = b_ * (1 + epsilon)
-        End If
-
-        B_XPP = (b_ ^ 2 * F * (1 + epsilon) - P - phi0 * b_ * (2 + epsilon)) / epsilon
-
-        'A_XPP = (B_XPP / b_ + phi0 - b_ * F) * (1 + epsilon) / epsilon
-        A_XPP = (B_XPP / b_ - P / b_ - phi0) / epsilon
-        'chi = 2264
-
-        phi_rz = (phi0 + B_XPP / (b_ + chi) - A_XPP * b_ * epsilon / (b_ * (1 + epsilon) + chi)) / (b_ + chi)
+            Dim ak1 As Single = 1 + (X * Math.Log(1 + Y * (1 - 1 / U0 ^ 0.42))) / Math.Log(1 + Y) 'ak1=F/R_bar
+            R_bar = F / ak1 ' (1 + (X * Math.Log(1 + Y * (1 - 1 / U0 ^ 0.42))) / Math.Log(1 + Y))
 
 
+            Dim h_xpp As Single = 1 - 10 * (1 - 1 / (1 + U0 / 10)) / Zb_bar ^ 2 'cleg
+
+            If ak1 < phi0 Then
+                ak1 = phi0
+            End If
+
+            Dim g As Single = 0.22 * Math.Log(4 * Zb_bar) * (1 - 2 * Math.Exp(-Zb_bar * (U0 - 1) / 15))
+
+            Dim lim1 As Single = g * h_xpp ^ 4 'ak2
+
+            Dim a_ As Single
+            Dim b_ As Single
+            b_ = Math.Sqrt(2) * (1 + Math.Sqrt(1 - R_bar * phi0 / F)) / R_bar 'g=b_*R_bar
+            Dim g_ As Single = b_ * R_bar
+            Dim lim2 As Single = 0.9 * b_ * R_bar ^ 2 * (b_ - 2 * phi0 / F)
+
+            If lim1 > lim2 Then
+                lim1 = lim2
+            End If
+            P = lim1 * F / R_bar ^ 2
+
+            a_ = (P + b_ * (2 * phi0 - b_ * F)) / (b_ * F * (2 - b_ * R_bar) - phi0)
+
+            Dim epsilon As Single
+            Dim sign As Integer = 1
+            epsilon = (a_ - b_) / b_
+            If epsilon < 0 Then sign = -1
+            If Math.Abs(epsilon) < 0.000001 Then
+                epsilon = epsilon * sign
+                a_ = b_ * (1 + epsilon)
+            End If
+
+            B_XPP = (b_ ^ 2 * F * (1 + epsilon) - P - phi0 * b_ * (2 + epsilon)) / epsilon
+
+            'A_XPP = (B_XPP / b_ + phi0 - b_ * F) * (1 + epsilon) / epsilon
+            A_XPP = (B_XPP / b_ - P / b_ - phi0) / epsilon
+            'chi = 2264
+
+            phi_rz = (phi0 + B_XPP / (b_ + chi) - A_XPP * b_ * epsilon / (b_ * (1 + epsilon) + chi)) / (b_ + chi)
+
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in my_xpp " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
+        End Try
 
 
         '        '************************
@@ -734,141 +743,161 @@
 
     End Sub
     Public Function Yield(ByVal studied_element As Elt_exp, ByVal line_indice As Integer) As Double
-        Dim Z As Integer = studied_element.z
-        ' K lines
-        If studied_element.line(line_indice).xray_name(0) = "K" Then
-            Yield = 0.06893861 + Z * (0.024152 + Z * (0.0003324179 - Z * 0.00000392704544))
+        Try
+            Dim Z As Integer = studied_element.z
+            ' K lines
+            If studied_element.line(line_indice).xray_name(0) = "K" Then
+                Yield = 0.06893861 + Z * (0.024152 + Z * (0.0003324179 - Z * 0.00000392704544))
 
-            ' L lines
-        ElseIf studied_element.line(line_indice).xray_name(0) = "L" Then
-            Yield = -0.111065 + Z * (0.01368 - Z * Z * 0.00000021772)
+                ' L lines
+            ElseIf studied_element.line(line_indice).xray_name(0) = "L" Then
+                Yield = -0.111065 + Z * (0.01368 - Z * Z * 0.00000021772)
 
-        ElseIf studied_element.line(line_indice).xray_name(0) = "M" Then
-            Yield = -0.00036 + Z * (0.00386 + Z * Z * 0.00000020101)
-        End If
-        ' M lines
+            ElseIf studied_element.line(line_indice).xray_name(0) = "M" Then
+                Yield = -0.00036 + Z * (0.00386 + Z * Z * 0.00000020101)
+            End If
+            ' M lines
 
 
-        Yield = Yield ^ 4
-        Yield = Yield / (1 + Yield)
+            Yield = Yield ^ 4
+            Yield = Yield / (1 + Yield)
+
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in Yield " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
+        End Try
     End Function
 
     Public Function Beta_func(ByVal studied_element As Elt_exp, ByVal line_indice As Integer) As Single
-        Dim v(100) As Single
-        ' K lines
-        If studied_element.line(line_indice).xray_name(0) = "K" Then
-            v(1) = 0
-            v(2) = 0
-            v(3) = 0
-            v(4) = 0
-            v(5) = 0
-            v(6) = 0
-            v(7) = 0
-            v(8) = 0
-            v(9) = 0
-            v(10) = 0
-            v(11) = 0
-            v(12) = 0.013
-            v(13) = 0.014
-            v(14) = 0.025
-            v(15) = 0.042
-            v(16) = 0.063
-            v(17) = 0.085
-            v(18) = 0.11
-            v(19) = 0.12
-            v(20) = 0.127
-            v(21) = 0.131
-            v(22) = 0.131
-            v(23) = 0.132
-            v(24) = 0.133
-            v(25) = 0.134
-            v(26) = 0.134
-            v(27) = 0.135
-            v(28) = 0.136
-            v(29) = 0.137
-            v(30) = 0.139
-            v(31) = 0.146
-            v(32) = 0.152
-            v(33) = 0.156
-            v(34) = 0.161
-            v(35) = 0.166
-            v(36) = 0.17
-            v(37) = 0.175
-            v(38) = 0.175
-            v(39) = 0.183
-            v(40) = 0.187
-            v(41) = 0.191
-            v(42) = 0.195
-            v(43) = 0.199
-            v(44) = 0.202
-            v(45) = 0.206
-            v(46) = 0.209
-            v(47) = 0.212
-            v(48) = 0.216
-            v(49) = 0.218
-            v(50) = 0.222
-            v(51) = 0.224
-            v(52) = 0.227
-            v(53) = 0.23
-            v(54) = 0.233
-            v(55) = 0.235
-            v(56) = 0.237
-            v(57) = 0.24
-            v(58) = 0.242
-            v(59) = 0.244
-            v(60) = 0.246
-            v(61) = 0.248
-            v(62) = 0.25
-            v(63) = 0.252
-            v(64) = 0.254
-            v(65) = 0.256
-            v(66) = 0.258
-            v(67) = 0.259
-            v(68) = 0.261
-            v(69) = 0.262
-            v(70) = 0.264
-            v(71) = 0.265
-            v(72) = 0.266
-            v(73) = 0.268
-            v(74) = 0.269
-            v(75) = 0.27
-            v(76) = 0.271
-            v(77) = 0.272
-            v(78) = 0.273
-            v(79) = 0.275
-            v(80) = 0.276
-            v(81) = 0.277
-            v(82) = 0.277
-            v(83) = 0.278
-            v(84) = 0.279
-            v(85) = 0.28
-            v(86) = 0.281
-            v(87) = 0.282
-            v(88) = 0.283
-            v(89) = 0.283
-            v(90) = 0.284
-            v(91) = 0.285
-            v(92) = 0.286
-            v(93) = 0.286
-            v(94) = 0.287
-            v(95) = 0.288
-            v(96) = 0.289
-            v(97) = 0.289
-            v(98) = 0.29
-            v(99) = 0.29
-            v(100) = 0.291
+        Try
+            Dim v(100) As Single
+            ' K lines
+            If studied_element.line(line_indice).xray_name(0) = "K" Then
+                v(1) = 0
+                v(2) = 0
+                v(3) = 0
+                v(4) = 0
+                v(5) = 0
+                v(6) = 0
+                v(7) = 0
+                v(8) = 0
+                v(9) = 0
+                v(10) = 0
+                v(11) = 0
+                v(12) = 0.013
+                v(13) = 0.014
+                v(14) = 0.025
+                v(15) = 0.042
+                v(16) = 0.063
+                v(17) = 0.085
+                v(18) = 0.11
+                v(19) = 0.12
+                v(20) = 0.127
+                v(21) = 0.131
+                v(22) = 0.131
+                v(23) = 0.132
+                v(24) = 0.133
+                v(25) = 0.134
+                v(26) = 0.134
+                v(27) = 0.135
+                v(28) = 0.136
+                v(29) = 0.137
+                v(30) = 0.139
+                v(31) = 0.146
+                v(32) = 0.152
+                v(33) = 0.156
+                v(34) = 0.161
+                v(35) = 0.166
+                v(36) = 0.17
+                v(37) = 0.175
+                v(38) = 0.175
+                v(39) = 0.183
+                v(40) = 0.187
+                v(41) = 0.191
+                v(42) = 0.195
+                v(43) = 0.199
+                v(44) = 0.202
+                v(45) = 0.206
+                v(46) = 0.209
+                v(47) = 0.212
+                v(48) = 0.216
+                v(49) = 0.218
+                v(50) = 0.222
+                v(51) = 0.224
+                v(52) = 0.227
+                v(53) = 0.23
+                v(54) = 0.233
+                v(55) = 0.235
+                v(56) = 0.237
+                v(57) = 0.24
+                v(58) = 0.242
+                v(59) = 0.244
+                v(60) = 0.246
+                v(61) = 0.248
+                v(62) = 0.25
+                v(63) = 0.252
+                v(64) = 0.254
+                v(65) = 0.256
+                v(66) = 0.258
+                v(67) = 0.259
+                v(68) = 0.261
+                v(69) = 0.262
+                v(70) = 0.264
+                v(71) = 0.265
+                v(72) = 0.266
+                v(73) = 0.268
+                v(74) = 0.269
+                v(75) = 0.27
+                v(76) = 0.271
+                v(77) = 0.272
+                v(78) = 0.273
+                v(79) = 0.275
+                v(80) = 0.276
+                v(81) = 0.277
+                v(82) = 0.277
+                v(83) = 0.278
+                v(84) = 0.279
+                v(85) = 0.28
+                v(86) = 0.281
+                v(87) = 0.282
+                v(88) = 0.283
+                v(89) = 0.283
+                v(90) = 0.284
+                v(91) = 0.285
+                v(92) = 0.286
+                v(93) = 0.286
+                v(94) = 0.287
+                v(95) = 0.288
+                v(96) = 0.289
+                v(97) = 0.289
+                v(98) = 0.29
+                v(99) = 0.29
+                v(100) = 0.291
 
-            Beta_func = v(studied_element.z)
+                Beta_func = v(studied_element.z)
 
-            ' L lines
-        ElseIf studied_element.line(line_indice).xray_name(0) = "L" Then
-            Beta_func = -0.015 + 0.00575 * studied_element.z
+                ' L lines
+            ElseIf studied_element.line(line_indice).xray_name(0) = "L" Then
+                Beta_func = -0.015 + 0.00575 * studied_element.z
 
-            ' M lines
-        ElseIf studied_element.line(line_indice).xray_name(0) = "M" Then
-            Beta_func = 0.5
-        End If
+                ' M lines
+            ElseIf studied_element.line(line_indice).xray_name(0) = "M" Then
+                Beta_func = 0.5
+            End If
 
-        Return Beta_func
+            Return Beta_func
+
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in Beta_func " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MessageBox.Show(tmp)
+        End Try
     End Function
 End Module
