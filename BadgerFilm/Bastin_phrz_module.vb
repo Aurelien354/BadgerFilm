@@ -2,9 +2,9 @@
 
 Module Bastin_phrz_module
 
-    Public Sub PROZA96(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
+    Public Function PROZA96(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                       ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByVal sin_toa_in_rad As Double, ByRef phi_rz_ As Double, ByRef FI_ As Double, ByRef phi0_ As Double,
-                       ByRef rzm_ As Double, ByRef alpha_ As Double, ByRef beta_ As Double, ByRef Rx As Double, ByVal options As options, Optional fit_MAC As fit_MAC = Nothing)
+                       ByRef rzm_ As Double, ByRef alpha_ As Double, ByRef beta_ As Double, ByRef Rx As Double, ByVal options As options, Optional fit_MAC As fit_MAC = Nothing) As Integer
         Try
             'If studied_element.z = 26 And E0 = 19 Then
             '    Stop
@@ -17,7 +17,7 @@ Module Bastin_phrz_module
                 rzm_ = 0
                 alpha_ = 0
                 beta_ = 0
-                Exit Sub
+                Return -1
             End If
 
             Dim phi0(UBound(layer_handler)) As Double '= phi0_function(layer_handler, mother_layer_id, studied_element, line_indice, E0)
@@ -166,6 +166,8 @@ Module Bastin_phrz_module
             beta_ = beta_final
             Rx = Rx_new
 
+            Return 0
+
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in PROZA96 " & ex.Message
 
@@ -174,7 +176,7 @@ Module Bastin_phrz_module
             End Using
             MsgBox(tmp)
         End Try
-    End Sub
+    End Function
 
     Public Sub PROZA96_coeff(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                       ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByRef phi0 As Double, ByRef rzm As Double, ByRef FI As Double, ByRef alpha As Double, ByRef beta As Double,

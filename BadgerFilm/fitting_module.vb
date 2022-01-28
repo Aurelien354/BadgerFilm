@@ -566,6 +566,8 @@ Public Class ForwardModels
                             For k As Integer = 0 To UBound(elt_exp_handler(i).line(j).k_ratio) 'calculate the X-ray intensity and scale it to fit the experimental data
                                 elt_exp_handler(i).line(j).k_ratio(k).elt_intensity = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all,
                                                                                elt_exp_handler(i).line(j).k_ratio(k).kv, toa, Ec_data, options, False, "", fit_MAC) 'calculate the X-ray intensity of the unknown
+                                If elt_exp_handler(i).line(j).k_ratio(k).elt_intensity < 0 Then Return -1
+
                                 elt_exp_handler(i).line(j).k_ratio(k).theo_value = elt_exp_handler(i).line(j).k_ratio(k).elt_intensity / elt_exp_handler(i).line(j).k_ratio(k).std_intensity 'calculate the theoretical k-ratio value
                                 calculated_y(indice) = elt_exp_handler(i).line(j).k_ratio(k).theo_value ' store the calculated k-ratio in the calculated_y array
                                 indice = indice + 1

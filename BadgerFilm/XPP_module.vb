@@ -1,14 +1,14 @@
 ﻿Imports System.IO
 
 Module XPP_module
-    Public Sub my_xpp(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
+    Public Function my_xpp(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                       ByVal elt_exp_all() As Elt_exp, ByVal E0 As Single, ByVal sin_toa_in_rad As Single, ByRef phi_rz As Single, ByRef F As Single, ByRef phi0 As Single,
                       ByRef R_bar As Double, ByRef P As Single, ByRef A_XPP As Single, ByRef B_XPP As Single, fit_MAC As fit_MAC,
-                      ByVal options As options)
+                      ByVal options As options) As Integer
         Try
             If layer_handler.Count > 1 Then
                 MsgBox("XPP only works for bulk samples.")
-                Exit Sub
+                Return -1
             End If
 
             Dim El As Single = studied_element.line(line_indice).Ec
@@ -88,7 +88,7 @@ Module XPP_module
             Else
                 'Do not handle other X-ray lines.
                 phi_rz = 0
-                Exit Sub
+                Return -1
             End If
             '************************
 
@@ -196,6 +196,8 @@ Module XPP_module
             'chi = 2264
 
             phi_rz = (phi0 + B_XPP / (b_ + chi) - A_XPP * b_ * epsilon / (b_ * (1 + epsilon) + chi)) / (b_ + chi)
+
+            Return 0
 
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in my_xpp " & ex.Message
@@ -741,7 +743,7 @@ Module XPP_module
         'a_ = a1_test_
         'A_f = A1_test
 
-    End Sub
+    End Function
     Public Function Yield(ByVal studied_element As Elt_exp, ByVal line_indice As Integer) As Double
         Try
             Dim Z As Integer = studied_element.z

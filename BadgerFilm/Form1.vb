@@ -116,10 +116,11 @@ Public Structure fit_MAC
     Public absorber_elt As String
     Public activated As Boolean
     Public norm_kV As Double
+    Public compound_MAC As Boolean
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.17"
+    Public VERSION As String = "v.1.2.19"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -193,6 +194,8 @@ Public Class Form1
 
                     If fit_MAC.activated = True Then
                         Dim norm As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, fit_MAC.norm_kV, toa, Ec_data, options, print_res, save_results, fit_MAC)
+                        If norm < 0 Then Exit Sub
+
                         For ll As Integer = 0 To istep - 1
                             _x = xmin + (xmax - xmin) / (istep - 1) * ll
                             'If _x = 10 Then
@@ -202,6 +205,7 @@ Public Class Form1
                             data_to_plot.energy(ll) = _x
 
                             Dim Ix_unk As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, _x, toa, Ec_data, options, print_res, save_results, fit_MAC)
+                            If Ix_unk < 0 Then Exit Sub
 
                             'data_to_plot.k_ratio(cnt, ll) = Ix_unk / norm
                             data_to_plot.k_ratio(cnt, ll) = Ix_unk * fit_MAC.scaling_factor '* Ix_unk
@@ -222,6 +226,7 @@ Public Class Form1
                             'Debug.Print(options.phi_rz_mode & vbTab & "Std: " & vbTab & elt_exp_handler(i).elt_name & vbTab & elt_exp_handler(i).line(j).xray_name & vbTab & elt_exp_handler(i).line(j).k_ratio(kk).std_intensity)
 
                             Dim Ix_unk As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, _x, toa, Ec_data, options, print_res, save_results, fit_MAC)
+                            If Ix_unk < 0 Then Exit Sub
                             If Ix_std = 0 Then
                                 data_to_plot.k_ratio(cnt, ll) = 0
                             Else
@@ -253,7 +258,9 @@ Public Class Form1
                             'End If
 
                             Dim Ix_std As Double = pre_auto(layer_handler_std, elt_exp_handler(i), j, elt_exp_all_std, _x, toa, Ec_data, options, False, save_results, fit_MAC) 'Oct 21.2021 AMXX changed toa_std to toa
+                            If Ix_std < 0 Then Exit Sub
                             Dim Ix_unk As Double = pre_auto(layer_handler, elt_exp_handler(i), j, elt_exp_all, _x, toa, Ec_data, options, print_res, save_results, fit_MAC)
+                            If Ix_unk < 0 Then Exit Sub
                             If Ix_std = 0 Then
                                 data_to_plot.k_ratio(cnt, ll) = 0
                             Else
@@ -290,6 +297,14 @@ Public Class Form1
             If number_layers < 1 Then
                 MsgBox("The number of layers (with the substrate) must be at least 1.")
                 Exit Sub
+            End If
+
+            If number_layers > 1 Then
+                CheckBox22.Enabled = False
+                CheckBox22.Checked = False
+                CheckBox10.Checked = True
+            Else
+                CheckBox22.Enabled = True
             End If
 
             For i As Integer = 1 To number_layers - 1
@@ -452,7 +467,12 @@ Public Class Form1
 
             Me.Text = "BadgerFilm " & VERSION
 
+            init_atomic_parameters(pen_path, eadl_path, ffast_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, options)
 
+            init_Ec(Ec_data, pen_path)
+
+            '***************************************************
+            ' This block must be called last. Thanks yueyinqiu for finding this bug.
             If HaveInternetConnection() = False Then Exit Sub
 
             Dim version_check As String = Nothing
@@ -461,10 +481,8 @@ Public Class Form1
             If compare_version(version_check, VERSION) Then
                 Label1.Text = "Status:  New version available (" & version_check & ")" '. Please click the Update button to download the latest version."
             End If
+            '***************************************************
 
-            init_atomic_parameters(pen_path, eadl_path, ffast_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, options)
-
-            init_Ec(Ec_data, pen_path)
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in Form1_Load " & ex.Message
 
@@ -2184,7 +2202,7 @@ Public Class Form1
 
                 pars(UBound(pars)) = New MPFitLib.mp_par
                 pars(UBound(pars)).limited = {1, 0}
-                pars(UBound(pars)).limits(0) = 0
+                pars(UBound(pars)).limits(0) = 30
                 pars(UBound(pars)).isFixed = 0
                 pars(UBound(pars)).relstep = 0.01
                 For i As Integer = 0 To UBound(pars) - 2
@@ -2202,15 +2220,21 @@ Public Class Form1
                 fit_MAC.absorbed_elt = TextBox17.Text
                 fit_MAC.X_ray = TextBox14.Text
                 fit_MAC.MAC = TextBox15.Text
-                fit_MAC.absorber_elt = TextBox16.Text
-                fit_MAC.norm_kV = 25
+
+                fit_MAC.absorber_elt = correct_symbol(TextBox16.Text)
+                If fit_MAC.absorber_elt = "" Then
+                    fit_MAC.compound_MAC = True
+                Else
+                    fit_MAC.compound_MAC = False
+                End If
+
+                fit_MAC.norm_kV = 15
                 Dim shell1, shell2 As Integer
                 Siegbahn_to_transition_num(fit_MAC.X_ray, shell1, shell2, fit_MAC.absorbed_elt)
                 Dim z As Integer = symbol_to_Z(fit_MAC.absorbed_elt)
                 Dim Ec_shell2 As Double = find_Ec(z, shell2, Ec_data)
                 fit_MAC.X_ray_energy = find_Ec(z, shell1, Ec_data) - Ec_shell2 'in keV 
                 fit_MAC.activated = True
-
 
                 'Dim max As Double = k_ratio_measured.Max
                 'For i As Integer = 0 To UBound(k_ratio_measured)
@@ -3162,7 +3186,7 @@ Public Class Form1
             ''*******************************************
             ''Plot the k-ratio curves
             Dim data_to_plot As data_to_plot = Nothing
-            plot_kratio(2, 40, 39, layer_handler, toa, e.Argument(6), pen_path, True, save_results, e.Argument(7), data_to_plot)
+            plot_kratio(1, 40, 39, layer_handler, toa, e.Argument(6), pen_path, True, save_results, e.Argument(7), data_to_plot)
             ''*******************************************
             BackgroundWorker1.ReportProgress(55, save_results)
             BackgroundWorker1.ReportProgress(60, data_to_plot)
@@ -3387,6 +3411,10 @@ Public Class Form1
             str = str & "Atomic data extracted from the PENELOPE and the EADL databases:" & vbCrLf
             str = str & "- F. Salvat, PENELOPE-2014: a code system for Monte Carlo simulation of electron and photon transport, Issy-les-Moulineaux, France: OECD/NEA Data Bank, 2015 (available from http://www.nea.fr/lists/penelope.html)." & vbCrLf
             str = str & "- D.E. Cullen, et al., Tables and Graphs of Atomic Subshell and Relaxation Data Derived from the LLNL Evaluated Atomic Data Library (EADL), Z = 1 - 100, Lawrence Livermore National Laboratory, UCRL-50400, Vol. 30, October 1991." & vbCrLf & vbCrLf
+
+            str = str & "To cite BadgerFilm:" & vbCrLf
+            str = str & "- A. Moy & J. Fournelle, ϕ(ρz) Distributions in Bulk and Thin Film Samples for EPMA. Part 1: A Modified ϕ(ρz) Distribution for Bulk Materials, including Characteristic and Bremsstrahlung Fluorescence. Microscopy and Microanalysis, 2021, 27(2), 266–283." & vbCrLf & vbCrLf
+            str = str & "- A. Moy & J. Fournelle, ϕ(ρz) Distributions in Bulk and Thin-Film Samples for EPMA. Part 2: BadgerFilm: A New Thin-Film Analysis Program. Microscopy and Microanalysis, 2021, 27(2), 284–296." & vbCrLf & vbCrLf
             'str = str & "IN NO EVENT SHALL BADGERFILM BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INICIDENTAL, OR CONSEQUENTIAL DAMAGES, INCLUDING LOST PROFITS, ARISING OUT OF THE USE OF THIS SOFTWARE AND ITS DOCUMENTATION, EVEN IF BADGERFILM HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. BADGERFILM SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE SOFTWARE PROVIDED HEREUNDER IS ON AN AS IS BASIS, AND BADGERFILM HAVE NO OBLIGATIONS TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS."
             str = str & "BADGERFILM TERMS OF USE
 
@@ -3394,7 +3422,7 @@ The following terms of use apply to the BadgerFilm software and its associated d
 
 UW MAKES NO REPRESENTATIONS OR WARRANTIES CONCERNING BADGERFILM OR ANY OUTCOME THAT MAY BE OBTAINED BY USING OR MODIFYING BADGERFILM, AND EXPRESSLY DISCLAIMS ALL SUCH WARRANTIES, INCLUDING WITHOUT LIMITATION ANY EXPRESS OR IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT OF INTELLECTUAL PROPERTY RIGHTS. UW MAKES NO WARRANTY OR REPRESENTATION THAT BADGERFILM WILL OPERATE ERROR FREE OR UNINTERRUPTED.
 TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE LIABLE TO YOU (OR ANY PERSON, INSTITUTION, OR BUSINESS WITH WHICH YOU ARE AFFILIATED) FOR ANY LOST PROFITS OR ANY DIRECT, INDIRECT, EXEMPLARY, PUNITIVE, INCIDENTAL, SPECIAL, OR CONSEQUENTIAL DAMAGES ARISING FROM BADGERFILM OR ITS USE OR MODIFICATION. NEITHER UW NOR THE AUTHORS HAVE ANY LIABILITY FOR ANY DECISION, ACT OR OMISSION MADE BY YOU AS A RESULT OF USE OF BADGERFILM."
-            MsgBox(str)
+            MessageBox.Show(str)
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in Label2_Click " & ex.Message
 

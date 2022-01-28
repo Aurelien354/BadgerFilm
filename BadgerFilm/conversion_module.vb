@@ -342,8 +342,8 @@ Module conversion_module
                     Return elt_list(i)
                 End If
             Next
-            MsgBox("Element " & symbol & " not found!")
-            Return symbol
+            'MsgBox("Element " & symbol & " not found!")
+            Return ""
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in correct_symbol " & ex.Message
 

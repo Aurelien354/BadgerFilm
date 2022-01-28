@@ -611,9 +611,9 @@ Module Xphi_module
         End Try
     End Function
 
-    Public Sub calc_multi_layer(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer, ByVal elt_exp_all() As Elt_exp,
+    Public Function calc_multi_layer(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer, ByVal elt_exp_all() As Elt_exp,
                                 ByVal E0 As Double, ByVal sin_toa_in_rad As Double, ByRef phi_rz As Double, ByRef rzm As Double, ByRef rzx1 As Double, ByRef phi_rzm As Double,
-                                ByRef phi0 As Double, ByRef alpha_val As Double, ByRef beta_val As Double, ByVal options As options, Optional fit_MAC As fit_MAC = Nothing)
+                                ByRef phi0 As Double, ByRef alpha_val As Double, ByRef beta_val As Double, ByVal options As options, Optional fit_MAC As fit_MAC = Nothing) As Integer
         Try
             'Dim rzm As Double
             'Dim rzx1 As Double
@@ -699,6 +699,8 @@ Module Xphi_module
             Dim abs As Double = abs_outer_layers(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, mac, sin_toa_in_rad, fit_MAC, options)
             phi_rz = H1_plus_H2_test * abs
 
+            Return 0
+
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in calc_multi_layer " & ex.Message
 
@@ -707,7 +709,7 @@ Module Xphi_module
             End Using
             MessageBox.Show(tmp)
         End Try
-    End Sub
+    End Function
 
     'Public Sub plot_phi_rz(ByVal rzm As Double, ByVal rzx1 As Double, ByVal phi_rzm As Double, ByVal phi0 As Double, ByVal alpha_val As Double, ByVal beta_val As Double,
     '                       ByVal steps As Integer, ByRef chart1 As DataVisualization.Charting.Chart)

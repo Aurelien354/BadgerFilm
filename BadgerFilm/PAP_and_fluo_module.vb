@@ -191,9 +191,10 @@ Module PAP_and_fluo_module
                 Dim PAP_A2 As Double
                 Dim PAP_B1 As Double
 
-                my_pap(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, a_, b_, A_f, Z_bar,
+                Dim ierror As Integer = my_pap(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, a_, b_, A_f, Z_bar,
                        fit_MAC, options, PAP_Rx, PAP_Rm, PAP_Rc, PAP_A1, PAP_A2, PAP_B1)
 
+                If ierror < 0 Then Return ierror
 
                 'If studied_element.z = 12 And layer_handler(0).element.Count > 1 And E0 = 15 Then ' mother_layer_id <> 0 And
                 '    Dim tmp As String = "Rx" & vbTab & PAP_Rx & vbCrLf
@@ -212,32 +213,34 @@ Module PAP_and_fluo_module
             ElseIf options.phi_rz_mode = "PROZA96" Then
                 'Tentative to implement the PROZA96 model. Do not seem to work for thin films!!!
                 Dim F As Double
-                    Dim phi0 As Double
-                    Dim rzm As Double
-                    Dim alpha As Double
-                    Dim beta As Double
-                    Dim Rx As Double
+                Dim phi0 As Double
+                Dim rzm As Double
+                Dim alpha As Double
+                Dim beta As Double
+                Dim Rx As Double
 
-                    PROZA96(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
+                Dim ierror As Integer = PROZA96(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, rzm, alpha, beta, Rx, options, fit_MAC)
+                If ierror < 0 Then Return ierror
+
+            ElseIf options.phi_rz_mode = "XPHI" Then
+                'Tentative to implement the XPHI model. Need to be tested!!!
+                Dim rzm As Double
+                Dim rzx1 As Double
+                Dim phi_rzm As Double
+                Dim phi0 As Double
+                Dim alpha_val As Double
+                Dim beta_val As Double
 
 
-                ElseIf options.phi_rz_mode = "XPHI" Then
-                    'Tentative to implement the XPHI model. Need to be tested!!!
-                    Dim rzm As Double
-                    Dim rzx1 As Double
-                    Dim phi_rzm As Double
-                    Dim phi0 As Double
-                    Dim alpha_val As Double
-                    Dim beta_val As Double
+                Dim ierror As Integer = calc_multi_layer(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, rzm, rzx1, phi_rzm, phi0, alpha_val, beta_val, options, fit_MAC)
+                If ierror < 0 Then Return ierror
+                'Dim results As String = phi_rzm & vbCrLf & rzm & vbCrLf & rzx1 & vbCrLf & alpha_val & vbCrLf & beta_val
+                'My.Computer.Clipboard.SetText(results)
 
+            ElseIf options.phi_rz_mode = "XPP" Then
 
-                    calc_multi_layer(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, rzm, rzx1, phi_rzm, phi0, alpha_val, beta_val, options, fit_MAC)
-                    'Dim results As String = phi_rzm & vbCrLf & rzm & vbCrLf & rzx1 & vbCrLf & alpha_val & vbCrLf & beta_val
-                    'My.Computer.Clipboard.SetText(results)
-
-                ElseIf options.phi_rz_mode = "XPP" Then
-                    'Tentative to implement the XPP model.
-                    Dim F As Single
+                'Tentative to implement the XPP model.
+                Dim F As Single
                 Dim phi0 As Single
                 Dim R_bar As Single
                 Dim A_XPP As Single
@@ -246,7 +249,8 @@ Module PAP_and_fluo_module
 
                 'If layer_handler(mother_layer_id).element.Count > 2 And E0 = 5 Then Stop
 
-                my_xpp(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, A_XPP, B_XPP, fit_MAC, options)
+                Dim ierror As Integer = my_xpp(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, F, phi0, R_bar, P, A_XPP, B_XPP, fit_MAC, options)
+                If ierror < 0 Then Return ierror
 
                 Dim m_ As Single
                 If (studied_element.line(line_indice).xray_name(0) = "K") Then
@@ -381,12 +385,12 @@ Module PAP_and_fluo_module
         End Try
     End Function
 
-    Public Sub my_pap(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
+    Public Function my_pap(ByRef layer_handler() As layer, ByVal mother_layer_id As Integer, ByVal studied_element As Elt_exp, ByVal line_indice As Integer,
                       ByVal elt_exp_all() As Elt_exp, ByVal E0 As Double, ByVal sin_toa_in_rad As Double, ByRef phi_rz As Double, ByRef F As Double, ByRef phi0 As Double,
                       ByRef R_bar As Double, ByRef P As Double, ByRef a_ As Double, ByRef b_ As Double, ByRef A_f As Double, ByRef Z_bar As Double, fit_MAC As fit_MAC,
                       ByVal options As options,
                       Optional ByRef PAP_Rx As Double = 0, Optional ByRef PAP_Rm As Double = 0, Optional ByRef PAP_Rc As Double = 0,
-                      Optional ByRef PAP_A1 As Double = 0, Optional ByRef PAP_A2 As Double = 0, Optional ByRef PAP_B1 As Double = 0)
+                      Optional ByRef PAP_A1 As Double = 0, Optional ByRef PAP_A2 As Double = 0, Optional ByRef PAP_B1 As Double = 0) As Integer
         Try
             Dim El As Double = studied_element.line(line_indice).Ec
             'El = 0.7074
@@ -626,7 +630,7 @@ Module PAP_and_fluo_module
                 PAP_A1 = 0
                 PAP_A2 = 0
                 PAP_B1 = 0
-                Exit Sub
+                Return -1
             End If
             '************************
 
@@ -853,7 +857,7 @@ Module PAP_and_fluo_module
             PAP_A2 = A2
             PAP_B1 = B1
 
-
+            Return 0
 
 
             ''************************
@@ -937,7 +941,7 @@ Module PAP_and_fluo_module
             End Using
             MessageBox.Show(tmp)
         End Try
-    End Sub
+    End Function
 
     Public Sub pap_weight(ByRef layer_handler() As layer, ByVal R As Single, ByVal L As Single)
         Try

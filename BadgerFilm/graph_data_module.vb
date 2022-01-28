@@ -62,10 +62,10 @@ Module graph_data_module
 
 
         Catch Ex As Exception
-            MessageBox.Show("Error in image_extractor->graph_data: " & Ex.Message)
+            MessageBox.Show("Error in graph_data_module->graph_data_simple: " & Ex.Message)
 
             Using err As StreamWriter = New StreamWriter("log.txt", True)
-                err.WriteLine("Error in image_extractor->graph_data: " & Ex.Message)
+                err.WriteLine("Error in graph_data_module->graph_data_simple: " & Ex.Message)
             End Using
         End Try
 

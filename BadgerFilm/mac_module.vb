@@ -26,17 +26,28 @@ Module mac_module
             'MAC of compounds calculated with weight concentration
             '***************************************************************************
             MAC_calculation = 0
-            For i As Integer = 0 To UBound(layer_handler(layer_id).element)
-                For j As Integer = 0 To UBound(elt_exp_all)
-                    If elt_exp_all(j).elt_name = layer_handler(layer_id).element(i).elt_name Then
-                        Dim MAC As Double = find_mac(elt_exp_all(j), studied_element.elt_name, studied_element.line(line_indice).xray_name, studied_element.line(line_indice).xray_energy, fit_MAC, options)
-                        'Debug.Print(studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & elt_exp_all(j).elt_name & vbTab & MAC)
-                        MAC_calculation = MAC_calculation + layer_handler(layer_id).element(i).fictitious_concentration * MAC 'Oct 21, 2021 AMXX Changed concentration by fictitious_concentration
+            If fit_MAC.activated = True And fit_MAC.compound_MAC = True Then
+                If Math.Abs((studied_element.line(line_indice).xray_energy - (fit_MAC.X_ray_energy)) / studied_element.line(line_indice).xray_energy) < 0.001 Then
+                    MAC_calculation = fit_MAC.MAC
+                End If
+            Else
+                For i As Integer = 0 To UBound(layer_handler(layer_id).element)
+                    For j As Integer = 0 To UBound(elt_exp_all)
+                        If elt_exp_all(j).elt_name = layer_handler(layer_id).element(i).elt_name Then
+                            'If fit_MAC.activated = True And fit_MAC.compound_MAC = True Then
+                            '    MAC_calculation = 2000000 'fit_MAC.MAC
+                            '    Exit For
+                            'Else
+                            Dim MAC As Double = find_mac(elt_exp_all(j), studied_element.elt_name, studied_element.line(line_indice).xray_name, studied_element.line(line_indice).xray_energy, fit_MAC, options)
+                            'Debug.Print(studied_element.elt_name & vbTab & studied_element.line(line_indice).xray_name & vbTab & elt_exp_all(j).elt_name & vbTab & MAC)
+                            MAC_calculation = MAC_calculation + layer_handler(layer_id).element(i).conc_wt * MAC ' Jan 28, 2022 Cancel this change ! Oct 21, 2021 AMXX Changed concentration by fictitious_concentration
 
-                        Exit For
-                    End If
+                            Exit For
+                            'End If
+                        End If
+                    Next
                 Next
-            Next
+            End If
             '***************************************************************************
             'MAC_calculation = 0
 
