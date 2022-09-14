@@ -290,7 +290,7 @@ Module mac_module
 
             ElseIf (energy > EnDat(3)) Then
                 Dim c As Double = 0.001D * (-0.0924D + 0.141478D * z - 0.00524999D * z * z + 0.0000985296D * z * z * z)
-                c = c - 0.000000000907306D * z * z * z * z + 0.00000000000319245D * z * z * z * z * z
+                c = c - 0.000000000907306D * z * z * z * z + 0.00000000000319254D * z * z * z * z * z 'replaced 0.00000000000319245D by 0.00000000000319254D AMXX 8-10-22
                 cc = c
                 az = (((-0.000116286D * z + 0.01253775D) * z + 0.067429D) * z + 17.8096D) * z
                 nm = (-0.00004982D * z + 0.001889D) * z + 2.7575D
@@ -333,7 +333,8 @@ Module mac_module
                     cc = 0.95D * c
                 End If
                 If ((energy < EnDat(7)) And (energy >= EnDat(8))) Then
-                    cc = 0.8D * c * ((0.0005083D * z - 0.06D) * z + 2.0553D)
+                    'cc = 0.8D * c * ((0.0005083D * z - 0.06D) * z + 2.0553D)
+                    cc = c * ((0.00040664D * z - 0.048D) * z + 1.6442D)
                 End If
 
             ElseIf (energy < EnDat(8)) Then

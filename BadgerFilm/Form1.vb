@@ -917,8 +917,12 @@ Public Class Form1
                 For nn As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
                     tot_at = tot_at + layer_handler(ListBox1.SelectedIndex).element(nn).conc_at * zaro(symbol_to_Z(layer_handler(ListBox1.SelectedIndex).element(nn).elt_name))(0)
                 Next
-                layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_wt = layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_at *
-                    zaro(symbol_to_Z(layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).elt_name))(0) / tot_at
+                For nn As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
+                    layer_handler(ListBox1.SelectedIndex).element(nn).conc_wt = layer_handler(ListBox1.SelectedIndex).element(nn).conc_at *
+                        zaro(symbol_to_Z(layer_handler(ListBox1.SelectedIndex).element(nn).elt_name))(0) / tot_at
+                Next
+                'layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_wt = layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_at *
+                '    zaro(symbol_to_Z(layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).elt_name))(0) / tot_at
             Else
                 layer_handler(ListBox1.SelectedIndex).element(e.RowIndex).conc_wt = DataGridView2.Rows(e.RowIndex).Cells(e.ColumnIndex).Value
                 convert_wt_to_at(layer_handler, ListBox1.SelectedIndex)
@@ -1825,7 +1829,7 @@ Public Class Form1
                             '*****************
                             For kk As Integer = 0 To UBound(elt_exp_handler(i).line(j).k_ratio)
                                 elt_exp_handler(i).line(j).k_ratio(kk).std_intensity = pre_auto(layer_handler_std, elt_exp_handler(i), j, elt_exp_all_std, elt_exp_handler(i).line(j).k_ratio(kk).kv,
-                                                                                                toa_std, Ec_data, options, False, save_results, Nothing)
+                                                                                                toa, Ec_data, options, False, save_results, Nothing)
                                 Debug.Print(options.phi_rz_mode & vbTab & "Std: " & vbTab & elt_exp_handler(i).elt_name & vbTab & elt_exp_handler(i).line(j).xray_name & vbTab &
                                             elt_exp_handler(i).line(j).k_ratio(kk).std_intensity)
 
@@ -4870,10 +4874,10 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
     End Sub
 
     Private Sub Button27_Click(sender As Object, e As EventArgs) Handles Button27.Click
-        Dim Z As Integer = 17
+        Dim Z As Integer = 50
         Dim A As Double = zaro(Z)(0)
-        Dim E_start As Double = 100
-        Dim E_end As Double = 20000
+        Dim E_start As Double = 400
+        Dim E_end As Double = 900
 
         init_Ec(Ec_data, pen_path)
 
@@ -4887,4 +4891,5 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
         Clipboard.SetText(res)
 
     End Sub
+
 End Class

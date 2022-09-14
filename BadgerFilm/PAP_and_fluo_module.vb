@@ -196,17 +196,17 @@ Module PAP_and_fluo_module
 
                 If ierror < 0 Then Return ierror
 
-                'If studied_element.z = 12 And layer_handler(0).element.Count > 1 And E0 = 15 Then ' mother_layer_id <> 0 And
-                '    Dim tmp As String = "Rx" & vbTab & PAP_Rx & vbCrLf
-                '    tmp = tmp & "Rm" & vbTab & PAP_Rm & vbCrLf
-                '    tmp = tmp & "Rc" & vbTab & PAP_Rc & vbCrLf
-                '    tmp = tmp & "A1" & vbTab & PAP_A1 & vbCrLf
-                '    tmp = tmp & "A2" & vbTab & PAP_A2 & vbCrLf
-                '    tmp = tmp & "B1" & vbTab & PAP_B1 & vbCrLf
-                '    tmp = tmp & "E0" & vbTab & E0 & vbCrLf
-                '    Debug.Print(tmp)
-                '    'My.Computer.Clipboard.SetText(tmp)
-                'End If
+                If studied_element.z = 14 And E0 = 10 Then ' mother_layer_id <> 0 And  'And layer_handler.Count > 1
+                    Dim tmp As String = "Rx" & vbTab & PAP_Rx & vbCrLf
+                    tmp = tmp & "Rm" & vbTab & PAP_Rm & vbCrLf
+                    tmp = tmp & "Rc" & vbTab & PAP_Rc & vbCrLf
+                    tmp = tmp & "A1" & vbTab & PAP_A1 & vbCrLf
+                    tmp = tmp & "A2" & vbTab & PAP_A2 & vbCrLf
+                    tmp = tmp & "B1" & vbTab & PAP_B1 & vbCrLf
+                    tmp = tmp & "E0" & vbTab & E0 & vbCrLf
+                    Debug.Print(tmp)
+                    'My.Computer.Clipboard.SetText(tmp)
+                End If
                 'Dim results As String = PAP_Rx & vbCrLf & PAP_Rm & vbCrLf & PAP_Rc & vbCrLf & PAP_A1 & vbCrLf & PAP_A2 & vbCrLf & PAP_B1 & vbCrLf
                 'My.Computer.Clipboard.SetText(results)
 
@@ -234,6 +234,18 @@ Module PAP_and_fluo_module
 
                 Dim ierror As Integer = calc_multi_layer(layer_handler, mother_layer_id, studied_element, line_indice, elt_exp_all, E0, sin_toa_in_rad, phi_rz, rzm, rzx1, phi_rzm, phi0, alpha_val, beta_val, options, fit_MAC)
                 If ierror < 0 Then Return ierror
+
+                If studied_element.z = 14 And E0 = 10 Then ' mother_layer_id <> 0 And  'And layer_handler.Count > 1
+                    Dim tmp As String = "phi_rzm" & vbTab & phi_rzm & vbCrLf
+                    tmp = tmp & "rzm" & vbTab & rzm & vbCrLf
+                    tmp = tmp & "rzx1" & vbTab & rzx1 & vbCrLf
+                    tmp = tmp & "alpha_val" & vbTab & alpha_val & vbCrLf
+                    tmp = tmp & "beta_val" & vbTab & beta_val & vbCrLf
+                    tmp = tmp & "E0" & vbTab & E0 & vbCrLf
+                    Debug.Print(tmp)
+                    'My.Computer.Clipboard.SetText(tmp)
+                End If
+
                 'Dim results As String = phi_rzm & vbCrLf & rzm & vbCrLf & rzx1 & vbCrLf & alpha_val & vbCrLf & beta_val
                 'My.Computer.Clipboard.SetText(results)
 
