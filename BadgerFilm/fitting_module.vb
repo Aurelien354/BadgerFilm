@@ -89,7 +89,18 @@ Public Class fitting_module
             Next
             For i As Integer = 0 To UBound(layer_handler)
                 For j As Integer = 0 To UBound(layer_handler(i).element)
-                    layer_handler(i).element(j).conc_wt = p(count)
+                    'Re-calculates concentations if defined as fixed and defined in atomic fraction
+                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+                        Dim temp As Double = 0
+                        For k As Integer = 0 To UBound(layer_handler(i).element)
+                            If k = j Then Continue For
+                            temp = temp + layer_handler(i).element(k).conc_wt / zaro(layer_handler(i).element(k).z)(0)
+                        Next
+                        layer_handler(i).element(j).conc_wt = temp * layer_handler(i).element(j).conc_at_ori / (1 - layer_handler(i).element(j).conc_at_ori) * zaro(layer_handler(i).element(j).z)(0)
+                        p(count) = layer_handler(i).element(j).conc_wt
+                    Else
+                        layer_handler(i).element(j).conc_wt = p(count)
+                    End If
                     count = count + 1
                 Next
             Next
@@ -424,7 +435,18 @@ Public Class ForwardModels
             Next
             For i As Integer = 0 To UBound(layer_handler)
                 For j As Integer = 0 To UBound(layer_handler(i).element)
-                    layer_handler(i).element(j).conc_wt = p(count)
+                    'Re-calculates concentations if defined as fixed and defined in atomic fraction
+                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+                        Dim temp As Double = 0
+                        For k As Integer = 0 To UBound(layer_handler(i).element)
+                            If k = j Then Continue For
+                            temp = temp + layer_handler(i).element(k).conc_wt / zaro(layer_handler(i).element(k).z)(0)
+                        Next
+                        layer_handler(i).element(j).conc_wt = temp * layer_handler(i).element(j).conc_at_ori / (1 - layer_handler(i).element(j).conc_at_ori) * zaro(layer_handler(i).element(j).z)(0)
+                        p(count) = layer_handler(i).element(j).conc_wt
+                    Else
+                        layer_handler(i).element(j).conc_wt = p(count)
+                    End If
                     count = count + 1
                 Next
             Next
@@ -592,6 +614,30 @@ Public Class ForwardModels
             '    Next
             'Next
             '******************************************************
+
+            '******************************************************
+            'Re-calculates concentations if fixed and defined in atomic fraction
+            '******************************************************
+            'Dim xx As Double
+            'For i As Integer = 0 To UBound(layer_handler)
+            '    For j As Integer = 0 To UBound(layer_handler(i).element)
+            '        If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+            '            Dim temp As Double = 0
+            '            For k As Integer = 0 To UBound(layer_handler(i).element)
+            '                If k = j Then Continue For
+            '                temp = temp + layer_handler(i).element(k).conc_wt / zaro(layer_handler(i).element(k).z)(0)
+            '            Next
+            '            layer_handler(i).element(j).conc_wt = temp * layer_handler(i).element(j).conc_at_ori / (1 - layer_handler(i).element(j).conc_at_ori) * zaro(layer_handler(i).element(j).z)(0)
+            '        End If
+            '    Next
+            'Next
+
+
+            '******************************************************
+
+
+
+
 
             '******************************************************
             'Sum of the concentrations in each layer equals 1.

@@ -98,6 +98,7 @@ Public Structure Elt_layer
     Public elt_name As String
     Public conc_wt As Double
     Public conc_at As Double
+    Public conc_at_ori As Double 'original atomic concentration in case the layer is defined by atomic fraction and it is fixed.
     Public isConcFixed As Boolean
 End Structure
 
@@ -120,7 +121,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.19"
+    Public VERSION As String = "v.1.2.21"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -2246,6 +2247,27 @@ Public Class Form1
                 'Next
             End If
             '*******************************************
+
+            '*******************************************
+            ' Save the atomic fraction if it is fixed and the layer is defined by atomic fraction.
+            '*******************************************
+            Dim only_one_fixed_at_frac As Boolean = False
+            For i As Integer = 0 To UBound(layer_handler)
+                For j As Integer = 0 To UBound(layer_handler(i).element)
+                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+                        If only_one_fixed_at_frac = True Then
+                            MsgBox("Warning: when defining the concentration by atomic fraction, only one element can have its value fixed." & vbCrLf & "If there are more than one element in this situation, please try to click multiple times on the Calculate button until the atomic fractions converge to steady values.")
+                        End If
+                        layer_handler(i).element(j).conc_at_ori = layer_handler(i).element(j).conc_at
+                        only_one_fixed_at_frac = True
+                    End If
+                Next
+                only_one_fixed_at_frac = False
+            Next
+
+
+
+
 
             Dim buffer_text As String = Nothing
 
