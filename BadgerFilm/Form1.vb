@@ -121,7 +121,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.21"
+    Public VERSION As String = "v.1.2.22"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -2252,7 +2252,15 @@ Public Class Form1
             ' Save the atomic fraction if it is fixed and the layer is defined by atomic fraction.
             '*******************************************
             Dim only_one_fixed_at_frac As Boolean = False
+            Dim sum As Double
             For i As Integer = 0 To UBound(layer_handler)
+                sum = 0
+                For j As Integer = 0 To UBound(layer_handler(i).element)
+                    sum = sum + layer_handler(i).element(j).conc_at
+                Next
+                For j As Integer = 0 To UBound(layer_handler(i).element)
+                    layer_handler(i).element(j).conc_at = layer_handler(i).element(j).conc_at / sum
+                Next
                 For j As Integer = 0 To UBound(layer_handler(i).element)
                     If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
                         If only_one_fixed_at_frac = True Then

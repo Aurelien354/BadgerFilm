@@ -19,6 +19,13 @@ Module PAP_and_fluo_module
                 For j As Integer = 0 To UBound(layer_handler(i).element)
                     'If the current element corresponds to the studied element, calculate the X-ray intensity.
                     If layer_handler(i).element(j).elt_name = studied_element.elt_name Then
+                        'Handle the case were Ka is selected for Li, Be and B (there is no Ka for these elemens because there is no L3 shell. Use KL1 or KL2 instead).
+                        If studied_element.line(line_indice).xray_name Like "[Kk][Aa]" And studied_element.z = 5 Then
+                            studied_element.line(line_indice).xray_name = "KL2"
+                        End If
+                        If studied_element.line(line_indice).xray_name Like "[Kk][Aa]" And studied_element.z < 5 Then
+                            studied_element.line(line_indice).xray_name = "KL1"
+                        End If
                         'Handle the case of the Ka X-ray line
                         If studied_element.line(line_indice).xray_name Like "[Kk][Aa]" Then
                             init_element_Xray_line_only("Ka1", Ec_data, studied_element, line_indice)
