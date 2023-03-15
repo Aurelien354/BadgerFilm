@@ -90,7 +90,7 @@ Public Class fitting_module
             For i As Integer = 0 To UBound(layer_handler)
                 For j As Integer = 0 To UBound(layer_handler(i).element)
                     'Re-calculates concentations if defined as fixed and defined in atomic fraction
-                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False And layer_handler(i).element.Count > 1 Then
                         Dim temp As Double = 0
                         For k As Integer = 0 To UBound(layer_handler(i).element)
                             If k = j Then Continue For
@@ -436,7 +436,7 @@ Public Class ForwardModels
             For i As Integer = 0 To UBound(layer_handler)
                 For j As Integer = 0 To UBound(layer_handler(i).element)
                     'Re-calculates concentations if defined as fixed and defined in atomic fraction
-                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False Then
+                    If layer_handler(i).element(j).isConcFixed = True And layer_handler(i).wt_fraction = False And layer_handler(i).element.Count > 1 Then
                         Dim temp As Double = 0
                         For k As Integer = 0 To UBound(layer_handler(i).element)
                             If k = j Then Continue For
