@@ -121,7 +121,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.22"
+    Public VERSION As String = "v.1.2.23"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
