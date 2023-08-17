@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
@@ -235,6 +235,7 @@ Partial Class Form1
         Me.Element2 = New BadgerFilm.Class1.TestB()
         Me.Element1 = New BadgerFilm.Class1.TestB()
         Me.Button27 = New System.Windows.Forms.Button()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -371,6 +372,7 @@ Partial Class Form1
         '
         'GroupBox5
         '
+        Me.GroupBox5.Controls.Add(Me.ComboBox1)
         Me.GroupBox5.Controls.Add(Me.Label19)
         Me.GroupBox5.Controls.Add(Me.TextBox19)
         Me.GroupBox5.Controls.Add(Me.Label18)
@@ -459,11 +461,11 @@ Partial Class Form1
         Me.CheckBox20.AutoCheck = False
         Me.CheckBox20.AutoSize = True
         Me.CheckBox20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox20.Location = New System.Drawing.Point(419, 331)
+        Me.CheckBox20.Location = New System.Drawing.Point(415, 331)
         Me.CheckBox20.Name = "CheckBox20"
-        Me.CheckBox20.Size = New System.Drawing.Size(109, 17)
+        Me.CheckBox20.Size = New System.Drawing.Size(134, 17)
         Me.CheckBox20.TabIndex = 163
-        Me.CheckBox20.Text = "O by stoichiometry"
+        Me.CheckBox20.Text = "            by stoichiometry"
         Me.CheckBox20.UseVisualStyleBackColor = True
         '
         'Label17
@@ -748,13 +750,13 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
+        ChartArea6.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea6)
         Me.Chart1.Location = New System.Drawing.Point(826, 364)
         Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
+        Series6.ChartArea = "ChartArea1"
+        Series6.Name = "Series1"
+        Me.Chart1.Series.Add(Series6)
         Me.Chart1.Size = New System.Drawing.Size(459, 259)
         Me.Chart1.TabIndex = 16
         Me.Chart1.Text = "Chart1"
@@ -2474,6 +2476,15 @@ Partial Class Form1
         Me.Button27.Text = "MAC pure elts"
         Me.Button27.UseVisualStyleBackColor = True
         '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"O", "N"})
+        Me.ComboBox1.Location = New System.Drawing.Point(429, 330)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(33, 21)
+        Me.ComboBox1.TabIndex = 169
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -2863,4 +2874,5 @@ Partial Class Form1
     Friend WithEvents Button25 As Button
     Friend WithEvents Button26 As Button
     Friend WithEvents Button27 As Button
+    Friend WithEvents ComboBox1 As ComboBox
 End Class

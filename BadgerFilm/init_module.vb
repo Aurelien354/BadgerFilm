@@ -1028,4 +1028,58 @@ Module init_module
 
     End Function
 
+
+
+    Public Sub init_stoichio(ByRef stoichio_elt As Integer(,), ByVal stoichio_file_path As String)
+        Dim data_file As String = Path.Combine(Application.StartupPath, stoichio_file_path)
+        Dim tmp As String = ""
+
+        'Dim path As String = pen_path '& "\PenelopeData"
+        'Dim filename As String = "pdatconf.p14.crypt"
+        'tmp = decrypt(path, filename)
+
+        Dim mystream As New StreamReader(data_file)
+
+        Try
+            If (mystream IsNot Nothing) Then
+                tmp = mystream.ReadToEnd
+            End If
+
+        Catch Ex As Exception
+            MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+        Finally
+            If (mystream IsNot Nothing) Then
+                mystream.Close()
+            End If
+        End Try
+
+        If tmp = "" Then
+            MsgBox("Error in init_stoichio")
+            Stop
+            Exit Sub
+        End If
+
+        Dim lines() As String = Split(tmp, vbCrLf)
+
+        Dim indice_end As Integer = 0
+        For i As Integer = UBound(lines) To 0 Step -1
+            If Trim(lines(i)) <> "" Then Exit For
+            indice_end = indice_end + 1
+        Next
+
+        Dim indice As Integer = 0
+        While (lines(indice))(0) = "#"
+            indice = indice + 1
+        End While
+
+        ReDim stoichio_elt(UBound(lines) - indice - indice_end, 1)
+        For i As Integer = indice To UBound(lines) - indice_end
+            Dim tmpo() As String = Split(lines(i), vbTab)
+            stoichio_elt(i - indice, 0) = CInt(tmpo(1))
+            stoichio_elt(i - indice, 1) = CInt(tmpo(2))
+        Next
+
+    End Sub
+
+
 End Module

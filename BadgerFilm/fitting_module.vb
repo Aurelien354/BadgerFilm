@@ -109,7 +109,7 @@ Public Class fitting_module
             For i As Integer = 0 To UBound(layer_handler)
                 If layer_handler(i).stoichiometry.O_by_stoichio = True Then
                     For j As Integer = 0 To UBound(layer_handler(i).element)
-                        If layer_handler(i).element(j).elt_name = "O" Then
+                        If layer_handler(i).element(j).elt_name = layer_handler(i).stoichiometry.O_by_stoichio_name Then '"O" Then
                             layer_handler(i).element(j).conc_wt = layer_handler(i).stoichiometry.O_wt_conc 'v.O_wt_by_stoichio(index)
                         End If
                     Next
@@ -465,7 +465,7 @@ Public Class ForwardModels
                             Dim index_C As Integer = -1
 
                             For j As Integer = 0 To UBound(layer_handler(i).element)
-                                If layer_handler(i).element(j).elt_name = "O" Then 'find the index of O in the list of elements of the current layer
+                                If layer_handler(i).element(j).elt_name = layer_handler(i).stoichiometry.O_by_stoichio_name Then '"O" Then 'find the index of O in the list of elements of the current layer
                                     index_O = j
                                 End If
                                 If layer_handler(i).element(j).elt_name = layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_name Then 'find the index of the other element defined by stoichiometry in the list of elements of the current layer
@@ -475,8 +475,9 @@ Public Class ForwardModels
 
                             Dim O_wt_conc_initial As Double = 0
                             For j As Integer = 0 To UBound(layer_handler(i).element) 'calculate the initial O wt concentration based on the concentration of the other elements (the measured elements)
-                                If layer_handler(i).element(j).elt_name <> "O" And layer_handler(i).element(j).elt_name <> layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_name Then
-                                    Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(j))
+                                If layer_handler(i).element(j).elt_name <> layer_handler(i).stoichiometry.O_by_stoichio_name And layer_handler(i).element(j).elt_name <> layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_name Then
+                                    'Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(j))
+                                    Dim coeff As Double = Convert_wt_to_stoichio_wt(layer_handler(i).element(j), layer_handler(i).stoichiometry.stoichio_table, layer_handler(i).stoichiometry.O_by_stoichio_name)
                                     O_wt_conc_initial = O_wt_conc_initial + (coeff - 1) * layer_handler(i).element(j).conc_wt
                                 End If
                             Next
@@ -486,7 +487,8 @@ Public Class ForwardModels
                                 'Dim old_O_wt_conc As Double = 0
                                 'Dim O_wt_variations As Double = Math.Abs(old_O_wt_conc - O_wt_conc_initial)
                                 'Dim iter As Integer = 0
-                                Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(index_C))
+                                'Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(index_C))
+                                Dim coeff As Double = Convert_wt_to_stoichio_wt(layer_handler(i).element(index_C), layer_handler(i).stoichiometry.stoichio_table, layer_handler(i).stoichiometry.O_by_stoichio_name)
                                 Dim B As Double = (coeff - 1) * layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_ratio *
                                     layer_handler(i).element(index_C).a / layer_handler(i).element(index_O).a
 
@@ -523,7 +525,7 @@ Public Class ForwardModels
                         Else 'only O is defined by stoichiometry
                             Dim index_O As Integer = -1
                             For j As Integer = 0 To UBound(layer_handler(i).element) 'find the index of O in the list of elements of the current layer
-                                If layer_handler(i).element(j).elt_name = "O" Then
+                                If layer_handler(i).element(j).elt_name = layer_handler(i).stoichiometry.O_by_stoichio_name Then ' "O" Then
                                     index_O = j
                                 End If
                             Next
@@ -531,8 +533,9 @@ Public Class ForwardModels
                             If index_O <> -1 Then 'if O was found, then proceed
                                 Dim O_wt_conc As Double = 0
                                 For j As Integer = 0 To UBound(layer_handler(i).element)
-                                    If layer_handler(i).element(j).elt_name <> "O" Then
-                                        Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(j))
+                                    If layer_handler(i).element(j).elt_name <> layer_handler(i).stoichiometry.O_by_stoichio_name Then '"O" Then
+                                        'Dim coeff As Double = Convert_wt_to_oxide_wt(layer_handler(i).element(j))
+                                        Dim coeff As Double = Convert_wt_to_stoichio_wt(layer_handler(i).element(j), layer_handler(i).stoichiometry.stoichio_table, layer_handler(i).stoichiometry.O_by_stoichio_name)
                                         O_wt_conc = O_wt_conc + (coeff - 1) * layer_handler(i).element(j).conc_wt 'calculate the O weight concentration based on the weight concentration of the other elements
                                     End If
                                 Next

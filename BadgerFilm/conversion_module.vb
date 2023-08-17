@@ -788,6 +788,38 @@ Module conversion_module
         End Try
     End Function
 
+    Public Function Convert_wt_to_stoichio_wt(element As Elt_layer, stoichio_element(,) As Integer, stoichio_element_name As String) As Double
+        Try
+
+            Dim stoichio_element_Z As Integer = symbol_to_Z(stoichio_element_name)
+
+
+            Dim anion As Integer
+            Dim cation As Integer
+            Dim Z As Integer = symbol_to_Z(element.elt_name)
+
+            cation = stoichio_element(Z - 1, 0)
+            anion = stoichio_element(Z - 1, 1)
+
+            Dim A_elt As Double = zaro(Z)(0)
+            Dim A_oxygen As Double = zaro(stoichio_element_Z)(0)
+            'Dim wt_of_cation_in_perfect_formula As Double = cation * A_elt / (cation * A_elt + anion * A_oxygen)
+            Dim coeff_convertion As Double = (cation * A_elt + anion * A_oxygen) / (cation * A_elt)
+
+            'Return element.conc_wt * (1 - wt_of_cation_in_perfect_formula) / wt_of_cation_in_perfect_formula
+            Return coeff_convertion
+
+        Catch ex As Exception
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in Convert_wt_to_stoichio_wt " & ex.Message
+
+            Using err As StreamWriter = New StreamWriter("log.txt", True)
+                err.WriteLine(tmp)
+            End Using
+            MsgBox(tmp)
+        End Try
+    End Function
+
+
     Public Function Convert_wt_to_oxide_wt(element As Elt_layer) As Double
         Try
             Dim anion As Integer
@@ -1100,7 +1132,7 @@ Module conversion_module
             Return coeff_convertion
 
         Catch ex As Exception
-            Dim tmp As String = Date.Now.ToString & vbTab & "Error in O_by_stochiometry_from_elt_wt " & ex.Message
+            Dim tmp As String = Date.Now.ToString & vbTab & "Error in Convert_wt_to_oxide_wt " & ex.Message
 
             Using err As StreamWriter = New StreamWriter("log.txt", True)
                 err.WriteLine(tmp)

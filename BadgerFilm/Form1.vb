@@ -59,12 +59,14 @@ Public Structure experimental_MAC
 End Structure
 
 Public Structure stoichiometry
+    Dim O_by_stoichio_name As String
     Dim O_by_stoichio As Boolean
     Dim O_wt_conc As Double
     Dim Elt_by_stoichio_to_O As Boolean
     Dim Elt_by_stoichio_to_O_name As String
     Dim Elt_by_stoichio_to_O_ratio As Double
     Dim Elt_wt_conc As Double
+    Dim stoichio_table(,) As Integer
 End Structure
 
 Public Structure Elt_exp
@@ -121,7 +123,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.23"
+    Public VERSION As String = "v.1.2.24"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -155,6 +157,9 @@ Public Class Form1
     Public MAC_data()() As String
 
     Public Ec_data() As String = Nothing
+
+    Public stoichio_O(,) As Integer = Nothing
+    Public stoichio_N(,) As Integer = Nothing
 
     'Public WithEvents backgroundWorker1 As System.ComponentModel.BackgroundWorker
 
@@ -359,6 +364,7 @@ Public Class Form1
                 layer_handler(i).stoichiometry.Elt_by_stoichio_to_O_ratio = 0
                 layer_handler(i).stoichiometry.Elt_wt_conc = 0
                 layer_handler(i).stoichiometry.O_by_stoichio = False
+                layer_handler(i).stoichiometry.O_by_stoichio_name = ""
                 layer_handler(i).stoichiometry.O_wt_conc = 0
             Next
 
@@ -428,6 +434,8 @@ Public Class Form1
             Dim files_EADL As String = "EADL"
             Dim fit_dll_file As String = "MPFitLib.dll"
             Dim experimental_MAC_file As String = "Experimental_MACs.txt"
+            Dim stoichio_O_file As String = "stoichiometry_O.txt"
+            Dim stoichio_N_file As String = "stoichiometry_N.txt"
             'Dim list_files_PEN() As String = {"pdatconf.p14", "pdesi", "phmaxs", "phpixs"}
             Dim flag_file_exists As Boolean = True
 
@@ -456,6 +464,14 @@ Public Class Form1
                 MsgBox("The file Experimental_MACs.txt is missing!" & vbCrLf & "Please reinstall BadgerFilm or create the file manually in BadgerFilm's folder.")
             End If
 
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\" & stoichio_O_file) = False Then
+                MsgBox("The file stoichiometry_O.txt is missing!" & vbCrLf & "Please reinstall BadgerFilm or create the file manually in BadgerFilm's folder.")
+            End If
+
+            If My.Computer.FileSystem.FileExists(Application.StartupPath & "\" & stoichio_N_file) = False Then
+                MsgBox("The file stoichiometry_N.txt is missing!" & vbCrLf & "Please reinstall BadgerFilm or create the file manually in BadgerFilm's folder.")
+            End If
+
 
             chart1_height = Chart1.Height
             chart1_width = Chart1.Width
@@ -471,6 +487,13 @@ Public Class Form1
             init_atomic_parameters(pen_path, eadl_path, ffast_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, options)
 
             init_Ec(Ec_data, pen_path)
+
+            init_stoichio(stoichio_O, stoichio_O_file)
+            init_stoichio(stoichio_N, stoichio_N_file)
+
+            If ComboBox1.Items.Count > 0 Then
+                ComboBox1.SelectedIndex = 0    ' The first item has index 0 '
+            End If
 
             '***************************************************
             ' This block must be called last. Thanks yueyinqiu for finding this bug.
@@ -4684,8 +4707,7 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
         End Try
     End Sub
 
-
-    Private Sub CheckBox20_Click(sender As Object, e As EventArgs) Handles CheckBox20.Click
+    Private Sub select_elt_by_stoichio()
         Try
             If layer_handler Is Nothing Then Exit Sub
             If check_valid_layer_selected() = False Then Exit Sub
@@ -4696,7 +4718,7 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                 Dim index As Integer = -1
                 If layer_handler(ListBox1.SelectedIndex).element IsNot Nothing Then
                     For i As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
-                        If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = "O" Then
+                        If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = ComboBox1.SelectedItem Then '"O" Then
                             index = i
                             Exit For
                         End If
@@ -4712,12 +4734,12 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                     End If
 
                     Dim current_indice As Integer = UBound(layer_handler(ListBox1.SelectedIndex).element)
-                    layer_handler(ListBox1.SelectedIndex).element(current_indice).elt_name = "O"
+                    layer_handler(ListBox1.SelectedIndex).element(current_indice).elt_name = ComboBox1.SelectedItem '"O"
                     layer_handler(ListBox1.SelectedIndex).element(current_indice).conc_wt = 1
                     layer_handler(ListBox1.SelectedIndex).element(current_indice).conc_at = 1
                     layer_handler(ListBox1.SelectedIndex).element(current_indice).isConcFixed = True
-                    layer_handler(ListBox1.SelectedIndex).element(current_indice).z = 8
-                    layer_handler(ListBox1.SelectedIndex).element(current_indice).a = zaro(8)(0)
+                    layer_handler(ListBox1.SelectedIndex).element(current_indice).z = symbol_to_Z(ComboBox1.SelectedItem)
+                    layer_handler(ListBox1.SelectedIndex).element(current_indice).a = zaro(layer_handler(ListBox1.SelectedIndex).element(current_indice).z)(0)
                     layer_handler(ListBox1.SelectedIndex).element(current_indice).mother_layer_id = ListBox1.SelectedIndex
 
                     'If O is already present, fix its concentration.
@@ -4728,7 +4750,7 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                 'Remove O from the list of experimental k-ratios if present (an element cannot be quantified by k-ratio and by stoichiometry at the same time).
                 If elt_exp_handler IsNot Nothing Then
                     For i As Integer = 0 To UBound(elt_exp_handler)
-                        If elt_exp_handler(i).elt_name = "O" Then
+                        If elt_exp_handler(i).elt_name = ComboBox1.SelectedItem Then '"O" Then
                             For j As Integer = i To UBound(elt_exp_handler) - 1
                                 elt_exp_handler(j) = elt_exp_handler(j + 1)
                             Next
@@ -4738,7 +4760,9 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                     Next
                 End If
                 'Mark the button corresponding to O in the periodic table as clicked.
-                Element8.BackColor = Color.Gray
+                'Element8.BackColor = Color.Gray
+                Dim Element As Class1.TestB = CType(Me.Controls("Element" & symbol_to_Z(ComboBox1.SelectedItem)), Class1.TestB)
+                Element.BackColor = Color.Gray
                 'Check the checkbox.
                 CheckBox20.Checked = True
                 CheckBox21.Enabled = True
@@ -4746,7 +4770,7 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
             Else
                 'Remove O by stoichiometry from the system.
                 For i As Integer = 0 To UBound(layer_handler(ListBox1.SelectedIndex).element)
-                    If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = "O" Then
+                    If layer_handler(ListBox1.SelectedIndex).element(i).elt_name = layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio_name Then '"O" Then
                         For j As Integer = i To UBound(layer_handler(ListBox1.SelectedIndex).element) - 1
                             layer_handler(ListBox1.SelectedIndex).element(j) = layer_handler(ListBox1.SelectedIndex).element(j + 1)
                         Next
@@ -4755,7 +4779,9 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                     End If
                 Next
                 'Mark the button corresponding to O in the periodic table as not clicked.
-                Element8.BackColor = Color.White
+                'Element8.BackColor = Color.White
+                Dim Element As Class1.TestB = CType(Me.Controls("Element" & symbol_to_Z(layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio_name)), Class1.TestB)
+                Element.BackColor = Color.White
                 'Uncheck the checkbox and unvlaidate Stoichiometry to O checkbox.
                 CheckBox20.Checked = False
                 CheckBox21.Checked = False
@@ -4766,7 +4792,9 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
 
             'Tells whether the selected layer is defining O by stoichiometry.
             layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio = CheckBox20.Checked
+            layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio_name = ComboBox1.SelectedItem
             layer_handler(ListBox1.SelectedIndex).stoichiometry.Elt_by_stoichio_to_O = CheckBox21.Checked
+            init_stoichio(layer_handler(ListBox1.SelectedIndex).stoichiometry.stoichio_table, "stoichiometry_" & layer_handler(ListBox1.SelectedIndex).stoichiometry.O_by_stoichio_name & ".txt")
             display_grid()
             display_grid_layer()
         Catch ex As Exception
@@ -4777,6 +4805,10 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
             End Using
             MsgBox(tmp)
         End Try
+    End Sub
+
+    Private Sub CheckBox20_Click(sender As Object, e As EventArgs) Handles CheckBox20.Click
+        select_elt_by_stoichio()
     End Sub
 
 
@@ -4922,4 +4954,14 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
 
     End Sub
 
+    Private Sub GroupBox5_Enter(sender As Object, e As EventArgs) Handles GroupBox5.Enter
+
+    End Sub
+
+    Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboBox1.SelectedIndexChanged
+        select_elt_by_stoichio()
+        select_elt_by_stoichio()
+        CheckBox21.Text = "Stoichiometry to " & ComboBox1.SelectedItem & ":"
+        Label19.Text = "to " & ComboBox1.SelectedItem
+    End Sub
 End Class
