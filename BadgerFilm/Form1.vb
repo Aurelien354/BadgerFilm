@@ -123,7 +123,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.24"
+    Public VERSION As String = "v.1.2.27"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -148,7 +148,7 @@ Public Class Form1
 
     Public toa As Double = 40
 
-    Public at_data() As String
+    Public at_data() As data_atomic_parameters
     Public el_ion_xs()() As String
     Public ph_ion_xs()() As String
     Public MAC_data_PEN14()() As String

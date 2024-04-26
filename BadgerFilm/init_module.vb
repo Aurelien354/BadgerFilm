@@ -13,21 +13,27 @@ Module init_module
             End If
         End Try
     End Function
-    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByVal ffast_path As String, ByRef at_data() As String, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
+    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByVal ffast_path As String, ByRef at_data() As data_atomic_parameters, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
                                       ByRef MAC_data_PEN14()() As String, ByRef MAC_data_PEN18()() As String, ByRef MAC_data_FFAST()() As String, ByVal options As options)
 
-        Dim data_file As String = eadl_path & "\pdrelax.p11"
-        Dim sr As New StreamReader(data_file)
-        Try
-            Dim temp As String = sr.ReadToEnd
-            at_data = Split(temp, vbCrLf)
-        Catch Ex As Exception
-            MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
-        Finally
-            If (sr IsNot Nothing) Then
-                sr.Close()
-            End If
-        End Try
+
+        ReDim at_data(98)
+        For z As Integer = 1 To 99
+            at_data(z - 1) = init_atomic_parameters(z, eadl_path)
+        Next
+
+        'Dim data_file As String = eadl_path & "\pdrelax.p11"
+        'Dim sr As New StreamReader(data_file)
+        'Try
+        '    Dim temp As String = sr.ReadToEnd
+        '    at_data = Split(temp, vbCrLf)
+        'Catch Ex As Exception
+        '    MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+        'Finally
+        '    If (sr IsNot Nothing) Then
+        '        sr.Close()
+        '    End If
+        'End Try
 
         Dim path As String = pen_path & "\PENELOPE2018"
         Dim filename As String
@@ -187,7 +193,7 @@ Module init_module
 
     End Sub
     Public Sub init_element(ByVal name As String, ByVal xray_name As String, ByVal atomic_mass As Double, ByVal Ec_data() As String, ByRef element As Elt_exp,
-                            ByVal at_data() As String, ByVal el_ion_xs()() As String, ByVal ph_ion_xs()() As String, ByVal MAC_data()() As String, ByVal options As options) ', Optional mother_layer_id As Integer = 0)
+                            ByVal at_data() As data_atomic_parameters, ByVal el_ion_xs()() As String, ByVal ph_ion_xs()() As String, ByVal MAC_data()() As String, ByVal options As options) ', Optional mother_layer_id As Integer = 0)
 
 
         element.elt_name = correct_symbol(name)
@@ -205,7 +211,7 @@ Module init_module
             element.a = atomic_mass
         End If
 
-        element.at_data = init_atomic_parameters_pdrelax(element.z, at_data)
+        element.at_data = at_data(element.z - 1) 'init_atomic_parameters(element.z, at_data)
         element.el_ion_xs = init_el_ionization_xs(element.z, el_ion_xs)
         element.ph_ion_xs = init_photoionization_xs(element.z, ph_ion_xs)
         element.mac_data = init_mac(element.z, MAC_data, options)
