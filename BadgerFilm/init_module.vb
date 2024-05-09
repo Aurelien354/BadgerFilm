@@ -13,8 +13,8 @@ Module init_module
             End If
         End Try
     End Function
-    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByVal ffast_path As String, ByRef at_data() As data_atomic_parameters, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
-                                      ByRef MAC_data_PEN14()() As String, ByRef MAC_data_PEN18()() As String, ByRef MAC_data_FFAST()() As String, ByVal options As options)
+    Public Sub init_atomic_parameters(ByVal pen_path As String, ByVal eadl_path As String, ByVal ffast_path As String, ByVal epdl23_path As String, ByRef at_data() As data_atomic_parameters, ByRef el_ion_xs()() As String, ByRef ph_ion_xs()() As String,
+                                      ByRef MAC_data_PEN14()() As String, ByRef MAC_data_PEN18()() As String, ByRef MAC_data_FFAST()() As String, ByRef MAC_data_EPDL23()() As String, ByVal options As options)
 
 
         ReDim at_data(98)
@@ -122,6 +122,24 @@ Module init_module
             MAC_data_FFAST(z - 1) = MAC_data_PEN14(z - 1)
         Next
 
+        path = epdl23_path
+        ReDim MAC_data_EPDL23(98)
+        For z As Integer = 1 To 99 'FFAST goes only up to 92 (U)!!!!!!!!!!!
+            If z < 10 Then
+                filename = "ZA00" & z & "000.txt"
+            Else
+                filename = "ZA0" & z & "000.txt"
+            End If
+            ' Dim temp As String = read_data(path & "\" & filename) 'decrypt(path, filename)
+            Dim data() As String = Nothing
+
+            Dim num As Integer = 23501
+            find_mac_EPDL(data, num, path & "\" & filename)
+            'Dim temp As String = read_data(path & "\" & filename)
+
+            'Separate each lines
+            MAC_data_EPDL23(z - 1) = data
+        Next
 
     End Sub
 
@@ -668,6 +686,8 @@ Module init_module
             energy_conversion_factor = 1000
         ElseIf options.MAC_mode = "FFAST" Then
             FIRST_LINE = 3
+        ElseIf options.MAC_mode = "EPDL23" Then
+            FIRST_LINE = 0
         End If
 
         For i As Integer = FIRST_LINE To UBound(lines)

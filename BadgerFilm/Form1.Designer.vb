@@ -23,8 +23,8 @@ Partial Class Form1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim ChartArea6 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Series6 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
@@ -37,6 +37,7 @@ Partial Class Form1
         Me.CheckBox9 = New System.Windows.Forms.CheckBox()
         Me.CheckBox8 = New System.Windows.Forms.CheckBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.Label19 = New System.Windows.Forms.Label()
         Me.TextBox19 = New System.Windows.Forms.TextBox()
         Me.Label18 = New System.Windows.Forms.Label()
@@ -235,7 +236,7 @@ Partial Class Form1
         Me.Element2 = New BadgerFilm.Class1.TestB()
         Me.Element1 = New BadgerFilm.Class1.TestB()
         Me.Button27 = New System.Windows.Forms.Button()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -404,6 +405,15 @@ Partial Class Form1
         Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Layers definition"
+        '
+        'ComboBox1
+        '
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Items.AddRange(New Object() {"O", "N"})
+        Me.ComboBox1.Location = New System.Drawing.Point(429, 330)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(33, 21)
+        Me.ComboBox1.TabIndex = 169
         '
         'Label19
         '
@@ -750,13 +760,13 @@ Partial Class Form1
         '
         'Chart1
         '
-        ChartArea6.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea6)
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
         Me.Chart1.Location = New System.Drawing.Point(826, 364)
         Me.Chart1.Name = "Chart1"
-        Series6.ChartArea = "ChartArea1"
-        Series6.Name = "Series1"
-        Me.Chart1.Series.Add(Series6)
+        Series2.ChartArea = "ChartArea1"
+        Series2.Name = "Series1"
+        Me.Chart1.Series.Add(Series2)
         Me.Chart1.Size = New System.Drawing.Size(459, 259)
         Me.Chart1.TabIndex = 16
         Me.Chart1.Text = "Chart1"
@@ -1013,14 +1023,15 @@ Partial Class Form1
         '
         'GroupBox7
         '
+        Me.GroupBox7.Controls.Add(Me.CheckBox23)
         Me.GroupBox7.Controls.Add(Me.CheckBox19)
         Me.GroupBox7.Controls.Add(Me.CheckBox3)
         Me.GroupBox7.Controls.Add(Me.CheckBox4)
         Me.GroupBox7.Controls.Add(Me.CheckBox5)
         Me.GroupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox7.Location = New System.Drawing.Point(5, 224)
+        Me.GroupBox7.Location = New System.Drawing.Point(5, 205)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(229, 107)
+        Me.GroupBox7.Size = New System.Drawing.Size(229, 130)
         Me.GroupBox7.TabIndex = 15
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "MAC model"
@@ -1328,7 +1339,7 @@ Partial Class Form1
         '
         Me.CheckBox13.AutoSize = True
         Me.CheckBox13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox13.Location = New System.Drawing.Point(10, 339)
+        Me.CheckBox13.Location = New System.Drawing.Point(11, 339)
         Me.CheckBox13.Name = "CheckBox13"
         Me.CheckBox13.Size = New System.Drawing.Size(77, 17)
         Me.CheckBox13.TabIndex = 160
@@ -2476,14 +2487,18 @@ Partial Class Form1
         Me.Button27.Text = "MAC pure elts"
         Me.Button27.UseVisualStyleBackColor = True
         '
-        'ComboBox1
+        'CheckBox23
         '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Items.AddRange(New Object() {"O", "N"})
-        Me.ComboBox1.Location = New System.Drawing.Point(429, 330)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(33, 21)
-        Me.ComboBox1.TabIndex = 169
+        Me.CheckBox23.AutoSize = True
+        Me.CheckBox23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox23.Location = New System.Drawing.Point(6, 110)
+        Me.CheckBox23.Name = "CheckBox23"
+        Me.CheckBox23.Size = New System.Drawing.Size(78, 17)
+        Me.CheckBox23.TabIndex = 18
+        Me.CheckBox23.Text = "EPDL 2023"
+        Me.ToolTip1.SetToolTip(Me.CheckBox23, "FFAST MACs are available from H to U. For heavier elements, PENELOPE14 MACs are u" &
+        "sed.")
+        Me.CheckBox23.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -2875,4 +2890,5 @@ Partial Class Form1
     Friend WithEvents Button26 As Button
     Friend WithEvents Button27 As Button
     Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents CheckBox23 As CheckBox
 End Class

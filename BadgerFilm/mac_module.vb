@@ -183,7 +183,18 @@ Module mac_module
                     find_mac = mac_xs(UBound(mac_xs))
                 End If
                 '*************************************************
+            ElseIf MAC_model = "EPDL23" Then
+                '*************************************************
+                'EPDL23 MAC extraction
+                '*************************************************
+                Dim mac_xs() As Double = interpol_log_log(absorber_element.mac_data, E_photon)
 
+                If mac_xs.Length < 1 Then
+                    find_mac = 0
+                Else
+                    find_mac = mac_xs(UBound(mac_xs)) * 0.6022 / zaro(absorber_element.z)(0) 'convert cross section (barns) to MAC (cm2/g): XS times Avogadro's number times (barns to cm2) divided by Atomic weight
+                End If
+                '*************************************************
             Else
                 Debug.WriteLine("Error: MAC model unknown!!!")
             End If

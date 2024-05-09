@@ -123,11 +123,12 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.27"
+    Public VERSION As String = "v.1.2.28"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
     Dim ffast_path As String = Application.StartupPath() & "\FFAST" '"D:\Travail\Penelope"
+    Dim epdl23_path As String = Application.StartupPath() & "\EPDL23"
     Dim experimental_MAC_path As String = Application.StartupPath & "\Experimental_MACs.txt"
     '
     Public color_table() As String = {"Red", "Blue", "Green", "Orange", "Purple", "Pink", "Black", "Gray"}
@@ -154,6 +155,7 @@ Public Class Form1
     Public MAC_data_PEN14()() As String
     Public MAC_data_PEN18()() As String
     Public MAC_data_FFAST()() As String
+    Public MAC_data_EPDL23()() As String
     Public MAC_data()() As String
 
     Public Ec_data() As String = Nothing
@@ -484,7 +486,7 @@ Public Class Form1
 
             Me.Text = "BadgerFilm " & VERSION
 
-            init_atomic_parameters(pen_path, eadl_path, ffast_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, options)
+            init_atomic_parameters(pen_path, eadl_path, ffast_path, epdl23_path, at_data, el_ion_xs, ph_ion_xs, MAC_data_PEN14, MAC_data_PEN18, MAC_data_FFAST, MAC_data_EPDL23, options)
 
             init_Ec(Ec_data, pen_path)
 
@@ -1906,6 +1908,8 @@ Public Class Form1
                 MAC_data = MAC_data_PEN18
             ElseIf options.MAC_mode = "FFAST" Then
                 MAC_data = MAC_data_FFAST
+            ElseIf options.MAC_mode = "EPDL23" Then
+                MAC_data = MAC_data_EPDL23
             Else
                 MAC_data = MAC_data_PEN14
             End If
@@ -2932,7 +2936,7 @@ Public Class Form1
         End Try
     End Sub
 
-    Private Sub CheckBox_Click_MAC_Model(sender As Object, e As EventArgs) Handles CheckBox4.Click, CheckBox5.Click, CheckBox3.Click, CheckBox19.Click
+    Private Sub CheckBox_Click_MAC_Model(sender As Object, e As EventArgs) Handles CheckBox4.Click, CheckBox5.Click, CheckBox3.Click, CheckBox19.Click, CheckBox23.Click
         Try
             If loaded = False Then Exit Sub
             Dim senderCheck As CheckBox = DirectCast(sender, CheckBox)
@@ -2941,22 +2945,33 @@ Public Class Form1
                 CheckBox3.Checked = False
                 CheckBox19.Checked = False
                 CheckBox4.Checked = True
+                CheckBox23.Checked = False
             ElseIf senderCheck Is CheckBox5 Then
                 CheckBox4.Checked = False 'Not CheckBox4.Checked
                 CheckBox3.Checked = False
                 CheckBox19.Checked = False
                 CheckBox5.Checked = True
+                CheckBox23.Checked = False
             ElseIf senderCheck Is CheckBox3 Then
                 CheckBox4.Checked = False 'Not CheckBox4.Checked
                 CheckBox5.Checked = False
                 CheckBox19.Checked = False
                 CheckBox3.Checked = True
+                CheckBox23.Checked = False
             ElseIf senderCheck Is CheckBox19 Then
                 CheckBox4.Checked = False 'Not CheckBox4.Checked
                 CheckBox5.Checked = False
                 CheckBox4.Checked = False
                 CheckBox3.Checked = False
                 CheckBox19.Checked = True
+                CheckBox23.Checked = False
+            ElseIf senderCheck Is CheckBox23 Then
+                CheckBox4.Checked = False 'Not CheckBox4.Checked
+                CheckBox5.Checked = False
+                CheckBox4.Checked = False
+                CheckBox3.Checked = False
+                CheckBox19.Checked = False
+                CheckBox23.Checked = True
             End If
 
             'CheckBox12.Checked = Not CheckBox12.Checked
@@ -2973,7 +2988,8 @@ Public Class Form1
             ElseIf CheckBox19.Checked = True Then
                 'CheckBox4.Checked = False
                 options.MAC_mode = "FFAST"
-
+            ElseIf CheckBox23.Checked = True Then
+                options.MAC_mode = "EPDL23"
             End If
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in CheckBox_Click_MAC_Model " & ex.Message
@@ -4912,6 +4928,8 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
                 MAC_data = MAC_data_PEN18
             ElseIf options.MAC_mode = "FFAST" Then
                 MAC_data = MAC_data_FFAST
+            ElseIf options.MAC_mode = "EPDL23" Then
+                MAC_data = MAC_data_EPDL23
             End If
 
             init_elt_exp_all(elt_exp_all, layer_handler, Ec_data, pen_path)
@@ -4963,5 +4981,9 @@ TO THE FULLEST EXTENT PERMITTED BY LAW, IN NO EVENT SHALL UW OR THE AUTHORS BE L
         select_elt_by_stoichio()
         CheckBox21.Text = "Stoichiometry to " & ComboBox1.SelectedItem & ":"
         Label19.Text = "to " & ComboBox1.SelectedItem
+    End Sub
+
+    Private Sub CheckBox5_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox5.CheckedChanged
+
     End Sub
 End Class
