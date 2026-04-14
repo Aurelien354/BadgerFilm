@@ -320,7 +320,7 @@ Module PAP_and_fluo_module
                     fc6 = qe0(studied_element.line(line_indice).Ec, E0, studied_element.line(line_indice).xray_name, studied_element.z)
                 End If
 
-                'Calculate all the constants usued to calculate the total emitted X-ray intensity (except the concentration of the studied element).
+                'Calculate all the constants used to calculate the total emitted X-ray intensity (except the concentration of the studied element).
                 Dim const2 As Double = constante_simple(studied_element, shell1, shell2) * fc6 * norm_xs
 
                 'Calculate the total emitted PRIMARY X-ray intensity
@@ -435,7 +435,7 @@ Module PAP_and_fluo_module
             Next
             '************************
 
-            Dim Rx As Double
+            Dim Rx As Double = 0.0
             Dim Rx_old As Double
             Const RX_CONVERGENCE As Double = 0.01
             Dim flag_first_iter = True

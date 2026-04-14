@@ -101,11 +101,11 @@ Module Load_Save_module
             Next
             indice = indice + 1
 
-            'Retrieve the nuumber of experimental data
+            'Retrieve the number of experimental data
             Dim num_exp_elt As String = Split(line(indice), vbTab).Last
 
             If num_exp_elt = "" Then
-                MessageBox.Show("Error: no experimental data ond in " & data_file)
+                'MessageBox.Show("Error: no experimental data ond in " & data_file)
             Else
                 If num_exp_elt > 0 Then
                     ReDim elt_exp_handler(num_exp_elt - 1)

@@ -184,6 +184,9 @@ Module XNotUsed_module
                     End If
 
                 End While
+            Else
+                Dim tmp As String = Date.Now.ToString & vbTab & "Error: cannot find the EDPL data files. Please download them fron the Github repo."
+                MessageBox.Show(tmp)
 
             End If
 

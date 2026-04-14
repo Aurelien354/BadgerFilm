@@ -51,6 +51,13 @@ Module mac_module
             '***************************************************************************
             'MAC_calculation = 0
 
+            'If layer_handler(0).element.Count > 1 Then
+            '    If studied_element.elt_name = "O" Then
+            '        MAC_calculation = MAC_calculation * 1.03
+            '    End If
+            'End If
+
+
         Catch ex As Exception
             Dim tmp As String = Date.Now.ToString & vbTab & "Error in MAC_calculation " & ex.Message
 
@@ -82,17 +89,17 @@ Module mac_module
             '        Return find_mac
             '    End If
             'End If
-            'If absorber_element.elt_name = "Ti" Then
+            'If absorber_element.elt_name = "O" Then
             '    Dim shell1, shell2 As Integer
-            '    Siegbahn_to_transition_num("Ka", shell1, shell2, "Al")
-            '    Dim z As Integer = symbol_to_Z("Al")
+            '    Siegbahn_to_transition_num("Ka", shell1, shell2, "O")
+            '    Dim z As Integer = symbol_to_Z("O")
             '    Dim Ec_shell2 As Double = find_Ec(z, shell2, absorber_element.Ec_data)
             '    Dim energy As Double = find_Ec(z, shell1, absorber_element.Ec_data) - Ec_shell2 'in keV 
 
-            '    If Math.Floor(E_photon) > 1480 And Math.Floor(E_photon) < 1490 Then
-            '        find_mac = 2201
-            '        Return find_mac
-            '    End If
+            '    'If Math.Floor(E_photon) > 520 And Math.Floor(E_photon) < 530 Then
+            '    '    find_mac = 2201
+            '    '    Return find_mac
+            '    'End If
             'End If
             If E_photon = 0 Then Return 0
 

@@ -124,17 +124,28 @@ Module init_module
 
         path = epdl23_path
         ReDim MAC_data_EPDL23(98)
-        For z As Integer = 1 To 99 'FFAST goes only up to 92 (U)!!!!!!!!!!!
+        For z As Integer = 1 To 99
             If z < 10 Then
                 filename = "ZA00" & z & "000.txt"
             Else
                 filename = "ZA0" & z & "000.txt"
             End If
+
+            Dim fullPath As String = path & "\" & filename
+            Dim mystream As New StreamReader(fullPath)
+            If (mystream Is Nothing) Then
+                Dim tmp As String = Date.Now.ToString & vbTab & "Error: cannot find the EDPL data files. Please download them fron the Github repo."
+                MessageBox.Show(tmp)
+                mystream.Close()
+                Exit For
+            End If
+            mystream.Close()
+
             ' Dim temp As String = read_data(path & "\" & filename) 'decrypt(path, filename)
             Dim data() As String = Nothing
 
             Dim num As Integer = 23501
-            find_mac_EPDL(data, num, path & "\" & filename)
+            find_mac_EPDL(data, num, fullPath)
             'Dim temp As String = read_data(path & "\" & filename)
 
             'Separate each lines

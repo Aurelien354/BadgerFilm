@@ -102,6 +102,7 @@ Partial Class Form1
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox7 = New System.Windows.Forms.GroupBox()
+        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
         Me.CheckBox19 = New System.Windows.Forms.CheckBox()
         Me.CheckBox3 = New System.Windows.Forms.CheckBox()
         Me.CheckBox4 = New System.Windows.Forms.CheckBox()
@@ -236,7 +237,7 @@ Partial Class Form1
         Me.Element2 = New BadgerFilm.Class1.TestB()
         Me.Element1 = New BadgerFilm.Class1.TestB()
         Me.Button27 = New System.Windows.Forms.Button()
-        Me.CheckBox23 = New System.Windows.Forms.CheckBox()
+        Me.Button28 = New System.Windows.Forms.Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
@@ -255,9 +256,11 @@ Partial Class Form1
         Me.GroupBox1.Controls.Add(Me.CheckBox2)
         Me.GroupBox1.Controls.Add(Me.CheckBox1)
         Me.GroupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox1.Location = New System.Drawing.Point(4, 2)
+        Me.GroupBox1.Location = New System.Drawing.Point(6, 3)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(229, 63)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox1.Size = New System.Drawing.Size(344, 97)
         Me.GroupBox1.TabIndex = 1
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Secondary fluorescence"
@@ -268,9 +271,10 @@ Partial Class Form1
         Me.CheckBox2.Checked = True
         Me.CheckBox2.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox2.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox2.Location = New System.Drawing.Point(9, 65)
+        Me.CheckBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox2.Name = "CheckBox2"
-        Me.CheckBox2.Size = New System.Drawing.Size(159, 17)
+        Me.CheckBox2.Size = New System.Drawing.Size(237, 24)
         Me.CheckBox2.TabIndex = 9
         Me.CheckBox2.Text = "Bremsstrahlung fluorescence"
         Me.CheckBox2.UseVisualStyleBackColor = True
@@ -281,9 +285,10 @@ Partial Class Form1
         Me.CheckBox1.Checked = True
         Me.CheckBox1.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox1.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox1.Location = New System.Drawing.Point(9, 29)
+        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(151, 17)
+        Me.CheckBox1.Size = New System.Drawing.Size(222, 24)
         Me.CheckBox1.TabIndex = 8
         Me.CheckBox1.Text = "Characteristic fluorescence"
         Me.CheckBox1.UseVisualStyleBackColor = True
@@ -291,9 +296,10 @@ Partial Class Form1
         'TextBox1
         '
         Me.TextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox1.Location = New System.Drawing.Point(123, 71)
+        Me.TextBox1.Location = New System.Drawing.Point(184, 109)
+        Me.TextBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(67, 20)
+        Me.TextBox1.Size = New System.Drawing.Size(100, 26)
         Me.TextBox1.TabIndex = 3
         Me.TextBox1.Text = "40"
         '
@@ -305,9 +311,11 @@ Partial Class Form1
         Me.GroupBox3.Controls.Add(Me.CheckBox9)
         Me.GroupBox3.Controls.Add(Me.CheckBox8)
         Me.GroupBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox3.Location = New System.Drawing.Point(4, 97)
+        Me.GroupBox3.Location = New System.Drawing.Point(6, 149)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(229, 95)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox3.Size = New System.Drawing.Size(344, 146)
         Me.GroupBox3.TabIndex = 3
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "φ(ρz) model"
@@ -316,9 +324,10 @@ Partial Class Form1
         '
         Me.CheckBox22.AutoSize = True
         Me.CheckBox22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox22.Location = New System.Drawing.Point(6, 75)
+        Me.CheckBox22.Location = New System.Drawing.Point(9, 115)
+        Me.CheckBox22.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox22.Name = "CheckBox22"
-        Me.CheckBox22.Size = New System.Drawing.Size(110, 17)
+        Me.CheckBox22.Size = New System.Drawing.Size(159, 24)
         Me.CheckBox22.TabIndex = 9
         Me.CheckBox22.Text = "XPP (only for bulk)"
         Me.CheckBox22.UseVisualStyleBackColor = True
@@ -328,9 +337,10 @@ Partial Class Form1
         Me.CheckBox11.AutoSize = True
         Me.CheckBox11.Enabled = False
         Me.CheckBox11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox11.Location = New System.Drawing.Point(6, 61)
+        Me.CheckBox11.Location = New System.Drawing.Point(9, 94)
+        Me.CheckBox11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox11.Name = "CheckBox11"
-        Me.CheckBox11.Size = New System.Drawing.Size(136, 17)
+        Me.CheckBox11.Size = New System.Drawing.Size(200, 24)
         Me.CheckBox11.TabIndex = 8
         Me.CheckBox11.Text = "Bastin et al. (PROZA96)"
         Me.CheckBox11.UseVisualStyleBackColor = True
@@ -341,9 +351,10 @@ Partial Class Form1
         Me.CheckBox10.Checked = True
         Me.CheckBox10.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox10.Location = New System.Drawing.Point(6, 47)
+        Me.CheckBox10.Location = New System.Drawing.Point(9, 72)
+        Me.CheckBox10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox10.Name = "CheckBox10"
-        Me.CheckBox10.Size = New System.Drawing.Size(221, 17)
+        Me.CheckBox10.Size = New System.Drawing.Size(325, 24)
         Me.CheckBox10.TabIndex = 7
         Me.CheckBox10.Text = "Pouchou && Pichoir (PAP) Scanning (1990)"
         Me.CheckBox10.UseVisualStyleBackColor = True
@@ -352,9 +363,10 @@ Partial Class Form1
         '
         Me.CheckBox9.AutoSize = True
         Me.CheckBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox9.Location = New System.Drawing.Point(6, 33)
+        Me.CheckBox9.Location = New System.Drawing.Point(9, 51)
+        Me.CheckBox9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox9.Name = "CheckBox9"
-        Me.CheckBox9.Size = New System.Drawing.Size(113, 17)
+        Me.CheckBox9.Size = New System.Drawing.Size(166, 24)
         Me.CheckBox9.TabIndex = 6
         Me.CheckBox9.Text = "Merlet XPHI (2010)"
         Me.CheckBox9.UseVisualStyleBackColor = True
@@ -364,9 +376,10 @@ Partial Class Form1
         Me.CheckBox8.AutoSize = True
         Me.CheckBox8.Enabled = False
         Me.CheckBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox8.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox8.Location = New System.Drawing.Point(9, 29)
+        Me.CheckBox8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox8.Name = "CheckBox8"
-        Me.CheckBox8.Size = New System.Drawing.Size(143, 17)
+        Me.CheckBox8.Size = New System.Drawing.Size(211, 24)
         Me.CheckBox8.TabIndex = 5
         Me.CheckBox8.Text = "Bastin's Scanning  (1986)"
         Me.CheckBox8.UseVisualStyleBackColor = True
@@ -399,9 +412,11 @@ Partial Class Form1
         Me.GroupBox5.Controls.Add(Me.TextBox3)
         Me.GroupBox5.Controls.Add(Me.Label6)
         Me.GroupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox5.Location = New System.Drawing.Point(239, 2)
+        Me.GroupBox5.Location = New System.Drawing.Point(358, 3)
+        Me.GroupBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox5.Name = "GroupBox5"
-        Me.GroupBox5.Size = New System.Drawing.Size(583, 394)
+        Me.GroupBox5.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox5.Size = New System.Drawing.Size(874, 606)
         Me.GroupBox5.TabIndex = 5
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Layers definition"
@@ -410,17 +425,19 @@ Partial Class Form1
         '
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Items.AddRange(New Object() {"O", "N"})
-        Me.ComboBox1.Location = New System.Drawing.Point(429, 330)
+        Me.ComboBox1.Location = New System.Drawing.Point(644, 508)
+        Me.ComboBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(33, 21)
+        Me.ComboBox1.Size = New System.Drawing.Size(48, 28)
         Me.ComboBox1.TabIndex = 169
         '
         'Label19
         '
         Me.Label19.AutoSize = True
-        Me.Label19.Location = New System.Drawing.Point(538, 371)
+        Me.Label19.Location = New System.Drawing.Point(807, 571)
+        Me.Label19.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label19.Name = "Label19"
-        Me.Label19.Size = New System.Drawing.Size(27, 13)
+        Me.Label19.Size = New System.Drawing.Size(39, 20)
         Me.Label19.TabIndex = 168
         Me.Label19.Text = "to O"
         '
@@ -428,18 +445,20 @@ Partial Class Form1
         '
         Me.TextBox19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox19.Enabled = False
-        Me.TextBox19.Location = New System.Drawing.Point(512, 367)
+        Me.TextBox19.Location = New System.Drawing.Point(768, 565)
+        Me.TextBox19.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox19.Name = "TextBox19"
-        Me.TextBox19.Size = New System.Drawing.Size(24, 20)
+        Me.TextBox19.Size = New System.Drawing.Size(35, 26)
         Me.TextBox19.TabIndex = 167
         Me.TextBox19.Text = "C"
         '
         'Label18
         '
         Me.Label18.AutoSize = True
-        Me.Label18.Location = New System.Drawing.Point(464, 371)
+        Me.Label18.Location = New System.Drawing.Point(696, 571)
+        Me.Label18.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label18.Name = "Label18"
-        Me.Label18.Size = New System.Drawing.Size(47, 13)
+        Me.Label18.Size = New System.Drawing.Size(71, 20)
         Me.Label18.TabIndex = 166
         Me.Label18.Text = "atoms of"
         '
@@ -447,9 +466,10 @@ Partial Class Form1
         '
         Me.TextBox18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox18.Enabled = False
-        Me.TextBox18.Location = New System.Drawing.Point(429, 367)
+        Me.TextBox18.Location = New System.Drawing.Point(644, 565)
+        Me.TextBox18.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox18.Name = "TextBox18"
-        Me.TextBox18.Size = New System.Drawing.Size(35, 20)
+        Me.TextBox18.Size = New System.Drawing.Size(52, 26)
         Me.TextBox18.TabIndex = 165
         Me.TextBox18.Text = "0.333"
         '
@@ -459,9 +479,10 @@ Partial Class Form1
         Me.CheckBox21.AutoSize = True
         Me.CheckBox21.Enabled = False
         Me.CheckBox21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox21.Location = New System.Drawing.Point(429, 351)
+        Me.CheckBox21.Location = New System.Drawing.Point(644, 540)
+        Me.CheckBox21.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox21.Name = "CheckBox21"
-        Me.CheckBox21.Size = New System.Drawing.Size(112, 17)
+        Me.CheckBox21.Size = New System.Drawing.Size(164, 24)
         Me.CheckBox21.TabIndex = 164
         Me.CheckBox21.Text = "Stoichiometry to O:"
         Me.CheckBox21.UseVisualStyleBackColor = True
@@ -471,9 +492,10 @@ Partial Class Form1
         Me.CheckBox20.AutoCheck = False
         Me.CheckBox20.AutoSize = True
         Me.CheckBox20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox20.Location = New System.Drawing.Point(415, 331)
+        Me.CheckBox20.Location = New System.Drawing.Point(622, 509)
+        Me.CheckBox20.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox20.Name = "CheckBox20"
-        Me.CheckBox20.Size = New System.Drawing.Size(134, 17)
+        Me.CheckBox20.Size = New System.Drawing.Size(191, 24)
         Me.CheckBox20.TabIndex = 163
         Me.CheckBox20.Text = "            by stoichiometry"
         Me.CheckBox20.UseVisualStyleBackColor = True
@@ -481,9 +503,10 @@ Partial Class Form1
         'Label17
         '
         Me.Label17.AutoSize = True
-        Me.Label17.Location = New System.Drawing.Point(42, 351)
+        Me.Label17.Location = New System.Drawing.Point(63, 540)
+        Me.Label17.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label17.Name = "Label17"
-        Me.Label17.Size = New System.Drawing.Size(35, 13)
+        Me.Label17.Size = New System.Drawing.Size(48, 20)
         Me.Label17.TabIndex = 22
         Me.Label17.Text = "g/cm³"
         '
@@ -491,9 +514,10 @@ Partial Class Form1
         '
         Me.Button12.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button12.Location = New System.Drawing.Point(165, 11)
+        Me.Button12.Location = New System.Drawing.Point(248, 17)
+        Me.Button12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button12.Name = "Button12"
-        Me.Button12.Size = New System.Drawing.Size(154, 25)
+        Me.Button12.Size = New System.Drawing.Size(231, 38)
         Me.Button12.TabIndex = 21
         Me.Button12.Text = "Add X-ray line to selected elt"
         Me.Button12.UseVisualStyleBackColor = True
@@ -503,21 +527,25 @@ Partial Class Form1
         Me.DataGridView2.AllowUserToAddRows = False
         Me.DataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView2.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3})
-        Me.DataGridView2.Location = New System.Drawing.Point(6, 152)
+        Me.DataGridView2.Location = New System.Drawing.Point(9, 234)
+        Me.DataGridView2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DataGridView2.Name = "DataGridView2"
         Me.DataGridView2.RowHeadersVisible = False
-        Me.DataGridView2.Size = New System.Drawing.Size(128, 177)
+        Me.DataGridView2.RowHeadersWidth = 62
+        Me.DataGridView2.Size = New System.Drawing.Size(192, 272)
         Me.DataGridView2.TabIndex = 20
         '
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.HeaderText = "Elt"
+        Me.DataGridViewTextBoxColumn1.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.Width = 35
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.HeaderText = "Conc (wt.)"
+        Me.DataGridViewTextBoxColumn3.MinimumWidth = 8
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.Width = 90
         '
@@ -525,9 +553,10 @@ Partial Class Form1
         '
         Me.Button3.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button3.Location = New System.Drawing.Point(454, 11)
+        Me.Button3.Location = New System.Drawing.Point(681, 17)
+        Me.Button3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(81, 25)
+        Me.Button3.Size = New System.Drawing.Size(122, 38)
         Me.Button3.TabIndex = 19
         Me.Button3.Text = "Remove row"
         Me.Button3.UseVisualStyleBackColor = True
@@ -536,9 +565,10 @@ Partial Class Form1
         '
         Me.CheckBox18.AutoSize = True
         Me.CheckBox18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox18.Location = New System.Drawing.Point(102, 372)
+        Me.CheckBox18.Location = New System.Drawing.Point(153, 572)
+        Me.CheckBox18.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox18.Name = "CheckBox18"
-        Me.CheckBox18.Size = New System.Drawing.Size(96, 17)
+        Me.CheckBox18.Size = New System.Drawing.Size(139, 24)
         Me.CheckBox18.TabIndex = 18
         Me.CheckBox18.Text = "Fixed thickness"
         Me.CheckBox18.UseVisualStyleBackColor = True
@@ -547,9 +577,10 @@ Partial Class Form1
         '
         Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button2.Location = New System.Drawing.Point(325, 11)
+        Me.Button2.Location = New System.Drawing.Point(488, 17)
+        Me.Button2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(123, 25)
+        Me.Button2.Size = New System.Drawing.Size(184, 38)
         Me.Button2.TabIndex = 16
         Me.Button2.Text = "Add kV to selected elt"
         Me.Button2.UseVisualStyleBackColor = True
@@ -557,27 +588,30 @@ Partial Class Form1
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(213, 333)
+        Me.Label9.Location = New System.Drawing.Point(320, 512)
+        Me.Label9.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label9.Name = "Label9"
-        Me.Label9.Size = New System.Drawing.Size(131, 13)
+        Me.Label9.Size = New System.Drawing.Size(193, 20)
         Me.Label9.TabIndex = 17
         Me.Label9.Text = "Selected layer definied by:"
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(156, 351)
+        Me.Label4.Location = New System.Drawing.Point(234, 540)
+        Me.Label4.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(14, 13)
+        Me.Label4.Size = New System.Drawing.Size(20, 20)
         Me.Label4.TabIndex = 16
         Me.Label4.Text = "Å"
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(99, 333)
+        Me.Label8.Location = New System.Drawing.Point(148, 512)
+        Me.Label8.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label8.Name = "Label8"
-        Me.Label8.Size = New System.Drawing.Size(59, 13)
+        Me.Label8.Size = New System.Drawing.Size(84, 20)
         Me.Label8.TabIndex = 15
         Me.Label8.Text = "Thickness:"
         '
@@ -585,9 +619,10 @@ Partial Class Form1
         '
         Me.CheckBox17.AutoSize = True
         Me.CheckBox17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox17.Location = New System.Drawing.Point(299, 348)
+        Me.CheckBox17.Location = New System.Drawing.Point(448, 535)
+        Me.CheckBox17.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox17.Name = "CheckBox17"
-        Me.CheckBox17.Size = New System.Drawing.Size(81, 17)
+        Me.CheckBox17.Size = New System.Drawing.Size(117, 24)
         Me.CheckBox17.TabIndex = 13
         Me.CheckBox17.Text = "atomic fract."
         Me.CheckBox17.UseVisualStyleBackColor = True
@@ -595,27 +630,30 @@ Partial Class Form1
         'TextBox5
         '
         Me.TextBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox5.Location = New System.Drawing.Point(102, 349)
+        Me.TextBox5.Location = New System.Drawing.Point(153, 537)
+        Me.TextBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox5.Name = "TextBox5"
-        Me.TextBox5.Size = New System.Drawing.Size(51, 20)
+        Me.TextBox5.Size = New System.Drawing.Size(76, 26)
         Me.TextBox5.TabIndex = 12
         Me.TextBox5.Text = "20"
         '
         'TextBox4
         '
         Me.TextBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox4.Location = New System.Drawing.Point(6, 349)
+        Me.TextBox4.Location = New System.Drawing.Point(9, 537)
+        Me.TextBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(36, 20)
+        Me.TextBox4.Size = New System.Drawing.Size(53, 26)
         Me.TextBox4.TabIndex = 10
         Me.TextBox4.Text = "2.2"
         '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(3, 333)
+        Me.Label7.Location = New System.Drawing.Point(4, 512)
+        Me.Label7.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(72, 13)
+        Me.Label7.Size = New System.Drawing.Size(106, 20)
         Me.Label7.TabIndex = 9
         Me.Label7.Text = "Layer density:"
         '
@@ -625,9 +663,10 @@ Partial Class Form1
         Me.CheckBox12.Checked = True
         Me.CheckBox12.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox12.Location = New System.Drawing.Point(216, 348)
+        Me.CheckBox12.Location = New System.Drawing.Point(324, 535)
+        Me.CheckBox12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox12.Name = "CheckBox12"
-        Me.CheckBox12.Size = New System.Drawing.Size(81, 17)
+        Me.CheckBox12.Size = New System.Drawing.Size(116, 24)
         Me.CheckBox12.TabIndex = 8
         Me.CheckBox12.Text = "weight fract."
         Me.CheckBox12.UseVisualStyleBackColor = True
@@ -637,51 +676,60 @@ Partial Class Form1
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Elt, Me.Line, Me.kratio, Me.k_ratio_measured, Me.Err_kratio, Me.E, Me.Std})
-        Me.DataGridView1.Location = New System.Drawing.Point(136, 41)
+        Me.DataGridView1.Location = New System.Drawing.Point(204, 63)
+        Me.DataGridView1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowHeadersVisible = False
-        Me.DataGridView1.Size = New System.Drawing.Size(441, 288)
+        Me.DataGridView1.RowHeadersWidth = 62
+        Me.DataGridView1.Size = New System.Drawing.Size(662, 443)
         Me.DataGridView1.TabIndex = 7
         '
         'Elt
         '
         Me.Elt.HeaderText = "Elt"
+        Me.Elt.MinimumWidth = 8
         Me.Elt.Name = "Elt"
         Me.Elt.Width = 33
         '
         'Line
         '
         Me.Line.HeaderText = "Line"
+        Me.Line.MinimumWidth = 8
         Me.Line.Name = "Line"
         Me.Line.Width = 40
         '
         'kratio
         '
         Me.kratio.HeaderText = "k-ratio"
+        Me.kratio.MinimumWidth = 8
         Me.kratio.Name = "kratio"
         Me.kratio.Width = 55
         '
         'k_ratio_measured
         '
         Me.k_ratio_measured.HeaderText = "k-ratio exp."
+        Me.k_ratio_measured.MinimumWidth = 8
         Me.k_ratio_measured.Name = "k_ratio_measured"
         Me.k_ratio_measured.Width = 85
         '
         'Err_kratio
         '
         Me.Err_kratio.HeaderText = "Err kratio"
+        Me.Err_kratio.MinimumWidth = 8
         Me.Err_kratio.Name = "Err_kratio"
         Me.Err_kratio.Width = 75
         '
         'E
         '
         Me.E.HeaderText = "E (kV)"
+        Me.E.MinimumWidth = 8
         Me.E.Name = "E"
         Me.E.Width = 60
         '
         'Std
         '
         Me.Std.HeaderText = "Standard"
+        Me.Std.MinimumWidth = 8
         Me.Std.Name = "Std"
         Me.Std.Width = 90
         '
@@ -689,26 +737,30 @@ Partial Class Form1
         '
         Me.ListBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(6, 41)
+        Me.ListBox1.ItemHeight = 20
+        Me.ListBox1.Location = New System.Drawing.Point(9, 63)
+        Me.ListBox1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(128, 106)
+        Me.ListBox1.Size = New System.Drawing.Size(191, 162)
         Me.ListBox1.TabIndex = 6
         '
         'TextBox3
         '
         Me.TextBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox3.Location = New System.Drawing.Point(95, 14)
+        Me.TextBox3.Location = New System.Drawing.Point(142, 22)
+        Me.TextBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(39, 20)
+        Me.TextBox3.Size = New System.Drawing.Size(58, 26)
         Me.TextBox3.TabIndex = 5
         Me.TextBox3.Text = "1"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(3, 16)
+        Me.Label6.Location = New System.Drawing.Point(4, 25)
+        Me.Label6.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(86, 13)
+        Me.Label6.Size = New System.Drawing.Size(128, 20)
         Me.Label6.TabIndex = 4
         Me.Label6.Text = "Number of layers"
         '
@@ -718,9 +770,10 @@ Partial Class Form1
         Me.CheckBox15.Checked = True
         Me.CheckBox15.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox15.Location = New System.Drawing.Point(6, 32)
+        Me.CheckBox15.Location = New System.Drawing.Point(9, 49)
+        Me.CheckBox15.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox15.Name = "CheckBox15"
-        Me.CheckBox15.Size = New System.Drawing.Size(67, 17)
+        Me.CheckBox15.Size = New System.Drawing.Size(99, 24)
         Me.CheckBox15.TabIndex = 13
         Me.CheckBox15.Text = "Angstrom"
         Me.CheckBox15.UseVisualStyleBackColor = True
@@ -729,9 +782,10 @@ Partial Class Form1
         '
         Me.CheckBox16.AutoSize = True
         Me.CheckBox16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox16.Location = New System.Drawing.Point(79, 32)
+        Me.CheckBox16.Location = New System.Drawing.Point(118, 49)
+        Me.CheckBox16.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox16.Name = "CheckBox16"
-        Me.CheckBox16.Size = New System.Drawing.Size(57, 17)
+        Me.CheckBox16.Size = New System.Drawing.Size(77, 24)
         Me.CheckBox16.TabIndex = 14
         Me.CheckBox16.Text = "µg/cm²"
         Me.CheckBox16.UseVisualStyleBackColor = True
@@ -742,9 +796,11 @@ Partial Class Form1
         Me.GroupBox6.Controls.Add(Me.CheckBox15)
         Me.GroupBox6.Controls.Add(Me.CheckBox16)
         Me.GroupBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox6.Location = New System.Drawing.Point(4, 428)
+        Me.GroupBox6.Location = New System.Drawing.Point(6, 658)
+        Me.GroupBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox6.Name = "GroupBox6"
-        Me.GroupBox6.Size = New System.Drawing.Size(229, 52)
+        Me.GroupBox6.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox6.Size = New System.Drawing.Size(344, 80)
         Me.GroupBox6.TabIndex = 9
         Me.GroupBox6.TabStop = False
         Me.GroupBox6.Text = "Units"
@@ -752,9 +808,10 @@ Partial Class Form1
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(6, 16)
+        Me.Label3.Location = New System.Drawing.Point(9, 25)
+        Me.Label3.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(119, 13)
+        Me.Label3.Size = New System.Drawing.Size(174, 20)
         Me.Label3.TabIndex = 2
         Me.Label3.Text = "Thicknesses defined in:"
         '
@@ -762,84 +819,93 @@ Partial Class Form1
         '
         ChartArea2.Name = "ChartArea1"
         Me.Chart1.ChartAreas.Add(ChartArea2)
-        Me.Chart1.Location = New System.Drawing.Point(826, 364)
+        Me.Chart1.Location = New System.Drawing.Point(1239, 560)
+        Me.Chart1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Chart1.Name = "Chart1"
         Series2.ChartArea = "ChartArea1"
         Series2.Name = "Series1"
         Me.Chart1.Series.Add(Series2)
-        Me.Chart1.Size = New System.Drawing.Size(459, 259)
+        Me.Chart1.Size = New System.Drawing.Size(688, 398)
         Me.Chart1.TabIndex = 16
         Me.Chart1.Text = "Chart1"
         '
         'TextBox7
         '
         Me.TextBox7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox7.Location = New System.Drawing.Point(860, 324)
+        Me.TextBox7.Location = New System.Drawing.Point(1290, 498)
+        Me.TextBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox7.Name = "TextBox7"
-        Me.TextBox7.Size = New System.Drawing.Size(39, 20)
+        Me.TextBox7.Size = New System.Drawing.Size(58, 26)
         Me.TextBox7.TabIndex = 20
         Me.TextBox7.Text = "0"
         '
         'TextBox8
         '
         Me.TextBox8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox8.Location = New System.Drawing.Point(898, 324)
+        Me.TextBox8.Location = New System.Drawing.Point(1347, 498)
+        Me.TextBox8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox8.Name = "TextBox8"
-        Me.TextBox8.Size = New System.Drawing.Size(39, 20)
+        Me.TextBox8.Size = New System.Drawing.Size(58, 26)
         Me.TextBox8.TabIndex = 21
         Me.TextBox8.Text = "30"
         '
         'Label10
         '
         Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(867, 311)
+        Me.Label10.Location = New System.Drawing.Point(1300, 478)
+        Me.Label10.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(24, 13)
+        Me.Label10.Size = New System.Drawing.Size(34, 20)
         Me.Label10.TabIndex = 22
         Me.Label10.Text = "Min"
         '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(902, 311)
+        Me.Label11.Location = New System.Drawing.Point(1353, 478)
+        Me.Label11.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label11.Name = "Label11"
-        Me.Label11.Size = New System.Drawing.Size(27, 13)
+        Me.Label11.Size = New System.Drawing.Size(38, 20)
         Me.Label11.TabIndex = 23
         Me.Label11.Text = "Max"
         '
         'Label12
         '
         Me.Label12.AutoSize = True
-        Me.Label12.Location = New System.Drawing.Point(825, 326)
+        Me.Label12.Location = New System.Drawing.Point(1238, 502)
+        Me.Label12.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label12.Name = "Label12"
-        Me.Label12.Size = New System.Drawing.Size(35, 13)
+        Me.Label12.Size = New System.Drawing.Size(51, 20)
         Me.Label12.TabIndex = 24
         Me.Label12.Text = "X axis"
         '
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(825, 345)
+        Me.Label13.Location = New System.Drawing.Point(1238, 531)
+        Me.Label13.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label13.Name = "Label13"
-        Me.Label13.Size = New System.Drawing.Size(35, 13)
+        Me.Label13.Size = New System.Drawing.Size(51, 20)
         Me.Label13.TabIndex = 29
         Me.Label13.Text = "Y axis"
         '
         'TextBox9
         '
         Me.TextBox9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox9.Location = New System.Drawing.Point(860, 343)
+        Me.TextBox9.Location = New System.Drawing.Point(1290, 528)
+        Me.TextBox9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox9.Name = "TextBox9"
-        Me.TextBox9.Size = New System.Drawing.Size(39, 20)
+        Me.TextBox9.Size = New System.Drawing.Size(58, 26)
         Me.TextBox9.TabIndex = 26
         Me.TextBox9.Text = "0"
         '
         'TextBox10
         '
         Me.TextBox10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox10.Location = New System.Drawing.Point(898, 343)
+        Me.TextBox10.Location = New System.Drawing.Point(1347, 528)
+        Me.TextBox10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox10.Name = "TextBox10"
-        Me.TextBox10.Size = New System.Drawing.Size(39, 20)
+        Me.TextBox10.Size = New System.Drawing.Size(58, 26)
         Me.TextBox10.TabIndex = 25
         Me.TextBox10.Text = "1"
         '
@@ -848,9 +914,10 @@ Partial Class Form1
         Me.Button4.BackColor = System.Drawing.Color.White
         Me.Button4.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button4.Location = New System.Drawing.Point(937, 324)
+        Me.Button4.Location = New System.Drawing.Point(1406, 498)
+        Me.Button4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(49, 39)
+        Me.Button4.Size = New System.Drawing.Size(74, 60)
         Me.Button4.TabIndex = 20
         Me.Button4.Text = "Plot"
         Me.Button4.UseVisualStyleBackColor = False
@@ -860,9 +927,10 @@ Partial Class Form1
         Me.Button6.BackColor = System.Drawing.Color.White
         Me.Button6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button6.Location = New System.Drawing.Point(4, 563)
+        Me.Button6.Location = New System.Drawing.Point(6, 866)
+        Me.Button6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(100, 38)
+        Me.Button6.Size = New System.Drawing.Size(150, 58)
         Me.Button6.TabIndex = 33
         Me.Button6.Text = "Calculate"
         Me.Button6.UseVisualStyleBackColor = False
@@ -872,9 +940,10 @@ Partial Class Form1
         Me.Button7.BackColor = System.Drawing.Color.White
         Me.Button7.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button7.Location = New System.Drawing.Point(133, 481)
+        Me.Button7.Location = New System.Drawing.Point(200, 740)
+        Me.Button7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(100, 38)
+        Me.Button7.Size = New System.Drawing.Size(150, 58)
         Me.Button7.TabIndex = 34
         Me.Button7.Text = "Save"
         Me.Button7.UseVisualStyleBackColor = False
@@ -883,11 +952,12 @@ Partial Class Form1
         '
         Me.TextBox12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox12.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox12.Location = New System.Drawing.Point(239, 396)
+        Me.TextBox12.Location = New System.Drawing.Point(358, 609)
+        Me.TextBox12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox12.Multiline = True
         Me.TextBox12.Name = "TextBox12"
         Me.TextBox12.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox12.Size = New System.Drawing.Size(583, 227)
+        Me.TextBox12.Size = New System.Drawing.Size(874, 348)
         Me.TextBox12.TabIndex = 35
         '
         'Button8
@@ -895,9 +965,10 @@ Partial Class Form1
         Me.Button8.BackColor = System.Drawing.Color.White
         Me.Button8.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button8.Location = New System.Drawing.Point(4, 481)
+        Me.Button8.Location = New System.Drawing.Point(6, 740)
+        Me.Button8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button8.Name = "Button8"
-        Me.Button8.Size = New System.Drawing.Size(100, 38)
+        Me.Button8.Size = New System.Drawing.Size(150, 58)
         Me.Button8.TabIndex = 36
         Me.Button8.Text = "Load"
         Me.Button8.UseVisualStyleBackColor = False
@@ -905,18 +976,20 @@ Partial Class Form1
         'TextBox2
         '
         Me.TextBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox2.Location = New System.Drawing.Point(166, 624)
+        Me.TextBox2.Location = New System.Drawing.Point(249, 960)
+        Me.TextBox2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(56, 20)
+        Me.TextBox2.Size = New System.Drawing.Size(83, 26)
         Me.TextBox2.TabIndex = 38
         Me.TextBox2.Text = "1"
         '
         'TextBox6
         '
         Me.TextBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox6.Location = New System.Drawing.Point(166, 642)
+        Me.TextBox6.Location = New System.Drawing.Point(249, 988)
+        Me.TextBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox6.Name = "TextBox6"
-        Me.TextBox6.Size = New System.Drawing.Size(56, 20)
+        Me.TextBox6.Size = New System.Drawing.Size(83, 26)
         Me.TextBox6.TabIndex = 39
         Me.TextBox6.Text = "1"
         '
@@ -924,9 +997,10 @@ Partial Class Form1
         '
         Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button1.Location = New System.Drawing.Point(133, 663)
+        Me.Button1.Location = New System.Drawing.Point(200, 1020)
+        Me.Button1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(100, 22)
+        Me.Button1.Size = New System.Drawing.Size(150, 34)
         Me.Button1.TabIndex = 42
         Me.Button1.Text = "Fit brem fluo"
         Me.Button1.UseVisualStyleBackColor = True
@@ -935,9 +1009,10 @@ Partial Class Form1
         '
         Me.Button5.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button5.Location = New System.Drawing.Point(721, 631)
+        Me.Button5.Location = New System.Drawing.Point(1082, 971)
+        Me.Button5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(68, 39)
+        Me.Button5.Size = New System.Drawing.Size(102, 60)
         Me.Button5.TabIndex = 43
         Me.Button5.Text = "Fit coeff1"
         Me.Button5.UseVisualStyleBackColor = True
@@ -945,11 +1020,12 @@ Partial Class Form1
         'TextBox11
         '
         Me.TextBox11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox11.Location = New System.Drawing.Point(239, 624)
+        Me.TextBox11.Location = New System.Drawing.Point(358, 960)
+        Me.TextBox11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox11.Multiline = True
         Me.TextBox11.Name = "TextBox11"
         Me.TextBox11.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox11.Size = New System.Drawing.Size(457, 201)
+        Me.TextBox11.Size = New System.Drawing.Size(684, 308)
         Me.TextBox11.TabIndex = 41
         Me.TextBox11.Text = resources.GetString("TextBox11.Text")
         '
@@ -958,9 +1034,10 @@ Partial Class Form1
         Me.Button9.BackColor = System.Drawing.Color.White
         Me.Button9.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button9.Location = New System.Drawing.Point(133, 522)
+        Me.Button9.Location = New System.Drawing.Point(200, 803)
+        Me.Button9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button9.Name = "Button9"
-        Me.Button9.Size = New System.Drawing.Size(100, 38)
+        Me.Button9.Size = New System.Drawing.Size(150, 58)
         Me.Button9.TabIndex = 44
         Me.Button9.Text = "Export data"
         Me.Button9.UseVisualStyleBackColor = False
@@ -969,9 +1046,10 @@ Partial Class Form1
         '
         Me.Button10.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button10.Location = New System.Drawing.Point(702, 676)
+        Me.Button10.Location = New System.Drawing.Point(1053, 1040)
+        Me.Button10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button10.Name = "Button10"
-        Me.Button10.Size = New System.Drawing.Size(100, 38)
+        Me.Button10.Size = New System.Drawing.Size(150, 58)
         Me.Button10.TabIndex = 45
         Me.Button10.Text = "Crypt"
         Me.Button10.UseVisualStyleBackColor = True
@@ -980,9 +1058,10 @@ Partial Class Form1
         '
         Me.Button11.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button11.Location = New System.Drawing.Point(702, 720)
+        Me.Button11.Location = New System.Drawing.Point(1053, 1108)
+        Me.Button11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button11.Name = "Button11"
-        Me.Button11.Size = New System.Drawing.Size(100, 38)
+        Me.Button11.Size = New System.Drawing.Size(150, 58)
         Me.Button11.TabIndex = 46
         Me.Button11.Text = "Decrypt"
         Me.Button11.UseVisualStyleBackColor = True
@@ -992,9 +1071,10 @@ Partial Class Form1
         Me.Button13.BackColor = System.Drawing.Color.White
         Me.Button13.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button13.Location = New System.Drawing.Point(9, 15)
+        Me.Button13.Location = New System.Drawing.Point(14, 23)
+        Me.Button13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button13.Name = "Button13"
-        Me.Button13.Size = New System.Drawing.Size(73, 39)
+        Me.Button13.Size = New System.Drawing.Size(110, 60)
         Me.Button13.TabIndex = 47
         Me.Button13.Text = "Update BadgerFilm"
         Me.Button13.UseVisualStyleBackColor = False
@@ -1002,9 +1082,10 @@ Partial Class Form1
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(2, 608)
+        Me.Label1.Location = New System.Drawing.Point(3, 935)
+        Me.Label1.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(74, 13)
+        Me.Label1.Size = New System.Drawing.Size(110, 20)
         Me.Label1.TabIndex = 48
         Me.Label1.Text = "Status: Ready"
         '
@@ -1013,9 +1094,11 @@ Partial Class Form1
         Me.GroupBox4.Controls.Add(Me.Button13)
         Me.GroupBox4.Enabled = False
         Me.GroupBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox4.Location = New System.Drawing.Point(1011, 305)
+        Me.GroupBox4.Location = New System.Drawing.Point(1516, 469)
+        Me.GroupBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(96, 58)
+        Me.GroupBox4.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox4.Size = New System.Drawing.Size(144, 89)
         Me.GroupBox4.TabIndex = 49
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "Options"
@@ -1029,20 +1112,37 @@ Partial Class Form1
         Me.GroupBox7.Controls.Add(Me.CheckBox4)
         Me.GroupBox7.Controls.Add(Me.CheckBox5)
         Me.GroupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox7.Location = New System.Drawing.Point(5, 205)
+        Me.GroupBox7.Location = New System.Drawing.Point(8, 315)
+        Me.GroupBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox7.Name = "GroupBox7"
-        Me.GroupBox7.Size = New System.Drawing.Size(229, 130)
+        Me.GroupBox7.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox7.Size = New System.Drawing.Size(344, 200)
         Me.GroupBox7.TabIndex = 15
         Me.GroupBox7.TabStop = False
         Me.GroupBox7.Text = "MAC model"
+        '
+        'CheckBox23
+        '
+        Me.CheckBox23.AutoSize = True
+        Me.CheckBox23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.CheckBox23.Location = New System.Drawing.Point(9, 169)
+        Me.CheckBox23.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.CheckBox23.Name = "CheckBox23"
+        Me.CheckBox23.Size = New System.Drawing.Size(112, 24)
+        Me.CheckBox23.TabIndex = 18
+        Me.CheckBox23.Text = "EPDL 2023"
+        Me.ToolTip1.SetToolTip(Me.CheckBox23, "FFAST MACs are available from H to U. For heavier elements, PENELOPE14 MACs are u" &
+        "sed.")
+        Me.CheckBox23.UseVisualStyleBackColor = True
         '
         'CheckBox19
         '
         Me.CheckBox19.AutoSize = True
         Me.CheckBox19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox19.Location = New System.Drawing.Point(6, 87)
+        Me.CheckBox19.Location = New System.Drawing.Point(9, 134)
+        Me.CheckBox19.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox19.Name = "CheckBox19"
-        Me.CheckBox19.Size = New System.Drawing.Size(197, 17)
+        Me.CheckBox19.Size = New System.Drawing.Size(291, 24)
         Me.CheckBox19.TabIndex = 17
         Me.CheckBox19.Text = "Chantler 2005 (FFAST) [only up to U]"
         Me.ToolTip1.SetToolTip(Me.CheckBox19, "FFAST MACs are available from H to U. For heavier elements, PENELOPE14 MACs are u" &
@@ -1053,9 +1153,10 @@ Partial Class Form1
         '
         Me.CheckBox3.AutoSize = True
         Me.CheckBox3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox3.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox3.Location = New System.Drawing.Point(9, 65)
+        Me.CheckBox3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox3.Name = "CheckBox3"
-        Me.CheckBox3.Size = New System.Drawing.Size(144, 17)
+        Me.CheckBox3.Size = New System.Drawing.Size(211, 24)
         Me.CheckBox3.TabIndex = 16
         Me.CheckBox3.Text = "EPDL (PENELOPE 2014)"
         Me.CheckBox3.UseVisualStyleBackColor = True
@@ -1066,9 +1167,10 @@ Partial Class Form1
         Me.CheckBox4.Checked = True
         Me.CheckBox4.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox4.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox4.Location = New System.Drawing.Point(9, 29)
+        Me.CheckBox4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox4.Name = "CheckBox4"
-        Me.CheckBox4.Size = New System.Drawing.Size(212, 17)
+        Me.CheckBox4.Size = New System.Drawing.Size(312, 24)
         Me.CheckBox4.TabIndex = 13
         Me.CheckBox4.Text = "Sabbatucci && Salvat 2016 (PENELOPE)"
         Me.CheckBox4.UseVisualStyleBackColor = True
@@ -1077,9 +1179,10 @@ Partial Class Form1
         '
         Me.CheckBox5.AutoSize = True
         Me.CheckBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox5.Location = New System.Drawing.Point(6, 64)
+        Me.CheckBox5.Location = New System.Drawing.Point(9, 98)
+        Me.CheckBox5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox5.Name = "CheckBox5"
-        Me.CheckBox5.Size = New System.Drawing.Size(133, 17)
+        Me.CheckBox5.Size = New System.Drawing.Size(195, 24)
         Me.CheckBox5.TabIndex = 14
         Me.CheckBox5.Text = "Heinrich 1986 (MAC30)"
         Me.CheckBox5.UseVisualStyleBackColor = True
@@ -1089,9 +1192,11 @@ Partial Class Form1
         Me.GroupBox8.Controls.Add(Me.CheckBox6)
         Me.GroupBox8.Controls.Add(Me.CheckBox7)
         Me.GroupBox8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox8.Location = New System.Drawing.Point(4, 358)
+        Me.GroupBox8.Location = New System.Drawing.Point(6, 551)
+        Me.GroupBox8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox8.Name = "GroupBox8"
-        Me.GroupBox8.Size = New System.Drawing.Size(229, 65)
+        Me.GroupBox8.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox8.Size = New System.Drawing.Size(344, 100)
         Me.GroupBox8.TabIndex = 16
         Me.GroupBox8.TabStop = False
         Me.GroupBox8.Text = "Electron ionization cross section model"
@@ -1102,9 +1207,10 @@ Partial Class Form1
         Me.CheckBox6.Checked = True
         Me.CheckBox6.CheckState = System.Windows.Forms.CheckState.Checked
         Me.CheckBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox6.Location = New System.Drawing.Point(6, 19)
+        Me.CheckBox6.Location = New System.Drawing.Point(9, 29)
+        Me.CheckBox6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox6.Name = "CheckBox6"
-        Me.CheckBox6.Size = New System.Drawing.Size(180, 17)
+        Me.CheckBox6.Size = New System.Drawing.Size(266, 24)
         Me.CheckBox6.TabIndex = 13
         Me.CheckBox6.Text = "Bote && Salvat 2008 (PENELOPE)"
         Me.CheckBox6.UseVisualStyleBackColor = True
@@ -1113,9 +1219,10 @@ Partial Class Form1
         '
         Me.CheckBox7.AutoSize = True
         Me.CheckBox7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox7.Location = New System.Drawing.Point(6, 42)
+        Me.CheckBox7.Location = New System.Drawing.Point(9, 65)
+        Me.CheckBox7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox7.Name = "CheckBox7"
-        Me.CheckBox7.Size = New System.Drawing.Size(158, 17)
+        Me.CheckBox7.Size = New System.Drawing.Size(233, 24)
         Me.CheckBox7.TabIndex = 14
         Me.CheckBox7.Text = "Original cross sections (PAP)"
         Me.CheckBox7.UseVisualStyleBackColor = True
@@ -1125,9 +1232,10 @@ Partial Class Form1
         Me.Button14.BackColor = System.Drawing.Color.White
         Me.Button14.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button14.Location = New System.Drawing.Point(133, 563)
+        Me.Button14.Location = New System.Drawing.Point(200, 866)
+        Me.Button14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button14.Name = "Button14"
-        Me.Button14.Size = New System.Drawing.Size(100, 38)
+        Me.Button14.Size = New System.Drawing.Size(150, 58)
         Me.Button14.TabIndex = 50
         Me.Button14.Text = "Export absolute intensities"
         Me.Button14.UseVisualStyleBackColor = False
@@ -1137,9 +1245,10 @@ Partial Class Form1
         Me.Button15.BackColor = System.Drawing.Color.White
         Me.Button15.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button15.Location = New System.Drawing.Point(4, 522)
+        Me.Button15.Location = New System.Drawing.Point(6, 803)
+        Me.Button15.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button15.Name = "Button15"
-        Me.Button15.Size = New System.Drawing.Size(100, 38)
+        Me.Button15.Size = New System.Drawing.Size(150, 58)
         Me.Button15.TabIndex = 51
         Me.Button15.Text = "Import Stratagem files"
         Me.Button15.UseVisualStyleBackColor = False
@@ -1147,9 +1256,10 @@ Partial Class Form1
         'Label2
         '
         Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(1113, 348)
+        Me.Label2.Location = New System.Drawing.Point(1670, 535)
+        Me.Label2.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(90, 13)
+        Me.Label2.Size = New System.Drawing.Size(137, 20)
         Me.Label2.TabIndex = 22
         Me.Label2.Text = "About BadgerFilm"
         '
@@ -1160,9 +1270,10 @@ Partial Class Form1
         '
         Me.Button17.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button17.Location = New System.Drawing.Point(133, 685)
+        Me.Button17.Location = New System.Drawing.Point(200, 1054)
+        Me.Button17.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button17.Name = "Button17"
-        Me.Button17.Size = New System.Drawing.Size(100, 42)
+        Me.Button17.Size = New System.Drawing.Size(150, 65)
         Me.Button17.TabIndex = 150
         Me.Button17.Text = "Fit brem fluo batch Ka"
         Me.Button17.UseVisualStyleBackColor = True
@@ -1171,20 +1282,22 @@ Partial Class Form1
         '
         Me.TextBox13.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TextBox13.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextBox13.Location = New System.Drawing.Point(818, 629)
+        Me.TextBox13.Location = New System.Drawing.Point(1227, 968)
+        Me.TextBox13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox13.Multiline = True
         Me.TextBox13.Name = "TextBox13"
         Me.TextBox13.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
-        Me.TextBox13.Size = New System.Drawing.Size(467, 189)
+        Me.TextBox13.Size = New System.Drawing.Size(700, 290)
         Me.TextBox13.TabIndex = 151
         '
         'Button18
         '
         Me.Button18.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button18.Location = New System.Drawing.Point(29, 643)
+        Me.Button18.Location = New System.Drawing.Point(44, 989)
+        Me.Button18.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button18.Name = "Button18"
-        Me.Button18.Size = New System.Drawing.Size(100, 42)
+        Me.Button18.Size = New System.Drawing.Size(150, 65)
         Me.Button18.TabIndex = 152
         Me.Button18.Text = "Test on Pouchou and Pichoir data"
         Me.Button18.UseVisualStyleBackColor = True
@@ -1193,9 +1306,10 @@ Partial Class Form1
         '
         Me.Button19.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button19.Location = New System.Drawing.Point(133, 726)
+        Me.Button19.Location = New System.Drawing.Point(200, 1117)
+        Me.Button19.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button19.Name = "Button19"
-        Me.Button19.Size = New System.Drawing.Size(100, 42)
+        Me.Button19.Size = New System.Drawing.Size(150, 65)
         Me.Button19.TabIndex = 153
         Me.Button19.Text = "Fit brem fluo batch La"
         Me.Button19.UseVisualStyleBackColor = True
@@ -1204,9 +1318,10 @@ Partial Class Form1
         '
         Me.Button20.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button20.Location = New System.Drawing.Point(29, 685)
+        Me.Button20.Location = New System.Drawing.Point(44, 1054)
+        Me.Button20.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button20.Name = "Button20"
-        Me.Button20.Size = New System.Drawing.Size(100, 42)
+        Me.Button20.Size = New System.Drawing.Size(150, 65)
         Me.Button20.TabIndex = 154
         Me.Button20.Text = "Test on Bastin and Heijligers Al"
         Me.Button20.UseVisualStyleBackColor = True
@@ -1215,9 +1330,10 @@ Partial Class Form1
         '
         Me.Button21.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button21.Location = New System.Drawing.Point(29, 726)
+        Me.Button21.Location = New System.Drawing.Point(44, 1117)
+        Me.Button21.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button21.Name = "Button21"
-        Me.Button21.Size = New System.Drawing.Size(100, 42)
+        Me.Button21.Size = New System.Drawing.Size(150, 65)
         Me.Button21.TabIndex = 155
         Me.Button21.Text = "Test on Bastin and Heijligers Pd"
         Me.Button21.UseVisualStyleBackColor = True
@@ -1226,9 +1342,10 @@ Partial Class Form1
         '
         Me.Button22.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button22.Location = New System.Drawing.Point(29, 767)
+        Me.Button22.Location = New System.Drawing.Point(44, 1180)
+        Me.Button22.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button22.Name = "Button22"
-        Me.Button22.Size = New System.Drawing.Size(100, 42)
+        Me.Button22.Size = New System.Drawing.Size(150, 65)
         Me.Button22.TabIndex = 156
         Me.Button22.Text = "Test on Bastin and Heijligers Pd"
         Me.Button22.UseVisualStyleBackColor = True
@@ -1237,9 +1354,10 @@ Partial Class Form1
         '
         Me.Button23.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button23.Location = New System.Drawing.Point(133, 767)
+        Me.Button23.Location = New System.Drawing.Point(200, 1180)
+        Me.Button23.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button23.Name = "Button23"
-        Me.Button23.Size = New System.Drawing.Size(100, 42)
+        Me.Button23.Size = New System.Drawing.Size(150, 65)
         Me.Button23.TabIndex = 157
         Me.Button23.Text = "Fit brem fluo batch Ma"
         Me.Button23.UseVisualStyleBackColor = True
@@ -1248,9 +1366,10 @@ Partial Class Form1
         '
         Me.Button24.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button24.Location = New System.Drawing.Point(29, 813)
+        Me.Button24.Location = New System.Drawing.Point(44, 1251)
+        Me.Button24.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button24.Name = "Button24"
-        Me.Button24.Size = New System.Drawing.Size(100, 42)
+        Me.Button24.Size = New System.Drawing.Size(150, 65)
         Me.Button24.TabIndex = 158
         Me.Button24.Text = "Test on Heinrich data"
         Me.Button24.UseVisualStyleBackColor = True
@@ -1265,9 +1384,11 @@ Partial Class Form1
         Me.GroupBox9.Controls.Add(Me.TextBox14)
         Me.GroupBox9.Controls.Add(Me.TextBox17)
         Me.GroupBox9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.GroupBox9.Location = New System.Drawing.Point(4, 358)
+        Me.GroupBox9.Location = New System.Drawing.Point(6, 551)
+        Me.GroupBox9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.GroupBox9.Name = "GroupBox9"
-        Me.GroupBox9.Size = New System.Drawing.Size(229, 65)
+        Me.GroupBox9.Padding = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.GroupBox9.Size = New System.Drawing.Size(344, 100)
         Me.GroupBox9.TabIndex = 159
         Me.GroupBox9.TabStop = False
         Me.GroupBox9.Text = "MAC fitting"
@@ -1275,63 +1396,70 @@ Partial Class Form1
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(85, 16)
+        Me.Label15.Location = New System.Drawing.Point(128, 25)
+        Me.Label15.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(49, 13)
+        Me.Label15.Size = New System.Drawing.Size(74, 20)
         Me.Label15.TabIndex = 29
         Me.Label15.Text = "Absorber"
         '
         'TextBox16
         '
         Me.TextBox16.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox16.Location = New System.Drawing.Point(85, 32)
+        Me.TextBox16.Location = New System.Drawing.Point(128, 49)
+        Me.TextBox16.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox16.Name = "TextBox16"
-        Me.TextBox16.Size = New System.Drawing.Size(46, 20)
+        Me.TextBox16.Size = New System.Drawing.Size(68, 26)
         Me.TextBox16.TabIndex = 28
         Me.TextBox16.Text = "U"
         '
         'Label14
         '
         Me.Label14.AutoSize = True
-        Me.Label14.Location = New System.Drawing.Point(140, 16)
+        Me.Label14.Location = New System.Drawing.Point(210, 25)
+        Me.Label14.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label14.Name = "Label14"
-        Me.Label14.Size = New System.Drawing.Size(67, 13)
+        Me.Label14.Size = New System.Drawing.Size(97, 20)
         Me.Label14.TabIndex = 27
         Me.Label14.Text = "MAC (cm²/g)"
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(6, 16)
+        Me.Label16.Location = New System.Drawing.Point(9, 25)
+        Me.Label16.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label16.Name = "Label16"
-        Me.Label16.Size = New System.Drawing.Size(52, 13)
+        Me.Label16.Size = New System.Drawing.Size(77, 20)
         Me.Label16.TabIndex = 25
         Me.Label16.Text = "Radiation"
         '
         'TextBox15
         '
         Me.TextBox15.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox15.Location = New System.Drawing.Point(137, 32)
+        Me.TextBox15.Location = New System.Drawing.Point(206, 49)
+        Me.TextBox15.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox15.Name = "TextBox15"
-        Me.TextBox15.Size = New System.Drawing.Size(70, 20)
+        Me.TextBox15.Size = New System.Drawing.Size(104, 26)
         Me.TextBox15.TabIndex = 24
         Me.TextBox15.Text = "5000"
         '
         'TextBox14
         '
         Me.TextBox14.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox14.Location = New System.Drawing.Point(39, 32)
+        Me.TextBox14.Location = New System.Drawing.Point(58, 49)
+        Me.TextBox14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox14.Name = "TextBox14"
-        Me.TextBox14.Size = New System.Drawing.Size(40, 20)
+        Me.TextBox14.Size = New System.Drawing.Size(59, 26)
         Me.TextBox14.TabIndex = 23
         Me.TextBox14.Text = "Ka"
         '
         'TextBox17
         '
         Me.TextBox17.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TextBox17.Location = New System.Drawing.Point(9, 32)
+        Me.TextBox17.Location = New System.Drawing.Point(14, 49)
+        Me.TextBox17.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.TextBox17.Name = "TextBox17"
-        Me.TextBox17.Size = New System.Drawing.Size(27, 20)
+        Me.TextBox17.Size = New System.Drawing.Size(40, 26)
         Me.TextBox17.TabIndex = 22
         Me.TextBox17.Text = "O"
         '
@@ -1339,9 +1467,10 @@ Partial Class Form1
         '
         Me.CheckBox13.AutoSize = True
         Me.CheckBox13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox13.Location = New System.Drawing.Point(11, 339)
+        Me.CheckBox13.Location = New System.Drawing.Point(16, 522)
+        Me.CheckBox13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox13.Name = "CheckBox13"
-        Me.CheckBox13.Size = New System.Drawing.Size(77, 17)
+        Me.CheckBox13.Size = New System.Drawing.Size(113, 24)
         Me.CheckBox13.TabIndex = 160
         Me.CheckBox13.Text = "MAC Fitting"
         Me.CheckBox13.UseVisualStyleBackColor = True
@@ -1349,9 +1478,10 @@ Partial Class Form1
         'CheckBox14
         '
         Me.CheckBox14.AutoSize = True
-        Me.CheckBox14.Location = New System.Drawing.Point(140, 826)
+        Me.CheckBox14.Location = New System.Drawing.Point(210, 1271)
+        Me.CheckBox14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.CheckBox14.Name = "CheckBox14"
-        Me.CheckBox14.Size = New System.Drawing.Size(76, 17)
+        Me.CheckBox14.Size = New System.Drawing.Size(110, 24)
         Me.CheckBox14.TabIndex = 161
         Me.CheckBox14.Text = "No Sum=1"
         Me.CheckBox14.UseVisualStyleBackColor = True
@@ -1359,9 +1489,10 @@ Partial Class Form1
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(2, 73)
+        Me.Label5.Location = New System.Drawing.Point(3, 112)
+        Me.Label5.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(115, 13)
+        Me.Label5.Size = New System.Drawing.Size(170, 20)
         Me.Label5.TabIndex = 162
         Me.Label5.Text = "Takeoff angle (degree)"
         '
@@ -1369,9 +1500,10 @@ Partial Class Form1
         '
         Me.Button25.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button25.Location = New System.Drawing.Point(702, 764)
+        Me.Button25.Location = New System.Drawing.Point(1053, 1175)
+        Me.Button25.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button25.Name = "Button25"
-        Me.Button25.Size = New System.Drawing.Size(100, 38)
+        Me.Button25.Size = New System.Drawing.Size(150, 58)
         Me.Button25.TabIndex = 163
         Me.Button25.Text = "Matrix Inverse"
         Me.Button25.UseVisualStyleBackColor = True
@@ -1380,9 +1512,10 @@ Partial Class Form1
         '
         Me.Button26.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button26.Location = New System.Drawing.Point(702, 808)
+        Me.Button26.Location = New System.Drawing.Point(1053, 1243)
+        Me.Button26.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button26.Name = "Button26"
-        Me.Button26.Size = New System.Drawing.Size(100, 38)
+        Me.Button26.Size = New System.Drawing.Size(150, 58)
         Me.Button26.TabIndex = 164
         Me.Button26.Text = "(1+TCK)"
         Me.Button26.UseVisualStyleBackColor = True
@@ -1392,9 +1525,10 @@ Partial Class Form1
         Me.Element99.BackColor = System.Drawing.Color.White
         Me.Element99.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element99.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element99.Location = New System.Drawing.Point(1161, 265)
+        Me.Element99.Location = New System.Drawing.Point(1742, 408)
+        Me.Element99.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element99.Name = "Element99"
-        Me.Element99.Size = New System.Drawing.Size(24, 33)
+        Me.Element99.Size = New System.Drawing.Size(36, 51)
         Me.Element99.TabIndex = 149
         Me.Element99.UseVisualStyleBackColor = False
         '
@@ -1403,9 +1537,10 @@ Partial Class Form1
         Me.Element98.BackColor = System.Drawing.Color.White
         Me.Element98.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element98.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element98.Location = New System.Drawing.Point(1136, 265)
+        Me.Element98.Location = New System.Drawing.Point(1704, 408)
+        Me.Element98.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element98.Name = "Element98"
-        Me.Element98.Size = New System.Drawing.Size(24, 33)
+        Me.Element98.Size = New System.Drawing.Size(36, 51)
         Me.Element98.TabIndex = 148
         Me.Element98.UseVisualStyleBackColor = False
         '
@@ -1414,9 +1549,10 @@ Partial Class Form1
         Me.Element97.BackColor = System.Drawing.Color.White
         Me.Element97.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element97.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element97.Location = New System.Drawing.Point(1111, 265)
+        Me.Element97.Location = New System.Drawing.Point(1666, 408)
+        Me.Element97.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element97.Name = "Element97"
-        Me.Element97.Size = New System.Drawing.Size(24, 33)
+        Me.Element97.Size = New System.Drawing.Size(36, 51)
         Me.Element97.TabIndex = 147
         Me.Element97.UseVisualStyleBackColor = False
         '
@@ -1425,9 +1561,10 @@ Partial Class Form1
         Me.Element96.BackColor = System.Drawing.Color.White
         Me.Element96.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element96.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element96.Location = New System.Drawing.Point(1086, 265)
+        Me.Element96.Location = New System.Drawing.Point(1629, 408)
+        Me.Element96.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element96.Name = "Element96"
-        Me.Element96.Size = New System.Drawing.Size(24, 33)
+        Me.Element96.Size = New System.Drawing.Size(36, 51)
         Me.Element96.TabIndex = 146
         Me.Element96.UseVisualStyleBackColor = False
         '
@@ -1436,9 +1573,10 @@ Partial Class Form1
         Me.Element95.BackColor = System.Drawing.Color.White
         Me.Element95.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element95.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element95.Location = New System.Drawing.Point(1061, 265)
+        Me.Element95.Location = New System.Drawing.Point(1592, 408)
+        Me.Element95.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element95.Name = "Element95"
-        Me.Element95.Size = New System.Drawing.Size(24, 33)
+        Me.Element95.Size = New System.Drawing.Size(36, 51)
         Me.Element95.TabIndex = 145
         Me.Element95.UseVisualStyleBackColor = False
         '
@@ -1447,9 +1585,10 @@ Partial Class Form1
         Me.Element94.BackColor = System.Drawing.Color.White
         Me.Element94.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element94.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element94.Location = New System.Drawing.Point(1036, 265)
+        Me.Element94.Location = New System.Drawing.Point(1554, 408)
+        Me.Element94.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element94.Name = "Element94"
-        Me.Element94.Size = New System.Drawing.Size(24, 33)
+        Me.Element94.Size = New System.Drawing.Size(36, 51)
         Me.Element94.TabIndex = 144
         Me.Element94.UseVisualStyleBackColor = False
         '
@@ -1458,9 +1597,10 @@ Partial Class Form1
         Me.Element93.BackColor = System.Drawing.Color.White
         Me.Element93.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element93.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element93.Location = New System.Drawing.Point(1011, 265)
+        Me.Element93.Location = New System.Drawing.Point(1516, 408)
+        Me.Element93.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element93.Name = "Element93"
-        Me.Element93.Size = New System.Drawing.Size(24, 33)
+        Me.Element93.Size = New System.Drawing.Size(36, 51)
         Me.Element93.TabIndex = 143
         Me.Element93.UseVisualStyleBackColor = False
         '
@@ -1469,9 +1609,10 @@ Partial Class Form1
         Me.Element92.BackColor = System.Drawing.Color.White
         Me.Element92.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element92.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element92.Location = New System.Drawing.Point(986, 265)
+        Me.Element92.Location = New System.Drawing.Point(1479, 408)
+        Me.Element92.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element92.Name = "Element92"
-        Me.Element92.Size = New System.Drawing.Size(24, 33)
+        Me.Element92.Size = New System.Drawing.Size(36, 51)
         Me.Element92.TabIndex = 142
         Me.Element92.UseVisualStyleBackColor = False
         '
@@ -1480,9 +1621,10 @@ Partial Class Form1
         Me.Element91.BackColor = System.Drawing.Color.White
         Me.Element91.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element91.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element91.Location = New System.Drawing.Point(961, 265)
+        Me.Element91.Location = New System.Drawing.Point(1442, 408)
+        Me.Element91.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element91.Name = "Element91"
-        Me.Element91.Size = New System.Drawing.Size(24, 33)
+        Me.Element91.Size = New System.Drawing.Size(36, 51)
         Me.Element91.TabIndex = 141
         Me.Element91.UseVisualStyleBackColor = False
         '
@@ -1491,9 +1633,10 @@ Partial Class Form1
         Me.Element90.BackColor = System.Drawing.Color.White
         Me.Element90.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element90.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element90.Location = New System.Drawing.Point(936, 265)
+        Me.Element90.Location = New System.Drawing.Point(1404, 408)
+        Me.Element90.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element90.Name = "Element90"
-        Me.Element90.Size = New System.Drawing.Size(24, 33)
+        Me.Element90.Size = New System.Drawing.Size(36, 51)
         Me.Element90.TabIndex = 140
         Me.Element90.UseVisualStyleBackColor = False
         '
@@ -1502,9 +1645,10 @@ Partial Class Form1
         Me.Element71.BackColor = System.Drawing.Color.White
         Me.Element71.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element71.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element71.Location = New System.Drawing.Point(1261, 231)
+        Me.Element71.Location = New System.Drawing.Point(1892, 355)
+        Me.Element71.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element71.Name = "Element71"
-        Me.Element71.Size = New System.Drawing.Size(24, 33)
+        Me.Element71.Size = New System.Drawing.Size(36, 51)
         Me.Element71.TabIndex = 139
         Me.Element71.UseVisualStyleBackColor = False
         '
@@ -1513,9 +1657,10 @@ Partial Class Form1
         Me.Element70.BackColor = System.Drawing.Color.White
         Me.Element70.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element70.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element70.Location = New System.Drawing.Point(1236, 231)
+        Me.Element70.Location = New System.Drawing.Point(1854, 355)
+        Me.Element70.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element70.Name = "Element70"
-        Me.Element70.Size = New System.Drawing.Size(24, 33)
+        Me.Element70.Size = New System.Drawing.Size(36, 51)
         Me.Element70.TabIndex = 138
         Me.Element70.UseVisualStyleBackColor = False
         '
@@ -1524,9 +1669,10 @@ Partial Class Form1
         Me.Element69.BackColor = System.Drawing.Color.White
         Me.Element69.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element69.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element69.Location = New System.Drawing.Point(1211, 231)
+        Me.Element69.Location = New System.Drawing.Point(1816, 355)
+        Me.Element69.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element69.Name = "Element69"
-        Me.Element69.Size = New System.Drawing.Size(24, 33)
+        Me.Element69.Size = New System.Drawing.Size(36, 51)
         Me.Element69.TabIndex = 137
         Me.Element69.UseVisualStyleBackColor = False
         '
@@ -1535,9 +1681,10 @@ Partial Class Form1
         Me.Element68.BackColor = System.Drawing.Color.White
         Me.Element68.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element68.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element68.Location = New System.Drawing.Point(1186, 231)
+        Me.Element68.Location = New System.Drawing.Point(1779, 355)
+        Me.Element68.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element68.Name = "Element68"
-        Me.Element68.Size = New System.Drawing.Size(24, 33)
+        Me.Element68.Size = New System.Drawing.Size(36, 51)
         Me.Element68.TabIndex = 136
         Me.Element68.UseVisualStyleBackColor = False
         '
@@ -1546,9 +1693,10 @@ Partial Class Form1
         Me.Element67.BackColor = System.Drawing.Color.White
         Me.Element67.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element67.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element67.Location = New System.Drawing.Point(1161, 231)
+        Me.Element67.Location = New System.Drawing.Point(1742, 355)
+        Me.Element67.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element67.Name = "Element67"
-        Me.Element67.Size = New System.Drawing.Size(24, 33)
+        Me.Element67.Size = New System.Drawing.Size(36, 51)
         Me.Element67.TabIndex = 135
         Me.Element67.UseVisualStyleBackColor = False
         '
@@ -1557,9 +1705,10 @@ Partial Class Form1
         Me.Element66.BackColor = System.Drawing.Color.White
         Me.Element66.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element66.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element66.Location = New System.Drawing.Point(1136, 231)
+        Me.Element66.Location = New System.Drawing.Point(1704, 355)
+        Me.Element66.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element66.Name = "Element66"
-        Me.Element66.Size = New System.Drawing.Size(24, 33)
+        Me.Element66.Size = New System.Drawing.Size(36, 51)
         Me.Element66.TabIndex = 134
         Me.Element66.UseVisualStyleBackColor = False
         '
@@ -1568,9 +1717,10 @@ Partial Class Form1
         Me.Element65.BackColor = System.Drawing.Color.White
         Me.Element65.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element65.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element65.Location = New System.Drawing.Point(1111, 231)
+        Me.Element65.Location = New System.Drawing.Point(1666, 355)
+        Me.Element65.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element65.Name = "Element65"
-        Me.Element65.Size = New System.Drawing.Size(24, 33)
+        Me.Element65.Size = New System.Drawing.Size(36, 51)
         Me.Element65.TabIndex = 133
         Me.Element65.UseVisualStyleBackColor = False
         '
@@ -1579,9 +1729,10 @@ Partial Class Form1
         Me.Element64.BackColor = System.Drawing.Color.White
         Me.Element64.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element64.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element64.Location = New System.Drawing.Point(1086, 231)
+        Me.Element64.Location = New System.Drawing.Point(1629, 355)
+        Me.Element64.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element64.Name = "Element64"
-        Me.Element64.Size = New System.Drawing.Size(24, 33)
+        Me.Element64.Size = New System.Drawing.Size(36, 51)
         Me.Element64.TabIndex = 132
         Me.Element64.UseVisualStyleBackColor = False
         '
@@ -1590,9 +1741,10 @@ Partial Class Form1
         Me.Element63.BackColor = System.Drawing.Color.White
         Me.Element63.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element63.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element63.Location = New System.Drawing.Point(1061, 231)
+        Me.Element63.Location = New System.Drawing.Point(1592, 355)
+        Me.Element63.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element63.Name = "Element63"
-        Me.Element63.Size = New System.Drawing.Size(24, 33)
+        Me.Element63.Size = New System.Drawing.Size(36, 51)
         Me.Element63.TabIndex = 131
         Me.Element63.UseVisualStyleBackColor = False
         '
@@ -1601,9 +1753,10 @@ Partial Class Form1
         Me.Element62.BackColor = System.Drawing.Color.White
         Me.Element62.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element62.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element62.Location = New System.Drawing.Point(1036, 231)
+        Me.Element62.Location = New System.Drawing.Point(1554, 355)
+        Me.Element62.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element62.Name = "Element62"
-        Me.Element62.Size = New System.Drawing.Size(24, 33)
+        Me.Element62.Size = New System.Drawing.Size(36, 51)
         Me.Element62.TabIndex = 130
         Me.Element62.UseVisualStyleBackColor = False
         '
@@ -1612,9 +1765,10 @@ Partial Class Form1
         Me.Element61.BackColor = System.Drawing.Color.White
         Me.Element61.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element61.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element61.Location = New System.Drawing.Point(1011, 231)
+        Me.Element61.Location = New System.Drawing.Point(1516, 355)
+        Me.Element61.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element61.Name = "Element61"
-        Me.Element61.Size = New System.Drawing.Size(24, 33)
+        Me.Element61.Size = New System.Drawing.Size(36, 51)
         Me.Element61.TabIndex = 129
         Me.Element61.UseVisualStyleBackColor = False
         '
@@ -1623,9 +1777,10 @@ Partial Class Form1
         Me.Element60.BackColor = System.Drawing.Color.White
         Me.Element60.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element60.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element60.Location = New System.Drawing.Point(986, 231)
+        Me.Element60.Location = New System.Drawing.Point(1479, 355)
+        Me.Element60.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element60.Name = "Element60"
-        Me.Element60.Size = New System.Drawing.Size(24, 33)
+        Me.Element60.Size = New System.Drawing.Size(36, 51)
         Me.Element60.TabIndex = 128
         Me.Element60.UseVisualStyleBackColor = False
         '
@@ -1634,9 +1789,10 @@ Partial Class Form1
         Me.Element59.BackColor = System.Drawing.Color.White
         Me.Element59.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element59.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element59.Location = New System.Drawing.Point(961, 231)
+        Me.Element59.Location = New System.Drawing.Point(1442, 355)
+        Me.Element59.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element59.Name = "Element59"
-        Me.Element59.Size = New System.Drawing.Size(24, 33)
+        Me.Element59.Size = New System.Drawing.Size(36, 51)
         Me.Element59.TabIndex = 127
         Me.Element59.UseVisualStyleBackColor = False
         '
@@ -1645,9 +1801,10 @@ Partial Class Form1
         Me.Element58.BackColor = System.Drawing.Color.White
         Me.Element58.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element58.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element58.Location = New System.Drawing.Point(936, 231)
+        Me.Element58.Location = New System.Drawing.Point(1404, 355)
+        Me.Element58.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element58.Name = "Element58"
-        Me.Element58.Size = New System.Drawing.Size(24, 33)
+        Me.Element58.Size = New System.Drawing.Size(36, 51)
         Me.Element58.TabIndex = 126
         Me.Element58.UseVisualStyleBackColor = False
         '
@@ -1656,9 +1813,10 @@ Partial Class Form1
         Me.Element89.BackColor = System.Drawing.Color.White
         Me.Element89.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element89.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element89.Location = New System.Drawing.Point(886, 214)
+        Me.Element89.Location = New System.Drawing.Point(1329, 329)
+        Me.Element89.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element89.Name = "Element89"
-        Me.Element89.Size = New System.Drawing.Size(24, 33)
+        Me.Element89.Size = New System.Drawing.Size(36, 51)
         Me.Element89.TabIndex = 125
         Me.Element89.UseVisualStyleBackColor = False
         '
@@ -1667,9 +1825,10 @@ Partial Class Form1
         Me.Element88.BackColor = System.Drawing.Color.White
         Me.Element88.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element88.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element88.Location = New System.Drawing.Point(861, 214)
+        Me.Element88.Location = New System.Drawing.Point(1292, 329)
+        Me.Element88.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element88.Name = "Element88"
-        Me.Element88.Size = New System.Drawing.Size(24, 33)
+        Me.Element88.Size = New System.Drawing.Size(36, 51)
         Me.Element88.TabIndex = 124
         Me.Element88.UseVisualStyleBackColor = False
         '
@@ -1678,9 +1837,10 @@ Partial Class Form1
         Me.Element87.BackColor = System.Drawing.Color.White
         Me.Element87.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element87.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element87.Location = New System.Drawing.Point(836, 214)
+        Me.Element87.Location = New System.Drawing.Point(1254, 329)
+        Me.Element87.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element87.Name = "Element87"
-        Me.Element87.Size = New System.Drawing.Size(24, 33)
+        Me.Element87.Size = New System.Drawing.Size(36, 51)
         Me.Element87.TabIndex = 123
         Me.Element87.UseVisualStyleBackColor = False
         '
@@ -1689,9 +1849,10 @@ Partial Class Form1
         Me.Element86.BackColor = System.Drawing.Color.White
         Me.Element86.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element86.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element86.Location = New System.Drawing.Point(1261, 180)
+        Me.Element86.Location = New System.Drawing.Point(1892, 277)
+        Me.Element86.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element86.Name = "Element86"
-        Me.Element86.Size = New System.Drawing.Size(24, 33)
+        Me.Element86.Size = New System.Drawing.Size(36, 51)
         Me.Element86.TabIndex = 122
         Me.Element86.UseVisualStyleBackColor = False
         '
@@ -1700,9 +1861,10 @@ Partial Class Form1
         Me.Element85.BackColor = System.Drawing.Color.White
         Me.Element85.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element85.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element85.Location = New System.Drawing.Point(1236, 180)
+        Me.Element85.Location = New System.Drawing.Point(1854, 277)
+        Me.Element85.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element85.Name = "Element85"
-        Me.Element85.Size = New System.Drawing.Size(24, 33)
+        Me.Element85.Size = New System.Drawing.Size(36, 51)
         Me.Element85.TabIndex = 121
         Me.Element85.UseVisualStyleBackColor = False
         '
@@ -1711,9 +1873,10 @@ Partial Class Form1
         Me.Element84.BackColor = System.Drawing.Color.White
         Me.Element84.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element84.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element84.Location = New System.Drawing.Point(1211, 180)
+        Me.Element84.Location = New System.Drawing.Point(1816, 277)
+        Me.Element84.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element84.Name = "Element84"
-        Me.Element84.Size = New System.Drawing.Size(24, 33)
+        Me.Element84.Size = New System.Drawing.Size(36, 51)
         Me.Element84.TabIndex = 120
         Me.Element84.UseVisualStyleBackColor = False
         '
@@ -1722,9 +1885,10 @@ Partial Class Form1
         Me.Element83.BackColor = System.Drawing.Color.White
         Me.Element83.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element83.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element83.Location = New System.Drawing.Point(1186, 180)
+        Me.Element83.Location = New System.Drawing.Point(1779, 277)
+        Me.Element83.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element83.Name = "Element83"
-        Me.Element83.Size = New System.Drawing.Size(24, 33)
+        Me.Element83.Size = New System.Drawing.Size(36, 51)
         Me.Element83.TabIndex = 119
         Me.Element83.UseVisualStyleBackColor = False
         '
@@ -1733,9 +1897,10 @@ Partial Class Form1
         Me.Element82.BackColor = System.Drawing.Color.White
         Me.Element82.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element82.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element82.Location = New System.Drawing.Point(1161, 180)
+        Me.Element82.Location = New System.Drawing.Point(1742, 277)
+        Me.Element82.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element82.Name = "Element82"
-        Me.Element82.Size = New System.Drawing.Size(24, 33)
+        Me.Element82.Size = New System.Drawing.Size(36, 51)
         Me.Element82.TabIndex = 118
         Me.Element82.UseVisualStyleBackColor = False
         '
@@ -1744,9 +1909,10 @@ Partial Class Form1
         Me.Element81.BackColor = System.Drawing.Color.White
         Me.Element81.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element81.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element81.Location = New System.Drawing.Point(1136, 180)
+        Me.Element81.Location = New System.Drawing.Point(1704, 277)
+        Me.Element81.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element81.Name = "Element81"
-        Me.Element81.Size = New System.Drawing.Size(24, 33)
+        Me.Element81.Size = New System.Drawing.Size(36, 51)
         Me.Element81.TabIndex = 117
         Me.Element81.UseVisualStyleBackColor = False
         '
@@ -1755,9 +1921,10 @@ Partial Class Form1
         Me.Element80.BackColor = System.Drawing.Color.White
         Me.Element80.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element80.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element80.Location = New System.Drawing.Point(1111, 180)
+        Me.Element80.Location = New System.Drawing.Point(1666, 277)
+        Me.Element80.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element80.Name = "Element80"
-        Me.Element80.Size = New System.Drawing.Size(24, 33)
+        Me.Element80.Size = New System.Drawing.Size(36, 51)
         Me.Element80.TabIndex = 116
         Me.Element80.UseVisualStyleBackColor = False
         '
@@ -1766,9 +1933,10 @@ Partial Class Form1
         Me.Element79.BackColor = System.Drawing.Color.White
         Me.Element79.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element79.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element79.Location = New System.Drawing.Point(1086, 180)
+        Me.Element79.Location = New System.Drawing.Point(1629, 277)
+        Me.Element79.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element79.Name = "Element79"
-        Me.Element79.Size = New System.Drawing.Size(24, 33)
+        Me.Element79.Size = New System.Drawing.Size(36, 51)
         Me.Element79.TabIndex = 115
         Me.Element79.UseVisualStyleBackColor = False
         '
@@ -1777,9 +1945,10 @@ Partial Class Form1
         Me.Element78.BackColor = System.Drawing.Color.White
         Me.Element78.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element78.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element78.Location = New System.Drawing.Point(1061, 180)
+        Me.Element78.Location = New System.Drawing.Point(1592, 277)
+        Me.Element78.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element78.Name = "Element78"
-        Me.Element78.Size = New System.Drawing.Size(24, 33)
+        Me.Element78.Size = New System.Drawing.Size(36, 51)
         Me.Element78.TabIndex = 114
         Me.Element78.UseVisualStyleBackColor = False
         '
@@ -1788,9 +1957,10 @@ Partial Class Form1
         Me.Element77.BackColor = System.Drawing.Color.White
         Me.Element77.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element77.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element77.Location = New System.Drawing.Point(1036, 180)
+        Me.Element77.Location = New System.Drawing.Point(1554, 277)
+        Me.Element77.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element77.Name = "Element77"
-        Me.Element77.Size = New System.Drawing.Size(24, 33)
+        Me.Element77.Size = New System.Drawing.Size(36, 51)
         Me.Element77.TabIndex = 113
         Me.Element77.UseVisualStyleBackColor = False
         '
@@ -1799,9 +1969,10 @@ Partial Class Form1
         Me.Element76.BackColor = System.Drawing.Color.White
         Me.Element76.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element76.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element76.Location = New System.Drawing.Point(1011, 180)
+        Me.Element76.Location = New System.Drawing.Point(1516, 277)
+        Me.Element76.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element76.Name = "Element76"
-        Me.Element76.Size = New System.Drawing.Size(24, 33)
+        Me.Element76.Size = New System.Drawing.Size(36, 51)
         Me.Element76.TabIndex = 112
         Me.Element76.UseVisualStyleBackColor = False
         '
@@ -1810,9 +1981,10 @@ Partial Class Form1
         Me.Element75.BackColor = System.Drawing.Color.White
         Me.Element75.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element75.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element75.Location = New System.Drawing.Point(986, 180)
+        Me.Element75.Location = New System.Drawing.Point(1479, 277)
+        Me.Element75.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element75.Name = "Element75"
-        Me.Element75.Size = New System.Drawing.Size(24, 33)
+        Me.Element75.Size = New System.Drawing.Size(36, 51)
         Me.Element75.TabIndex = 111
         Me.Element75.UseVisualStyleBackColor = False
         '
@@ -1821,9 +1993,10 @@ Partial Class Form1
         Me.Element74.BackColor = System.Drawing.Color.White
         Me.Element74.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element74.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element74.Location = New System.Drawing.Point(961, 180)
+        Me.Element74.Location = New System.Drawing.Point(1442, 277)
+        Me.Element74.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element74.Name = "Element74"
-        Me.Element74.Size = New System.Drawing.Size(24, 33)
+        Me.Element74.Size = New System.Drawing.Size(36, 51)
         Me.Element74.TabIndex = 110
         Me.Element74.UseVisualStyleBackColor = False
         '
@@ -1832,9 +2005,10 @@ Partial Class Form1
         Me.Element73.BackColor = System.Drawing.Color.White
         Me.Element73.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element73.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element73.Location = New System.Drawing.Point(936, 180)
+        Me.Element73.Location = New System.Drawing.Point(1404, 277)
+        Me.Element73.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element73.Name = "Element73"
-        Me.Element73.Size = New System.Drawing.Size(24, 33)
+        Me.Element73.Size = New System.Drawing.Size(36, 51)
         Me.Element73.TabIndex = 109
         Me.Element73.UseVisualStyleBackColor = False
         '
@@ -1843,9 +2017,10 @@ Partial Class Form1
         Me.Element72.BackColor = System.Drawing.Color.White
         Me.Element72.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element72.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element72.Location = New System.Drawing.Point(911, 180)
+        Me.Element72.Location = New System.Drawing.Point(1366, 277)
+        Me.Element72.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element72.Name = "Element72"
-        Me.Element72.Size = New System.Drawing.Size(24, 33)
+        Me.Element72.Size = New System.Drawing.Size(36, 51)
         Me.Element72.TabIndex = 108
         Me.Element72.UseVisualStyleBackColor = False
         '
@@ -1854,9 +2029,10 @@ Partial Class Form1
         Me.Element57.BackColor = System.Drawing.Color.White
         Me.Element57.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element57.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element57.Location = New System.Drawing.Point(886, 180)
+        Me.Element57.Location = New System.Drawing.Point(1329, 277)
+        Me.Element57.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element57.Name = "Element57"
-        Me.Element57.Size = New System.Drawing.Size(24, 33)
+        Me.Element57.Size = New System.Drawing.Size(36, 51)
         Me.Element57.TabIndex = 107
         Me.Element57.UseVisualStyleBackColor = False
         '
@@ -1865,9 +2041,10 @@ Partial Class Form1
         Me.Element56.BackColor = System.Drawing.Color.White
         Me.Element56.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element56.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element56.Location = New System.Drawing.Point(861, 180)
+        Me.Element56.Location = New System.Drawing.Point(1292, 277)
+        Me.Element56.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element56.Name = "Element56"
-        Me.Element56.Size = New System.Drawing.Size(24, 33)
+        Me.Element56.Size = New System.Drawing.Size(36, 51)
         Me.Element56.TabIndex = 106
         Me.Element56.UseVisualStyleBackColor = False
         '
@@ -1876,9 +2053,10 @@ Partial Class Form1
         Me.Element55.BackColor = System.Drawing.Color.White
         Me.Element55.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element55.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element55.Location = New System.Drawing.Point(836, 180)
+        Me.Element55.Location = New System.Drawing.Point(1254, 277)
+        Me.Element55.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element55.Name = "Element55"
-        Me.Element55.Size = New System.Drawing.Size(24, 33)
+        Me.Element55.Size = New System.Drawing.Size(36, 51)
         Me.Element55.TabIndex = 105
         Me.Element55.UseVisualStyleBackColor = False
         '
@@ -1887,9 +2065,10 @@ Partial Class Form1
         Me.Element54.BackColor = System.Drawing.Color.White
         Me.Element54.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element54.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element54.Location = New System.Drawing.Point(1261, 146)
+        Me.Element54.Location = New System.Drawing.Point(1892, 225)
+        Me.Element54.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element54.Name = "Element54"
-        Me.Element54.Size = New System.Drawing.Size(24, 33)
+        Me.Element54.Size = New System.Drawing.Size(36, 51)
         Me.Element54.TabIndex = 104
         Me.Element54.UseVisualStyleBackColor = False
         '
@@ -1898,9 +2077,10 @@ Partial Class Form1
         Me.Element53.BackColor = System.Drawing.Color.White
         Me.Element53.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element53.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element53.Location = New System.Drawing.Point(1236, 146)
+        Me.Element53.Location = New System.Drawing.Point(1854, 225)
+        Me.Element53.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element53.Name = "Element53"
-        Me.Element53.Size = New System.Drawing.Size(24, 33)
+        Me.Element53.Size = New System.Drawing.Size(36, 51)
         Me.Element53.TabIndex = 103
         Me.Element53.UseVisualStyleBackColor = False
         '
@@ -1909,9 +2089,10 @@ Partial Class Form1
         Me.Element52.BackColor = System.Drawing.Color.White
         Me.Element52.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element52.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element52.Location = New System.Drawing.Point(1211, 146)
+        Me.Element52.Location = New System.Drawing.Point(1816, 225)
+        Me.Element52.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element52.Name = "Element52"
-        Me.Element52.Size = New System.Drawing.Size(24, 33)
+        Me.Element52.Size = New System.Drawing.Size(36, 51)
         Me.Element52.TabIndex = 102
         Me.Element52.UseVisualStyleBackColor = False
         '
@@ -1920,9 +2101,10 @@ Partial Class Form1
         Me.Element51.BackColor = System.Drawing.Color.White
         Me.Element51.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element51.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element51.Location = New System.Drawing.Point(1186, 146)
+        Me.Element51.Location = New System.Drawing.Point(1779, 225)
+        Me.Element51.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element51.Name = "Element51"
-        Me.Element51.Size = New System.Drawing.Size(24, 33)
+        Me.Element51.Size = New System.Drawing.Size(36, 51)
         Me.Element51.TabIndex = 101
         Me.Element51.UseVisualStyleBackColor = False
         '
@@ -1931,9 +2113,10 @@ Partial Class Form1
         Me.Element50.BackColor = System.Drawing.Color.White
         Me.Element50.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element50.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element50.Location = New System.Drawing.Point(1161, 146)
+        Me.Element50.Location = New System.Drawing.Point(1742, 225)
+        Me.Element50.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element50.Name = "Element50"
-        Me.Element50.Size = New System.Drawing.Size(24, 33)
+        Me.Element50.Size = New System.Drawing.Size(36, 51)
         Me.Element50.TabIndex = 100
         Me.Element50.UseVisualStyleBackColor = False
         '
@@ -1942,9 +2125,10 @@ Partial Class Form1
         Me.Element49.BackColor = System.Drawing.Color.White
         Me.Element49.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element49.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element49.Location = New System.Drawing.Point(1136, 146)
+        Me.Element49.Location = New System.Drawing.Point(1704, 225)
+        Me.Element49.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element49.Name = "Element49"
-        Me.Element49.Size = New System.Drawing.Size(24, 33)
+        Me.Element49.Size = New System.Drawing.Size(36, 51)
         Me.Element49.TabIndex = 99
         Me.Element49.UseVisualStyleBackColor = False
         '
@@ -1953,9 +2137,10 @@ Partial Class Form1
         Me.Element48.BackColor = System.Drawing.Color.White
         Me.Element48.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element48.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element48.Location = New System.Drawing.Point(1111, 146)
+        Me.Element48.Location = New System.Drawing.Point(1666, 225)
+        Me.Element48.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element48.Name = "Element48"
-        Me.Element48.Size = New System.Drawing.Size(24, 33)
+        Me.Element48.Size = New System.Drawing.Size(36, 51)
         Me.Element48.TabIndex = 98
         Me.Element48.UseVisualStyleBackColor = False
         '
@@ -1964,9 +2149,10 @@ Partial Class Form1
         Me.Element47.BackColor = System.Drawing.Color.White
         Me.Element47.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element47.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element47.Location = New System.Drawing.Point(1086, 146)
+        Me.Element47.Location = New System.Drawing.Point(1629, 225)
+        Me.Element47.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element47.Name = "Element47"
-        Me.Element47.Size = New System.Drawing.Size(24, 33)
+        Me.Element47.Size = New System.Drawing.Size(36, 51)
         Me.Element47.TabIndex = 97
         Me.Element47.UseVisualStyleBackColor = False
         '
@@ -1975,9 +2161,10 @@ Partial Class Form1
         Me.Element46.BackColor = System.Drawing.Color.White
         Me.Element46.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element46.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element46.Location = New System.Drawing.Point(1061, 146)
+        Me.Element46.Location = New System.Drawing.Point(1592, 225)
+        Me.Element46.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element46.Name = "Element46"
-        Me.Element46.Size = New System.Drawing.Size(24, 33)
+        Me.Element46.Size = New System.Drawing.Size(36, 51)
         Me.Element46.TabIndex = 96
         Me.Element46.UseVisualStyleBackColor = False
         '
@@ -1986,9 +2173,10 @@ Partial Class Form1
         Me.Element45.BackColor = System.Drawing.Color.White
         Me.Element45.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element45.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element45.Location = New System.Drawing.Point(1036, 146)
+        Me.Element45.Location = New System.Drawing.Point(1554, 225)
+        Me.Element45.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element45.Name = "Element45"
-        Me.Element45.Size = New System.Drawing.Size(24, 33)
+        Me.Element45.Size = New System.Drawing.Size(36, 51)
         Me.Element45.TabIndex = 95
         Me.Element45.UseVisualStyleBackColor = False
         '
@@ -1997,9 +2185,10 @@ Partial Class Form1
         Me.Element44.BackColor = System.Drawing.Color.White
         Me.Element44.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element44.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element44.Location = New System.Drawing.Point(1011, 146)
+        Me.Element44.Location = New System.Drawing.Point(1516, 225)
+        Me.Element44.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element44.Name = "Element44"
-        Me.Element44.Size = New System.Drawing.Size(24, 33)
+        Me.Element44.Size = New System.Drawing.Size(36, 51)
         Me.Element44.TabIndex = 94
         Me.Element44.UseVisualStyleBackColor = False
         '
@@ -2008,9 +2197,10 @@ Partial Class Form1
         Me.Element43.BackColor = System.Drawing.Color.White
         Me.Element43.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element43.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element43.Location = New System.Drawing.Point(986, 146)
+        Me.Element43.Location = New System.Drawing.Point(1479, 225)
+        Me.Element43.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element43.Name = "Element43"
-        Me.Element43.Size = New System.Drawing.Size(24, 33)
+        Me.Element43.Size = New System.Drawing.Size(36, 51)
         Me.Element43.TabIndex = 93
         Me.Element43.UseVisualStyleBackColor = False
         '
@@ -2019,9 +2209,10 @@ Partial Class Form1
         Me.Element42.BackColor = System.Drawing.Color.White
         Me.Element42.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element42.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element42.Location = New System.Drawing.Point(961, 146)
+        Me.Element42.Location = New System.Drawing.Point(1442, 225)
+        Me.Element42.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element42.Name = "Element42"
-        Me.Element42.Size = New System.Drawing.Size(24, 33)
+        Me.Element42.Size = New System.Drawing.Size(36, 51)
         Me.Element42.TabIndex = 92
         Me.Element42.UseVisualStyleBackColor = False
         '
@@ -2030,9 +2221,10 @@ Partial Class Form1
         Me.Element41.BackColor = System.Drawing.Color.White
         Me.Element41.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element41.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element41.Location = New System.Drawing.Point(936, 146)
+        Me.Element41.Location = New System.Drawing.Point(1404, 225)
+        Me.Element41.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element41.Name = "Element41"
-        Me.Element41.Size = New System.Drawing.Size(24, 33)
+        Me.Element41.Size = New System.Drawing.Size(36, 51)
         Me.Element41.TabIndex = 91
         Me.Element41.UseVisualStyleBackColor = False
         '
@@ -2041,9 +2233,10 @@ Partial Class Form1
         Me.Element40.BackColor = System.Drawing.Color.White
         Me.Element40.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element40.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element40.Location = New System.Drawing.Point(911, 146)
+        Me.Element40.Location = New System.Drawing.Point(1366, 225)
+        Me.Element40.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element40.Name = "Element40"
-        Me.Element40.Size = New System.Drawing.Size(24, 33)
+        Me.Element40.Size = New System.Drawing.Size(36, 51)
         Me.Element40.TabIndex = 90
         Me.Element40.UseVisualStyleBackColor = False
         '
@@ -2052,9 +2245,10 @@ Partial Class Form1
         Me.Element39.BackColor = System.Drawing.Color.White
         Me.Element39.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element39.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element39.Location = New System.Drawing.Point(886, 146)
+        Me.Element39.Location = New System.Drawing.Point(1329, 225)
+        Me.Element39.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element39.Name = "Element39"
-        Me.Element39.Size = New System.Drawing.Size(24, 33)
+        Me.Element39.Size = New System.Drawing.Size(36, 51)
         Me.Element39.TabIndex = 89
         Me.Element39.UseVisualStyleBackColor = False
         '
@@ -2063,9 +2257,10 @@ Partial Class Form1
         Me.Element38.BackColor = System.Drawing.Color.White
         Me.Element38.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element38.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element38.Location = New System.Drawing.Point(861, 146)
+        Me.Element38.Location = New System.Drawing.Point(1292, 225)
+        Me.Element38.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element38.Name = "Element38"
-        Me.Element38.Size = New System.Drawing.Size(24, 33)
+        Me.Element38.Size = New System.Drawing.Size(36, 51)
         Me.Element38.TabIndex = 88
         Me.Element38.UseVisualStyleBackColor = False
         '
@@ -2074,9 +2269,10 @@ Partial Class Form1
         Me.Element37.BackColor = System.Drawing.Color.White
         Me.Element37.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element37.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element37.Location = New System.Drawing.Point(836, 146)
+        Me.Element37.Location = New System.Drawing.Point(1254, 225)
+        Me.Element37.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element37.Name = "Element37"
-        Me.Element37.Size = New System.Drawing.Size(24, 33)
+        Me.Element37.Size = New System.Drawing.Size(36, 51)
         Me.Element37.TabIndex = 87
         Me.Element37.UseVisualStyleBackColor = False
         '
@@ -2085,9 +2281,10 @@ Partial Class Form1
         Me.Element36.BackColor = System.Drawing.Color.White
         Me.Element36.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element36.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element36.Location = New System.Drawing.Point(1261, 112)
+        Me.Element36.Location = New System.Drawing.Point(1892, 172)
+        Me.Element36.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element36.Name = "Element36"
-        Me.Element36.Size = New System.Drawing.Size(24, 33)
+        Me.Element36.Size = New System.Drawing.Size(36, 51)
         Me.Element36.TabIndex = 86
         Me.Element36.UseVisualStyleBackColor = False
         '
@@ -2096,9 +2293,10 @@ Partial Class Form1
         Me.Element35.BackColor = System.Drawing.Color.White
         Me.Element35.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element35.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element35.Location = New System.Drawing.Point(1236, 112)
+        Me.Element35.Location = New System.Drawing.Point(1854, 172)
+        Me.Element35.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element35.Name = "Element35"
-        Me.Element35.Size = New System.Drawing.Size(24, 33)
+        Me.Element35.Size = New System.Drawing.Size(36, 51)
         Me.Element35.TabIndex = 85
         Me.Element35.UseVisualStyleBackColor = False
         '
@@ -2107,9 +2305,10 @@ Partial Class Form1
         Me.Element34.BackColor = System.Drawing.Color.White
         Me.Element34.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element34.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element34.Location = New System.Drawing.Point(1211, 112)
+        Me.Element34.Location = New System.Drawing.Point(1816, 172)
+        Me.Element34.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element34.Name = "Element34"
-        Me.Element34.Size = New System.Drawing.Size(24, 33)
+        Me.Element34.Size = New System.Drawing.Size(36, 51)
         Me.Element34.TabIndex = 84
         Me.Element34.UseVisualStyleBackColor = False
         '
@@ -2118,9 +2317,10 @@ Partial Class Form1
         Me.Element33.BackColor = System.Drawing.Color.White
         Me.Element33.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element33.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element33.Location = New System.Drawing.Point(1186, 112)
+        Me.Element33.Location = New System.Drawing.Point(1779, 172)
+        Me.Element33.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element33.Name = "Element33"
-        Me.Element33.Size = New System.Drawing.Size(24, 33)
+        Me.Element33.Size = New System.Drawing.Size(36, 51)
         Me.Element33.TabIndex = 83
         Me.Element33.UseVisualStyleBackColor = False
         '
@@ -2129,9 +2329,10 @@ Partial Class Form1
         Me.Element32.BackColor = System.Drawing.Color.White
         Me.Element32.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element32.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element32.Location = New System.Drawing.Point(1161, 112)
+        Me.Element32.Location = New System.Drawing.Point(1742, 172)
+        Me.Element32.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element32.Name = "Element32"
-        Me.Element32.Size = New System.Drawing.Size(24, 33)
+        Me.Element32.Size = New System.Drawing.Size(36, 51)
         Me.Element32.TabIndex = 82
         Me.Element32.UseVisualStyleBackColor = False
         '
@@ -2140,9 +2341,10 @@ Partial Class Form1
         Me.Element31.BackColor = System.Drawing.Color.White
         Me.Element31.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element31.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element31.Location = New System.Drawing.Point(1136, 112)
+        Me.Element31.Location = New System.Drawing.Point(1704, 172)
+        Me.Element31.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element31.Name = "Element31"
-        Me.Element31.Size = New System.Drawing.Size(24, 33)
+        Me.Element31.Size = New System.Drawing.Size(36, 51)
         Me.Element31.TabIndex = 81
         Me.Element31.UseVisualStyleBackColor = False
         '
@@ -2151,9 +2353,10 @@ Partial Class Form1
         Me.Element30.BackColor = System.Drawing.Color.White
         Me.Element30.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element30.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element30.Location = New System.Drawing.Point(1111, 112)
+        Me.Element30.Location = New System.Drawing.Point(1666, 172)
+        Me.Element30.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element30.Name = "Element30"
-        Me.Element30.Size = New System.Drawing.Size(24, 33)
+        Me.Element30.Size = New System.Drawing.Size(36, 51)
         Me.Element30.TabIndex = 80
         Me.Element30.UseVisualStyleBackColor = False
         '
@@ -2162,9 +2365,10 @@ Partial Class Form1
         Me.Element29.BackColor = System.Drawing.Color.White
         Me.Element29.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element29.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element29.Location = New System.Drawing.Point(1086, 112)
+        Me.Element29.Location = New System.Drawing.Point(1629, 172)
+        Me.Element29.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element29.Name = "Element29"
-        Me.Element29.Size = New System.Drawing.Size(24, 33)
+        Me.Element29.Size = New System.Drawing.Size(36, 51)
         Me.Element29.TabIndex = 79
         Me.Element29.UseVisualStyleBackColor = False
         '
@@ -2173,9 +2377,10 @@ Partial Class Form1
         Me.Element28.BackColor = System.Drawing.Color.White
         Me.Element28.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element28.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element28.Location = New System.Drawing.Point(1061, 112)
+        Me.Element28.Location = New System.Drawing.Point(1592, 172)
+        Me.Element28.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element28.Name = "Element28"
-        Me.Element28.Size = New System.Drawing.Size(24, 33)
+        Me.Element28.Size = New System.Drawing.Size(36, 51)
         Me.Element28.TabIndex = 78
         Me.Element28.UseVisualStyleBackColor = False
         '
@@ -2184,9 +2389,10 @@ Partial Class Form1
         Me.Element27.BackColor = System.Drawing.Color.White
         Me.Element27.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element27.Location = New System.Drawing.Point(1036, 112)
+        Me.Element27.Location = New System.Drawing.Point(1554, 172)
+        Me.Element27.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element27.Name = "Element27"
-        Me.Element27.Size = New System.Drawing.Size(24, 33)
+        Me.Element27.Size = New System.Drawing.Size(36, 51)
         Me.Element27.TabIndex = 77
         Me.Element27.UseVisualStyleBackColor = False
         '
@@ -2195,9 +2401,10 @@ Partial Class Form1
         Me.Element26.BackColor = System.Drawing.Color.White
         Me.Element26.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element26.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element26.Location = New System.Drawing.Point(1011, 112)
+        Me.Element26.Location = New System.Drawing.Point(1516, 172)
+        Me.Element26.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element26.Name = "Element26"
-        Me.Element26.Size = New System.Drawing.Size(24, 33)
+        Me.Element26.Size = New System.Drawing.Size(36, 51)
         Me.Element26.TabIndex = 76
         Me.Element26.UseVisualStyleBackColor = False
         '
@@ -2206,9 +2413,10 @@ Partial Class Form1
         Me.Element25.BackColor = System.Drawing.Color.White
         Me.Element25.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element25.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element25.Location = New System.Drawing.Point(986, 112)
+        Me.Element25.Location = New System.Drawing.Point(1479, 172)
+        Me.Element25.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element25.Name = "Element25"
-        Me.Element25.Size = New System.Drawing.Size(24, 33)
+        Me.Element25.Size = New System.Drawing.Size(36, 51)
         Me.Element25.TabIndex = 75
         Me.Element25.UseVisualStyleBackColor = False
         '
@@ -2217,9 +2425,10 @@ Partial Class Form1
         Me.Element24.BackColor = System.Drawing.Color.White
         Me.Element24.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element24.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element24.Location = New System.Drawing.Point(961, 112)
+        Me.Element24.Location = New System.Drawing.Point(1442, 172)
+        Me.Element24.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element24.Name = "Element24"
-        Me.Element24.Size = New System.Drawing.Size(24, 33)
+        Me.Element24.Size = New System.Drawing.Size(36, 51)
         Me.Element24.TabIndex = 74
         Me.Element24.UseVisualStyleBackColor = False
         '
@@ -2228,9 +2437,10 @@ Partial Class Form1
         Me.Element23.BackColor = System.Drawing.Color.White
         Me.Element23.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element23.Location = New System.Drawing.Point(936, 112)
+        Me.Element23.Location = New System.Drawing.Point(1404, 172)
+        Me.Element23.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element23.Name = "Element23"
-        Me.Element23.Size = New System.Drawing.Size(24, 33)
+        Me.Element23.Size = New System.Drawing.Size(36, 51)
         Me.Element23.TabIndex = 73
         Me.Element23.UseVisualStyleBackColor = False
         '
@@ -2239,9 +2449,10 @@ Partial Class Form1
         Me.Element22.BackColor = System.Drawing.Color.White
         Me.Element22.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element22.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element22.Location = New System.Drawing.Point(911, 112)
+        Me.Element22.Location = New System.Drawing.Point(1366, 172)
+        Me.Element22.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element22.Name = "Element22"
-        Me.Element22.Size = New System.Drawing.Size(24, 33)
+        Me.Element22.Size = New System.Drawing.Size(36, 51)
         Me.Element22.TabIndex = 72
         Me.Element22.UseVisualStyleBackColor = False
         '
@@ -2250,9 +2461,10 @@ Partial Class Form1
         Me.Element21.BackColor = System.Drawing.Color.White
         Me.Element21.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element21.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element21.Location = New System.Drawing.Point(886, 112)
+        Me.Element21.Location = New System.Drawing.Point(1329, 172)
+        Me.Element21.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element21.Name = "Element21"
-        Me.Element21.Size = New System.Drawing.Size(24, 33)
+        Me.Element21.Size = New System.Drawing.Size(36, 51)
         Me.Element21.TabIndex = 71
         Me.Element21.UseVisualStyleBackColor = False
         '
@@ -2261,9 +2473,10 @@ Partial Class Form1
         Me.Element20.BackColor = System.Drawing.Color.White
         Me.Element20.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element20.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element20.Location = New System.Drawing.Point(861, 112)
+        Me.Element20.Location = New System.Drawing.Point(1292, 172)
+        Me.Element20.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element20.Name = "Element20"
-        Me.Element20.Size = New System.Drawing.Size(24, 33)
+        Me.Element20.Size = New System.Drawing.Size(36, 51)
         Me.Element20.TabIndex = 70
         Me.Element20.UseVisualStyleBackColor = False
         '
@@ -2272,9 +2485,10 @@ Partial Class Form1
         Me.Element19.BackColor = System.Drawing.Color.White
         Me.Element19.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element19.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element19.Location = New System.Drawing.Point(836, 112)
+        Me.Element19.Location = New System.Drawing.Point(1254, 172)
+        Me.Element19.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element19.Name = "Element19"
-        Me.Element19.Size = New System.Drawing.Size(24, 33)
+        Me.Element19.Size = New System.Drawing.Size(36, 51)
         Me.Element19.TabIndex = 69
         Me.Element19.UseVisualStyleBackColor = False
         '
@@ -2283,9 +2497,10 @@ Partial Class Form1
         Me.Element18.BackColor = System.Drawing.Color.White
         Me.Element18.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element18.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element18.Location = New System.Drawing.Point(1261, 78)
+        Me.Element18.Location = New System.Drawing.Point(1892, 120)
+        Me.Element18.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element18.Name = "Element18"
-        Me.Element18.Size = New System.Drawing.Size(24, 33)
+        Me.Element18.Size = New System.Drawing.Size(36, 51)
         Me.Element18.TabIndex = 68
         Me.Element18.UseVisualStyleBackColor = False
         '
@@ -2294,9 +2509,10 @@ Partial Class Form1
         Me.Element17.BackColor = System.Drawing.Color.White
         Me.Element17.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element17.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element17.Location = New System.Drawing.Point(1236, 78)
+        Me.Element17.Location = New System.Drawing.Point(1854, 120)
+        Me.Element17.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element17.Name = "Element17"
-        Me.Element17.Size = New System.Drawing.Size(24, 33)
+        Me.Element17.Size = New System.Drawing.Size(36, 51)
         Me.Element17.TabIndex = 67
         Me.Element17.UseVisualStyleBackColor = False
         '
@@ -2305,9 +2521,10 @@ Partial Class Form1
         Me.Element16.BackColor = System.Drawing.Color.White
         Me.Element16.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element16.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element16.Location = New System.Drawing.Point(1211, 78)
+        Me.Element16.Location = New System.Drawing.Point(1816, 120)
+        Me.Element16.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element16.Name = "Element16"
-        Me.Element16.Size = New System.Drawing.Size(24, 33)
+        Me.Element16.Size = New System.Drawing.Size(36, 51)
         Me.Element16.TabIndex = 66
         Me.Element16.UseVisualStyleBackColor = False
         '
@@ -2316,9 +2533,10 @@ Partial Class Form1
         Me.Element15.BackColor = System.Drawing.Color.White
         Me.Element15.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element15.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element15.Location = New System.Drawing.Point(1186, 78)
+        Me.Element15.Location = New System.Drawing.Point(1779, 120)
+        Me.Element15.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element15.Name = "Element15"
-        Me.Element15.Size = New System.Drawing.Size(24, 33)
+        Me.Element15.Size = New System.Drawing.Size(36, 51)
         Me.Element15.TabIndex = 65
         Me.Element15.UseVisualStyleBackColor = False
         '
@@ -2327,9 +2545,10 @@ Partial Class Form1
         Me.Element14.BackColor = System.Drawing.Color.White
         Me.Element14.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element14.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element14.Location = New System.Drawing.Point(1161, 78)
+        Me.Element14.Location = New System.Drawing.Point(1742, 120)
+        Me.Element14.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element14.Name = "Element14"
-        Me.Element14.Size = New System.Drawing.Size(24, 33)
+        Me.Element14.Size = New System.Drawing.Size(36, 51)
         Me.Element14.TabIndex = 64
         Me.Element14.UseVisualStyleBackColor = False
         '
@@ -2338,9 +2557,10 @@ Partial Class Form1
         Me.Element13.BackColor = System.Drawing.Color.White
         Me.Element13.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element13.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element13.Location = New System.Drawing.Point(1136, 78)
+        Me.Element13.Location = New System.Drawing.Point(1704, 120)
+        Me.Element13.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element13.Name = "Element13"
-        Me.Element13.Size = New System.Drawing.Size(24, 33)
+        Me.Element13.Size = New System.Drawing.Size(36, 51)
         Me.Element13.TabIndex = 63
         Me.Element13.UseVisualStyleBackColor = False
         '
@@ -2349,9 +2569,10 @@ Partial Class Form1
         Me.Element12.BackColor = System.Drawing.Color.White
         Me.Element12.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element12.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element12.Location = New System.Drawing.Point(861, 78)
+        Me.Element12.Location = New System.Drawing.Point(1292, 120)
+        Me.Element12.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element12.Name = "Element12"
-        Me.Element12.Size = New System.Drawing.Size(24, 33)
+        Me.Element12.Size = New System.Drawing.Size(36, 51)
         Me.Element12.TabIndex = 62
         Me.Element12.UseVisualStyleBackColor = False
         '
@@ -2360,9 +2581,10 @@ Partial Class Form1
         Me.Element11.BackColor = System.Drawing.Color.White
         Me.Element11.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element11.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element11.Location = New System.Drawing.Point(836, 78)
+        Me.Element11.Location = New System.Drawing.Point(1254, 120)
+        Me.Element11.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element11.Name = "Element11"
-        Me.Element11.Size = New System.Drawing.Size(24, 33)
+        Me.Element11.Size = New System.Drawing.Size(36, 51)
         Me.Element11.TabIndex = 61
         Me.Element11.UseVisualStyleBackColor = False
         '
@@ -2371,9 +2593,10 @@ Partial Class Form1
         Me.Element10.BackColor = System.Drawing.Color.White
         Me.Element10.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element10.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element10.Location = New System.Drawing.Point(1261, 44)
+        Me.Element10.Location = New System.Drawing.Point(1892, 68)
+        Me.Element10.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element10.Name = "Element10"
-        Me.Element10.Size = New System.Drawing.Size(24, 33)
+        Me.Element10.Size = New System.Drawing.Size(36, 51)
         Me.Element10.TabIndex = 60
         Me.Element10.UseVisualStyleBackColor = False
         '
@@ -2382,9 +2605,10 @@ Partial Class Form1
         Me.Element9.BackColor = System.Drawing.Color.White
         Me.Element9.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element9.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element9.Location = New System.Drawing.Point(1236, 44)
+        Me.Element9.Location = New System.Drawing.Point(1854, 68)
+        Me.Element9.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element9.Name = "Element9"
-        Me.Element9.Size = New System.Drawing.Size(24, 33)
+        Me.Element9.Size = New System.Drawing.Size(36, 51)
         Me.Element9.TabIndex = 59
         Me.Element9.UseVisualStyleBackColor = False
         '
@@ -2393,9 +2617,10 @@ Partial Class Form1
         Me.Element8.BackColor = System.Drawing.Color.White
         Me.Element8.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element8.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element8.Location = New System.Drawing.Point(1211, 44)
+        Me.Element8.Location = New System.Drawing.Point(1816, 68)
+        Me.Element8.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element8.Name = "Element8"
-        Me.Element8.Size = New System.Drawing.Size(24, 33)
+        Me.Element8.Size = New System.Drawing.Size(36, 51)
         Me.Element8.TabIndex = 58
         Me.Element8.UseVisualStyleBackColor = False
         '
@@ -2404,9 +2629,10 @@ Partial Class Form1
         Me.Element7.BackColor = System.Drawing.Color.White
         Me.Element7.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element7.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element7.Location = New System.Drawing.Point(1186, 44)
+        Me.Element7.Location = New System.Drawing.Point(1779, 68)
+        Me.Element7.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element7.Name = "Element7"
-        Me.Element7.Size = New System.Drawing.Size(24, 33)
+        Me.Element7.Size = New System.Drawing.Size(36, 51)
         Me.Element7.TabIndex = 57
         Me.Element7.UseVisualStyleBackColor = False
         '
@@ -2415,9 +2641,10 @@ Partial Class Form1
         Me.Element6.BackColor = System.Drawing.Color.White
         Me.Element6.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element6.Location = New System.Drawing.Point(1161, 44)
+        Me.Element6.Location = New System.Drawing.Point(1742, 68)
+        Me.Element6.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element6.Name = "Element6"
-        Me.Element6.Size = New System.Drawing.Size(24, 33)
+        Me.Element6.Size = New System.Drawing.Size(36, 51)
         Me.Element6.TabIndex = 56
         Me.Element6.UseVisualStyleBackColor = False
         '
@@ -2426,9 +2653,10 @@ Partial Class Form1
         Me.Element5.BackColor = System.Drawing.Color.White
         Me.Element5.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element5.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element5.Location = New System.Drawing.Point(1136, 44)
+        Me.Element5.Location = New System.Drawing.Point(1704, 68)
+        Me.Element5.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element5.Name = "Element5"
-        Me.Element5.Size = New System.Drawing.Size(24, 33)
+        Me.Element5.Size = New System.Drawing.Size(36, 51)
         Me.Element5.TabIndex = 55
         Me.Element5.UseVisualStyleBackColor = False
         '
@@ -2437,9 +2665,10 @@ Partial Class Form1
         Me.Element4.BackColor = System.Drawing.Color.White
         Me.Element4.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element4.Location = New System.Drawing.Point(861, 44)
+        Me.Element4.Location = New System.Drawing.Point(1292, 68)
+        Me.Element4.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element4.Name = "Element4"
-        Me.Element4.Size = New System.Drawing.Size(24, 33)
+        Me.Element4.Size = New System.Drawing.Size(36, 51)
         Me.Element4.TabIndex = 54
         Me.Element4.UseVisualStyleBackColor = False
         '
@@ -2448,9 +2677,10 @@ Partial Class Form1
         Me.Element3.BackColor = System.Drawing.Color.White
         Me.Element3.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element3.Location = New System.Drawing.Point(836, 44)
+        Me.Element3.Location = New System.Drawing.Point(1254, 68)
+        Me.Element3.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element3.Name = "Element3"
-        Me.Element3.Size = New System.Drawing.Size(24, 33)
+        Me.Element3.Size = New System.Drawing.Size(36, 51)
         Me.Element3.TabIndex = 53
         Me.Element3.UseVisualStyleBackColor = False
         '
@@ -2459,9 +2689,10 @@ Partial Class Form1
         Me.Element2.BackColor = System.Drawing.Color.White
         Me.Element2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element2.Location = New System.Drawing.Point(1261, 10)
+        Me.Element2.Location = New System.Drawing.Point(1892, 15)
+        Me.Element2.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element2.Name = "Element2"
-        Me.Element2.Size = New System.Drawing.Size(24, 33)
+        Me.Element2.Size = New System.Drawing.Size(36, 51)
         Me.Element2.TabIndex = 52
         Me.Element2.UseVisualStyleBackColor = False
         '
@@ -2470,9 +2701,10 @@ Partial Class Form1
         Me.Element1.BackColor = System.Drawing.Color.White
         Me.Element1.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Element1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Element1.Location = New System.Drawing.Point(836, 10)
+        Me.Element1.Location = New System.Drawing.Point(1254, 15)
+        Me.Element1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Element1.Name = "Element1"
-        Me.Element1.Size = New System.Drawing.Size(24, 33)
+        Me.Element1.Size = New System.Drawing.Size(36, 51)
         Me.Element1.TabIndex = 48
         Me.Element1.UseVisualStyleBackColor = False
         '
@@ -2480,31 +2712,29 @@ Partial Class Form1
         '
         Me.Button27.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.Button27.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.Button27.Location = New System.Drawing.Point(239, 826)
+        Me.Button27.Location = New System.Drawing.Point(358, 1271)
+        Me.Button27.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Button27.Name = "Button27"
-        Me.Button27.Size = New System.Drawing.Size(100, 38)
+        Me.Button27.Size = New System.Drawing.Size(150, 58)
         Me.Button27.TabIndex = 165
         Me.Button27.Text = "MAC pure elts"
         Me.Button27.UseVisualStyleBackColor = True
         '
-        'CheckBox23
+        'Button28
         '
-        Me.CheckBox23.AutoSize = True
-        Me.CheckBox23.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.CheckBox23.Location = New System.Drawing.Point(6, 110)
-        Me.CheckBox23.Name = "CheckBox23"
-        Me.CheckBox23.Size = New System.Drawing.Size(78, 17)
-        Me.CheckBox23.TabIndex = 18
-        Me.CheckBox23.Text = "EPDL 2023"
-        Me.ToolTip1.SetToolTip(Me.CheckBox23, "FFAST MACs are available from H to U. For heavier elements, PENELOPE14 MACs are u" &
-        "sed.")
-        Me.CheckBox23.UseVisualStyleBackColor = True
+        Me.Button28.Location = New System.Drawing.Point(525, 1270)
+        Me.Button28.Name = "Button28"
+        Me.Button28.Size = New System.Drawing.Size(158, 58)
+        Me.Button28.TabIndex = 166
+        Me.Button28.Text = "Button28"
+        Me.Button28.UseVisualStyleBackColor = True
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1288, 624)
+        Me.ClientSize = New System.Drawing.Size(1932, 960)
+        Me.Controls.Add(Me.Button28)
         Me.Controls.Add(Me.Button27)
         Me.Controls.Add(Me.Button26)
         Me.Controls.Add(Me.Button25)
@@ -2655,6 +2885,7 @@ Partial Class Form1
         Me.Controls.Add(Me.TextBox11)
         Me.Controls.Add(Me.TextBox12)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
         Me.Name = "Form1"
         Me.Text = "Form1"
         Me.GroupBox1.ResumeLayout(False)
@@ -2891,4 +3122,5 @@ Partial Class Form1
     Friend WithEvents Button27 As Button
     Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents CheckBox23 As CheckBox
+    Friend WithEvents Button28 As Button
 End Class
