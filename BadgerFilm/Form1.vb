@@ -123,7 +123,7 @@ Public Structure fit_MAC
 End Structure
 
 Public Class Form1
-    Public VERSION As String = "v.1.2.28"
+    Public VERSION As String = "v.1.2.30"
     Public options As options
     Dim pen_path As String = Application.StartupPath() & "\PenelopeData" '"D:\Travail\Penelope"
     Dim eadl_path As String = Application.StartupPath() & "\EADL" '"D:\Travail\Penelope"
@@ -2091,7 +2091,7 @@ Public Class Form1
             'Uncertainty on the total concentration of each layer
             If CheckBox14.Checked = False Then
                 For i As Integer = 0 To layer_handler.Count - 1
-                    ey(tmp) = 0.05 * k_ratio_measured(tmp)
+                    ey(tmp) = 0.005 * k_ratio_measured(tmp)
                     tmp = tmp + 1
                 Next
             End If
